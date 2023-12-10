@@ -2,7 +2,9 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Olympo Fitness - Home</title>
+  <title>Home - Olympo Fitness</title>
+  <meta name="keywords" content="Olympo Fitness, palestra, negozio palestra, pesi liberi , macchinari palestra, macchinari, nutrizione, accessori palestra, home">
+  <meta name="author" content="Olympo Fitness">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,10 +21,10 @@
 
       <ul class="nav-list">
         <li><a href="#">Home</a></li>
-        <li><a href="#">Chi Siamo</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Carrello</a></li>
-        <li><a href="#">Account</a></li>
+        <li><a href="chiSiamo.html">Chi Siamo</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="carrello.html">Carrello</a></li>
+        <li><a href="account.html">Account</a></li>
       </ul>
     </nav>
   </header>
@@ -43,26 +45,30 @@
     <section class="featured-products">
         <h2>Prodotti in primo piano</h2>
         <div class="product-list">
-            <div class="product">
-                <button class="product-card" style="background-image: url('prodotto1.jpg');">
-                    Accessori
-                </button>
-            </div>
-            <div class="product">
-                <button class="product-card" style="background-image: url('prodotto1.jpg');">
-                    Pesi Liberi
-                </button>
-            </div>
-            <div class="product">
-                <button class="product-card" style="background-image: url('prodotto1.jpg');">
-                    Nutrizione
-                </button>
-            </div>              
-            <div class="product">
-                <button class="product-card" style="background-image: url('prodotto2.jpg');">
-                    Macchine
-                </button>
+          <div class="product"> <!--mi sa che la dobbiamo fettere nel css!-->
+            <a href="accessori.html" class="product-card" style="background-image: url('images/sfondoAccessori.jpg');"> <!-- SE SI VUOLE METTERE IMMAGINI SFONDO DELLA CARD ACTION, COME ESEMPIO-->
+              Accessori
+            </a>
+          </div>   
+
+          <div class="product">
+            <a href="pesiLiberi.html" class="product-card" style="background-image: url('images/sfondoPesiLiberi.jpg');">
+              Pesi Liberi
+            </a>
           </div>
+          
+          <div class="product">
+            <a href="nutrizione.html" class="product-card" style="background-image: url('images/sfondoNutrizione.jpg');">
+              Nutrizione
+            </a>
+          </div>
+                      
+          <div class="product">
+            <a href="macchine.html" class="product-card" style="background-image: url('images/sfondoMacchinari.jpg');">
+              Macchine
+            </a>
+          </div>
+          
           <!-- Altri prodotti simili -->
         </div>
       </section>

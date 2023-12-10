@@ -1,0 +1,192 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Stili per l'interfaccia simile a Decathlon */
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+  flex-direction: column;
+  } 
+
+  main {
+    flex: 1;
+  }
+  
+  .header {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo img {
+    max-height: 70px;
+  }
+
+  /* Stile per il logo e il testo del brand */
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 100px; /* Larghezza desiderata per il logo */
+    height: auto; /* Altezza automatica mantenendo le proporzioni originali */
+    margin-right: 10px; /* Margine a destra per separare il testo */
+  }
+  
+  .brand-name {
+    font-size: 24px; /* Dimensione del testo del brand */
+    color: #333; /* Colore del testo */
+  }
+   
+  .brand-n {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-links {
+    margin-left: auto;
+  }
+  
+  .nav-list {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-list li {
+    margin-left: 20px;
+  }
+  
+  .nav-list li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .main-content {
+    padding: 20px;
+  }
+  
+  .banner {
+    background-image: url('banner_image.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 100px 20px;
+    color: #fff;
+  }
+  
+  .banner-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .banner h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+  
+  .banner p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+  }
+  
+  .banner .btn {
+    padding: 12px 24px;
+    font-size: 1.1em;
+    text-decoration: none;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .featured-products {
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .product-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .product {
+    text-align: center;
+  }
+  
+  .product img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  
+  .product h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .product p {
+    font-size: 1em;
+    margin-bottom: 15px;
+  }
+
+  .product-card {
+    display: block;
+    width: 300px;
+    height: 200px;
+    border: none;
+    background-size: cover;
+    background-position: center;
+    background-color: #525151be; /* Fallback per il colore di sfondo */
+    color: #ac3f3f;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    cursor: pointer;
+    /* Stili specifici per il testo all'interno del bottone */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+    border-radius: 5px;
+    /* Stile aggiuntivo per il cambiamento al passaggio del mouse */
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .site {
+    width: 100px; /* Larghezza desiderata per il logo */
+    height: 100px; /* Altezza automatica mantenendo le proporzioni originali */
+  }
+
+  .product-card:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .about-us {
+    background-color: #ddd;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+  }
+  

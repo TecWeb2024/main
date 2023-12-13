@@ -1,4 +1,6 @@
 .product-card {
+    display: flex;
+    flex-wrap: wrap;
     width: 300px;
     height: 400px;
     border-radius: 15px;

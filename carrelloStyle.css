@@ -1,0 +1,116 @@
+/* Stili per la pagina del carrello */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .title {
+    text-align: left;
+  }
+  
+  .buy-now {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px; /* Aggiunto margine superiore */
+  }
+  
+  .order-details select,
+  .order-details input[type="text"] {
+    width: 70%; /* Modificato la larghezza */
+    margin-bottom: 15px;
+  }
+  
+  .cart-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .product-card {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-card img {
+    width: 40%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .product-details {
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .quantity-size {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity-size select {
+    margin-right: 10px;
+    padding: 8px;
+  }
+  
+  .remove-product {
+    padding: 8px 15px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .order-details {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .order-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .order-form input {
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 70%;
+  }
+  
+  .purchase-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+  }
+  

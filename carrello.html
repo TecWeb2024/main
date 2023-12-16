@@ -6,6 +6,7 @@
   <meta name="keywords" content="Olympo Fitness, palestra, negozio palestra, carrello, pesi liberi , macchinari palestra, macchinari, nutrizione, accessori palestra">
   <meta name="author" content="Olympo Fitness">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="carrelloStyle.css">
 </head>
 <body>
   <header class="header">
@@ -31,6 +32,99 @@
   <nav id="breadcrumb" aria-label="percorso">
     <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; Carrello</p>
   </nav>
+
+  <header class="header">
+    <div class="title">
+      <h1>Carrello</h1>
+    </div>
+    <button class="buy-now">Acquista ora</button>
+  </header>
+
+  <section class="cart-items">
+
+    <div class="product-card">
+      <div class="product-details">
+        <h3>Nome Prodotto</h3>
+        <p>€ Prezzo</p>
+      </div>
+      <img src="images/Paypal.jpg" alt="Prodotto 1">
+      <div class="quantity-size">
+        <select id="quantity1">
+          <option value="1">Quantità: 1</option>
+          <!-- Altre opzioni di quantità -->
+        </select>
+        <select id="size1">
+          <option value="XL">Taglia: XL</option>
+          <!-- Altre opzioni di taglia -->
+        </select>
+        <button class="remove-product">Rimuovi Prodotto dal carrello</button>
+      </div>
+    </div>
+
+    <!-- Altre card per altri prodotti nel carrello -->
+
+    <div class="product-card">
+      <div class="product-details">
+        <h3>Nome Prodotto</h3>
+        <p>€ Prezzo</p>
+      </div>
+      <img src="images/Paypal.jpg" alt="Prodotto 1">
+      <div class="quantity-size">
+        <select id="quantity1">
+          <option value="1">Quantità: 1</option>
+          <!-- Altre opzioni di quantità -->
+        </select>
+        <select id="size1">
+          <option value="XL">Taglia: XL</option>
+          <!-- Altre opzioni di taglia -->
+        </select>
+        <button class="remove-product">Rimuovi Prodotto dal carrello</button>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="order-details">
+    <h2>Dettagli dell'ordine</h2>
+    <form class="order-form">
+      <input type="date" id="order-date" placeholder="Data">
+      <input type="text" id="courier" placeholder="Corriere">
+      <select id="payment-method">
+        <option value="paypal">PayPal</option>
+        <option value="mastercard">Mastercard</option>
+      </select>
+      <div id="paypal-details" class="payment-details">
+        <label for="paypal-email">Indirizzo email PayPal:</label>
+        <input type="email" id="paypal-email" name="paypal-email" required>
+      </div>
+    
+      <div id="mastercard-details" class="payment-details">
+        <label for="card-name">Nome carta:</label>
+        <input type="text" id="card-name" name="card-name" required>
+        <br>
+        <label for="card-number">Numero carta:</label>
+        <input type="text" id="card-number" name="card-number" required>
+    
+        <!-- Altri campi per i dettagli della carta di credito -->
+      </div>
+      <input type="text" id="location" placeholder="Luogo">
+   <!--   <button type="submit" class="purchase-button">Acquista ora</button> -->
+    </form>
+  </section>
+
+  <div class="popup" style="display: none;">
+    <p>Acquisto effettuato con successo! Grazie per aver ordinato da Olympo Fitness.</p>
+  </div>
+
+  <script>
+    const buyNowButton = document.querySelector('.buy-now');
+    const popup = document.querySelector('.popup');
+
+    buyNowButton.addEventListener('click', () => {
+      // Logica per effettuare l'acquisto e mostrare il popup
+      popup.style.display = 'block';
+    });
+  </script>
 
 
   <footer class="footer">

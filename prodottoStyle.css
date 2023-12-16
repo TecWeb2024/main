@@ -1,0 +1,50 @@
+/* Stili per la pagina del prodotto */
+.product-page {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  
+  .product-images {
+    width: 30%;
+    /* Stili per le immagini del prodotto */
+  }
+  
+  .product-details {
+    width: 65%;
+    /* Stili per i dettagli del prodotto */
+  }
+  
+  .product-details h1 {
+    margin-top: 0;
+  }
+  
+  .rating {
+    /* Stili per le recensioni */
+  }
+  
+  .product-specs {
+    /* Stili per i dettagli del prodotto */
+  }
+  
+  .dropdown {
+    margin-bottom: 10px;
+  }
+  
+  .add-to-cart {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .add-to-cart:hover {
+    background-color: #555;
+  }
+  
+  .delivery-details {
+    /* Stili per i dettagli di consegna */
+  }
+  

@@ -5,7 +5,7 @@ body {
     padding: 0;
   }
   
-  .header {
+  .headerCarrello {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,7 +23,7 @@ body {
     color: #fff;
     border: none;
     cursor: pointer;
-    margin-top: 20px; /* Aggiunto margine superiore */
+    /*margin-top: 20px;*/ /* Aggiunto margine superiore */
   }
   
   .order-details select,

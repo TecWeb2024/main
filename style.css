@@ -1,84 +1,357 @@
-/* Reset CSS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  *{
+    margin: 0em;
+    padding: 0em;
   }
-  
-  /* Stili per l'interfaccia simile a Decathlon */
+
+  :root{ /* DA SCEGLIERE */
+    --headerBgColor: rgb(0,0,0);
+    --headerTextColor: rgb(21, 201, 45);
+    --bgColor: rgb(255,255,255);
+    --textColor: rgb(0,0,0);
+    --footerBgColor: rgb(0,0,0);
+    --footerTextColor: rgb(255,255,255);
+    --visitedLinkColor: rgb(230,12,83);
+    --linkColor: rgb(255,255,255);
+    --font-body-family: "Roboto Condensed", sans-serif;
+  }
+
+  html{
+  font-size: 100%;
+  font-family: var(--font-body-family);
+  line-height: 1.5em;
+  margin: auto;
+  }
+
+  /*BODY DA VEDERE*/
+
   body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
+    line-height: 1.5em;
     background-color: #f4f4f4;
     color: #333;
     display: flex;
-  flex-direction: column;
+    flex-direction: column;
   } 
 
   main {
     flex: 1;
   }
   
-  .header {
-    background-color: #fff;
+  .main-content { /*DA VEDERE*/
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo img {
-    max-height: 70px;
   }
 
-  /* Stile per il logo e il testo del brand */
-  .logo-container {
+  /*HEADER*/
+
+  header {
+    background-color: var(--visitedLinkColor);
+    padding: 1em;
+    padding-top: 0.7em;
+  }
+
+  #logo{
+    background-image: url('images/WebsiteLogo.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 150%;
+  }
+
+  header h1 { /*em or %*/
+    color:var(--headerTextColor);
+    font-size: 2em;
+    line-height: 1.5em;
+    float:left;
+  }
+
+  /*NAVIGAZIONE*/
+
+  .navigationHelp{
+    position: absolute;
+    text-indent: -999em;
+  }
+
+  nav a:link{
+    color:var(--linkColor);
+  }
+
+  nav a:visited{
+    color:yellow;
+  }
+
+  #menu a:link{
+    color:var(--linkColor);
+  }
+
+  #menu a:visited{
+    color:yellow;
+  }
+
+  #menu{
+    float: right;
+  }
+
+  #menu ul{
+    max-width: 1024px;
+    padding: 1em;
+    margin: auto;
+    list-style-type:none;
+    text-align: center;
+  }
+
+  #menu ul li{
+    display: inline;
+    width: 20%;
+    margin: 0 0.5em;
+  }
+
+  /*BREADCRUMB*/
+
+  #breadcrumb{ /*em or%*/
+    background-color: var(--headerTextColor);
+    color: var(--bgColor);
+    font-size: 1.1em;
+    padding: 0.5em 0em 0.5em 1em;
+  }
+
+  #breadcrumb p{
+    max-width: 1024px;
+  }
+
+  /*PRODUCTS CARDS*/
+
+  #products{
+    padding: 1em 1em 1em 3em;
+    height: 26em; /*DA VEDERE*/
+  }
+
+  #products h1{
+    text-align: center;
+    font-size: 250%;
+    margin-top: 0.2em;
+    margin-bottom: 0.5em;
+  }
+
+  .products_Container{
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 20em; /*DA VEDERE*/
+    padding: 0;
+    margin: 0 -10px;
   }
-  
-  .logo {
-    width: 100px; /* Larghezza desiderata per il logo */
-    height: auto; /* Altezza automatica mantenendo le proporzioni originali */
-    margin-right: 10px; /* Margine a destra per separare il testo */
-  }
-  
-  .brand-name {
-    font-size: 24px; /* Dimensione del testo del brand */
-    color: #333; /* Colore del testo */
-  }
-   
-  .brand-n {
-    display: flex;
-    align-items: center;
-  }
-  
-  .nav-links {
-    margin-left: auto;
-  }
-  
-  .nav-list {
-    list-style: none;
-    display: flex;
-  }
-  
-  .nav-list li {
-    margin-left: 20px;
-  }
-  
-  .nav-list li a {
+
+  .products_Container a{
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    flex: 1 1 200px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
     text-decoration: none;
-    color: #333;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 200%;
+    color: rgb(233, 30, 8);
   }
   
-  .main-content {
-    padding: 20px;
+  .products_Container a:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  #accessoriImage{
+    background-image: url('images/accessoriSfondo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  #pesiLiberiImage{
+    background-image: url('images/pesiLiberiSfondo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  #nutrizioneImage{
+    background-image: url('images/nutrizioneSfondo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  #macchinariImage{
+    background-image: url('images/macchinariSfondo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  /*BRAND*/
+
+  #brand{
+    padding: 1em;
+  }
+
+  #brand h2{
+    font-weight: bold;
+    font-size: 100%;
+    margin-bottom: 0.5em;
+  }
+
+  #brand_Container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0 -10px;
+    height: 6em; /*DA VEDERE*/
+  }
+
+  #brand_Container a{
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    flex: 1 1 200px;
+  }
+
+  #optimumnutritionImage{
+    background-image: url('images/OptimumNutrition.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  #technogymImage{
+    background-image: url('images/Technogym.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  /*PAGAMENTI*/
+
+  #payments{
+    padding:1.5em;
+  }
+
+  #payments h3{
+    margin-bottom: 0.2em;
+    text-align: center;
+  }
+
+  #payments_Grid{
+    display: grid;
+    grid-template-columns: 50px 50px 50px; /*DIMENS SINGOLE GRID*/
+    gap: 10px;
+    justify-content: center;
+    list-style: none;
+  }
+
+  .card1{
+    background-image: url('images/Mastercard.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid black;
+    text-indent: -999em;
+  }
+  .card2{
+    background-image: url('images/Visa.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid black;
+    text-indent: -999em;
+  }
+  .card3{
+    background-image: url('images/Postepay.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid black;
+    text-indent: -999em;
+  }
+  .card4{
+    background-image: url('images/Googlepay.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid black;
+    text-indent: -999em;
+  }
+  .card5{
+    background-image: url('images/Paypal.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid black;
+    text-indent: -999em;
+  }
+  .card6{
+    background-image: url('images/AmericanExpress.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid black;
+    text-indent: -999em;
+  }
+
+  /*SOCIAL*/
+
+  .social_List a{
+    border: 1px solid black;
+    margin: 0 10px 20px 10px;
+    padding: 10px;
+    height: 0.8em;
+    width: 0.8em;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  #instaImage{
+    background-image: url('images/instaSfondo.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  #youtubeImage{
+    background-image: url('images/youtubeSfondo.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* PULSANTE TORNA SU */
+
+  #buttonToTop{
+    position: fixed;
+    right: 0.5em;
+    bottom: 2.5em;
   }
   
+  /*FOOTER*/
+  
+  footer {
+    background-color: #0cf370;
+    color: #fff;
+    padding: 0.5em;
+    text-align: center;
+    margin-top: auto;
+    width: 100%;
+  }
+
+  footer h4{
+    padding: 0.5em;
+  }
+
+  /*BANNER*/
+
   .banner {
     background-image: url('banner_image.jpg');
     background-size: cover;
@@ -116,79 +389,11 @@
     text-align: center;
   }
   
-  .product-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .product {
-    text-align: center;
-  }
-  
-  .product img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 15px;
-  }
-  
-  .product h3 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
-  
-  .product p {
-    font-size: 1em;
-    margin-bottom: 15px;
-  }
-
-  .product-card {
-    display: block;
-    width: 300px;
-    height: 200px;
-    border: none;
-    background-size: cover;
-    background-position: center;
-    background-color: #525151be; /* Fallback per il colore di sfondo */
-    color: #ac3f3f;
-    font-size: 1.5em;
-    margin-bottom: 15px;
-    cursor: pointer;
-    /* Stili specifici per il testo all'interno del bottone */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    text-decoration: none;
-    overflow: hidden;
-    border-radius: 5px;
-    /* Stile aggiuntivo per il cambiamento al passaggio del mouse */
-    transition: background-color 0.3s, color 0.3s;
-  }
-
-  .site {
-    width: 100px; /* Larghezza desiderata per il logo */
-    height: 100px; /* Altezza automatica mantenendo le proporzioni originali */
-  }
-
-  .product-card:hover {
-    background-color: #333;
-    color: #fff;
-  }
-  
   .about-us {
     background-color: #ddd;
     padding: 50px 20px;
     text-align: center;
   }
   
-  footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    margin-top: auto;
-  }
+
+  

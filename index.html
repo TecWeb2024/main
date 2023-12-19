@@ -1,125 +1,97 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
   <meta charset="UTF-8">
-  <title>Home - Olympo Fitness</title>
+  <title>Olympo Fitness</title>
   <meta name="keywords" content="Olympo Fitness, palestra, negozio palestra, pesi liberi , macchinari palestra, macchinari, nutrizione, accessori palestra, home">
   <meta name="author" content="Olympo Fitness">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="header">
-    <nav class="navbar">
-        <div class="logo-container">
-            <img class="logo" src="images/WebsiteLogo.jpg" alt="Olympo Fitness">
-            <span class="brand-name">Olympo Fitness</span>
-        </div>
-      <div class="search-bar">
-        <input type="text" placeholder="Cerca...">
-        <button>Cerca</button>
-      </div>
 
-      <ul class="nav-list">
-        <li><a href="#">Home</a></li>
+  <header>
+    <nav aria-label="Aiuti alla navigazione">
+      <a class="navigationHelp" href="#content">Vai al contenuto</a>
+    </nav>
+    <div id="logo"><h1 lang="en">Olympo Fitness</h1></div>
+    <nav id="menu" aria-label="menù del sito">
+      <a class="navigationHelp" href="#content"> Salta il menù di navigazione</a>
+      <ul>
+        <li><span lang="en">Home</span></li>
         <li><a href="chiSiamo.html">Chi Siamo</a></li>
-        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="faq.html"><abbr title="Frequently Asked Questions" lang="en">FAQ</abbr></a></li>
         <li><a href="carrello.html">Carrello</a></li>
-        <li><a href="account.html">Account</a></li>
+        <li><a href="account.html" lang="en">Account</a></li>
       </ul>
     </nav>
   </header>
+
   <nav id="breadcrumb" aria-label="percorso">
-    <p>Ti trovi in: <span lang="en">Home</span></p>
+    <p>Ti trovi in: <a href="index.html" lang="en">Home</a>
   </nav>
- <!-- <main class="main-content">
-    <section class="banner">
-      <div class="banner-content">
-        <h1>Benvenuti su Decathlon!</h1>
-        <p>Scopri la nostra vasta gamma di prodotti per lo sport.</p>
-        <a href="#" class="btn">Esplora</a>
-      </div>
-    </section>
- -->
-    <!-- ... Altre parti dell'HTML rimangono invariate ... -->
 
-    <section class="featured-products">
-        <h2>Prodotti in primo piano</h2>
-        <div class="product-list">
-          <div class="product"> <!--mi sa che la dobbiamo fettere nel css!-->
-            <a href="accessori.html" class="product-card" style="background-image: url('images/sfondoAccessori.jpg');"> <!-- SE SI VUOLE METTERE IMMAGINI SFONDO DELLA CARD ACTION, COME ESEMPIO-->
-              Accessori
-            </a>
-          </div>   
+  <main id="content">
 
-          <div class="product">
-            <a href="pesiLiberi.html" class="product-card" style="background-image: url('images/sfondoPesiLiberi.jpg');">
-              Pesi Liberi
-            </a>
-          </div>
-          
-          <div class="product">
-            <a href="nutrizione.html" class="product-card" style="background-image: url('images/sfondoNutrizione.jpg');">
-              Nutrizione
-            </a>
-          </div>
-                      
-          <div class="product">
-            <a href="macchine.html" class="product-card" style="background-image: url('images/sfondoMacchinari.jpg');">
-              Macchine
-            </a>
-          </div>
-          
-          <!-- Altri prodotti simili -->
-        </div>
-      </section>
+    <div id="products">
+      <h1>Categorie Articoli</h1>
+        <div class="products_Container">
+            <a href="accessori.html" id="accessoriImage">Accessori</a>
+            
+            <a href="pesiLiberi.html" id="pesiLiberiImage">Pesi Liberi</a>
       
-  
-    <section>
-        <h3>I nostri brand</h3>
-        <a href=https://www.optimumnutrition.com/en-us>
-            <img class="site" src="images/OptimumNutrition.jpg" alt="Link sito ufficiale di Optimum Nutrition">
-        </a>
-        <a href=https://www.technogym.com/it-IT>
-            <img class="site" src="images/Technogym.jpg" alt="Link sito ufficiale di Technogym">
-        </a> 
-        <a href=https://www.nordictrack.com>
-            <img class="site" src="images/NordicTrack.jpg" alt="Link sito ufficiale di NordicTrack">
-        </a>
-    </section>
+            <a href="nutrizione.html" id="nutrizioneImage">Nutrizione</a>
+          
+            <a href="macchine.html" id="macchinariImage">Macchinari</a>
+        </div>
+    </div>
+      
+    <div id="brand">
+      <h2>I Nostri Brand :</h2>
+        <div id="brand_Container">
+            <a href="https://www.optimumnutrition.com/en-us" id="optimumnutritionImage"></a>
 
-    <section>
-        <h4>Canali Social</h4>
-        <a href="https://www.instagram.com/">
-            <img class="site" src="images/Instagram.jpg" alt="Link sito ufficiale di Instagram">
-        </a>
-        <a href="https://twitter.com/">
-            <img class="site" src="images/Twitter.jpg" alt="Link sito ufficiale di Twitter">
-        </a>
-    </section>
+            <a href="https://www.technogym.com/it-IT" id="technogymImage"></a>
 
-    <section>
-        <h4>Come pagare in sicurezza</h4>
-        <a href="https://www.paypal.com/it/home">
-            <img class="site" src="images/Paypal.jpg" alt="Link sito ufficiale di Paypal">
-        </a>
-        <a href="https://www.mastercard.it/it-it.html">
-            <img class="site" src="images/Mastercard.jpg" alt="Link sito ufficiale di Mastercard">
-        </a>
-    </section>
-  
+            <a href="https://www.technogym.com/it-IT" id="technogymImage"></a>
 
-    <!-- Altri contenuti come promozioni, offerte, o sezioni aggiuntive -->
+            <a href="https://www.technogym.com/it-IT" id="technogymImage"></a>
 
-  <!--  <section class="about-us">
-      <h2>Chi Siamo</h2>
-      <p>Scopri di più su Decathlon e la nostra missione nel mondo dello sport.</p>
-      <a href="#" class="btn">Scopri di più</a>
-    </section>
-  </main>
-  -->
-  <footer class="footer">
-    <a href="#">Torna all'inizio della pagina</a>
-    <p>&copy; 2024 Olympo Fitness. Tutti i diritti riservati.</p>
+            <a href="https://www.technogym.com/it-IT" id="technogymImage"></a>
+
+            <a href="https://www.technogym.com/it-IT" id="technogymImage"></a>
+        </div>
+    </div>
+
+    <div id="payments">
+      <h3>Pagamenti Sicuri</h3>
+        <ul id="payments_Grid">
+          <li class="card1"><span lang="en">Mastercard</span></li>
+          <li class="card2">Visa</li>
+          <li class="card3">Poste<span lang="en">pay</span></li>
+          <li class="card4"><span lan="en">Googlepay</span></li>
+          <li class="card5"><span lang="en">Paypal</span></li>
+          <li class="card6"><span lang="en">American Express</span></li>
+        </ul>
+    </div>
+
+
+
+  <a href="#" id="buttonToTop">Torna in cima ↑</a>
+
+  <footer>
+        <div class="social_List">
+          <h4>Seguici Su</h4>
+          <a href="https://www.instagram.com/" id="instaImage"></a>
+
+          <a href="https://www.youtube.com/" id="youtubeImage"></a>
+        
+          <a href="https://www.instagram.com/" id="instaImage"></a>
+
+          <a href="https://www.instagram.com/" id="instaImage"></a>
+        </div class="footer_Text">
+        <div>&copy; 2024 <span lang="en">Olympo Fitness</span>. Tutti i diritti riservati.</div>
   </footer>
+
 </body>
 </html>

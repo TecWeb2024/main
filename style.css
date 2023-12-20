@@ -121,7 +121,7 @@
 
   #products{
     padding: 1em 1em 1em 3em;
-    height: 26em; /*DA VEDERE*/
+    height: 28em;
   }
 
   #products h1{
@@ -135,9 +135,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    height: 20em; /*DA VEDERE*/
     padding: 0;
     margin: 0 -10px;
+    height: 90%;
   }
 
   .products_Container a{
@@ -204,10 +204,11 @@
   #brand_Container{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 0;
+    justify-content: flex-start;
+    padding: 0 4em 0 4em;
     margin: 0 -10px;
-    height: 6em; /*DA VEDERE*/
+    height: 80%;
+    text-indent: -999em;
   }
 
   #brand_Container a{
@@ -215,7 +216,7 @@
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
-    flex: 1 1 200px;
+    flex: 0 1 100px;
   }
 
   #optimumnutritionImage{
@@ -245,10 +246,11 @@
 
   #payments_Grid{
     display: grid;
-    grid-template-columns: 50px 50px 50px; /*DIMENS SINGOLE GRID*/
+    grid-template-columns: 7% 7% 7%;
     gap: 10px;
     justify-content: center;
     list-style: none;
+    text-indent: -999em;
   }
 
   .card1{
@@ -257,7 +259,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid black;
-    text-indent: -999em;
   }
   .card2{
     background-image: url('images/Visa.png');
@@ -265,7 +266,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid black;
-    text-indent: -999em;
   }
   .card3{
     background-image: url('images/Postepay.png');
@@ -273,7 +273,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid black;
-    text-indent: -999em;
   }
   .card4{
     background-image: url('images/Googlepay.jpg');
@@ -281,7 +280,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid black;
-    text-indent: -999em;
   }
   .card5{
     background-image: url('images/Paypal.jpg');
@@ -289,7 +287,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid black;
-    text-indent: -999em;
   }
   .card6{
     background-image: url('images/AmericanExpress.jpg');
@@ -297,7 +294,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid black;
-    text-indent: -999em;
   }
 
   /*SOCIAL*/
@@ -311,6 +307,7 @@
     background-color: black;
     border-radius: 50%;
     display: inline-block;
+    text-indent: -999em;
   }
 
   #instaImage{

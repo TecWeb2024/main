@@ -6,11 +6,23 @@
   }
   
   .company-info {
-    margin-bottom: 30px;
+    margin-bottom: 5%;
+  }
+
+  .company-info h1{
+    font-size: 250%;
   }
   
   .team-members {
     margin-bottom: 30px;
+  }
+
+  .team-members h2{
+    font-size: 200%;
+  }
+
+  .team-members h3{
+    font-size: 150%;
   }
   
   .member {

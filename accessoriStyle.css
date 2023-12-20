@@ -21,6 +21,10 @@
     object-fit: cover;
     border-radius: 15px 15px 0 0;
   }
+
+  .featured-products h1{
+    font-size: 250%;
+  }
   
   .product-details {
     padding: 20px;
@@ -29,7 +33,7 @@
   
   .product-details h2 {
     margin: 10px 0;
-    font-size: 1.5em;
+    font-size: 150%;
   }
   
   .product-details p {

@@ -9,23 +9,19 @@
   <link rel="stylesheet" href="accountStyle.css">
 </head>
 <body>
-  <header class="header">
-    <nav class="navbar">
-        <div class="logo-container">
-           <!-- <img class="logo" src="images/WebsiteLogo.jpg" alt="Olympo Fitness">-->
-            <span class="brand-name">Olympo Fitness</span>
-        </div>
-      <div class="search-bar">
-        <input type="text" placeholder="Cerca...">
-        <button>Cerca</button>
-      </div>
-
-      <ul class="nav-list">
-        <li><a href="index.html">Home</a></li>
+  <header>
+    <nav aria-label="Aiuti alla navigazione">
+      <a class="navigationHelp" href="#content">Vai al contenuto</a>
+    </nav>
+    <div id="logo"><h1 lang="en">Olympo Fitness</h1></div>
+    <nav id="menu" aria-label="menù del sito">
+      <a class="navigationHelp" href="#content"> Salta il menù di navigazione</a>
+      <ul>
+        <li><a href="index.html" lang="en">Home</span></li>
         <li><a href="chiSiamo.html">Chi Siamo</a></li>
-        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="faq.html"><abbr title="Frequently Asked Questions" lang="en">FAQ</abbr></a></li>
         <li><a href="carrello.html">Carrello</a></li>
-        <li><a href="#">Account</a></li>
+        <li><span lang="en">Account</a></li>
       </ul>
     </nav>
   </header>
@@ -64,9 +60,20 @@
     }
   </script>
 
-  <footer class="footer">
-    <a href="#">Torna all'inizio della pagina</a>
-    <p>&copy; 2024 Olympo Fitness. Tutti i diritti riservati.</p>
-  </footer>
+<a href="#" id="buttonToTop">Torna in cima ↑</a>
+
+<footer>
+      <div class="social_List">
+        <h4>Seguici Su</h4>
+        <a href="https://www.instagram.com/" id="instaImage">Instagram</a>
+
+        <a href="https://www.youtube.com/" id="youtubeImage">Youtube</a>
+      
+        <a href="https://www.instagram.com/" id="instaImage">EX1</a> <!-- da cambiare -->
+
+        <a href="https://www.instagram.com/" id="instaImage">EX2</a>
+      </div class="footer_Text">
+      <div>&copy; 2024 <span lang="en">Olympo Fitness</span>. Tutti i diritti riservati.</div>
+</footer>
 </body>
 </html>

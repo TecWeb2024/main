@@ -155,17 +155,24 @@
 
   <div class="popup" style="display: none;">
     <p>Acquisto effettuato con successo! Grazie per aver ordinato da Olympo Fitness.</p>
+    <button id="close-popup">Continua</button>
   </div>
-
+  
   <script>
     const buyNowButton = document.querySelector('.buy-now');
     const popup = document.querySelector('.popup');
-
+    const closeButton = document.querySelector('#close-popup');
+  
     buyNowButton.addEventListener('click', () => {
       // Logica per effettuare l'acquisto e mostrare il popup
       popup.style.display = 'block';
     });
-  </script>
+  
+    closeButton.addEventListener('click', () => {
+      popup.style.display = 'none'; // Nascondi il popup
+    });
+  </script>    
+  
 
 
   <footer class="footer">

@@ -26,6 +26,23 @@ body {
   /*margin-top: 20px;*/ /* Aggiunto margine superiore */
 }
 
+.popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; /* Centra il testo all'interno del popup */
+}
+
+#close-popup {
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  align-items: center;
+}
 .order-details select,
 .order-details input[type="text"] {
   width: 70%; 

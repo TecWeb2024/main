@@ -217,6 +217,9 @@
     padding: 10px;
     border-radius: 10px;
     flex: 0 1 100px;
+    overflow: hidden;
+    background-size: 100% 100%; /*ora le immagini vengono stese su tutto il bottone, MA SONO DENATURATE, CAMBIARE IMMAGINE O AGGIUSTARE IL BOX!!!*/
+    /*background-size: cover;*/
   }
 
   #optimumnutritionImage{
@@ -252,7 +255,9 @@
     list-style: none;
     text-indent: -999em;
   }
-
+  #payments_Grid li {
+    background-size: 100% 100%; /* RISOLTO IL PROBLEMA,MA SONO DENATURATE!*/
+  }
   .card1{
     background-image: url('images/Mastercard.jpg');
     background-position: center;

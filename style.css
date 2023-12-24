@@ -162,14 +162,14 @@
   }
 
   #accessoriImage{
-    background-image: url('images/accessoriSfondo.jpg');
+    background-image: url('images/accessorifatto.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
   }
 
   #pesiLiberiImage{
-    background-image: url('images/pesiLiberiSfondo.jpg');
+    background-image: url('images/pasiliberifatto.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

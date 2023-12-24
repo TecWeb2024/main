@@ -33,6 +33,11 @@ body {
   text-align: center; /* Centra il testo all'interno del popup */
 }
 
+#popuptext{
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
 #close-popup {
   padding: 15px 30px;
   font-size: 18px;

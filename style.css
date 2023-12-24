@@ -341,6 +341,20 @@
     background-size: cover;
   }
 
+  #facebookImage{
+    background-image: url('images/facebookSfondo.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  #twitterImage{
+    background-image: url('images/twitterSfondo.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
   /* PULSANTE TORNA SU */
 
   #buttonToTop{

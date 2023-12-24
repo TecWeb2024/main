@@ -1,17 +1,26 @@
+  /******************
+   *                *
+   *    HOME PAGE   *
+   *                *
+   ******************/
+  
   *{
     margin: 0em;
     padding: 0em;
   }
 
   :root{ /* DA SCEGLIERE */
-    --headerBgColor: rgb(0,0,0);
-    --headerTextColor: rgb(21, 201, 45);
-    --bgColor: rgb(255,255,255);
-    --textColor: rgb(0,0,0);
-    --footerBgColor: rgb(0,0,0);
-    --footerTextColor: rgb(255,255,255);
-    --visitedLinkColor: rgb(230,12,83);
-    --linkColor: rgb(255,255,255);
+    --headerBgColor: #757575;
+    --headerTextColor: #FFFFFF;
+    --bgColor: #FFFFFF;
+    --textColor: #000000;
+    --footerBgColor: #757575;
+    --footerTextColor: #FFFFFF;
+    --visitedLinkColor: #000000;
+    --linkColor: #FFFFFF;
+    --breadcrumbBgColor: #FFFFFF;
+    --breadcrumbColor: #000000;
+    --cardsColor: #FFFFFF;
     --font-body-family: "Roboto Condensed", sans-serif;
   }
 
@@ -20,6 +29,7 @@
   font-family: var(--font-body-family);
   line-height: 1.5em;
   margin: auto;
+  scroll-behavior: smooth;
   }
 
   /*BODY DA VEDERE*/
@@ -27,10 +37,11 @@
   body {
     font-family: Arial, sans-serif;
     line-height: 1.5em;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--bgColor);
+    color: var(--textColor);
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
   } 
 
   main {
@@ -44,12 +55,11 @@
   /*HEADER*/
 
   header {
-    background-color: var(--visitedLinkColor);
-    padding: 1em;
-    padding-top: 0.7em;
+    background-color: var(--headerBgColor);
+    padding: 0.7em 1em 1em 1em;
   }
 
-  #logo{
+  #logo{ /*DA VEDERE*/
     background-image: url('images/WebsiteLogo.jpg');
     background-repeat: no-repeat;
     background-position: center;
@@ -71,23 +81,24 @@
   }
 
   nav a:link{
-    color:var(--linkColor);
+    color: var(--linkColor);
   }
 
   nav a:visited{
-    color:yellow;
+    color: var(--visitedLinkColor);
   }
 
   #menu a:link{
-    color:var(--linkColor);
+    color: var(--linkColor);
   }
 
   #menu a:visited{
-    color:yellow;
+    color: var(--visitedLinkColor);
   }
 
   #menu{
     float: right;
+    color: var(--headerTextColor);
   }
 
   #menu ul{
@@ -96,6 +107,7 @@
     margin: auto;
     list-style-type:none;
     text-align: center;
+    font-size: 120%;
   }
 
   #menu ul li{
@@ -107,9 +119,10 @@
   /*BREADCRUMB*/
 
   #breadcrumb{ /*em or%*/
-    background-color: var(--headerTextColor);
-    color: var(--bgColor);
-    font-size: 1.1em;
+    background-color: var(--breadcrumbBgColor);
+    color: var(--breadcrumbColor);
+    border: 1px solid black;
+    font-size: 110%;
     padding: 0.5em 0em 0.5em 1em;
   }
 
@@ -119,19 +132,19 @@
 
   /*PRODUCTS CARDS*/
 
-  #products{
-    padding: 1em 1em 1em 3em;
+  #categories{
+    padding: 1em 2em 3em 2em;
     height: 28em;
   }
 
-  #products h1{
+  #categories h1{
     text-align: center;
     font-size: 250%;
-    margin-top: 0.2em;
-    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
   }
 
-  .products_Container{
+  .categories_Container{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -140,7 +153,7 @@
     height: 90%;
   }
 
-  .products_Container a{
+  .categories_Container a{
     border: 1px solid black;
     margin: 10px;
     padding: 10px;
@@ -153,10 +166,10 @@
     text-transform: uppercase;
     font-weight: bold;
     font-size: 200%;
-    color: rgb(233, 30, 8);
+    color: var(--cardsColor);
   }
   
-  .products_Container a:hover {
+  .categories_Container a:hover {
     transform: scale(1.05);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   }
@@ -169,21 +182,21 @@
   }
 
   #pesiLiberiImage{
-    background-image: url('images/pasiliberifatto.jpg');
+    background-image: url('images/pesiliberifatto.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
   }
 
   #nutrizioneImage{
-    background-image: url('images/nutrizioneSfondo.jpg');
+    background-image: url('images/nutrizionefatto.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
   }
 
   #macchinariImage{
-    background-image: url('images/macchinariSfondo.jpg');
+    background-image: url('images/macchinarifatto.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -207,7 +220,6 @@
     justify-content: flex-start;
     padding: 0 4em 0 4em;
     margin: 0 -10px;
-    height: 80%;
     text-indent: -999em;
   }
 
@@ -242,14 +254,14 @@
     padding:1.5em;
   }
 
-  #payments h3{
-    margin-bottom: 0.2em;
+  #payments h2{
+    padding-bottom: 0.5em;
     text-align: center;
   }
 
-  #payments_Grid{
+  #payments_Grid{ /*Forse meglio usare div cosi da avere dim migliori*/
     display: grid;
-    grid-template-columns: 7% 7% 7%;
+    grid-template-columns: 10% 10% 10%;
     gap: 10px;
     justify-content: center;
     list-style: none;
@@ -340,17 +352,73 @@
   /*FOOTER*/
   
   footer {
-    background-color: #0cf370;
-    color: #fff;
+    background-color: var(--footerBgColor);
+    color: var(--footerTextColor);
     padding: 0.5em;
     text-align: center;
     margin-top: auto;
     width: 100%;
   }
 
-  footer h4{
+  footer h2{
     padding: 0.5em;
+    font-size: 100%;
   }
+
+  /***********************************************************
+   *                                                         *
+   *    ACCESSORI - PESI LIBERI - NUTRIZIONE - MACCHINARI    *
+   *                                                         *
+   ***********************************************************/
+
+  .products_List{
+    padding: 1em 2em 3em 2em;
+  }
+  
+  .products_List h1{
+    font-size: 250%;
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+  }
+  
+  .products_Container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0 -10px;
+  }
+    
+  .products_Container li{
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    flex: 0 0 300px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    list-style-type:none;
+    color: var(--cardsColor);
+  }
+  
+  .products_Container li:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+   
+  .products_Container img {
+      align-content: center;
+      object-fit:cover;
+      width: 100%;
+      height: 85%;
+  }
+
+  .products_Container a{
+    text-decoration: none;
+    text-align: center;
+  }
+
 
   /*BANNER*/
 

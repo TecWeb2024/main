@@ -221,6 +221,7 @@
     padding: 0 4em 0 4em;
     margin: 0 -10px;
     text-indent: -999em;
+    
   }
 
   #brand_Container a{
@@ -231,7 +232,8 @@
     flex: 0 1 100px;
     overflow: hidden;
     background-size: 100% 100%; /*ora le immagini vengono stese su tutto il bottone, MA SONO DENATURATE, CAMBIARE IMMAGINE O AGGIUSTARE IL BOX!!!*/
-    /*background-size: cover;*/
+    width: 12em; /*MODIFICARE QUI PER MODIFICARE LE DIMENSIONI DEI BOX CHE CONTENGONO LE IMMAGINI*/
+    height: 4em; /*MODIFICARE QUI PER MODIFICARE LE DIMENSIONI DEI BOX CHE CONTENGONO LE IMMAGINI*/
   }
 
   #optimumnutritionImage{
@@ -261,7 +263,8 @@
 
   #payments_Grid{ /*Forse meglio usare div cosi da avere dim migliori*/
     display: grid;
-    grid-template-columns: 10% 10% 10%;
+    grid-template-columns: 3% 3% 3%; /*MODIFICARE QUI PER MODIFICARE LE DIMENSIONI DEI BOX CHE CONTENGONO LE IMMAGINI*/
+    grid-template-rows: 55% 55% 55%; /*MODIFICARE QUI PER MODIFICARE LE DIMENSIONI DEI BOX CHE CONTENGONO LE IMMAGINI*/
     gap: 10px;
     justify-content: center;
     list-style: none;

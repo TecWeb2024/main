@@ -60,10 +60,12 @@
   }
 
   #logo{ /*DA VEDERE*/
-    background-image: url('images/WebsiteLogo.jpg');
+    background-image: url('images/zeusgiallo.jpg');
     background-repeat: no-repeat;
     background-position: center;
     font-size: 150%;
+    height:300px;
+    width: 300px;
   }
 
   header h1 { /*em or %*/

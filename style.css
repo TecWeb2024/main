@@ -61,11 +61,20 @@
 
   #logo{ /*DA VEDERE*/
     background-image: url('images/zeusgiallo.jpg');
+    text-indent:200%;
+    white-space:nowrap;
+    overflow:hidden;
+    font-size: 6em;
+    line-height: 1em;
     background-repeat: no-repeat;
+    background-size: contain;
+    /*background-position: center;*/
+    margin:0.1em;
+   /* background-repeat: no-repeat;
     background-position: center;
     font-size: 150%;
-    height:300px;
-    width: 300px;
+    height:auto;
+    width: auto;*/
   }
 
   header h1 { /*em or %*/

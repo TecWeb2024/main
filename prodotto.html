@@ -2,11 +2,11 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Prodotto - Olympo Fitness</title>
+  <title>Borsone Adidas - Olympo Fitness</title>
   <meta name="keywords" content="Olympo Fitness, palestra, negozio palestra, prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione">
   <meta name="author" content="Olympo Fitness">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="prodottoStyle.css">
+  <link rel="stylesheet" href="prodottoStyle.css"> <!-- cambiare -->
 </head>
 <body>
 
@@ -33,71 +33,88 @@
             <button>Cerca</button>
           </div> -->
 
-      <nav id="breadcrumb" aria-label="percorso">
-        <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; <a href="accessori.html">Accessori</a> &gt; Prodotto</p>
-      </nav>
+  <nav id="breadcrumb" aria-label="percorso">
+    <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; <a href="accessori.html">Accessori</a> &gt; Borsone <span lang="en">Adidas</span></p>
+  </nav>
 
+<main id="content">
 
+  <div id="product_Page">
+    <h1>Borsone Adidas</h1>
 
-  <div class="product-page">
-    <div class="product-images">
+    <div id="product_Images">
       <!-- Immagini del prodotto -->
-      <img src="prodotto1.jpg" alt="Prodotto 1">
-      <img src="prodotto2.jpg" alt="Prodotto 2">
-      <img src="prodotto3.jpg" alt="Prodotto 3">
-      <img src="prodotto4.jpg" alt="Prodotto 4">
+      <img src="images/BorsoneDavanti.jpg" class="grid_Image" alt=""> <!-- RIEMPIRE ALT -->
+      <img src="images/BorsoneDietro.jpg" class="grid_Image" alt="">
+      <img src="images/BorsoneAperto.jpg" class="grid_Image" alt="">
+      <img src="images/BorsoneChiuso.jpg" class="grid_Image" alt="">
     </div>
 
-    <div class="product-details">
-      <h1>Nome Prodotto</h1>
-      <p>€49,99</p>
-      <div class="rating">
-        <!-- Stelle delle recensioni (puoi usare un'icona o un sistema di stelle) -->
-        <!-- Esempio: -->
-        ★★★★★
-      </div>
+    <div id="product_Details">
+      <h2>Specifiche Prodotto</h2>
 
-      <div class="product-specs">
-        <p>Peso: 1.5 kg</p>
-        <p>Dimensioni: 20x30x10 cm</p>
-        <p>Colore: Nero</p>
-        <!-- Altri dettagli del prodotto -->
-      </div>
+      <ul id="product_Specs">
+        <li><span class="specs_List">Prezzo:</span> 35 €</li>
+        <li><span class="specs_List">Peso:</span> 1.5 kg</li> <!-- unita di misura servono tag? --> 
+        <li><span class="specs_List">Dimensioni:</span> 22 cm x 56 cm x 28 cm</li>
+        <li><span class="specs_List">Colore:</span> Nero</li>
+        <li><span class="specs_List">Volume:</span> 39 L</li>  
+        <li><span class="specs_List">Rivestimento e fodera:</span> tela, 100% poliestere riciclato</li>
+      </ul>
 
       <div class="dropdown">
         <select id="quantity">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
           <!-- Altre opzioni di quantità -->
         </select>
       </div>
 
-      <div class="dropdown">
+      <!-- <div class="dropdown">
         <select id="size">
           <option value="S">S</option>
           <option value="M">M</option>
           <option value="L">L</option>
-          <!-- Altre opzioni di taglia -->
         </select>
-      </div>
+      </div> -->
 
       <button class="add-to-cart">Aggiungi al carrello</button>
 
-      <div class="delivery-details">
-        <h2>Dettagli di Consegna</h2>
-        <p>Consegna in 3-5 giorni lavorativi</p>
-        <p>Spedizione gratuita</p>
-        <p>Fornito da: Nome Ditta</p>
-        <!-- Altri dettagli di consegna -->
+      <div id="product_Description">
+        <h2>Descrizione</h2>
+        <p>La scelta ideale per la palestra e le gite nel weekend. Questo borsone adidas ha una base robusta per proteggere il contenuto. Lo scomparto principale è dotato di una zip bidirezionale per un accesso rapido da entrambi i lati. Le numerose tasche offrono la massima praticità e lo scomparto interno ti consente di tenere separate le sneaker.</p>
       </div>
+    </div>
+
+    <div id="delivery_Details">
+      <h2>Dettagli di Consegna</h2>
+        <ul id="delivery_List">
+          <li>Consegna in 3-5 giorni lavorativi</li>
+          <li>Spedizione gratuita</li>
+          <li>Azienda: <span lang="en">Adidas</span></li>
+          <!-- Altri dettagli di consegna -->
+      </ul>
     </div>
   </div>
 
-  <footer class="footer">
-    <a href="#">Torna all'inizio della pagina</a>
-    <p>&copy; 2024 Olympo Fitness. Tutti i diritti riservati.</p>
-  </footer>
+</main>
+
+<footer>
+  <div class="social_List">
+    <h2>Seguici Su</h2>
+    <a href="https://www.instagram.com/" id="instaImage">Instagram</a>
+
+    <a href="https://www.youtube.com/" id="youtubeImage">Youtube</a>
+  
+    <a href="https://www.facebook.com/" id="facebookImage">Facebook</a>
+
+    <a href="https://www.twitter.com/" id="twitterImage">Twitter</a>
+  </div>
+  <div class="footer_Text">&copy; 2024 <span lang="en">Olympo Fitness</span>. Tutti i diritti riservati.</div>
+</footer>
 
 </body>
 </html>

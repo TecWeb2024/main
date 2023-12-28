@@ -1,4 +1,5 @@
 /* Stili per il contenuto principale */
+  
   .about-us {
     width: 80%;
     margin: auto;
@@ -6,37 +7,67 @@
   }
   
   .company-info {
+    margin-top: 5%;
     margin-bottom: 5%;
-  }
-
-  .company-info h1{
-    font-size: 250%;
+    padding-bottom: 5%;
+    
   }
   
-  .team-members {
-    margin-bottom: 30px;
+  .company-info p{
+    text-align: left;
+    padding-left: 15%;  /* testo più compatto per facilitare la lettura*/
+    padding-right: 15%;
   }
 
+  h1{
+    font-size: 250%;
+    padding-bottom: 3%;
+  }
+
+  .team-members {
+    margin-bottom: 30px;
+    padding-bottom: 5%;
+  }
+
+
   .team-members h2{
-    font-size: 200%;
+    font-size: 150%;
+    padding-bottom: 2%;
   }
 
   .team-members h3{
     font-size: 150%;
   }
   
+
+
   .member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
   }
   
   .member img {
     width: 150px;
     height: 150px;
-    border-radius: 50%;
+    border-radius: 10%;
     object-fit: cover;
-    margin-bottom: 10px;
+    margin-bottom:20px;
   }
+
+  
+  .member p {
+    padding-left: 15%;
+    padding-right: 15%;
+    text-align: left;
+  }
+
+
+
+
+
   
   .contact-details ul {
     list-style: none;

@@ -6,7 +6,6 @@
   <meta name="keywords" content="Olympo Fitness, palestra, negozio palestra, prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione">
   <meta name="author" content="Olympo Fitness">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="prodottoStyle.css"> <!-- cambiare -->
 </head>
 <body>
 
@@ -34,7 +33,7 @@
           </div> -->
 
   <nav id="breadcrumb" aria-label="percorso">
-    <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; <a href="accessori.html">Accessori</a> &gt; Borsone <span lang="en">Adidas</span></p>
+    <Adidas>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; <a href="accessori.html">Accessori</a> &gt; Borsone Adidas</p>
   </nav>
 
 <main id="content">
@@ -59,34 +58,39 @@
         <li><span class="specs_List">Dimensioni:</span> 22 cm x 56 cm x 28 cm</li>
         <li><span class="specs_List">Colore:</span> Nero</li>
         <li><span class="specs_List">Volume:</span> 39 L</li>  
-        <li><span class="specs_List">Rivestimento e fodera:</span> tela, 100% poliestere riciclato</li>
-        <li><span class="specs_List">Quantità:</span></li>
+        <li><span class="specs_List">Materiali:</span> tela, 100% poliestere riciclato</li>
+        <li><span class="specs_List">Azienda:</span> Adidas</li>
       </ul>
+    </div>
 
-      <div class="dropdown">
-        <select id="quantity">
+    <div>
+      <ul id="cart_Specs">
+        <li><span class="cart_List">Quantità:</span> 
+          <select id="quantity">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
-          <!-- Altre opzioni di quantità -->
-        </select>
-      </div>
-
-      <!-- <div class="dropdown">
-        <select id="size">
+          </select>
+        </li>
+            
+        <li><span class="cart_List">Taglia:</span> 
+          <select id="size">
           <option value="S">S</option>
           <option value="M">M</option>
           <option value="L">L</option>
-        </select>
-      </div> -->
+          <option value="L">XL</option>
+          </select>
+        </li>
+      </ul>
 
-      <button class="add-to-cart">Aggiungi al carrello</button>
+      <button id="addToCart">Aggiungi al carrello</button>
+    </div>
 
       <div id="product_Description">
         <h2>Descrizione</h2>
-        <p>La scelta ideale per la palestra e le gite nel <span lang="en">weekend</span>. Questo borsone <span lang="en">adidas</span> ha una base robusta per proteggere il contenuto. Lo scomparto principale è dotato di una <span lang="en">zip</span> bidirezionale per un accesso rapido da entrambi i lati. Le numerose tasche offrono la massima praticità e lo scomparto interno ti consente di tenere separate le <span lang="=en">sneaker</span>.</p>
+        <p>La scelta ideale per la palestra e le gite nel <span lang="en">weekend</span>. Questo borsone adidas ha una base robusta per proteggere il contenuto. Lo scomparto principale è dotato di una <span lang="en">zip</span> bidirezionale per un accesso rapido da entrambi i lati. Le numerose tasche offrono la massima praticità e lo scomparto interno ti consente di tenere separate le <span lang="=en">sneaker</span>.</p>
       </div>
     </div>
 
@@ -94,12 +98,12 @@
       <h2>Dettagli di Consegna</h2>
         <ul id="delivery_List">
           <li>Consegna in 3-5 giorni lavorativi</li>
-          <li>Spedizione gratuita</li>
-          <li>Azienda: <span lang="en">Adidas</span></li>
-          <!-- Altri dettagli di consegna -->
+          <li>Spedizione gratuita per ordini superiori a 50 €</li>
       </ul>
     </div>
   </div>
+
+  <a href="#" id="buttonToTop">Torna in cima ↑</a>
 
 </main>
 

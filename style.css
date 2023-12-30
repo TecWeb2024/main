@@ -19,7 +19,7 @@
     --visitedLinkColor: #000000;
     --linkColor: #FFFFFF;
     --breadcrumbBgColor: #FFFFFF;
-    --breadcrumbColor: #000000;
+    --breadcrumbTextColor: #000000;
     --textCategories: #FFFFFF;
     --textProducts: #000000;
     --font-body-family: "Roboto Condensed", sans-serif;
@@ -57,7 +57,7 @@
 
   header {
     background-color: var(--headerBgColor);
-    padding: 0.7em 1em 1em 1em;
+    padding: 0.7em 1em 0.7em 1em;
   }
 
   #logo{ /*DA VEDERE*/
@@ -113,14 +113,6 @@
     color: var(--headerTextColor);
   }
 
-  #buttonToTop a:link{
-    color: var(--linkColor);
-  }
-
-  #buttonToTop a:visited{
-    color: var(--visitedLinkColor);
-  }
-
   #menu ul{
     max-width: 1024px;
     padding: 1em;
@@ -140,10 +132,10 @@
 
   #breadcrumb{ /*em or%*/
     background-color: var(--breadcrumbBgColor);
-    color: var(--breadcrumbColor);
+    color: var(--breadcrumbTextColor);
     border: 1px solid black;
     font-size: 110%;
-    padding: 0.5em 0em 0.5em 1em;
+    padding: 0.5em 0em 0.5em 1.5em;
   }
 
   #breadcrumb p{
@@ -153,15 +145,15 @@
   /*PRODUCTS CARDS*/
 
   #categories{
-    padding: 1em 2em 3em 2em;
+    padding: 0.5em 1.5em 2.5em 1.5em;
     height: 28em;
   }
 
   #categories h1{
     text-align: center;
-    font-size: 250%;
+    font-size: 200%;
     margin-top: 0.5em;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
   }
 
   .categories_Container{
@@ -251,30 +243,28 @@
     border-radius: 10px;
     flex: 0 1 100px;
     overflow: hidden;
-    background-size: 100% 100%; /*ora le immagini vengono stese su tutto il bottone, MA SONO DENATURATE, CAMBIARE IMMAGINE O AGGIUSTARE IL BOX!!!*/
-    width: 12em; /*MODIFICARE QUI PER MODIFICARE LE DIMENSIONI DEI BOX CHE CONTENGONO LE IMMAGINI*/
-    height: 4em; /*MODIFICARE QUI PER MODIFICARE LE DIMENSIONI DEI BOX CHE CONTENGONO LE IMMAGINI*/
+    height: 5em; /*MODIFICARE QUI PER MODIFICARE LE DIMENSIONI DEI BOX CHE CONTENGONO LE IMMAGINI*/
   }
 
   #optimumnutritionImage{
     background-image: url('images/OptimumNutrition.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
     background-position: center;
+    background-size: contain;
   }
 
   #technogymImage{
     background-image: url('images/Technogym.jpg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
   }
 
   #cousinTrestecImage{
     background-image: url('images/cousintrestecImage.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
   }
 
   #baodelongImage{
@@ -288,14 +278,14 @@
     background-image: url('images/adidas.jpg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
   }
 
   #myproteinImage{
     background-image: url('images/myprotein.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
   }
 
   /*PAGAMENTI*/
@@ -307,20 +297,20 @@
   #payments h2{
     padding-bottom: 0.5em;
     text-align: center;
+    font-size: 150%;
   }
 
-  #payments_Grid{ /*Forse meglio usare div cosi da avere dim migliori*/
+  #payments_Grid{ /* cambiare grid per mobile e tablet */
     display: grid;
-    grid-template-columns: 3% 3% 3%; /*MODIFICARE QUI PER MODIFICARE LE DIMENSIONI DEI BOX CHE CONTENGONO LE IMMAGINI*/
-    grid-template-rows: 55% 55% 55%; /*MODIFICARE QUI PER MODIFICARE LE DIMENSIONI DEI BOX CHE CONTENGONO LE IMMAGINI*/
+    grid-template-columns: 6% 6% 6%; /*MODIFICARE QUI PER MODIFICARE LE DIMENSIONI DEI BOX CHE CONTENGONO LE IMMAGINI*/
+    grid-template-rows: 65% 65% 65%; /*MODIFICARE QUI PER MODIFICARE LE DIMENSIONI DEI BOX CHE CONTENGONO LE IMMAGINI*/
     gap: 10px;
     justify-content: center;
     list-style: none;
     text-indent: -999em;
+    margin-bottom: 2em;
   }
-  #payments_Grid li {
-    background-size: 100% 100%; /* RISOLTO IL PROBLEMA,MA SONO DENATURATE!*/
-  }
+
   .card1{
     background-image: url('images/Mastercard.jpg');
     background-position: center;
@@ -366,6 +356,11 @@
 
   /*SOCIAL*/
 
+  .social_List h2{
+    font-size: 120%;
+    margin-bottom: 0.5em;
+  }
+
   .social_List a{
     border: 1px solid black;
     margin: 0 10px 20px 10px;
@@ -378,7 +373,7 @@
     text-indent: -999em;
   }
 
-  #instaImage{
+  #instaImage{ /* immagini colorate da mettere */
     background-image: url('images/instaSfondo.jpg');
     background-repeat: no-repeat;
     background-position: center;
@@ -419,15 +414,10 @@
   footer {
     background-color: var(--footerBgColor);
     color: var(--footerTextColor);
-    padding: 0.5em;
+    padding: 1em;
     text-align: center;
     margin-top: auto;
     width: 100%;
-  }
-
-  footer h2{
-    padding: 0.5em;
-    font-size: 100%;
   }
 
   /***********************************************************
@@ -437,14 +427,14 @@
    ***********************************************************/
 
   .products_List{
-    padding: 1em 2em 3em 2em;
+    padding: 0.5em 1.5em 2.5em 1.5em;
   }
   
   .products_List h1{
-    font-size: 250%;
+    font-size: 200%;
     text-align: center;
     margin-top: 0.5em;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
   }
   
   .products_Container {
@@ -464,9 +454,9 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     list-style-type:none;
-    font-size: 1.5em;
+    font-size: 150%;
   }
-  
+
   .products_Container li:hover {
       transform: scale(1.05);
       box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
@@ -476,7 +466,8 @@
       align-content: center;
       object-fit:cover;
       width: 100%;
-      height: 85%;
+      height: 90%;
+      margin-bottom: 0.3em;
   }
 
   .products_Container a{
@@ -484,6 +475,110 @@
     text-align: center;
     color: var(--textProducts);
   }
+
+  /******************
+   *                *
+   *    PRODOTTI   *
+   *                *
+   ******************/
+
+  #product_Page {
+    padding: 0.5em 1.5em 2.5em 1.5em;
+  }
+  
+  #product_Page h1 {
+    font-size: 200%;
+    text-align: center;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+  }
+
+  #product_Images{
+    float: left;
+    width: 50%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+  }
+
+  .grid_Image{
+    border: 1px solid black;
+  }
+  
+
+  #product_Images img{
+    width: 90%;
+    height: 90%;
+  }
+  
+  #product_Details {
+    float: left;
+    width: 50%;
+    height: 100%;
+  }
+
+  #product_Details h2{
+    font-size: 180%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  #product_Specs {
+    list-style-type: none;
+    font-size: 120%;
+    margin-bottom: 0.5em;
+  }
+
+  .specs_List{
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  #cart_Specs {
+    list-style-type: none;
+    font-size: 130%;
+    margin-bottom: 0.5em;
+  }
+  
+  .cart_List{
+    font-weight: bold;
+  }
+
+  #product_Description{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-size: 110%;
+  }
+  
+  #addToCart {
+    padding: 1em 2em;
+    background-color: #757575;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+  }
+  
+  #addToCart:hover {
+    background-color: #000000;
+  }
+  
+  #delivery_Details h2{
+    margin-bottom: 0.5em;
+  }
+
+  #delivery_Details {
+    font-size: 110%;
+  }
+
+  #delivery_List{
+    list-style-type: none;
+  }
+
+
+
 
 
   /*BANNER*/

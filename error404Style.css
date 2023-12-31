@@ -34,7 +34,13 @@ body {
   }
   
   .link-list a {
-    color: #007bff;
+    /*color: #007bff; */
     text-decoration: underline;
   }
-  
+  .link-list a:link{
+    color:rgb(127, 118, 250);   /*color: var(--linkColor); */
+  }
+
+  .link-list a:visited{
+    color:#000000;  /* color: var(--visitedLinkColor); */
+  }

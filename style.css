@@ -9,7 +9,7 @@
     padding: 0em;
   }
 
-  :root{ /* DA SCEGLIERE */
+  :root{
     --headerBgColor: #757575;
     --headerTextColor: #FFFFFF;
     --bgColor: #FFFFFF;
@@ -33,7 +33,7 @@
   scroll-behavior: smooth;
   }
 
-  /*BODY DA VEDERE*/
+  /*BODY*/
 
   body {
     font-family: Arial, sans-serif;
@@ -48,10 +48,11 @@
   main {
     flex: 1;
   }
-  
-  .main-content { /*DA VEDERE*/
+
+  /*
+  .main-content {
     padding: 20px;
-  }
+  }*/
 
   /*HEADER*/
 
@@ -638,8 +639,8 @@
   background-color: #757575;
   margin-top: 1em;
   margin-bottom: 2em;
-  margin-left: 9em;
-  margin-right: 9em;
+  margin-left: 25%;
+  margin-right: 25%;
  }
 
  #contact_Details h2{
@@ -669,14 +670,77 @@
     color: var(--visitedLinkColor);
   }
 
-
+  /***********
+   *         *
+   *   FAQ   *
+   *         *
+   ***********/
   
+  #faq {
+    width: 80%;
+    margin: auto;
+    text-align: left;
+  }
+
+  #faq h1{
+    font-size: 200%;
+    text-align: center;
+    margin-bottom: 2em;
+    margin-top: 1em;
+  }
+
+  .type_Questions{
+    font-size: 160%;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    text-transform: uppercase;
+  }
+  
+  .question{
+    margin-bottom: 1.5em;
+  }
+  
+  .question h2{
+    font-weight: bold;
+    font-size: 140%;
+  }
+
+  #ask_Question {
+    margin-top: 5em;
+    margin-bottom: 2em;
+  }
+
+  #ask_Question h2{
+    margin-bottom: 1em;
+
+  }
+
+  #question_Input {
+    width: 40%;
+    padding: 1em;
+    margin-right: 1em;
+    border: 1px solid #000000;
+  }
+  
+  #addQuestion{
+    font-size: 100%;
+    padding: 1em 2em;
+    background-color: #757575;
+    color: #FFFFFF;
+    border: 1px solid #000000;
+    cursor: pointer;
+  }
+  
+  #addQuestion:hover {
+    background-color: #000000;
+  }
 
 
 
 
 
-  /*BANNER*/
+
+  /*BANNER DA VEDERE*/
 
   .banner {
     background-image: url('banner_image.jpg');

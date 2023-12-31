@@ -577,6 +577,101 @@
     list-style-type: none;
   }
 
+  /******************
+   *                *
+   *    CHI SIAMO   *
+   *                *
+   ******************/
+  
+  #chiSiamo_Content{
+    width: 80%;
+    margin: auto;
+  }
+
+  #chiSiamo_Content h1{
+    font-size: 205%;
+    text-align: center;
+    margin-bottom: 1em;
+    margin-top: 1em;
+  }
+  
+  #company_Info {
+    padding-bottom: 4em;
+  }
+  
+  #company_Info p{
+    font-size: 110%;
+    text-align: left;
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+
+  #team_Members h2{
+    text-align: center;
+    font-size: 180%;
+  }
+  
+  .members {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .members img { /* px usati qui */
+    width: 15%;
+    min-width: 150px;
+    min-height: 150px;
+    border-radius: 10%;
+    object-fit: cover;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+  }
+  
+  .members p {
+    padding: 1% 15% 3% 15%;
+    text-align: center;
+  }
+  
+ #contact_Details{
+  border: 1px solid black;
+  text-align: center;
+  background-color: #757575;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  margin-left: 9em;
+  margin-right: 9em;
+ }
+
+ #contact_Details h2{
+   font-size: 160%;
+   margin-bottom: 0.5em;
+   padding-top: 0.5em;
+ }
+
+  #contact_Details ul {
+    list-style: none;
+    padding-bottom: 1em;
+  }
+  
+  #contact_Details li {
+    margin-bottom: 0.5em;
+  }
+
+  #contact_Details iframe{
+    padding-bottom: 1em;
+  }
+
+  #contact_Details a:link{
+    color: var(--linkColor);
+  }
+
+  #contact_Details a:visited{
+    color: var(--visitedLinkColor);
+  }
+
+
+  
+
 
 
 

@@ -10,16 +10,17 @@
 </head>
 <body>
 
+
   <header>
     <nav aria-label="Aiuti alla navigazione">
-      <a class="navigationHelp" href="#content">Vai al contenuto</a>
+      <a class="navigationHelp" href="#content" role="button" aria-label="Salta il menù di navigazione">Vai al contenuto</a>
     </nav>
 
     <h1 class="logo" lang="en">Olympo Fitness</h1>
 
     <nav id="menu" aria-label="menù del sito">
-      <a class="navigationHelp" href="#content"> Salta il menù di navigazione</a>
-      <ul>
+      <a class="navigationHelp" href="#content"  role="button" aria-label="Salta il menù di navigazione"> Salta il menù di navigazione</a>
+      <ul role="menubar">
         <li><span lang="en">Home</span></li>
         <li><a href="chiSiamo.html">Chi Siamo</a></li>
         <li><a href="faq.html"><abbr title="Frequently Asked Questions" lang="en">FAQ</abbr></a></li>
@@ -33,11 +34,13 @@
     <p>Ti trovi in: <a href="index.html" lang="en">Home</a>
   </nav>
 
-  <main id="content">
 
-    <div id="categories">
-      <h1>Categorie Articoli</h1>
-        <div class="categories_Container">
+
+  <main id="content" tabindex="-1" aria-labelledby="categories-title">
+
+    <div id="categories"  aria-labelledby="categories-title">
+      <h1  id="categories-title">Categorie Articoli</h1>
+        <div class="categories_Container" aria-label="categorie articoli">
             <a href="accessori.html" id="accessoriImage">Accessori</a>
             
             <a href="pesiLiberi.html" id="pesiLiberiImage">Pesi Liberi</a>
@@ -47,17 +50,17 @@
             <a href="macchine.html" id="macchinariImage">Macchinari</a>
         </div>
     </div>
-      
+
     <div id="brand">
       <h2>I Nostri Brand :</h2>
-        <div id="brand_Container">
+        <div id="brand_Container" aria-label="brand">
             <a href="https://www.optimumnutrition.com/en-us" id="optimumnutritionImage" lang="en">Optimum Nutrition</a>
 
-            <a href="https://www.cousin-trestec.com/en/" id="cousinTrestecImage" lang="en">Cousin Trestec</a> <!--forse lang francese-->
+            <a href="https://www.cousin-trestec.com/en/" id="cousinTrestecImage" lang="fr">Cousin Trestec</a> <!--forse lang francese-->
 
             <a href="https://www.technogym.com/it-IT" id="technogymImage" lang="en">Technogym</a>
 
-            <a href="http://it.ru-bodystrongfitness.com/" id="baodelongImage">Baodelong</a> <!-- lang cinese? -->
+            <a href="http://it.ru-bodystrongfitness.com/" id="baodelongImage" lang="zh">Baodelong</a> <!-- lang cinese? -->
 
             <a href="https://www.adidas.it/" id="adidasImage" lang="en">Adidas</a>
 
@@ -65,22 +68,24 @@
         </div>
     </div>
 
+
     <div id="payments">
       <h2>Pagamenti Sicuri</h2>
-        <ul id="payments_Grid">
+        <ul id="payments_Grid" aria-label="pagamenti sicuri">
           <li class="card1"><span lang="en">Mastercard</span></li>
           <li class="card2">Visa</li>
           <li class="card3">Poste<span lang="en">pay</span></li>
-          <li class="card4"><span lan="en">Googlepay</span></li>
+          <li class="card4"><span lang="en">Googlepay</span></li>
           <li class="card5"><span lang="en">Paypal</span></li>
           <li class="card6"><span lang="en">American Express</span></li>
         </ul>
     </div>
 
-    <a href="#" id="buttonToTop">Torna in cima ↑</a>
+    <a href="#" id="buttonToTop"  role="button" aria-label="Torna in cima">Torna in cima ↑</a>
 
   </main>
 
+  
   <footer>
         <div class="social_List">
           <h2>Seguici Su</h2>

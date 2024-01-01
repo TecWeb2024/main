@@ -58,32 +58,23 @@
 
   header {
     background-color: var(--headerBgColor);
-    padding: 0.7em 1em 0.7em 1em;
+    padding: 0.5em 1em 0.5em 1em;
   }
 
-  #logo{ /*DA VEDERE*/
+  h1.logo{
     background-image: url('images/zeusbiancogrigio.jpg');
-    text-indent:200%;
-    white-space:nowrap;
-    overflow:hidden;
-    font-size: 7em;
-    line-height: 1em;
     background-repeat: no-repeat;
     background-size: contain;
-    /*background-position: center;*/
-   /* margin:0.1em;*/
-   /* background-repeat: no-repeat;
-    background-position: center;
-    font-size: 150%;
-    height:auto;
-    width: auto;*/
   }
 
-  header h1 { /*em or %*/
+  .logo {
     color:var(--headerTextColor);
-    font-size: 2em;
-    line-height: 1.5em;
+    font-size: 2em; /* dimensioni logo */
+    line-height: 2em;
     float:left;
+    text-indent:100%;
+    white-space:nowrap;
+    overflow:hidden;
   }
 
   /*NAVIGAZIONE*/

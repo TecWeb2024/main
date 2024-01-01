@@ -107,7 +107,7 @@ CREATE TABLE `prodotto` (
   `marca` int(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---DA INSERIRE I PRODOTTI QUI, SE VOLETE UN SEMPIO GIA' FATTO GUARDATE IL .sql DEL GRUPPO CONDIVISO SU DISCORD
+--DA INSERIRE I PRODOTTI QUI, SE VOLETE UN ESEMPIO GIA' FATTO GUARDATE IL .sql DEL GRUPPO CONDIVISO SU DISCORD
 INSERT INTO `prodotto` (`ID`, `nome`, `immagine1`, `immagine2`, `immagine3`, `immagine4`, `categoria`, `keywords`, `prezzo`, `peso`, `dimensione`, `colore`, `volume`, `materialeUtilizzato`, `quantita` , `taglia` , `descrizione`, `tempoConsegna`, `marca`) VALUES
 (1, 'Borsone Adidas', 'images/BorsoneDavanti.jpg', 'images/BorsoneDietro.jpg', 'images/BorsoneAperto.jpg', 'images/BorsoneChiuso.jpg', 1, 'Olympo Fitness, palestra, negozio palestra, borsone, borsone adidas, adidas, prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 35, '1.5 kg', ' 22 cm x 56 cm x 28 cm', 'Nero', '39 L', 'tela, 100% poliestere riciclato', 10, 'XL', 'La scelta ideale per la palestra e le gite nel weekend. Questo borsone adidas ha una base robusta per proteggere il contenuto. Lo scomparto principale è dotato di una zip bidirezionale per un accesso rapido da entrambi i lati.\r\nLe numerose tasche offrono la massima praticità e lo scomparto interno ti consente di tenere separate le sneaker.', 'Consegna in 3-5 giorni lavorativi', 5),
 (2),

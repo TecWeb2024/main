@@ -3,9 +3,6 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-
-
-
 CREATE TABLE `categoria` (
   `ID` int(5) UNSIGNED NOT NULL,
   `nome` varchar(11) NOT NULL,
@@ -20,8 +17,6 @@ INSERT INTO `categoria` (`ID`, `nome`,`keywords`) VALUES
 (4,'Macchinari','Olympo Fitness, palestra, negozio palestra, pesi liberi , macchinari palestra, macchinari, macchine, nutrizione, accessori palestra');
 
 
-
-
 CREATE TABLE `utente` (
   `ID` int(10) UNSIGNED NOT NULL,
   `nome` varchar(100) NOT NULL,
@@ -34,8 +29,6 @@ CREATE TABLE `utente` (
 INSERT INTO `utente` (`ID`, `nome`, `email`, `password`, `admin`) VALUES
 (1, 'User', 'user@user.com', 'user', 0),
 (2, 'Admin', 'admin@admin.com', 'admin', 1);
-
-
 
 
 CREATE TABLE `faq` (
@@ -83,8 +76,6 @@ INSERT INTO `marca` (`ID`, `nome`) VALUES
 (6, 'My Protein');
 
 
-
-
 CREATE TABLE `prodotto` (
   `ID` int(10) UNSIGNED NOT NULL,
   `nome` varchar(200) NOT NULL,
@@ -108,7 +99,6 @@ CREATE TABLE `prodotto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-
 --CONSEGNA
 
 --DA INSERIRE I PRODOTTI QUI, SE VOLETE UN ESEMPIO GIA' FATTO GUARDATE IL .sql DEL GRUPPO CONDIVISO SU DISCORD
@@ -117,29 +107,212 @@ CREATE TABLE `prodotto` (
 --nella taglia mettere la taglia massima 
 --nelle keywords, dopo "Olympo Fitness, palestra, negozio palestra," mettere 3 tag SPECIFICI del prodotto stesso, il resto lasciare immutato
 --4 prodotti per categoria (es. pesi liberi, nutrizione,ecc.)
-INSERT INTO `prodotto` (`ID`, `nome`, `immagine1`, `immagine2`, `immagine3`, `immagine4`, `categoria`, `keywords`, `prezzo`, `peso`, `dimensione`, `colore`, `volume`, `materialeUtilizzato`, `quantita` , `taglia` , `descrizione`, `tempoConsegna`, `marca`) VALUES
+
+INSERT INTO `prodotto` (`ID`, `nome`, `immagine1`, `immagine2`, `immagine3`, `immagine4`, `categoria`, `keywords`, 
+`prezzo`, `peso`, `dimensione`, `colore`, `volume`, `materialeUtilizzato`, `quantita` , `taglia` , 
+`descrizione`, `tempoConsegna`, `marca`) VALUES
+
 (1, 'Borsone Adidas', 'images/BorsoneDavanti.jpg', 'images/BorsoneDietro.jpg', 'images/BorsoneAperto.jpg', 'images/BorsoneChiuso.jpg', 1, 'Olympo Fitness, palestra, negozio palestra, borsone, borsone adidas, adidas, prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 35, '1.5 kg', ' 22 cm x 56 cm x 28 cm', 'Nero', '39 L', 'tela, 100% poliestere riciclato', 10, null, 'La scelta ideale per la palestra e le gite nel weekend. Questo borsone adidas ha una base robusta per proteggere il contenuto. Lo scomparto principale è dotato di una zip bidirezionale per un accesso rapido da entrambi i lati.\r\nLe numerose tasche offrono la massima praticità e lo scomparto interno ti consente di tenere separate le sneaker.', 'Consegna in 3-5 giorni lavorativi', 5),
-(2),
-(3),
-(4),
-(5),
-(6),
-(7),
-(8),
-(9),
-(10),
-(11),
-(12),
-(13),
-(14),
-(15),
-(16);
+(2, 'Pantaloni Adidas', 'images/PantaloneAdidasDvanti.jpg', 'images/PantaloneAdidasDietro.jpg', 'images/PantaloneAdidas1.jpg', 'images/PantaloneAdidas2.jpg', 1   , 'Olympo Fitness, palestra, negozio palestra, pantalone, adias , pantaloni adidas , prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 35, '1.0 kg', ' 25 cm x 30 cm x 31 cm', 'Nero', NULL, 'poliestere riciclato', 15, 'XXL', 'Pantaloni Adidas, adatti per ogni tipo di allenamento.', 'Consegna in 3-5 giorni lavorativi', 5),
+(3, 'Magliettta Adidad', 'images/MagliettaAdidasDavanti.jpg', 'images/MagliettaAdidasDietro.jpg', 'images/MagliettaAdidas1.jpg', 'images/MagliettaAdidas2.jpg', 1 , 'Olympo Fitness, palestra, negozio palestra, maglietta, adias , maglietta adidas , prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 35, '1.0 kg', ' 25 cm x 30 cm x 31 cm', 'Nero', NULL, 'poliestere riciclato', 25, 'XXL', 'Questi prodotti sono progettati per soddisfare tutte le esigenze e per rendere il prodotto durevole nel tempo. Prodotti realizzati con materiali ad ottime prestazioni. Confortevoli e leggeri, con un design creativo. Prodotti di ottima qualità.', 'Consegna in 3-5 giorni lavorativi', 5),
+(4, 'Telo Adidas', 'images/TeloAdidas1.jpg', 'images/TeloAdidas2.jpg', 'images/TeloAdidas3.jpg', 'images/TeloAdidas4.jpg', 1, 'Olympo Fitness, palestra, negozio palestra, telo, asciugamano, adidas,  prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 35, '1.5 kg', ' 140 cm x 70 cm', 'Nero', NULL, '100% cotone', 25, 'L', 'Tessuto robusto e leggero, Deisgn moderno.', 'Consegna in 3-5 giorni lavorativi', 5),
 
+(5, 'Hexagon Dumbbell', 'images/peso1.jpg', 'images/peso2.jpg', 'images/peso3.jpg', 'images/peso4.jpg', 2, 'Olympo Fitness, palestra, negozio palestra, peso, peso libero, technogy, prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 60, '20 kg', ' 30 cm x 10 cm', 'Nero/Argento', NULL, 'Acciaio', 25, '20', 'Progettati per la forza e l’allenamento funzionale. La forma esagonale e l’impugnatura zigrinata permettono di ampliare al massimo la varietà di esercizi includendo anche quelli in appoggio a terra.', 'Consegna in 3-5 giorni lavorativi', 3),
+(6, 'Kettlebell', 'images/kettlebell1.jpg', 'images/kettlebell2.jpg', 'images/kettlebell3.jpg', 'images/kettlebell4.jpg', 2, 'Olympo Fitness, palestra, negozio palestra, Kettlebell, techongym, peso libero,prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 70, '8 kg', '15 cm x 5 cm', NULL, 'Acciaio', 40, '20', 'Le Kettlebells di Technogym si distinguono per il loro design ergonomico e per la qualità dei materiali costruttivi. Ideali per allenare forza ed esplosività di tutto il corpo.', 'Consegna in 3-5 giorni lavorativi' ,3),
 
+(7,
+'Dumbbell',
+'images/dumbbell1.jpg',
+'images/dumbbell2.jpg',
+'images/dumbbell3.jpg',
+'images/dumbbell4.jpg',
+2,
+'Olympo Fitness, palestra, negozio palestra, dumbbell, techongym, peso libero,prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 
+70, 
+'10 kg', 
+'15 cm x 5 cm', 
+NULL, 
+'Acciaio', 
+30, 
+'10', 
+'I manubri Technogym sono studiati per offrirti una sensazione di allenamento naturale e maggiore efficacia, grazie al controllo completo del movimento e al coinvolgimento di più muscoli.',
+'Consegna in 3-5 giorni lavorativi',
+3),
 
+(8
+'Bumper Plate',
+'images/bumper1.jpg',
+'images/bumper2.jpg',
+'images/bumper3.jpg',
+'images/bumper4.jpg',
+2,
+'Olympo Fitness, palestra, negozio palestra, Bumper Plate, techongym, peso libero,prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 
+20, 
+'15 kg', 
+'25 cm x 10 cm x 5 cm', 
+NULL, 
+'Acciaio', 
+20, 
+'10', 
+'Realizzati in gomma completamente nera, questi dischi sono progettati per resistere a un uso intensivo e assicurare un ottimo assorbimento degli impatti e un buon rimbalzo. La texture opaca sui lati esterni dei dischi li rende meno vulnerabili ai graffi.',
+'Consegna in 3-5 giorni lavorativi',
+3
+),
 
+(9
+'Impact Whey Protein',
+'images/prot1.jpg',
+'images/prot2.jpg',
+'images/prot3.jpg',
+'images/prot4.jpg',
+3,
+'Olympo Fitness, palestra, negozio palestra, proteine, myprotein, integratori,prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 
+80, 
+'25 kg', 
+'15 cm x 15 cm', 
+NULL, 
+'--', 
+50, 
+'10', 
+'Siero di latte di prima qualità con ben 23 g di proteine per porzione, per garantirti le proteine di cui hai bisogno. E da dove viene questo siero di latte? Da mucche allevate al pascolo che producono il latte ed il formaggio che consumi quotidianamente -semplicemente filtrato ed atomizzato al fine di produrre sostanze nutritive completamente naturali.',
+'Consegna in 3-5 giorni lavorativi',
+6
+),
 
+(10,
+'Clear Whey Isolate',
+'images/isolate1.jpg',
+'images/isolate2.jpg',
+'images/isolate3.jpg',
+'images/isolate4.jpg',
+3,
+'Olympo Fitness, palestra, negozio palestra, proteine, myprotein, integratori,prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 
+80, 
+'25 kg', 
+'15 cm x 15 cm', 
+NULL, 
+'--', 
+60, 
+'10', 
+'Clear Whey Isolate non è uno shake proteico qualunque. A partire da pregiate proteine di siero del latte idrolizzate abbiamo ricavato un’alternativa leggera e rinfrescante, più simile a un succo che a un frullato proteico a base di latte.',
+'Consegna in 3-5 giorni lavorativi',
+6
+),
 
+(11,
+'Brownie proteico',
+'images/brownie1.jpg',
+'images/brownie2.jpg',
+'images/brownie3.jpg',
+'images/brownie4.jpg',
+3,
+'Olympo Fitness, palestra, negozio palestra, proteine, myprotein, integratori ,prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 
+80, 
+'5 kg', 
+'30 cm x 15 cm', 
+NULL, 
+'--', 
+60, 
+'10', 
+'Con fino al 75% di zucchero in meno rispetto alle alternative standard dei supermercati, goditi uno spuntino pomeridiano senza rovinare tutti i progressi duramente guadagnati.',
+'Consegna in 3-5 giorni lavorativi',
+6
+),
+
+(12
+'Omega-3 Essenziale',
+'images/omega1.jpg',
+'images/omega2.jpg',
+'images/omega3.jpg',
+'images/omega4.jpg',
+3,
+'Olympo Fitness, palestra, negozio palestra, vitamine, myprotein, integratori ,prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 
+80, 
+'5 kg', 
+'30 cm x 15 cm', 
+NULL, 
+'--', 
+60, 
+'10', 
+'Gli omega-3 sono acidi grassi essenziali che il corpo non produce da solo, per cui è necessario ottenerli dall alimentazione. Si trovano naturalmente nell olio di pesce, ciò significa che può essere difficile ottenerne una quantità sufficiente soltanto dall alimentazione.',
+6
+),
+
+(13
+'Tapis roulant commerciale di lusso JB-9800',
+'images/tapis1.jpg',
+'images/tapis2.jpg',
+'images/tapis3.jpg',
+'images/tapis4.jpg',
+4,
+'Olympo Fitness, palestra, negozio palestra, tapis roulant, cardio, Baodelong ,prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 
+80, 
+'85 kg', 
+'130 cm x 95 cm x 103 cm', 
+NULL, 
+'--', 
+60, 
+'10', 
+'Bodystrong fitness offre tapis roulant commerciali affidabili e confortevoli, la nostra azienda è un produttore e fornitore di successo, ci siamo dedicati al campo sportivo molti anni, forniremo un servizio eccellente e un prezzo competitivo per te, ci aspettiamo di diventare il tuo partner a lungo termine in Cina.',
+4
+),
+
+(14
+'Chest Press Delt-HM002A',
+'images/chest1.jpg',
+'images/chest2.jpg',
+'images/chest3.jpg',
+'images/chest4.jpg',
+4,
+'Olympo Fitness, palestra, negozio palestra, chest press, petto, Baodelong ,prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 
+80, 
+'85 kg', 
+'130 cm x 95 cm x 103 cm', 
+NULL, 
+'--', 
+60, 
+'10', 
+'La chest press machine è una macchina isotonica concepita per eseguire il gesto multiarticolare di distensione del braccio con sovraccarico, utile soprattutto nel rinforzo del gran pettorale, ma che coinvolge anche il tricipite brachiale e il deltoide/spalla anteriore.',
+4
+),
+
+(15
+'Skillrow',
+'images/vogatore1.jpg',
+'images/vogatore2.jpg',
+'images/vogatore3.jpg',
+'images/vogatore4.jpg',
+4,
+'Olympo Fitness, palestra, negozio palestra, vogatore, petto, TechnoGym, ,prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 
+80, 
+'85 kg', 
+'130 cm x 95 cm x 103 cm', 
+NULL, 
+'--', 
+60, 
+'10', 
+'Progettato insieme agli atleti, con Skillrow puoi migliorare sia resistenza cardiovascolare che potenza tramite allenamenti total body sempre vari disponibili sulla app, e con la sensazione di vogata più realistica.',
+3
+),
+
+(16
+'Elliptical',
+'images/Elliptical1.jpg',
+'images/Elliptical2.jpg',
+'images/Elliptical3.jpg',
+'images/Elliptical4.jpg',
+4,
+'Olympo Fitness, palestra, negozio palestra, Elittica, gambe, TechnoGym, ,prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 
+80, 
+'85 kg', 
+'130 cm x 95 cm x 103 cm', 
+NULL, 
+'--', 
+60, 
+'10', 
+'Scopri il potere del tuo corpo con il movimento naturale e confortevole dall’impatto minimo sulle tue articolazioni. ',
+3
+);
 
 
 

@@ -27,103 +27,103 @@
         <li><a href="account.html" lang="en">Account</a></li>
       </ul>
     </nav>
-</header>
+  </header>
   <nav id="breadcrumb" aria-label="percorso">
     <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; Carrello</p>
   </nav>
 
   <main id="content">
 
-  <header class="headerCarrello">
-    <div class="title">
-      <h1>Carrello</h1>
-    </div>
-    <button class="buy-now">Acquista ora</button>
-  </header>
+    <header class="headerCarrello">
+      <div class="title">
+        <h1>Carrello</h1>
+      </div>
+      <button class="buy-now">Acquista ora</button>
+    </header>
 
-  <section class="cart-items">
+    <section class="cart-items">
 
-    <div class="product-card">
-      <img src="images/Paypal.jpg" alt="Prodotto 1">
-      <div class="product-details">
-        <h2>Nome Prodotto</h2>
-        <p>€ Prezzo</p>
-        <div class="quantity-size">
-          <select id="quantity1">
-            <option value="1">Quantità: 1</option>
-            <!-- Altre opzioni di quantità -->
-          </select>
-          <select id="size1">
-            <option value="XL">Taglia: XL</option>
-            <!-- Altre opzioni di taglia -->
-          </select>
-          <button class="remove-product">Rimuovi Prodotto dal carrello</button>
+      <div class="product-card">
+        <img src="images/Paypal.jpg" alt="Prodotto 1">
+        <div class="product-details">
+          <h2>Nome Prodotto</h2>
+          <p>€ Prezzo</p>
+          <div class="quantity-size">
+            <select id="quantity1">
+              <option value="1">Quantità: 1</option>
+              <!-- Altre opzioni di quantità -->
+            </select>
+            <select id="size1">
+              <option value="XL">Taglia: XL</option>
+              <!-- Altre opzioni di taglia -->
+            </select>
+            <button class="remove-product">Rimuovi Prodotto dal carrello</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Altre card per altri prodotti nel carrello -->
+      <!-- Altre card per altri prodotti nel carrello -->
 
-    <div class="product-card">
-      <img src="images/Paypal.jpg" alt="Prodotto 1">
-      <div class="product-details">
-        <h2>Nome Prodotto</h2>
-        <p>€ Prezzo</p>
-        <div class="quantity-size">
-          <select id="quantity1">
-            <option value="1">Quantità: 1</option>
-            <!-- Altre opzioni di quantità -->
-          </select>
-          <select id="size1">
-            <option value="XL">Taglia: XL</option>
-            <!-- Altre opzioni di taglia -->
-          </select>
-          <button class="remove-product">Rimuovi Prodotto dal carrello</button>
+      <div class="product-card">
+        <img src="images/Paypal.jpg" alt="Prodotto 1">
+        <div class="product-details">
+          <h2>Nome Prodotto</h2>
+          <p>€ Prezzo</p>
+          <div class="quantity-size">
+            <select id="quantity1">
+              <option value="1">Quantità: 1</option>
+              <!-- Altre opzioni di quantità -->
+            </select>
+            <select id="size1">
+              <option value="XL">Taglia: XL</option>
+              <!-- Altre opzioni di taglia -->
+            </select>
+            <button class="remove-product">Rimuovi Prodotto dal carrello</button>
+          </div>
         </div>
       </div>
-    </div>
 
-  </section>
+    </section>
 
-  <section class="order-details">
-    <div class="section" id="section1">
-      <h2>Indirizzo di consegna</h2>
-      <form class="order-form">
-        <label for="name">Nome:</label>
-        <input type="text" id="name" name="name" required>
+    <section class="order-details">
+      <div class="section" id="section1">
+        <h2>Indirizzo di consegna</h2>
+        <form class="order-form">
+          <label for="name">Nome:</label>
+          <input type="text" id="name" name="name" required>
 
-        <label for="address">Indirizzo:</label>
-        <textarea id="address" name="address" rows="4" required></textarea>
+          <label for="address">Indirizzo:</label>
+          <textarea id="address" name="address" rows="4" required></textarea>
 
-      </form>
-    </div>
+        </form>
+      </div>
 
-    <div class="section" id="section2">
-      <h2>Modalità di pagamento</h2>
-      <form class="order-form">
-        <label for="payment-method">Pagamento con:</label>
-        <select id="payment-method" name="payment-method" required>
-          <option value="credit-card">Carta di credito/debito</option>
-          <option value="paypal">PayPal</option>
-          <option value="google-pay">Google Pay</option>
-        </select>
+      <div class="section" id="section2">
+        <h2>Modalità di pagamento</h2>
+        <form class="order-form">
+          <label for="payment-method">Pagamento con:</label>
+          <select id="payment-method" name="payment-method" required>
+            <option value="credit-card">Carta di credito/debito</option>
+            <option value="paypal">PayPal</option>
+            <option value="google-pay">Google Pay</option>
+          </select>
 
-        <div id="credit-card-details" class="payment-details">
-          <label for="card-name">Nome sulla carta:</label>
-          <input type="text" id="card-name" name="card-name" required>
-          <br>
-          <label for="card-number">Numero della carta:</label>
-          <input type="text" id="card-number" name="card-number" required>
-          <br>
-          <label for="expiration">Scadenza:</label>
-          <input type="text" id="expiration" name="expiration" placeholder="MM/YY" required>
+          <div id="credit-card-details" class="payment-details">
+            <label for="card-name">Nome sulla carta:</label>
+            <input type="text" id="card-name" name="card-name" required>
+            <br>
+            <label for="card-number">Numero della carta:</label>
+            <input type="text" id="card-number" name="card-number" required>
+            <br>
+            <label for="expiration">Scadenza:</label>
+            <input type="text" id="expiration" name="expiration" placeholder="MM/YY" required>
 
-          <label for="cvv">CVV:</label>
-          <input type="text" id="cvv" name="cvv" required>
-        </div>
-        <!-- Altri campi per i dettagli della carta di credito -->
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" required>
+          </div>
+          <!-- Altri campi per i dettagli della carta di credito -->
 
-        <!-- <div id="paypal-details" class="payment-details">
+          <!-- <div id="paypal-details" class="payment-details">
           <label for="paypal-email">Indirizzo email PayPal:</label>
           <input type="email" id="paypal-email" name="paypal-email" required>
         </div>
@@ -133,47 +133,47 @@
           <input type="email" id="google-pay-email" name="google-pay-email" required>
         </div> -->
 
-      </form>
+        </form>
+      </div>
+
+      <div class="section" id="section3">
+        <h2>Rivedi gli articoli e la spedizione</h2>
+        <!-- Display order summary, total, and other details -->
+        <!-- Example: -->
+        <p>Articolo 1 - €19.99</p>
+        <p>Articolo 2 - €29.99</p>
+        <p>Spedizione - €5.00</p>
+        <p><strong>Totale: €54.98</strong></p>
+
+        <button type="button" class="pay-now-button" onclick="confirmOrder()">Paga Ora</button>
+        <!-- Add logic for confirmOrder -->
+      </div>
+    </section>
+
+
+    <div class="popup" style="display: none;">
+      <p id="popuptext">Acquisto effettuato con successo! Grazie per aver ordinato da Olympo Fitness.</p>
+      <button id="close-popup">Continua</button>
     </div>
 
-    <div class="section" id="section3">
-      <h2>Rivedi gli articoli e la spedizione</h2>
-      <!-- Display order summary, total, and other details -->
-      <!-- Example: -->
-      <p>Articolo 1 - €19.99</p>
-      <p>Articolo 2 - €29.99</p>
-      <p>Spedizione - €5.00</p>
-      <p><strong>Totale: €54.98</strong></p>
+    <script>
+      const buyNowButton = document.querySelector('.buy-now');
+      const popup = document.querySelector('.popup');
+      const closeButton = document.querySelector('#close-popup');
 
-      <button type="button" class="pay-now-button" onclick="confirmOrder()">Paga Ora</button>
-      <!-- Add logic for confirmOrder -->
-    </div>
-  </section>
+      buyNowButton.addEventListener('click', () => {
+        // Logica per effettuare l'acquisto e mostrare il popup
+        popup.style.display = 'block';
+      });
 
+      closeButton.addEventListener('click', () => {
+        popup.style.display = 'none'; // Nascondi il popup
+      });
+    </script>
 
-  <div class="popup" style="display: none;">
-    <p id="popuptext">Acquisto effettuato con successo! Grazie per aver ordinato da Olympo Fitness.</p>
-    <button id="close-popup">Continua</button>
-  </div>
-  
-  <script>
-    const buyNowButton = document.querySelector('.buy-now');
-    const popup = document.querySelector('.popup');
-    const closeButton = document.querySelector('#close-popup');
-  
-    buyNowButton.addEventListener('click', () => {
-      // Logica per effettuare l'acquisto e mostrare il popup
-      popup.style.display = 'block';
-    });
-  
-    closeButton.addEventListener('click', () => {
-      popup.style.display = 'none'; // Nascondi il popup
-    });
-  </script>    
+    <a href="#" id="buttonToTop">Torna in cima ↑</a>
 
-<a href="#" id="buttonToTop">Torna in cima ↑</a>
-  
-</main>
+  </main>
 
   <footer>
     <div class="social_List">
@@ -181,13 +181,13 @@
       <a href="https://www.instagram.com/" id="instaImage">Instagram</a>
 
       <a href="https://www.youtube.com/" id="youtubeImage">Youtube</a>
-    
+
       <a href="https://www.facebook.com/" id="facebookImage">Facebook</a>
 
       <a href="https://www.twitter.com/" id="twitterImage">Twitter</a>
     </div>
     <div class="footer_Text">&copy; 2024 <span lang="en">Olympo Fitness</span>. Tutti i diritti riservati.</div>
-</footer>
+  </footer>
 
 </body>
 

@@ -83,6 +83,7 @@ CREATE TABLE `prodotto` (
   `immagine2` varchar(100) NOT NULL,
   `immagine3` varchar(100) NOT NULL,
   `immagine4` varchar(100) NOT NULL,
+  `alt` varchar(65) NOT NULL,
   `categoria` int(5) UNSIGNED NOT NULL,
   `keywords` varchar(200) DEFAULT NULL,
   `prezzo` decimal(5,2) UNSIGNED NOT NULL,
@@ -108,11 +109,11 @@ CREATE TABLE `prodotto` (
 --nelle keywords, dopo "Olympo Fitness, palestra, negozio palestra," mettere 3 tag SPECIFICI del prodotto stesso, il resto lasciare immutato
 --4 prodotti per categoria (es. pesi liberi, nutrizione,ecc.)
 
-INSERT INTO `prodotto` (`ID`, `nome`, `immagine1`, `immagine2`, `immagine3`, `immagine4`, `categoria`, `keywords`, 
+INSERT INTO `prodotto` (`ID`, `nome`, `immagine1`, `immagine2`, `immagine3`, `immagine4`, `alt`, `categoria`, `keywords`, 
 `prezzo`, `peso`, `dimensione`, `colore`, `volume`, `materialeUtilizzato`, `quantita` , `taglia` , 
 `descrizione`, `tempoConsegna`, `marca`) VALUES
 
-(1, 'Borsone Adidas', 'images/BorsoneDavanti.jpg', 'images/BorsoneDietro.jpg', 'images/BorsoneAperto.jpg', 'images/BorsoneChiuso.jpg', 1, 'Olympo Fitness, palestra, negozio palestra, borsone, borsone adidas, adidas, prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 35, '1.5 kg', ' 22 cm x 56 cm x 28 cm', 'Nero', '39 L', 'tela, 100% poliestere riciclato', 10, null, 'La scelta ideale per la palestra e le gite nel weekend. Questo borsone adidas ha una base robusta per proteggere il contenuto. Lo scomparto principale è dotato di una zip bidirezionale per un accesso rapido da entrambi i lati.\r\nLe numerose tasche offrono la massima praticità e lo scomparto interno ti consente di tenere separate le sneaker.', 'Consegna in 3-5 giorni lavorativi', 5),
+(1, 'Borsone Adidas', 'images/BorsoneDavanti.jpg', 'images/BorsoneDietro.jpg', 'images/BorsoneAperto.jpg', 'images/BorsoneChiuso.jpg', 'Immagine di un borsone Adidas abbastanza capiente', 1, 'Olympo Fitness, palestra, negozio palestra, borsone, borsone adidas, adidas, prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 35, '1.5 kg', ' 22 cm x 56 cm x 28 cm', 'Nero', '39 L', 'tela, 100% poliestere riciclato', 10, null, 'La scelta ideale per la palestra e le gite nel weekend. Questo borsone adidas ha una base robusta per proteggere il contenuto. Lo scomparto principale è dotato di una zip bidirezionale per un accesso rapido da entrambi i lati.\r\nLe numerose tasche offrono la massima praticità e lo scomparto interno ti consente di tenere separate le sneaker.', 'Consegna in 3-5 giorni lavorativi', 5),
 (2, 'Pantaloni Adidas', 'images/PantaloneAdidasDvanti.jpg', 'images/PantaloneAdidasDietro.jpg', 'images/PantaloneAdidas1.jpg', 'images/PantaloneAdidas2.jpg', 1   , 'Olympo Fitness, palestra, negozio palestra, pantalone, adias , pantaloni adidas , prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 35, '1.0 kg', ' 25 cm x 30 cm x 31 cm', 'Nero', NULL, 'poliestere riciclato', 15, 'XXL', 'Pantaloni Adidas, adatti per ogni tipo di allenamento.', 'Consegna in 3-5 giorni lavorativi', 5),
 (3, 'Magliettta Adidad', 'images/MagliettaAdidasDavanti.jpg', 'images/MagliettaAdidasDietro.jpg', 'images/MagliettaAdidas1.jpg', 'images/MagliettaAdidas2.jpg', 1 , 'Olympo Fitness, palestra, negozio palestra, maglietta, adias , maglietta adidas , prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 35, '1.0 kg', ' 25 cm x 30 cm x 31 cm', 'Nero', NULL, 'poliestere riciclato', 25, 'XXL', 'Questi prodotti sono progettati per soddisfare tutte le esigenze e per rendere il prodotto durevole nel tempo. Prodotti realizzati con materiali ad ottime prestazioni. Confortevoli e leggeri, con un design creativo. Prodotti di ottima qualità.', 'Consegna in 3-5 giorni lavorativi', 5),
 (4, 'Telo Adidas', 'images/TeloAdidas1.jpg', 'images/TeloAdidas2.jpg', 'images/TeloAdidas3.jpg', 'images/TeloAdidas4.jpg', 1, 'Olympo Fitness, palestra, negozio palestra, telo, asciugamano, adidas,  prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 35, '1.5 kg', ' 140 cm x 70 cm', 'Nero', NULL, '100% cotone', 25, 'L', 'Tessuto robusto e leggero, Deisgn moderno.', 'Consegna in 3-5 giorni lavorativi', 5),

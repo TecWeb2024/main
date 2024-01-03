@@ -1,0 +1,143 @@
+header {
+    padding: 0em;
+}
+
+.logo{
+    line-height: 2.5em;
+    clear: both;
+}
+
+#menu{
+    background-color: #757575;
+    border: 1px solid black;
+    position: fixed;
+    bottom: 0;
+    justify-content: space-around;
+    clear: both;
+    width: 100%;}
+
+#menu ul{
+    font-size: 100%;
+}
+
+/*BREADCRUMB*/
+
+#breadcrumb{
+    font-size: 90%;
+    padding: 0.5em 0em 0.5em 0.8em;
+}
+
+/*CATEGORIES*/
+
+#categories{
+    padding: 0.5em 1em 0.5em 1em;
+    height: 25em;
+}
+
+#categories h1{
+    font-size: 160%;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+.categories_Container a{
+    background-color: #757575;
+    font-size: 150%;
+}
+
+.categories_Container a:hover { /*NO HOVER PER MOBILE*/
+    transform: none;
+}
+
+#accessoriImage{
+    background-image: none;
+}
+
+#pesiLiberiImage{
+    background-image: none;
+}
+
+#nutrizioneImage{
+    background-image: none;
+}
+
+#macchinariImage{
+    background-image: none;
+}
+
+/*BRAND*/
+
+#brand{
+    padding: 0.5em;
+  }
+
+#brand h2{
+    font-size: 130%;
+}
+
+#brand_Container{
+    padding: 0 1em 0 1em;
+    margin: 0em;
+}
+
+#brand_Container a{
+    height: 1em;
+}
+
+/*PAGAMENTI*/
+
+#payments{
+    padding: 0.5em;
+}
+
+#payments h2{
+    font-size: 130%;
+    padding-bottom: 0.3em;
+}
+
+#Mastercard{
+    width: 40%;
+}
+
+#Visa{
+    width: 40%;
+}
+
+#Googlepay{
+    width: 40%;
+}
+
+#Paypal{
+    width: 40%;
+}
+
+/*SOCIAL*/
+
+.social_List h2{
+    margin-top: 0.5em;
+    font-size: 100%;
+}
+
+.social_List a{
+    margin: 0em 0.5em 2.5em 0.5em;
+    padding: 0.5em;
+    height: 0.8em;
+    width: 0.8em;
+}
+
+/* PULSANTE TORNA SU */
+
+#buttonToTop{
+    position: fixed;
+    right: 0.5em;
+    bottom: 6em;
+}
+
+/*FOOTER*/
+
+footer {
+    padding: 0.5em;
+}
+
+
+

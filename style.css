@@ -43,16 +43,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-  } 
-
-  main {
-    flex: 1;
   }
-
-  /*
-  .main-content {
-    padding: 20px;
-  }*/
 
   /*HEADER*/
 
@@ -230,12 +221,12 @@
 
   #brand_Container a{
     border: 1px solid black;
-    margin: 10px;
-    padding: 10px;
+    margin: 1em;
+    padding: 1em;
     border-radius: 10px;
-    flex: 0 1 100px;
+    flex: 0 1 150px;
     overflow: hidden;
-    height: 5em; /*MODIFICARE QUI PER MODIFICARE LE DIMENSIONI DEI BOX CHE CONTENGONO LE IMMAGINI*/
+    height: 4em; /*MODIFICARE QUI PER MODIFICARE LE DIMENSIONI DEI BOX CHE CONTENGONO LE IMMAGINI*/
   }
 
   #optimumnutritionImage{
@@ -283,7 +274,7 @@
   /*PAGAMENTI*/
 
   #payments{
-    padding:1.5em;
+    padding:1.5em 0.5em 1.5em 0.5em;
   }
 
   #payments h2{
@@ -292,71 +283,69 @@
     font-size: 150%;
   }
 
-  #payments_Grid{ /* cambiare grid per mobile e tablet */
-    display: grid;
-    grid-template-columns: 6% 6% 6%; /*MODIFICARE QUI PER MODIFICARE LE DIMENSIONI DEI BOX CHE CONTENGONO LE IMMAGINI*/
-    grid-template-rows: 65% 65% 65%; /*MODIFICARE QUI PER MODIFICARE LE DIMENSIONI DEI BOX CHE CONTENGONO LE IMMAGINI*/
-    gap: 10px;
-    justify-content: center;
+  #payments_Grid{
+    max-width: 50%;
+    margin: 0 auto;
     list-style: none;
     text-indent: -999em;
-    margin-bottom: 2em;
   }
 
-  .card1{
+  #Mastercard{
     background-image: url('images/Mastercard.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid black;
+    width: 20%;
+    margin: 2%;
+    float: left;
+    padding-bottom: 7%; 
   }
-  .card2{
+  #Visa{ /*DA CENTRARE*/
     background-image: url('images/Visa.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     border: 1px solid black;
+    width: 20%;
+    margin: 2%;
+    float: left;
+    padding-bottom: 7%; 
   }
-  .card3{
-    background-image: url('images/Postepay.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: 1px solid black;
-  }
-  .card4{
+  #Googlepay{
     background-image: url('images/Googlepay.jpg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     border: 1px solid black;
+    width: 20%;
+    margin: 2%;
+    float: left;
+    padding-bottom: 7%; 
   }
-  .card5{
+  #Paypal{
     background-image: url('images/Paypal.jpg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     border: 1px solid black;
-  }
-  .card6{
-    background-image: url('images/AmericanExpress.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: 1px solid black;
+    width: 20%;
+    margin: 2%;
+    float: left;
+    padding-bottom: 7%; 
   }
 
   /*SOCIAL*/
 
   .social_List h2{
-    font-size: 120%;
+    font-size: 140%;
     margin-bottom: 0.5em;
   }
 
   .social_List a{
     border: 1px solid black;
-    margin: 0 10px 20px 10px;
-    padding: 10px;
+    margin: 0 0.5em 1em 0.5em;
+    padding: 1em;
     height: 0.8em;
     width: 0.8em;
     background-color: black;

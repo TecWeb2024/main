@@ -6,7 +6,9 @@
   <title>Olympo Fitness</title>
   <meta name="keywords" content="Olympo Fitness, palestra, negozio palestra, pesi liberi , macchinari palestra, macchinari, nutrizione, accessori palestra, home">
   <meta name="author" content="Olympo Fitness">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" media="screen">
+  <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 508px)">
+  <link rel="stylesheet" href="tablet.css" media="screen and (min-width: 509px) and (max-width: 768px)">
 </head>
 <body>
 
@@ -19,7 +21,7 @@
 
     <nav id="menu" aria-label="menù del sito">
       <a class="navigationHelp" href="#content">Salta il menù di navigazione</a>
-      <ul role="menubar"> <!--serve?-->
+      <ul>
         <li><span lang="en">Home</span></li>
         <li><a href="chiSiamo.html">Chi Siamo</a></li>
         <li><a href="faq.html"><abbr title="Frequently Asked Questions" lang="en">FAQ</abbr></a></li>
@@ -71,12 +73,10 @@
     <div id="payments">
       <h2>Pagamenti Sicuri</h2>
         <ul id="payments_Grid" aria-label="pagamenti sicuri">
-          <li class="card1"><span lang="en">Mastercard</span></li>
-          <li class="card2">Visa</li>
-          <li class="card3">Poste<span lang="en">pay</span></li>
-          <li class="card4"><span lang="en">Googlepay</span></li>
-          <li class="card5"><span lang="en">Paypal</span></li>
-          <li class="card6"><span lang="en">American Express</span></li>
+          <li id="Mastercard"><span lang="en">Mastercard</span></li>
+          <li id="Visa">Visa</li>
+          <li id="Googlepay"><span lang="en">Googlepay</span></li>
+          <li id="Paypal"><span lang="en">Paypal</span></li>
         </ul>
     </div>
 

@@ -15,7 +15,8 @@
     --bgColor: #FFFFFF;
     --textColor: #000000;
     --footerBgColor: #757575;
-    --footerTextColor: #FFFFFF;
+    --footerTextColor: #000000;
+    --footerTitleColor: #FFFFFF;
     --visitedLinkColor: #000000;
     --linkColor: #FFFFFF;
     --breadcrumbBgColor: #FFFFFF;
@@ -113,7 +114,7 @@
 
   /*BREADCRUMB*/
 
-  #breadcrumb{ /*em or%*/
+  #breadcrumb{
     background-color: var(--breadcrumbBgColor);
     color: var(--breadcrumbTextColor);
     border: 1px solid black;
@@ -128,8 +129,8 @@
   /*PRODUCTS CARDS*/
 
   #categories{
-    padding: 0.5em 1.5em 2.5em 1.5em;
-    height: 28em;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    height: 26em;
   }
 
   #categories h1{
@@ -145,7 +146,7 @@
     justify-content: space-around;
     padding: 0;
     margin: 0 -10px;
-    height: 90%;
+    height: 85%;
   }
 
   .categories_Container a{
@@ -153,7 +154,7 @@
     margin: 10px;
     padding: 10px;
     border-radius: 5px;
-    flex: 1 1 200px;
+    flex: 1 1 20%;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     text-decoration: none;
@@ -212,8 +213,8 @@
   #brand_Container{
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: 0 4em 0 4em;
+    justify-content: space-evenly;
+    padding: 0 3em 0 3em;
     margin: 0 -10px;
     text-indent: -999em;
     
@@ -224,9 +225,8 @@
     margin: 1em;
     padding: 1em;
     border-radius: 10px;
-    flex: 0 1 150px;
+    flex: 0 0 10%;
     overflow: hidden;
-    height: 4em; /*MODIFICARE QUI PER MODIFICARE LE DIMENSIONI DEI BOX CHE CONTENGONO LE IMMAGINI*/
   }
 
   #optimumnutritionImage{
@@ -261,31 +261,27 @@
     background-image: url('images/adidas.jpg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
   }
 
   #myproteinImage{
     background-image: url('images/myprotein.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
   }
 
   /*PAGAMENTI*/
 
   #payments{
-    padding:1.5em 0.5em 1.5em 0.5em;
+    padding: 1.5em 1em 1.5em 1em;
   }
 
   #payments h2{
-    padding-bottom: 0.5em;
-    text-align: center;
     font-size: 150%;
   }
 
   #payments_Grid{
-    max-width: 50%;
-    margin: 0 auto;
     list-style: none;
     text-indent: -999em;
   }
@@ -296,21 +292,21 @@
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid black;
-    width: 20%;
+    width: 10%;
     margin: 2%;
     float: left;
-    padding-bottom: 7%; 
+    padding-bottom: 3%; 
   }
-  #Visa{ /*DA CENTRARE*/
+  #Visa{
     background-image: url('images/Visa.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     border: 1px solid black;
-    width: 20%;
+    width: 10%;
     margin: 2%;
     float: left;
-    padding-bottom: 7%; 
+    padding-bottom: 3%; 
   }
   #Googlepay{
     background-image: url('images/Googlepay.jpg');
@@ -318,10 +314,10 @@
     background-repeat: no-repeat;
     background-size: contain;
     border: 1px solid black;
-    width: 20%;
+    width: 10%;
     margin: 2%;
     float: left;
-    padding-bottom: 7%; 
+    padding-bottom: 3%; 
   }
   #Paypal{
     background-image: url('images/Paypal.jpg');
@@ -329,23 +325,23 @@
     background-repeat: no-repeat;
     background-size: contain;
     border: 1px solid black;
-    width: 20%;
+    width: 10%;
     margin: 2%;
     float: left;
-    padding-bottom: 7%; 
+    padding-bottom: 3%; 
   }
 
   /*SOCIAL*/
 
-  .social_List h2{
-    font-size: 140%;
+  #social_List h2{
+    font-size: 130%;
     margin-bottom: 0.5em;
   }
 
-  .social_List a{
+  #social_List a{
     border: 1px solid black;
     margin: 0 0.5em 1em 0.5em;
-    padding: 1em;
+    padding: 0.7em;
     height: 0.8em;
     width: 0.8em;
     background-color: black;
@@ -382,6 +378,25 @@
     background-size: cover;
   }
 
+  /*CONTATTI*/
+ 
+  #contacts ul {
+    list-style: none;
+    padding-bottom: 0.5em;
+  }
+   
+  #contacts li {
+    margin-bottom: 0.5em;
+  }
+ 
+  #contacts a:link{
+    color: var(--linkColor);
+  }
+ 
+  #contacts a:visited{
+    color: var(--visitedLinkColor);
+  }
+
   /* PULSANTE TORNA SU */
 
   #buttonToTop{
@@ -397,8 +412,16 @@
     color: var(--footerTextColor);
     padding: 1em;
     text-align: center;
-    margin-top: auto;
     width: 100%;
+  }
+
+  footer h2{
+    margin-bottom: 0.5em;
+    color: var(--footerTitleColor);
+  }
+
+  #footer_Text{
+    margin-bottom: 1em;
   }
 
   /***********************************************************
@@ -598,12 +621,11 @@
     align-items: center;
   }
   
-  .members img { /* px usati qui */
-    width: 15%;
-    min-width: 150px;
-    min-height: 150px;
-    border-radius: 10%;
-    object-fit: cover;
+  .members img {
+    border: 1px solid black;
+    width: 50%;
+    height: auto; /*nel caso da sistemare*/
+    object-fit: contain;
     margin-top: 0.5em;
     margin-bottom: 1em;
   }
@@ -611,51 +633,6 @@
   .members p {
     padding: 1% 15% 3% 15%;
     text-align: center;
-  }
-  
- #contact_Details{
-  border: 1px solid black;
-  text-align: center;
-  background-color: #757575;
-  margin-top: 1em;
-  margin-bottom: 2em;
-  margin-left: 25%;
-  margin-right: 25%;
- }
-
- #contact_Details h2{
-   font-size: 160%;
-   margin-bottom: 0.5em;
-   padding-top: 0.5em;
- }
-
-  #contact_Details ul {
-    list-style: none;
-    padding-bottom: 1em;
-  }
-  
-  #contact_Details li {
-    margin-bottom: 0.5em;
-  }
-
-  #contact_Details iframe{
-    padding-bottom: 1em;
-  }
-
-  #contact_Details a:link{
-    color: var(--linkColor);
-  }
-
-  #contact_Details a:visited{
-    color: var(--visitedLinkColor);
-  }
-
-  #cartina{ /*POSSIBILE SCREEN*/
-    width:100%;
-    height:300px; 
-    border: 0;
-    /*allowfullscreen="" */
-    /*loading="lazy"*/
   }
 
   /***********
@@ -700,7 +677,6 @@
 
   #ask_Question h2{
     margin-bottom: 1em;
-
   }
 
   #question_Input {
@@ -729,7 +705,7 @@
   *              *
   ***************/
 
-  #content {
+  #cart_Page {
     max-width: 1200px;
     margin: 20px auto;
     background-color: #fff;

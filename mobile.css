@@ -17,7 +17,7 @@ header {
     width: 100%;}
 
 #menu ul{
-    font-size: 100%;
+    font-size: 90%;
 }
 
 /*BREADCRUMB*/
@@ -80,35 +80,28 @@ header {
     margin: 0em;
 }
 
-#brand_Container a{
-    height: 1em;
-}
-
 /*PAGAMENTI*/
 
 #payments{
-    padding: 0.5em;
+    padding: 1em;
 }
 
 #payments h2{
-    font-size: 130%;
+    font-size: 120%;
     padding-bottom: 0.3em;
 }
 
 #Mastercard{
-    width: 40%;
+    width: 20%;
 }
-
 #Visa{
-    width: 40%;
+    width: 20%;
 }
-
 #Googlepay{
-    width: 40%;
+    width: 20%;
 }
-
 #Paypal{
-    width: 40%;
+    width: 20%;
 }
 
 /*SOCIAL*/
@@ -121,14 +114,15 @@ header {
 .social_List a{
     margin: 0em 0.5em 2.5em 0.5em;
     padding: 0.5em;
-    height: 0.8em;
-    width: 0.8em;
+    height: 0.5em;
+    width: 0.5em;
 }
 
 /* PULSANTE TORNA SU */
 
 #buttonToTop{
     position: fixed;
+    font-size: 90%;
     right: 0.5em;
     bottom: 6em;
 }
@@ -138,6 +132,66 @@ header {
 footer {
     padding: 0.5em;
 }
+
+#footer_Text{
+    margin-bottom: 5em;
+  }
+
+/*CHI SIAMO*/
+
+#chiSiamo_Content{
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+
+#chiSiamo_Content h1{
+    font-size: 150%;
+    margin-bottom: 0.5em;
+}
+
+#company_Info p{
+    padding-left: 8%;
+    padding-right: 8%;
+}
+
+.members p {
+    padding-left: 8%;
+    padding-right: 8%;
+}
+
+#team_Members h2{
+    font-size: 130%;
+}
+
+/*FAQ*/
+
+#faq h1{
+    font-size: 140%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.type_Questions{
+    font-size: 120%;
+    margin-left: 0em;
+    margin-bottom: 0.5em;
+}
+
+.question h2{
+    font-weight: bold;
+    font-size: 110%;
+}
+
+#question_Input {
+    padding: 0.5em;
+    width: 80%;
+}
+
+#addQuestion{
+    font-size: 100%;
+    padding: 0.5em 1em;
+}
+
 
 
 

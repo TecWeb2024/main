@@ -430,18 +430,18 @@
    *                                                         *
    ***********************************************************/
 
-  .products_List{
+  #products_List{
     padding: 0.5em 1.5em 2.5em 1.5em;
   }
   
-  .products_List h1{
+  #products_List h1{
     font-size: 200%;
     text-align: center;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
   
-  .products_Container {
+  #products_Container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -449,32 +449,33 @@
     margin: 0 -10px;
   }
     
-  .products_Container li{
+  #products_Container li{
     border: 1px solid black;
     margin: 10px;
     padding: 10px;
     border-radius: 5px;
-    flex: 0 0 300px;
+    flex: 0 0 250px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     list-style-type:none;
     font-size: 150%;
   }
 
-  .products_Container li:hover {
+  #products_Container li:hover {
       transform: scale(1.05);
       box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   }
    
-  .products_Container img {
+  #products_Container img {
       align-content: center;
       object-fit:cover;
       width: 100%;
-      height: 90%;
+      height: 80%;
       margin-bottom: 0.3em;
   }
 
-  .products_Container a{
+  #products_Container a{
+    font-size: 100%;
     text-decoration: none;
     text-align: center;
     color: var(--textProducts);
@@ -487,7 +488,7 @@
    ******************/
 
   #product_Page {
-    padding: 0.5em 1.5em 2.5em 1.5em;
+    padding: 0.5em 0.5em 2.5em 0.5em;
   }
   
   #product_Page h1 {
@@ -503,7 +504,8 @@
     height: 100%;
     display: grid;
     grid-template-columns: auto auto;
-    gap: 10px;
+    gap: 15px;
+    padding: 1em;
   }
 
   .grid_Image{
@@ -512,13 +514,13 @@
   
 
   #product_Images img{
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
   }
   
   #product_Details {
     float: left;
-    width: 50%;
+    width: 40%;
     height: 100%;
   }
 
@@ -545,8 +547,9 @@
     margin-bottom: 0.5em;
   }
   
-  .cart_List{
-    font-weight: bold;
+  #product_Description h2{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
   }
 
   #product_Description{
@@ -575,6 +578,7 @@
 
   #delivery_Details {
     font-size: 110%;
+    padding: 0.5em;
   }
 
   #delivery_List{
@@ -623,8 +627,8 @@
   
   .members img {
     border: 1px solid black;
-    width: 50%;
-    height: auto; /*nel caso da sistemare*/
+    width: 10em;
+    height: 12em;
     object-fit: contain;
     margin-top: 0.5em;
     margin-bottom: 1em;
@@ -805,13 +809,13 @@
     margin-bottom: 5px;
   }
   
-  input,
+  /*input,
   select,
   textarea {
     margin-bottom: 15px;
     padding: 10px;
     width: 100%;
-  }
+  }*/
   
   .payment-details {
     display: none;
@@ -907,7 +911,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 1em;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
@@ -915,8 +919,8 @@
   .form h1 {
     width: 100%;
     text-align: center;
-    margin-bottom: 30px;
-    margin-top: 30px;
+    margin-bottom: 1em;
+    margin-top: 1em;
   }
   
   .form input[type="email"],

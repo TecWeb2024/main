@@ -1,5 +1,10 @@
-/* Stili generici per la stampa */
-    html{/*fatto*/
+  /******************
+   *                *
+   *    HOME PAGE   *
+   *                *
+   ******************/
+
+    html{
     font-family: "Times New Roman", Times, serif;
     font-size:12pt;
     }
@@ -7,12 +12,12 @@
     body{
       display: block;
     }
-    /* Nascondi il menu durante la stampa */
+    
     #menu { /* menu è giusto cancellarlo*/
       display: none;
     }
 
-    main { /*fatto*/
+    main {
         margin-left: 0em;
         width: 100%;
         padding: 0.3em 0em 0.5em 0em;
@@ -35,12 +40,12 @@
             content: " ( " attr(href) " )";
      }
     /* Nascondi il pulsante "Torna in cima" durante la stampa */
-    #buttonToTop { /*fatto*/
+    #buttonToTop { 
       display: none;
     }
   
     /* Nascondi i link di navigazione durante la stampa */
-    .navigationHelp { /*fatto*/
+    .navigationHelp { 
       display: none;
     }
   
@@ -153,7 +158,7 @@
       display:none;
     }
 
-    footer{ /*fatto*/
+    footer{
         border: 1px solid black;
         margin-top: 0.5cm;
         text-align: center;
@@ -169,3 +174,10 @@
       margin-bottom: 0.5cm;
     }
   
+
+
+   /***********************************************************
+   *                                                         *
+   *    ACCESSORI - PESI LIBERI - NUTRIZIONE - MACCHINARI    *
+   *                                                         *
+   ***********************************************************/

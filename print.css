@@ -23,10 +23,10 @@
         padding: 0.3em 0em 0.5em 0em;
      }
 
-    .logo{ /* fatto,cambiare foto del logo!*/
+    h1.logo{ /* fatto,cambiare foto del logo!*/
     height: 3cm;
     width: auto;
-    content: url('images/zeusbiancogrigio.jpg');
+    content: url('images/zeusprint.jpg');
     margin-left: auto;
     margin-right: auto;
         

@@ -408,6 +408,7 @@
   /*FOOTER*/
   
   footer {
+    margin-top: auto;
     background-color: var(--footerBgColor);
     color: var(--footerTextColor);
     padding: 1em;
@@ -851,7 +852,6 @@
     border: none;
     cursor: pointer;
   }
-  
 
   /*****************
    *               *
@@ -866,13 +866,12 @@
   }
   
   #error_Message h1{
-    font-size: 3em;
+    font-size: 200%;
     margin-bottom: 1em;
   }
   
   #error_Message p{
     font-size: 120%;
-    line-height: 1.5;
   }
 
   #first_Sentence404::after{

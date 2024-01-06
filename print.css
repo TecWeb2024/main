@@ -23,14 +23,13 @@
         padding: 0.3em 0em 0.5em 0em;
      }
 
-    h1.logo{ /* fatto,cambiare foto del logo!*/
-    height: 3cm;
-    width: auto;
-    content: url('images/zeusprint.jpg');
-    margin-left: auto;
-    margin-right: auto;
-        
-    }
+     .logo{
+      height: 3cm;
+      width: auto;
+      content: url('images/zeusprint.jpg');
+      margin-left: auto;
+      margin-right: auto;
+      }
 
     a[href^="/"]:after {
         content: " ( http://tecweb.studenti.math.unipd.it/tcorbu/" attr(href) ") ";
@@ -342,6 +341,129 @@
   *              *
   ***************/
 
+  body {
+    padding-top: 3.5cm; /* circa 3.5cm in px */
+    position: relative;
+  }
+  
+  h1.logo {
+    text-align: center;
+    margin-top: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+  }
+  
+  .title h1 {
+    color: black;
+  }
+  
+  .buy-now {
+    display: none;
+  }
+  
+  .cart-items {
+    text-align: center;
+    gap: 20px; /* circa 1.25em in px */
+  }
+  
+  .product-card {
+    display: inline-block;
+    width: calc(50% - 20px); /* circa 1.25em in px */
+    border: 1px solid black;
+    border-radius: 5px; /* circa 0.313em in px */
+    overflow: hidden;
+  }
+  
+  .product-card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .product-details {
+    padding: 20px; /* circa 1.25em in px */
+  }
+  
+  .product-details h2 {
+    margin: 0 0 10px; /* circa 0.625em in px */
+  }
+  
+  .product-details p {
+    margin: 0;
+    font-size: 18px; /* circa 1.125em in px */
+  }
+  
+  .quantity-size {
+    display: inline-block;
+  }
+  
+  .remove-product {
+    display: none;
+  }
+  
+  .order-details {
+    display: inline-block;
+    gap: 20px; /* circa 1.25em in px */
+    margin-top: 20px; /* circa 1.25em in px */
+  }
+  
+  .order-details h2 {
+    margin-bottom: 10px; /* circa 0.625em in px */
+  }
+  
+  .order-form {
+    display: inline-block;
+    align-items: center;
+  }
+  
+  label {
+    margin-bottom: 10px; /* circa 0.313em in px */
+  }
+  
+  .payment-details {
+    display: none;
+  }
+  
+  .pay-now-button {
+    display: none;
+  }
+  
+  .popup {
+    display: none;
+  }
+  
+  #contacts h2 {
+    color: black;
+  }
+  
+  #contacts li[aria-label="email"] a,
+  #contacts li[aria-label="telefono"] a {
+    color: black;
+  }
+  
+  .section {
+    display: block;
+  }
+  
+  .order-form label {
+    display: inline-block;
+    width: 150px;
+    margin-bottom: 10px; /* circa 0.313em in px */
+  }
+  
+  .order-form input[type="text"],
+  .order-form textarea {
+    display: inline-block;
+    width: calc(100% - 110px);
+    vertical-align: top;
+    margin-bottom: 10px; /* circa 0.313em in px */
+  }
+  
+  footer {
+    width: calc(100% - 1cm); /* circa 1cm in px */
+  }
+  
 
 
   /***************

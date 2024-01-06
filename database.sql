@@ -27,8 +27,8 @@ CREATE TABLE `utente` (
 
 
 INSERT INTO `utente` (`ID`, `nome`, `email`, `password`, `admin`) VALUES
-(1, 'User', 'user@user.com', 'user', 0),
-(2, 'Admin', 'admin@admin.com', 'admin', 1);
+(1, 'user', 'user@user.com', 'user', 0),
+(2, 'admin', 'admin@admin.com', 'admin', 1);
 
 
 CREATE TABLE `faq` (

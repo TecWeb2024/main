@@ -471,3 +471,13 @@
    *   ACCOUNT   *
    *             *
    ***************/
+
+   .accountButton{
+    display:none;
+   }
+   #form_Container p{
+    display:none;
+   }
+   input[type="password"]{
+    display:none;
+   }

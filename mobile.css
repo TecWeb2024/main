@@ -14,20 +14,24 @@ header {
     bottom: 0;
     justify-content: space-around;
     clear: both;
-    width: 100%;}
-
-#menu ul{
-    font-size: 90%;
+    width: 100%;
 }
 
-/*BREADCRUMB*/
+#menu ul{
+    font-size: 100%;
+    padding: 0.5em;
+}
+
+#menu ul li{
+    margin: 0 0.3em;
+}
 
 #breadcrumb{
     font-size: 90%;
     padding: 0.5em 0em 0.5em 0.8em;
 }
 
-/*CATEGORIES*/
+/*categories*/
 
 #categories{
     padding: 0.5em 1em 0.5em 1em;
@@ -45,7 +49,7 @@ header {
     font-size: 150%;
 }
 
-.categories_Container a:hover { /*NO HOVER PER MOBILE*/
+.categories_Container a:hover{
     transform: none;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -66,7 +70,7 @@ header {
     background-image: none;
 }
 
-/*BRAND*/
+/*brand*/
 
 #brand{
     padding: 0.5em;
@@ -81,10 +85,10 @@ header {
     margin: 0em;
 }
 
-/*PAGAMENTI*/
+/*payments*/
 
 #payments{
-    padding: 1em;
+    padding: 0.5em;
 }
 
 #payments h2{
@@ -105,7 +109,7 @@ header {
     width: 20%;
 }
 
-/*SOCIAL*/
+/*social*/
 
 .social_List h2{
     margin-top: 0.5em;
@@ -119,7 +123,7 @@ header {
     width: 0.5em;
 }
 
-/* PULSANTE TORNA SU */
+/*button to top*/
 
 #buttonToTop{
     position: fixed;
@@ -128,10 +132,8 @@ header {
     bottom: 6em;
 }
 
-/*FOOTER*/
-
 footer {
-    padding: 0.5em 0em 0.5em 0em;
+    padding: 0.5em;
 }
 
 #footer_Text{
@@ -148,14 +150,16 @@ footer {
     font-size: 160%;
 }
 
-#products_Container a{
-    font-size: 90%;
+#products_Container li{
+    flex: 0 0 60%;
+    font-size: 110%;
 }
 
 #products_Container li:hover {
     transform: none;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 
 /*PRODOTTI*/
 
@@ -247,6 +251,7 @@ footer {
 
 #question_Input {
     padding: 0.5em;
+    margin-bottom: 1em;
     width: 80%;
 }
 
@@ -255,18 +260,63 @@ footer {
     padding: 0.5em 1em;
 }
 
+#addQuestion:hover {
+    background-color: #757575;
+}
+
 /*ACCOUNT*/
 
 #form_Container {
     width: auto;
+    padding: 0.5em;
 }
 
 #form_Container h1{
     font-size: 140%;
 }
 
+#form_Container p{
+    font-size: 120%;
+}
+
 .accountButton{
     padding: 1.5em;
+}
+
+.accountButton:hover {
+    background-color: #757575;
+}
+
+/*CART*/
+
+#cart_Page {
+    width: 100%;
+    padding: 0.5em;
+}
+
+#cart_Page h1{
+    font-size: 160%;
+}
+
+#headerCart ul {
+    font-size: 130%;
+}
+
+#buy_Now {
+    margin-top: 1em;
+}
+
+#buy_Now:hover {
+    background-color: #757575;
+}
+
+#cart_Container{
+    justify-content: space-around;
+}
+
+#cart_Container li{
+    flex: 0 0 60%;
+    font-size: 100%;
 }
 
 /*ERROR 404 - 500*/

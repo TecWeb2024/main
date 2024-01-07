@@ -7,7 +7,9 @@
   <meta name="keywords"
     content="Olympo Fitness, palestra, negozio palestra, carrello, pesi liberi, macchinari palestra, macchinari, nutrizione, accessori palestra">
   <meta name="author" content="Olympo Fitness">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" media="screen">
+  <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 508px)">
+  <link rel="stylesheet" href="tablet.css" media="screen and (min-width: 509px) and (max-width: 768px)">
   <link rel="stylesheet" href="print.css" media="print">
 </head>
 
@@ -37,61 +39,58 @@
   <main id="content">
 
     <div id="cart_Page">
-    <header class="headerCarrello">
-      <div class="title">
-        <h1>Carrello</h1>
+
+      <h1>Carrello</h1>
+
+      <div id="headerCart">
+          <ul>Riepilogo Ordine:
+            <li>Prezzo parziale: ...€</li>
+            <li>Costo spedizione: ...€</li>
+            <li>Totale: ...€ (2 articoli selezionati)</li>
+          </ul>
+        <button id="buy_Now">Acquista ora</button> <!--sistemare-->
       </div>
-      <button class="buy-now">Acquista ora</button>
-    </header>
 
-    <section class="cart-items">
+    <ul id="cart_Container">
 
-      <div class="product-card">
-        <img src="images/Paypal.jpg" alt="Prodotto 1">
+      <li>
+        <img src="images/BorsoneAperto.jpg" alt="Prodotto 1">
         <div class="product-details">
-          <h2>Nome Prodotto</h2>
-          <p>€ Prezzo</p>
-          <div class="quantity-size">
-            <select id="quantity1">
+          <p>Nome Prodotto € Prezzo</p>
+            <select>
               <option value="1">Quantità: 1</option>
               <!-- Altre opzioni di quantità -->
             </select>
-            <select id="size1">
+            <select>
               <option value="XL">Taglia: XL</option>
               <!-- Altre opzioni di taglia -->
             </select>
             <button class="remove-product">Rimuovi Prodotto dal carrello</button>
-          </div>
         </div>
-      </div>
+      </li>
 
-      <!-- Altre card per altri prodotti nel carrello -->
-
-      <div class="product-card">
-        <img src="images/Paypal.jpg" alt="Prodotto 1">
+      <li>
+        <img src="images/tapis1.jpg" alt="Prodotto 1">
         <div class="product-details">
-          <h2>Nome Prodotto</h2>
-          <p>€ Prezzo</p>
-          <div class="quantity-size">
-            <select id="quantity1">
+          <p>Nome Prodotto € Prezzo</p>
+            <select>
               <option value="1">Quantità: 1</option>
               <!-- Altre opzioni di quantità -->
             </select>
-            <select id="size1">
+            <select>
               <option value="XL">Taglia: XL</option>
               <!-- Altre opzioni di taglia -->
             </select>
             <button class="remove-product">Rimuovi Prodotto dal carrello</button>
-          </div>
         </div>
-      </div>
+      </li>
 
-    </section>
+    </ul>
 
-    <section class="order-details">
-      <div class="section" id="section1">
-        <h2>Indirizzo di consegna</h2>
-        <form class="order-form">
+    <section id="order_Details"> <!--sistemare campi corretti-->
+      <div id="delivery_Address">
+        <h2>Indirizzo di consegna:</h2>
+        <form class="order_Form">
           <label for="name">Nome:</label>
           <input type="text" id="name" name="name" required>
 
@@ -101,9 +100,9 @@
         </form>
       </div>
 
-      <div class="section" id="section2">
-        <h2>Modalità di pagamento</h2>
-        <form class="order-form">
+      <div id="delivery_Payments">
+        <h2>Modalità di pagamento:</h2>
+        <form class="order_Form">
           <label for="payment-method">Pagamento con:</label>
           <select id="payment-method" name="payment-method" required>
             <option value="credit-card">Carta di credito/debito</option>
@@ -138,23 +137,10 @@
 
         </form>
       </div>
-
-      <div class="section" id="section3">
-        <h2>Rivedi gli articoli e la spedizione</h2>
-        <!-- Display order summary, total, and other details -->
-        <!-- Example: -->
-        <p>Articolo 1 - €19.99</p>
-        <p>Articolo 2 - €29.99</p>
-        <p>Spedizione - €5.00</p>
-        <p><strong>Totale: €54.98</strong></p>
-
-        <button type="button" class="pay-now-button" onclick="confirmOrder()">Paga Ora</button>
-        <!-- Add logic for confirmOrder -->
-      </div>
     </section>
 
 
-    <div class="popup" style="display: none;">
+    <div class="popup" style="display: none;"> <!--cambiare!!-->
       <p id="popuptext">Acquisto effettuato con successo! Grazie per aver ordinato da Olympo Fitness.</p>
       <button id="close-popup">Continua</button>
     </div>
@@ -197,7 +183,7 @@
 
       <a href="https://www.twitter.com/" id="twitterImage">Twitter</a>
     </div>
-    <div id="footer_Text">&copy; 2024 <span lang="en">Olympo Fitness</span>. Tutti i diritti riservati.</div> 
+    <div id="footer_Text"><p>&copy; 2024 <span lang="en">Olympo Fitness</span>. Tutti i diritti riservati.</p></div> 
 </footer>
 
 </body>

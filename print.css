@@ -168,7 +168,7 @@
       padding-bottom: 0.5cm;
     }
 
-    #footer_Text
+    #footer_Text p
     {
       margin-bottom: 0.5cm;
     }
@@ -355,113 +355,100 @@
     top: 0;
   }
   
-  .title h1 {
-    color: black;
+  #cart_Page h1 {
+    /*color: black;*/
+    text-align: center;
   }
-  
-  .buy-now {
+
+  #headerCart {
+    display:block;
+    align-items: center;
+    padding: 10px;
+  }
+
+  #headerCart li
+  {
+    list-style: none; /* Rimuove il segno di elenco */
+    padding: 0;
+  }
+
+  #buy_Now {
     display: none;
   }
   
-  .cart-items {
-    text-align: center;
-    gap: 20px; /* circa 1.25em in px */
+  #cart_Container {
+    padding: 0;
+    margin: 0;
   }
   
-  .product-card {
-    display: inline-block;
-    width: calc(50% - 20px); /* circa 1.25em in px */
+  #cart_Container li {
+    width: 25%;
+    float: left;
+    margin: 10px;
+    padding: 0px;
+    height: 100%;
     border: 1px solid black;
-    border-radius: 5px; /* circa 0.313em in px */
-    overflow: hidden;
+    list-style-type: none;
+    padding: 0;
   }
   
-  .product-card img {
+  #cart_Container img {
     width: 100%;
-    height: auto;
   }
   
   .product-details {
-    padding: 20px; /* circa 1.25em in px */
-  }
-  
-  .product-details h2 {
-    margin: 0 0 10px; /* circa 0.625em in px */
-  }
-  
-  .product-details p {
-    margin: 0;
-    font-size: 18px; /* circa 1.125em in px */
-  }
-  
-  .quantity-size {
-    display: inline-block;
+    font-size: 110%;
+    margin: 2%;
   }
   
   .remove-product {
     display: none;
   }
-  
-  .order-details {
-    display: inline-block;
-    gap: 20px; /* circa 1.25em in px */
-    margin-top: 20px; /* circa 1.25em in px */
+
+  #order_Details {
+    padding: 1em 0em;
+    margin-top: 1.5em;
   }
-  
-  .order-details h2 {
-    margin-bottom: 10px; /* circa 0.625em in px */
+
+  #order_Details h2 {
+    font-size: 120%;
   }
-  
-  .order-form {
-    display: inline-block;
-    align-items: center;
+
+  #delivery_Address {
+    margin: 0.5em;
+    width: calc(50% - 1em); /* Metà del container */
+    float: left; /* Posizionamento a sinistra */
   }
-  
-  label {
-    margin-bottom: 10px; /* circa 0.313em in px */
+
+  #delivery_Payments {
+    margin: 0.5em;
+    width: calc(50% - 1em); /* Metà del container */
+    float: right; /* Posizionamento a destra */
   }
-  
+
+  #delivery_Address label,
+  #delivery_Address input,
+  #delivery_Address textarea {
+    display: block; /* Visualizza ogni elemento su una nuova riga */
+    margin-bottom: 0.5em; /* Aggiungi spazio tra gli elementi */
+  }
+
   .payment-details {
     display: none;
   }
-  
-  .pay-now-button {
-    display: none;
-  }
-  
+
   .popup {
     display: none;
   }
   
-  #contacts h2 {
-    color: black;
-  }
   
   #contacts li[aria-label="email"] a,
   #contacts li[aria-label="telefono"] a {
     color: black;
   }
   
-  .section {
-    display: block;
-  }
-  
-  .order-form label {
-    display: inline-block;
-    width: 150px;
-    margin-bottom: 10px; /* circa 0.313em in px */
-  }
-  
-  .order-form input[type="text"],
-  .order-form textarea {
-    display: inline-block;
-    width: calc(100% - 110px);
-    vertical-align: top;
-    margin-bottom: 10px; /* circa 0.313em in px */
-  }
-  
   footer {
-    width: calc(100% - 1cm); /* circa 1cm in px */
+    clear: both; /* Posizionare il footer sotto gli elementi float */
   }
   
 

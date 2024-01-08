@@ -18,10 +18,10 @@
     }
 
     main {
-        margin-left: 0em;
-        width: 100%;
-        padding: 0.3em 0em 0.5em 0em;
-     }
+      margin-left: 0.8cm; /* circa 0.8cm in em considerando 16px di base */
+      width: 100%;
+      padding: 0.3cm 0 0.5cm 0; /* circa 0.3cm e 0.5cm in em considerando 16px di base */
+  }  
 
      .logo{
       height: 3cm;
@@ -255,16 +255,17 @@
 }
 
 #product_Details h2 {
-  font-size: 180%;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  font-size: 180%; /* Conversione da 180% di 12px (valore di base) */
+  margin-top: 6px; /* Conversione da 0.5em a px */
+  margin-bottom: 6px; /* Conversione da 0.5em a px */
 }
+
 
 #product_Specs,
 #cart_Specs {
   list-style-type: none;
   font-size: 120%;
-  margin-bottom: 0.5em;
+  margin-bottom: 6px;
 }
 
 .specs_List {
@@ -274,18 +275,18 @@
 }
 
 #product_Description h2 {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 
 #product_Description {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin-top: 6px;
+  margin-bottom: 6px;
   font-size: 110%;
 }
 
 #delivery_Details h2 {
-  margin-bottom: 0.5em;
+  margin-bottom: 6px;
 }
 
 #delivery_Details {
@@ -406,8 +407,8 @@
   }
 
   #order_Details {
-    padding: 1em 0em;
-    margin-top: 1.5em;
+    padding: 12px 0;
+    margin-top: 18px;
   }
 
   #order_Details h2 {
@@ -415,14 +416,14 @@
   }
 
   #delivery_Address {
-    margin: 0.5em;
-    width: calc(50% - 1em); /* Metà del container */
+    margin: 6px;
+    width: calc(50% - 12px); /* Metà del container */
     float: left; /* Posizionamento a sinistra */
   }
 
   #delivery_Payments {
-    margin: 0.5em;
-    width: calc(50% - 1em); /* Metà del container */
+    margin: 6px;
+    width: calc(50% - 12px); /* Metà del container */
     float: right; /* Posizionamento a destra */
   }
 
@@ -430,7 +431,7 @@
   #delivery_Address input,
   #delivery_Address textarea {
     display: block; /* Visualizza ogni elemento su una nuova riga */
-    margin-bottom: 0.5em; /* Aggiungi spazio tra gli elementi */
+    margin-bottom: 6px; /* Aggiungi spazio tra gli elementi */
   }
 
   .payment-details {

@@ -1,6 +1,6 @@
 // Mostra o nascondi il menu mobile
 // usato dal menu "hamburger"
-//NON CREDO CHE SERVA
+//NON CREDO CHE SERVA, INUTILE
 function toggleMobileMenu(){
     document.querySelector("nav#menu").classList.toggle("show");
 }
@@ -165,7 +165,7 @@ function setAdminLoginChecks(){
 }
 
 
-//NON SO SE CI SERVA QUESTO
+//CI SERVE
 function setAdminProdottoChecks(){
    
     checks = {
@@ -255,7 +255,7 @@ function setAdminCategoriaMarcaChecks(){
 
 
 
-//NON SO SE CI SERVA
+//NON SO SE CI SERVA,REGISTRAZIONE
 function setAdminUtenteChecks(){
     checks = {
         nome:{

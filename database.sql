@@ -17,6 +17,7 @@ INSERT INTO `categoria` (`ID`, `nome`,`keywords`) VALUES
 (4,'Macchinari','Olympo Fitness, palestra, negozio palestra, pesi liberi , macchinari palestra, macchinari, macchine, nutrizione, accessori palestra');
 
 
+
 CREATE TABLE `utente` (
   `ID` int(10) UNSIGNED NOT NULL,
   `nome` varchar(100) NOT NULL,

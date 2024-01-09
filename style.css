@@ -129,7 +129,6 @@
 
   #categories{
     padding: 0.5em 1.5em 0.5em 1.5em;
-    height: 26em;
   }
 
   #categories h1{
@@ -142,35 +141,46 @@
   .categories_Container{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    list-style-type: none;
     padding: 0;
     margin: 0 -10px;
-    height: 85%;
   }
 
-  .categories_Container a{
+  .categories_Container li{  
     border: 1px solid black;
     margin: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    flex: 1 1 20%;
+    padding: 0px;
+    /*border-radius: 5px;*/
+    flex: 0 0 300px;
+    height: 100%;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-    text-decoration: none;
+    background-color: #757575;
     text-align: center;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 200%;
-    color: var(--textCategories);
   }
   
-  .categories_Container a:hover {
+  .categories_Container li:hover {
     transform: scale(1.05);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   }
 
+  .categories_Container a{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 170%;
+    color: var(--textCategories);
+  }
+
+  .categories_Container img{
+    align-content: center;
+    object-fit:cover;
+    width: 100%;
+  }
+  /*
   #accessoriImage{
-    background-image: url('images/accessorifatto.jpg');
+    background-image: url('images/testAccessori.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -186,20 +196,22 @@
   #nutrizioneImage{
     background-image: url('images/nutrizionefatto.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
   }
 
   #macchinariImage{
     background-image: url('images/macchinarifatto.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
   }
+  */
 
   /*BRAND*/
 
   #brand{
+    margin-top: auto;
     padding: 1em;
   }
 
@@ -593,14 +605,14 @@
   }
 
   #chiSiamo_Content h1{
-    font-size: 205%;
+    font-size: 200%;
     text-align: center;
     margin-bottom: 1em;
     margin-top: 1em;
   }
   
   #company_Info {
-    padding-bottom: 4em;
+    padding-bottom: 3em;
   }
   
   #company_Info p{
@@ -608,11 +620,24 @@
     text-align: left;
     padding-left: 15%;
     padding-right: 15%;
+    margin-bottom: 1.5em;
+  }
+
+  #company_Info h2{
+    text-align: center;
+    font-size: 180%;
+  }
+
+  #company_Info img{
+    margin-top: 1em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   #team_Members h2{
     text-align: center;
-    font-size: 180%;
+    font-size: 170%;
   }
   
   .members {
@@ -623,8 +648,8 @@
   
   .members img {
     border: 1px solid black;
-    width: 10em;
-    height: 12em;
+    width: 20%;
+    height: auto;
     object-fit: contain;
     margin-top: 0.5em;
     margin-bottom: 1em;

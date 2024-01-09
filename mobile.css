@@ -35,7 +35,6 @@ header {
 
 #categories{
     padding: 0.5em 1em 0.5em 1em;
-    height: 25em;
 }
 
 #categories h1{
@@ -44,16 +43,22 @@ header {
     margin-bottom: 0.3em;
 }
 
-.categories_Container a{
-    background-color: #757575;
-    font-size: 150%;
+.categories_Container li{
+    padding: 0.5em;
+    flex: 0 0 60%;
+    font-size: 110%;
 }
 
-.categories_Container a:hover{
+.categories_Container li:hover{
     transform: none;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.categories_Container img{
+    display: none;
+}
+
+/*
 #accessoriImage{
     background-image: none;
 }
@@ -69,15 +74,19 @@ header {
 #macchinariImage{
     background-image: none;
 }
+*/
 
 /*brand*/
 
 #brand{
+    margin-top: auto;
     padding: 0.5em;
   }
 
 #brand h2{
     font-size: 130%;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
 }
 
 #brand_Container{
@@ -148,6 +157,8 @@ footer {
 
 #products_List h1{
     font-size: 160%;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
 }
 
 #products_Container li{
@@ -169,6 +180,8 @@ footer {
 
 #product_Page h1 {
     font-size: 160%;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
 }
 
 #product_Images{
@@ -213,7 +226,8 @@ footer {
 
 #chiSiamo_Content h1{
     font-size: 150%;
-    margin-bottom: 0.5em;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
 }
 
 #company_Info p{
@@ -221,9 +235,22 @@ footer {
     padding-right: 8%;
 }
 
-.members p {
+#company_Info h2{
+    font-size: 140%;
+}
+
+#company_Info img{
+    width: 70%;
+    height: 50%;
+}
+
+.members p{
     padding-left: 8%;
     padding-right: 8%;
+}
+
+.members img{
+    width: 40%;
 }
 
 #team_Members h2{
@@ -234,8 +261,8 @@ footer {
 
 #faq h1{
     font-size: 140%;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
 }
 
 .type_Questions{
@@ -296,6 +323,8 @@ footer {
 
 #cart_Page h1{
     font-size: 160%;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
 }
 
 #headerCart ul {
@@ -323,6 +352,8 @@ footer {
 
 #error_Message h1{
     font-size: 160%;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
 }
 
 #error_Message p{

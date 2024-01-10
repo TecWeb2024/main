@@ -1,20 +1,3 @@
-// Mostra o nascondi il menu mobile
-// usato dal menu "hamburger"
-//NON CREDO CHE SERVA, INUTILE
-function toggleMobileMenu(){
-    document.querySelector("nav#menu").classList.toggle("show");
-}
-
-function setRangeListener(){
-    let range = document.querySelector('input[type="range"]');
-    range.addEventListener('change',showRangeValue);
-}
-
-function showRangeValue(event){
-    let id = event.target.getAttribute('id');
-    document.querySelector('label[for="'+id+'"] span#value').innerHTML = event.target.value;
-}
-
 
 var checks = {};
 
@@ -142,31 +125,33 @@ function setContattiChecks(){
 
 }
 
-// Admin checks
-
+   /*****************
+   *                *
+   *    AREA ADMIN  *
+   *                *
+   ******************/
+//FATTO
 function setAdminLoginChecks(){
 
     checks = {
-        username:{
-            message:"Formato del nome utente non corretto.",
+        nome:{
+            message:"Inserire un nome utente con almeno 3 lettere e/o numeri.",
             condition: function(str){
-                let expr = /\w{4,}/ ;
+                let expr = /\w{3,}/ ;
                 return expr.test(str);
             }
         },
         password:{
-            message:"Formato della <span lang='en'>password</span> non corretto.",
+            message:"Inserire una <span lang='en'>password</span> con almeno 6 caratteri.",
             condition: function(str){
-                return str.length>=5;
+                return str.length>=6;
             }
         }
-    }
-
+    };
 }
 
-
-//CI SERVE
-function setAdminProdottoChecks(){
+//FATTO
+function setAdminProdottoInserimentoChecks(){
    
     checks = {
         nome:{
@@ -175,40 +160,46 @@ function setAdminProdottoChecks(){
                 return str.length>=5;
             }
         },
+    /*    immagine1:{ 
+            message:"Inserire una immagine valida caricata nella cartella Images.",
+            condition: function(str){
+                return str.length>=5;
+            }
+        },
+        immagine2:{ 
+            message:"Inserire una immagine valida caricata nella cartella Images.",
+            condition: function(str){
+                return str.length>=5;
+            }
+        },
+        immagine3:{ 
+            message:"Inserire una immagine valida caricata nella cartella Images.",
+            condition: function(str){
+                return str.length>=5;
+            }
+        },
+        immagine4:{ 
+            message:"Inserire una immagine valida caricata nella cartella Images.",
+            condition: function(str){
+                return str.length>=5;
+            }
+        },*/
         categoria:{
             message:"Selezionare una categoria.",
             condition: function(str){
                 return str!=0;
             }
         },
-        origine:{
-            message:"Inserire una nazione di origine.",
+        /*keywords:{
+            message:"Inserire delle <span lang='en'>keywords</span> che rispecchia il prodotto.",
             condition: function(str){
-                return str.length>0;
+                return str.length>=5;
             }
-        },
-        marca:{
-            message:"Selezionare una marca.",
+        },*/
+        prezzo:{
+            message:"Inserire un prezzo numerico maggiore di 0.",
             condition: function(str){
-                return str!=0;
-            }
-        },
-        modello:{
-            message:"Inserire un modello.",
-            condition: function(str){
-                return str.length>0;
-            }
-        },
-        descrizione:{
-            message:"Inserire una descrizione con almeno 10 caratteri.",
-            condition: function(str){
-                return str.length>=10;
-            }
-        },
-        dimensione:{
-            message:"Inserire una dimensione con almeno 2 caratteri.",
-            condition: function(str){
-                return str.length>=2;
+                return (!isNaN(parseFloat(str))) && parseFloat(str)>0;
             }
         },
         peso:{
@@ -217,20 +208,130 @@ function setAdminProdottoChecks(){
                 return str.length>=2;
             }
         },
+        dimensione:{
+            message:"Inserire una dimensione con almeno 2 caratteri.",
+            condition: function(str){
+                return str.length>=2;
+            }
+        },
+        colore:{
+            message:"Inserire un colore con almeno 3 caratteri (es.'blu').",
+            condition: function(str){
+                return str.length>=3;
+            }
+        },
+        volume:{
+            message:"Inserire il volume del prodotto.",
+            condition: function(str){
+                return str.length!=0;
+            }
+        },
+        materialeUtilizzato:{
+            message:"Inserire il/i materiale/i utilizzato/i nel prodotto.",
+            condition: function(str){
+                return str.length!=0;
+            }
+        },
+        quantita:{
+            message:"Inserire la qunatità del prodotto.",
+            condition: function(str){
+                return str.length>0;
+            }
+        },
+        taglia:{
+            message:"Inserire la taglia del prodotto.",
+            condition: function(str){
+                return str.length!=0;
+            }
+        },
+        descrizione:{
+            message:"Inserire una descrizione con almeno 25 caratteri.",
+            condition: function(str){
+                return str.length>=25;
+            }
+        },
+        tempoConsegna:{
+            message:"Inserire una descrizione con almeno 2 caratteri.",
+            condition: function(str){
+                return str.length>=2;
+            }
+        },
+        marca:{
+            message:"Selezionare la marca del prodotto.",
+            condition: function(str){
+                return str!=0;
+            }
+        },
+        //immagine controllata da PHP quando avviene l'upload
+    }
+}
+
+//FATTO
+function setAdminProdottoCancellazioneChecks(){
+   
+    checks = {
+        nome:{
+            message:"Inserire un nome con almeno 5 caratteri.",
+            condition: function(str){
+                return str.length>=5;
+            }
+        },
+
+        categoria:{
+            message:"Selezionare una categoria.",
+            condition: function(str){
+                return str!=0;
+            }
+        },
+        /*keywords:{
+            message:"Inserire delle <span lang='en'>keywords</span> che rispecchia il prodotto.",
+            condition: function(str){
+                return str.length>=5;
+            }
+        },*/
         prezzo:{
             message:"Inserire un prezzo numerico maggiore di 0.",
             condition: function(str){
                 return (!isNaN(parseFloat(str))) && parseFloat(str)>0;
             }
-        }
+        },
+        dimensione:{
+            message:"Inserire una dimensione con almeno 2 caratteri.",
+            condition: function(str){
+                return str.length>=2;
+            }
+        },
+        colore:{
+            message:"Inserire un colore con almeno 3 caratteri (es.'blu').",
+            condition: function(str){
+                return str.length>=3;
+            }
+        },
+        quantita:{
+            message:"Inserire la qunatità del prodotto.",
+            condition: function(str){
+                return str.length>0;
+            }
+        },
+        taglia:{
+            message:"Inserire la taglia del prodotto.",
+            condition: function(str){
+                return str.length!=0;
+            }
+        },
+        marca:{
+            message:"Selezionare la marca del prodotto.",
+            condition: function(str){
+                return str!=0;
+            }
+        },
         //immagine controllata da PHP quando avviene l'upload
-    };
+    }
 }
 
-
-
+//FATTO
 //NON SO SE CI SERVA
-function setAdminCategoriaMarcaChecks(){
+function setAdminCategoriaChecks(){
     checks = {
         nome:{
             message:"Inserire un nome con almeno 2 caratteri.",
@@ -239,42 +340,30 @@ function setAdminCategoriaMarcaChecks(){
             }
         },
         keywords:{
-            message:"Inserire delle <span lang='en'>keywords</span>.",
+            message:"Inserire delle <span lang='en'>keywords</span> della categoria desiderata.",
             condition: function(str){
-                return str.length>=2;
+                return str.length>=5;
             }
         },
-        descrizione:{
-            message:"Inserire una descrizione di almeno cinquanta caratteri.",
-            condition: function(str){
-                return str.length>=50;
-            }
-        }
     };
 }
 
 
-
+//FATTO
 //NON SO SE CI SERVA,REGISTRAZIONE
-function setAdminUtenteChecks(){
+function setAdminRegistrationChecks(){
     checks = {
         nome:{
-            message:"Inserire un nome con almeno 2 caratteri.",
+            message:"Inserire un nome utente con almeno 3 lettere e/o numeri.",
             condition: function(str){
-                return str.length>=2;
-            }
-        },
-        username:{
-            message:"Inserire un nome utente con almeno 4 lettere e/o numeri.",
-            condition: function(str){
-                let expr = /\w{4,}/ ;
+                let expr = /\w{3,}/ ;
                 return expr.test(str);
             }
         },
         password:{
-            message:"Inserire una <span lang='en'>password</span> con almeno 4 caratteri.",
+            message:"Inserire una <span lang='en'>password</span> con almeno 6 caratteri.",
             condition: function(str){
-                return str.length>=4;
+                return str.length>=6;
             }
         },
         email:{
@@ -288,128 +377,81 @@ function setAdminUtenteChecks(){
 }
 
 
-
+//FATTO
 //FORSE CI POTREBBE SERVIRE CON LA DOMANDA APERTA DEL NOSTRO FAQ, QUESTO E' QUANDO L'ADMIN RISPONDE ALLA DOMANDA
-function setAdminFAQChecks(){
+function setAdminFAQChecks(){ //UN ADMIN NON PUO' INVENTARSI LE DOMANDE NELLA FAQ E RISPNDERSI, 1A PARTE DELLA FAQ STATICA IN HTML, PUO' SOLO INTERAGIRE CON IL CAMPO APERTO
     checks = {
-        domanda:{
-            message:"Inserire una domanda con almeno 10 caratteri.",
-            condition: function(str){
-                return str.length>=10;
-            }
-        },
         risposta:{
-            message:"Inserire una risposta con almeno 10 caratteri.",
+            message:"Inserire una risposta con almeno 20 caratteri.",
             condition: function(str){
-                return str.length>=10;
+                return str.length>=20;
             }
         }
     };
 }
 
-// User Checks
 
 
+
+   /******************
+   *                *
+   *    AREA UTENTE *
+   *                *
+   ******************/
+
+//FATTO
 //CI SERVE PER FORZA, PENSO SIA PARTE LOGIN
 function setUserLoginChecks(){
 
     checks = {
-        username:{
-            message:"Formato del nome utente non corretto.",
-            condition: function(str){
-                let expr = /\w{4,}/ ;
-                return expr.test(str);
-            }
-        },
-        password:{
-            message:"Formato della <span lang='en'>password</span> non corretto.",
-            condition: function(str){
-                return str.length>=4;
-            }
-        }
-    }
-
-}
-
-
-//CI SERVE PER FORZA, PENSO SIA PARTE REGISTRAZIONE
-function setUserProfiloChecks(){
-    checks = {
         nome:{
-            message:"Inserire un nome con almeno 2 caratteri.",
+            message:"Inserire un nome utente con almeno 3 lettere e/o numeri.",
             condition: function(str){
-                return str.length>=2;
-            }
-        },
-        username:{
-            message:"Inserire un nome utente con almeno 4 lettere e/o numeri.",
-            condition: function(str){
-                let expr = /\w{4,}/ ;
+                let expr = /\w{3,}/ ;
                 return expr.test(str);
             }
         },
         password:{
-            message:"Inserire una <span lang='en'>password</span> con almeno 4 caratteri.",
+            message:"Inserire una <span lang='en'>password</span> con almeno 6 caratteri.",
             condition: function(str){
-                return str.length>=4;
-            }
-        },
-        email:{
-            message:"Inserire un indirizzo <span lang='en'>email</span> valido.",
-            condition: function(str){
-                let expr = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                return expr.test(str.toLowerCase());
+                return str.length>=6;
             }
         }
     };
+
 }
 
 
+
+
+//FATTO
 //FORSE QUESTO CI PUO' AIUTARE QUANDO L'UTENTE INSERISCE LA DOMANDA APERTA NEL FAQ
-function setUserRecensioneChecks(){
+function setUserDomandaApertaChecks(){
     checks = {
-        contenuto:{
-            message:"Inserire il contenuto della recensione, con almeno 10 caratteri.",
+        domanda:{
+            message:"Inserire la domanda aperta con almeno 5 caratteri.",
             condition: function(str){
-                return str.length>=10;
+                return str.length>=5;
             }
         }
     };
 }
 
-
+//FATTO
 //CI SERVE PER FORZA
-function setUserRegistrazioneChecks(){
+function setUserRegistrationChecks(){
     checks = {
         nome:{
-            message:"Inserire un nome con almeno 2 caratteri.",
+            message:"Inserire un nome utente con almeno 3 lettere e/o numeri.",
             condition: function(str){
-                return str.length>=2;
-            }
-        },
-        username:{
-            message:"Inserire un nome utente con almeno 4 lettere e/o numeri.",
-            condition: function(str){
-                let expr = /\w{4,}/ ;
+                let expr = /\w{3,}/ ;
                 return expr.test(str);
             }
         },
         password:{
-            message:"Inserire una <span lang='en'>password</span> con almeno 4 caratteri.",
+            message:"Inserire una <span lang='en'>password</span> con almeno 6 caratteri.",
             condition: function(str){
-                return str.length>=4;
-            }
-        },
-        password:{
-            message:"Inserire una <span lang='en'>password</span> con almeno 4 caratteri.",
-            condition: function(str){
-                return str.length>=4;
-            }
-        },
-        passwordConfirm:{
-            message:"Le <span lang='en'>password</span> inserite non combaciano.",
-            condition: function(str){
-                return str == document.getElementById('password').value;
+                return str.length>=6;
             }
         },
         email:{
@@ -422,7 +464,7 @@ function setUserRegistrazioneChecks(){
     };
 }
 
-
+//DA CONTROLLARE PARTE GRAFICA
 //Aggiungi listener per evento scroll
 //per il pulsante "torna in cima alla pagina"
 //CI POTREBBE TORNARE UTILE
@@ -435,7 +477,7 @@ function addScrollEventListener(){
 //CI POTREBBE TORNARE UTILE
 function toggleUpButton(){
 
-    let button = document.getElementById('goUpButtton');
+    let button = document.getElementById('buttonToTop');
     let scrollPos = window.scrollY || window.scrollTop || document.getElementsByTagName("html")[0].scrollTop;
     
     let body = document.body; 

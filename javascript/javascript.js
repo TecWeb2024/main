@@ -85,45 +85,7 @@ function validateField(event){
 
 
 
-//QUESTI SONO DEI CHECK DELLA PAGINA CONTATTI, DOVE HANNO MESSO UN SACCO DI CAMPI DENTRO I QUALI SCRIVERE
-function setContattiChecks(){
 
-    checks = {
-        nome:{
-            message:"Inserire un nome lungo almeno 2 caratteri.",
-            condition: function(str){
-                return str.length>2;
-            }
-        },
-        telefono:{
-            message:"Inserire un numero di telefono valido composto da sole cifre numeriche.",
-            condition: function(str){
-                let expr = /^[0-9]+$/;
-                return expr.test(str);
-            }
-        },
-        email:{
-            message:"Inserire un indirizzo <span lang='en'>email</span> valido.",
-            condition: function(str){
-                let expr = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                return expr.test(str.toLowerCase());
-            }
-        },
-        messaggio:{
-            message:"Inserire un messaggio di almeno 10 caratteri.",
-            condition: function(str){
-                return str.length>=10;
-            }
-        },
-        privacy:{
-            message:'Per cortesia accettare la <span lang="en">Privacy Policy</span> per spedire il messaggio.',
-            condition: function(str){
-                return document.querySelector('input[name=privacy]').checked == true;
-            }
-        },
-    }
-
-}
 
    /*****************
    *                *
@@ -202,16 +164,27 @@ function setAdminProdottoInserimentoChecks(){
                 return (!isNaN(parseFloat(str))) && parseFloat(str)>0;
             }
         },
-        peso:{
-            message:"Inserire un peso con almeno 2 caratteri.",
-            condition: function(str){
-                return str.length>=2;
+        peso: {
+            message: "Inserire un peso valido (mg,g,kg).",
+            condition: function(str) {
+                // Creazione di una lista di possibili unità di misura
+                let unitaMisura = ["mg", "g", "kg"];
+        
+                // Espressione regolare per validare il formato desiderato
+                let expr = /^(\d+(\.\d+)?)\s*([a-zA-Z]{1,2})$/;
+        
+                // Testa se la stringa soddisfa l'espressione regolare e se l'unità di misura è valida
+                return expr.test(str) && unitaMisura.includes(str.trim().substr(-2).toLowerCase());
             }
         },
-        dimensione:{
-            message:"Inserire una dimensione con almeno 2 caratteri.",
-            condition: function(str){
-                return str.length>=2;
+        dimensione: {
+            message: "Inserire una dimensione valida (es.'22 cm x 56 cm x 28 cm').",
+            condition: function(str) {
+                // Espressione regolare per validare il formato desiderato
+                let expr = /^(\d*\.?\d+\s*(cm|m))(\s*x\s*\d*\.?\d+\s*(cm|m)){0,2}$/;
+        
+                // Testa se la stringa soddisfa l'espressione regolare
+                return expr.test(str);
             }
         },
         colore:{
@@ -220,12 +193,19 @@ function setAdminProdottoInserimentoChecks(){
                 return str.length>=3;
             }
         },
-        volume:{
-            message:"Inserire il volume del prodotto.",
-            condition: function(str){
-                return str.length!=0;
+        volume: {
+            message: "Inserire un volume valido (es.'2l', '3.3cl', '2L').",
+            condition: function(str) {
+                // Creazione di una lista di possibili unità di misura
+                let unitaMisura = ["l", "cl", "ml"];
+        
+                // Espressione regolare per validare il formato desiderato
+                let expr = /^(\d+(\.\d+)?)\s*([a-zA-Z]{1,2})$/;
+        
+                // Testa se la stringa soddisfa l'espressione regolare e se l'unità di misura è valida
+                return expr.test(str) && unitaMisura.includes(str.trim().substr(-2).toLowerCase());
             }
-        },
+        },        
         materialeUtilizzato:{
             message:"Inserire il/i materiale/i utilizzato/i nel prodotto.",
             condition: function(str){
@@ -233,15 +213,24 @@ function setAdminProdottoInserimentoChecks(){
             }
         },
         quantita:{
-            message:"Inserire la qunatità del prodotto.",
+            message:"Inserire la quantità del prodotto.",
             condition: function(str){
                 return str.length>0;
             }
         },
-        taglia:{
-            message:"Inserire la taglia del prodotto.",
-            condition: function(str){
-                return str.length!=0;
+        taglia: {
+            message: "Inserire una taglia valida.",
+            condition: function(str) {
+                // Controllo che la lunghezza della stringa sia diversa da zero
+                if (str.length === 0) {
+                    return false;
+                }
+        
+                // Creazione di una lista di taglie valide
+                var taglieValide = ["xxs", "xs", "s", "m", "l", "xl", "xxl"];
+        
+                // Controllo che la taglia sia presente nella lista
+                return taglieValide.includes(str.toLowerCase());
             }
         },
         descrizione:{
@@ -250,12 +239,13 @@ function setAdminProdottoInserimentoChecks(){
                 return str.length>=25;
             }
         },
-        tempoConsegna:{
-            message:"Inserire una descrizione con almeno 2 caratteri.",
-            condition: function(str){
-                return str.length>=2;
+        tempoConsegna: {
+            message: "Inserire una descrizione valida (es. '3-5', '3').",
+            condition: function(str) {
+                var regex = /^(?:[1-9]\d*|[1-9]\d*-[1-9]\d*)$/;
+                return regex.test(str);
             }
-        },
+        },        
         marca:{
             message:"Selezionare la marca del prodotto.",
             condition: function(str){
@@ -295,10 +285,14 @@ function setAdminProdottoCancellazioneChecks(){
                 return (!isNaN(parseFloat(str))) && parseFloat(str)>0;
             }
         },
-        dimensione:{
-            message:"Inserire una dimensione con almeno 2 caratteri.",
-            condition: function(str){
-                return str.length>=2;
+        dimensione: {
+            message: "Inserire una dimensione valida (es.'22 cm x 56 cm x 28 cm').",
+            condition: function(str) {
+                // Espressione regolare per validare il formato desiderato
+                let expr = /^(\d*\.?\d+\s*(cm|m))(\s*x\s*\d*\.?\d+\s*(cm|m)){0,2}$/;
+        
+                // Testa se la stringa soddisfa l'espressione regolare
+                return expr.test(str);
             }
         },
         colore:{
@@ -313,10 +307,19 @@ function setAdminProdottoCancellazioneChecks(){
                 return str.length>0;
             }
         },
-        taglia:{
-            message:"Inserire la taglia del prodotto.",
-            condition: function(str){
-                return str.length!=0;
+        taglia: {
+            message: "Inserire una taglia valida.",
+            condition: function(str) {
+                // Controllo che la lunghezza della stringa sia diversa da zero
+                if (str.length === 0) {
+                    return false;
+                }
+        
+                // Creazione di una lista di taglie valide
+                var taglieValide = ["xxs", "xs", "s", "m", "l", "xl", "xxl"];
+        
+                // Controllo che la taglia sia presente nella lista
+                return taglieValide.includes(str.toLowerCase());
             }
         },
         marca:{

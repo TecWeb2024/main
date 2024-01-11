@@ -127,7 +127,7 @@ function setContattiChecks(){
 
    /*****************
    *                *
-   *    AREA ADMIN  *
+   *   AREA ADMIN   *
    *                *
    ******************/
 //FATTO
@@ -394,10 +394,10 @@ function setAdminFAQChecks(){ //UN ADMIN NON PUO' INVENTARSI LE DOMANDE NELLA FA
 
 
    /******************
-   *                *
-   *    AREA UTENTE *
-   *                *
-   ******************/
+   *                 *
+   *   AREA UTENTE   *
+   *                 *
+   *******************/
 
 //FATTO
 //CI SERVE PER FORZA, PENSO SIA PARTE LOGIN

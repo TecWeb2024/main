@@ -298,10 +298,10 @@
   }
 
   #Mastercard{
-    background-image: url('images/Mastercard.jpg');
+    background-image: url('images/Mastercard.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     border: 1px solid black;
     width: 10%;
     margin: 2%;
@@ -350,7 +350,6 @@
   }
 
   #social_List a{
-    border: 1px solid black;
     margin: 0 0.5em 1em 0.5em;
     padding: 0.7em;
     height: 0.8em;
@@ -361,29 +360,29 @@
     text-indent: -999em;
   }
 
-  #instaImage{ /* immagini colorate da mettere */
-    background-image: url('images/instaSfondo.jpg');
+  #instaImage{
+    background-image: url('images/iconInsta.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
   }
 
   #youtubeImage{
-    background-image: url('images/youtubeSfondo.jpg');
+    background-image: url('images/iconYT.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
   }
 
   #facebookImage{
-    background-image: url('images/facebookSfondo.jpg');
+    background-image: url('images/iconFB.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
   }
 
   #twitterImage{
-    background-image: url('images/twitterSfondo.jpg');
+    background-image: url('images/iconTwitter.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -408,12 +407,25 @@
     color: var(--visitedLinkColor);
   }
 
-  /* PULSANTE TORNA SU */
+  /*PULSANTE TORNA SU*/
 
   #buttonToTop{
     position: fixed;
-    right: 0.5em;
-    bottom: 2.5em;
+    right: 1em;
+    bottom: 1.5em;
+  }
+
+  a#buttonToTop{
+    background-image: url(images/back_to_topIcon.jpg);
+    background-position: center;
+    background-size: contain;
+    margin: 0 0.5em 1.5em 0.5em;
+    padding: 0.9em;
+    height: 1em;
+    width: 1em;
+    background-color: #000000;
+    display: inline-block;
+    text-indent: -999em;
   }
   
   /*FOOTER*/

@@ -141,6 +141,10 @@ header {
     bottom: 6em;
 }
 
+a#buttonToTop{
+    margin-bottom: 2.5em;
+}
+
 footer {
     padding: 0.5em;
 }
@@ -170,7 +174,6 @@ footer {
     transform: none;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 
 /*PRODOTTI*/
 

@@ -14,17 +14,19 @@
     --headerTextColor: #FFFFFF;
     --bgColor: #FFFFFF;
     --textColor: #000000;
+    --breadcrumbBgColor: #EB0000;
+    --breadcrumbTextColor: #FFFFFF;
     --footerBgColor: #757575;
-    --footerTextColor: #000000;
-    --footerTitleColor: #FFFFFF;
+    --footerTextColor: #FFFFFF;
     --visitedLinkColor: #000000;
     --linkColor: #FFFFFF;
-    --breadcrumbBgColor: #FFFFFF;
-    --breadcrumbTextColor: #000000;
     --textCategories: #FFFFFF;
     --textProducts: #000000;
+    --colorButtonHover: #000000;
     --font-body-family: "Roboto Condensed", sans-serif;
   }
+
+  /*HTML*/
 
   html{
   font-size: 100%;
@@ -131,7 +133,7 @@
     padding: 0.5em 1.5em 0.5em 1.5em;
   }
 
-  #categories h1{
+  #categories h2{
     text-align: center;
     font-size: 200%;
     margin-top: 0.5em;
@@ -151,7 +153,6 @@
     border: 1px solid black;
     margin: 10px;
     padding: 0px;
-    /*border-radius: 5px;*/
     flex: 0 0 300px;
     height: 100%;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -178,47 +179,16 @@
     object-fit:cover;
     width: 100%;
   }
-  /*
-  #accessoriImage{
-    background-image: url('images/testAccessori.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
-
-  #pesiLiberiImage{
-    background-image: url('images/pesiliberifatto.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
-
-  #nutrizioneImage{
-    background-image: url('images/nutrizionefatto.jpg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-  }
-
-  #macchinariImage{
-    background-image: url('images/macchinarifatto.jpg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-  }
-  */
 
   /*BRAND*/
 
-  #brand{
+  #brand{ /*DEVE DIVENTARE LISTA!!*/
     margin-top: auto;
     padding: 1em;
   }
 
-  #brand h2{
-    font-weight: bold;
-    font-size: 150%;
-    margin-bottom: 0.5em;
+  #brand h3{
+    font-size: 170%;
   }
 
   #brand_Container{
@@ -288,8 +258,8 @@
     padding: 1.5em 1em 1.5em 1em;
   }
 
-  #payments h2{
-    font-size: 150%;
+  #payments h3{
+    font-size: 170%;
   }
 
   #payments_Grid{
@@ -342,19 +312,42 @@
     padding-bottom: 3%; 
   }
 
-  /*SOCIAL*/
+  /*CONTACTS*/
 
-  #social_List h2{
-    font-size: 130%;
+  #contacts h3{
+    font-size: 170%;
     margin-bottom: 0.5em;
   }
 
-  #social_List a{
-    margin: 0 0.5em 1em 0.5em;
+  #contacts ul {
+    list-style: none;
+    padding-bottom: 0.5em;
+  }
+   
+  #contacts li {
+    margin-bottom: 0.5em;
+  }
+ 
+  #contacts a:link{
+    color: var(--linkColor);
+  }
+ 
+  #contacts a:visited{
+    color: var(--visitedLinkColor);
+  }
+
+  /*SOCIAL*/
+
+  #social h4{
+    font-size: 140%;
+    margin-bottom: 0.5em;
+  }
+
+  #social a{
+    margin: 0.5em 0.5em 1em 0.5em;
     padding: 0.7em;
     height: 0.8em;
     width: 0.8em;
-    background-color: black;
     border-radius: 50%;
     display: inline-block;
     text-indent: -999em;
@@ -388,25 +381,6 @@
     background-size: cover;
   }
 
-  /*CONTATTI*/
- 
-  #contacts ul {
-    list-style: none;
-    padding-bottom: 0.5em;
-  }
-   
-  #contacts li {
-    margin-bottom: 0.5em;
-  }
- 
-  #contacts a:link{
-    color: var(--linkColor);
-  }
- 
-  #contacts a:visited{
-    color: var(--visitedLinkColor);
-  }
-
   /*PULSANTE TORNA SU*/
 
   #buttonToTop{
@@ -438,11 +412,6 @@
     text-align: center;
   }
 
-  footer h2{
-    margin-bottom: 0.5em;
-    color: var(--footerTitleColor);
-  }
-
   /***********************************************************
    *                                                         *
    *    ACCESSORI - PESI LIBERI - NUTRIZIONE - MACCHINARI    *
@@ -453,7 +422,7 @@
     padding: 0.5em 1.5em 2.5em 1.5em;
   }
   
-  #products_List h1{
+  #products_List h2{
     font-size: 200%;
     text-align: center;
     margin-top: 0.5em;
@@ -491,9 +460,9 @@
   }
 
   #products_Container a{
-    font-size: 130%;
+    font-size: 140%;
     text-decoration: none;
-    text-align: left;
+    text-align: center;
     color: var(--textProducts);
   }
 
@@ -503,7 +472,7 @@
 
   /******************
    *                *
-   *    PRODOTTI   *
+   *    PRODOTTI    *
    *                *
    ******************/
 
@@ -511,7 +480,7 @@
     padding: 0.5em 0.5em 2.5em 0.5em;
   }
   
-  #product_Page h1 {
+  #product_Page h2{
     font-size: 200%;
     text-align: center;
     margin-bottom: 0.5em;
@@ -544,15 +513,15 @@
     height: 100%;
   }
 
-  #product_Details h2{
-    font-size: 180%;
+  #product_Details h3{
+    font-size: 170%;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
   
   #product_Specs {
     list-style-type: none;
-    font-size: 120%;
+    font-size: 140%;
     margin-bottom: 0.5em;
   }
 
@@ -562,20 +531,21 @@
   }
 
   #cart_Specs {
+    font-weight: bold;
     list-style-type: none;
-    font-size: 130%;
+    font-size: 140%;
     margin-bottom: 0.5em;
   }
   
-  #product_Description h2{
-    margin-top: 0.5em;
+  #product_Description h3{
+    font-size: 170%;
     margin-bottom: 0.5em;
   }
 
   #product_Description{
     margin-top: 0.5em;
     margin-bottom: 0.5em;
-    font-size: 110%;
+    font-size: 130%;
   }
   
   #addToCart {
@@ -589,16 +559,17 @@
   }
   
   #addToCart:hover {
-    background-color: #000000;
+    background-color: var(--colorButtonHover);
   }
   
-  #delivery_Details h2{
+  #delivery_Details h3{
+    font-size: 170%;
+    margin-top: 1em;
     margin-bottom: 0.5em;
   }
 
   #delivery_Details {
-    font-size: 110%;
-    padding: 0.5em;
+    font-size: 120%;
   }
 
   #delivery_List{
@@ -616,7 +587,7 @@
     margin: auto;
   }
 
-  #chiSiamo_Content h1{
+  #chiSiamo_Content h2{
     font-size: 200%;
     text-align: center;
     margin-bottom: 1em;
@@ -626,18 +597,18 @@
   #company_Info {
     padding-bottom: 3em;
   }
+
+  #company_Info h3{
+    font-size: 170%;
+    text-align: center;
+  }
   
   #company_Info p{
-    font-size: 110%;
+    font-size: 120%;
     text-align: left;
     padding-left: 15%;
     padding-right: 15%;
     margin-bottom: 1.5em;
-  }
-
-  #company_Info h2{
-    text-align: center;
-    font-size: 180%;
   }
 
   #company_Info img{
@@ -647,7 +618,7 @@
     margin-right: auto;
   }
 
-  #team_Members h2{
+  #team_Members h3{
     text-align: center;
     font-size: 170%;
   }
@@ -668,6 +639,7 @@
   }
   
   .members p {
+    font-size: 120%;
     padding: 1% 15% 3% 15%;
     text-align: center;
   }
@@ -678,13 +650,13 @@
    *         *
    ***********/
   
-  #faq {
+  #faq_Page {
     width: 80%;
     margin: auto;
     text-align: left;
   }
 
-  #faq h1{
+  #faq_Page h2{
     font-size: 200%;
     text-align: center;
     margin-bottom: 2em;
@@ -692,6 +664,7 @@
   }
 
   .type_Questions{
+    color: #EB0000;
     font-size: 160%;
     margin-left: 1em;
     margin-bottom: 1em;
@@ -702,9 +675,12 @@
     margin-bottom: 1.5em;
   }
   
-  .question h2{
-    font-weight: bold;
+  .question h3{
     font-size: 140%;
+  }
+
+  .question p{
+    font-size: 110%;
   }
 
   #ask_Question {
@@ -712,19 +688,19 @@
     margin-bottom: 2em;
   }
 
-  #ask_Question h2{
+  #ask_Question h3{
+    font-size: 120%;
     margin-bottom: 1em;
   }
 
   #question_Input {
-    width: 40%;
+    width: 50%;
     padding: 1em;
     margin-right: 1em;
     border: 1px solid #000000;
   }
   
   #addQuestion{
-    font-size: 100%;
     padding: 1em 2em;
     background-color: #757575;
     color: #FFFFFF;
@@ -733,7 +709,7 @@
   }
   
   #addQuestion:hover {
-    background-color: #000000;
+    background-color: var(--colorButtonHover);
   }
 
   /***************
@@ -887,7 +863,7 @@
     padding: 1em;
   }
   
-  #error_Message h1{
+  #error_Message h2{
     font-size: 200%;
     margin-bottom: 1em;
   }

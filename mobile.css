@@ -1,3 +1,5 @@
+/*HOME PAGE*/
+
 header {
     padding: 0em;
 }
@@ -37,7 +39,7 @@ header {
     padding: 0.5em 1em 0.5em 1em;
 }
 
-#categories h1{
+#categories h2{
     font-size: 160%;
     margin-top: 0.3em;
     margin-bottom: 0.3em;
@@ -58,24 +60,6 @@ header {
     display: none;
 }
 
-/*
-#accessoriImage{
-    background-image: none;
-}
-
-#pesiLiberiImage{
-    background-image: none;
-}
-
-#nutrizioneImage{
-    background-image: none;
-}
-
-#macchinariImage{
-    background-image: none;
-}
-*/
-
 /*brand*/
 
 #brand{
@@ -83,7 +67,7 @@ header {
     padding: 0.5em;
   }
 
-#brand h2{
+#brand h3{
     font-size: 130%;
     margin-top: 0.3em;
     margin-bottom: 0.3em;
@@ -100,8 +84,8 @@ header {
     padding: 0.5em;
 }
 
-#payments h2{
-    font-size: 120%;
+#payments h3{
+    font-size: 130%;
     padding-bottom: 0.3em;
 }
 
@@ -118,18 +102,16 @@ header {
     width: 20%;
 }
 
-/*social*/
+/*contacts*/
 
-.social_List h2{
-    margin-top: 0.5em;
-    font-size: 100%;
+#contacts h3{
+    font-size: 130%;
 }
 
-.social_List a{
-    margin: 0em 0.5em 2.5em 0.5em;
-    padding: 0.5em;
-    height: 0.5em;
-    width: 0.5em;
+/*social*/
+
+#social h4{
+    font-size: 110%;
 }
 
 /*button to top*/
@@ -145,7 +127,7 @@ a#buttonToTop{
     margin-bottom: 2.5em;
 }
 
-footer {
+footer{
     padding: 0.5em;
 }
 
@@ -159,7 +141,7 @@ footer {
     padding: 0.5em 0.5em 1.5em 0.5em;
 }
 
-#products_List h1{
+#products_List h2{
     font-size: 160%;
     margin-top: 0.3em;
     margin-bottom: 0.3em;
@@ -167,12 +149,15 @@ footer {
 
 #products_Container li{
     flex: 0 0 60%;
-    font-size: 110%;
 }
 
 #products_Container li:hover {
     transform: none;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#products_Container a{
+    font-size: 110%;
 }
 
 /*PRODOTTI*/
@@ -181,7 +166,7 @@ footer {
     padding: 0.5em 0.5em 0.5em 0.5em;
 }
 
-#product_Page h1 {
+#product_Page h2{
     font-size: 160%;
     margin-top: 0.3em;
     margin-bottom: 0.3em;
@@ -194,22 +179,26 @@ footer {
     padding: 0em;
 }
 
-#product_Details h2{
-    font-size: 140%;
+#product_Details h3{
+    font-size: 150%;
 }
 
 #product_Details {
     clear: both;
     width: 100%;
-    font-size: 100%;
 }
 
-#product_Description h2{
+#product_Specs{
     font-size: 120%;
 }
 
-#delivery_Details h2{
-    font-size: 120%;
+
+#product_Description h3{
+    font-size: 130%;
+}
+
+#delivery_Details h3{
+    font-size: 130%;
 }
 
 #cart_Specs {
@@ -227,19 +216,20 @@ footer {
     margin-bottom: 0.5em;
 }
 
-#chiSiamo_Content h1{
-    font-size: 150%;
+#chiSiamo_Content h2{
+    font-size: 160%;
     margin-top: 0.3em;
     margin-bottom: 0.3em;
 }
 
 #company_Info p{
+    font-size: 110%;
     padding-left: 8%;
     padding-right: 8%;
 }
 
-#company_Info h2{
-    font-size: 140%;
+#company_Info h3{
+    font-size: 130%;
 }
 
 #company_Info img{
@@ -247,7 +237,12 @@ footer {
     height: 50%;
 }
 
+#team_Members h3{
+    font-size: 130%;
+}
+
 .members p{
+    font-size: 110%;
     padding-left: 8%;
     padding-right: 8%;
 }
@@ -256,37 +251,31 @@ footer {
     width: 40%;
 }
 
-#team_Members h2{
-    font-size: 130%;
-}
-
 /*FAQ*/
 
-#faq h1{
-    font-size: 140%;
+#faq_Page h2{
+    font-size: 160%;
     margin-top: 0.3em;
-    margin-bottom: 0.3em;
+    margin-bottom: 0.6em;
 }
 
 .type_Questions{
-    font-size: 120%;
+    font-size: 130%;
     margin-left: 0em;
     margin-bottom: 0.5em;
 }
 
-.question h2{
-    font-weight: bold;
-    font-size: 110%;
+.question h3{
+    font-size: 120%;
 }
 
 #question_Input {
     padding: 0.5em;
     margin-bottom: 1em;
-    width: 80%;
+    width: 100%;
 }
 
 #addQuestion{
-    font-size: 100%;
     padding: 0.5em 1em;
 }
 
@@ -353,14 +342,14 @@ footer {
 
 /*ERROR 404 - 500*/
 
-#error_Message h1{
+#error_Message h2{
     font-size: 160%;
     margin-top: 0.3em;
     margin-bottom: 0.3em;
 }
 
 #error_Message p{
-    font-size: 120%;
+    font-size: 110%;
 }
 
 

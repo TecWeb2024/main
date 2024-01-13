@@ -43,7 +43,8 @@
       <h1>Carrello</h1>
 
       <div id="headerCart">
-          <ul>Riepilogo Ordine:
+        <h2>Riepilogo Ordine:</h2>
+          <ul>
             <li>Prezzo parziale: ...€</li>
             <li>Costo spedizione: ...€</li>
             <li>Totale: ...€ (2 articoli selezionati)</li>
@@ -105,10 +106,12 @@
         <form class="order_Form">
           <label for="payment-method">Pagamento con:</label>
           <select id="payment-method" name="payment-method" required>
+            <option value="" disabled selected hidden>Scegli un metodo di pagamento</option>
             <option value="credit-card">Carta di credito/debito</option>
             <option value="paypal">PayPal</option>
             <option value="google-pay">Google Pay</option>
           </select>
+          
 
           <div id="credit-card-details" class="payment-details">
             <label for="card-name">Nome sulla carta:</label>
@@ -168,9 +171,9 @@
     <div id="contacts">
       <h2>Contatti</h2>
       <ul>
-        <li aria-label="email">E-Mail: <a href="mailto:tecweb2024@gmail.com">tecweb2024@gmail.com</a></li>
-        <li aria-label="telefono">Telefono: <a href="tel:+123456789">+39 123-456-789</a></li>
-        <li aria-label="sede fisica">Sede: Via Trieste, 63, 35121 Padova (<abbr title="Padova">PD</abbr>)</li>
+        <li>E-Mail: <a href="mailto:tecweb2024@gmail.com">tecweb2024@gmail.com</a></li>
+        <li>Telefono: <a href="tel:+123456789">+39 123-456-789</a></li>
+        <li>Sede: Via Trieste, 63, 35121 Padova (<abbr title="Padova">PD</abbr>)</li>
     </ul>
     </div>
     <div id="social_List">

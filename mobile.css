@@ -192,13 +192,20 @@ footer{
     font-size: 120%;
 }
 
-
 #product_Description h3{
     font-size: 130%;
 }
 
+#product_Description{
+    font-size: 110%;
+}
+
 #delivery_Details h3{
     font-size: 130%;
+}
+
+#delivery_Details{
+    font-size: 110%;
 }
 
 #cart_Specs {

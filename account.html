@@ -35,10 +35,11 @@
 
   <main id="content">
   <!--PROVA DEL FORM, ho usato javascript perchè altrimenti non si poteva entrare nel form di registrazione. Nel campo action dobbiamo mettere il server quando ce l'avremo-->
+  <div id="account_Page">
 
-  <div id="form_Container">
+  <div id="form_ContainerUtente">
     <form class="form" action="#" method="post">
-      <h1>Login</h1>
+      <h2><span lang="en">Login</span> Utente</h2>
       <input type="email" name="email" placeholder="Email" required>
       <input type="password" name="password" placeholder="Password" required>
       <input type="submit" class="accountButton" value="Accedi"> <!--sistemare css + bottoni altre pagine-->
@@ -46,7 +47,7 @@
     </form>
 
     <form class="form hidden" id="registrazione" action="#" method="post">
-      <h1>Registrazione</h1>
+      <h2>Registrazione Utente</h2>
       <input type="text" name="nome" placeholder="Nome" required>
       <input type="email" name="email" placeholder="Email" required>
       <input type="password" name="password" placeholder="Password" required>
@@ -55,6 +56,29 @@
     </form>
   </div>
 
+  <div id="form_ContainerAdmin">
+    <form class="form" action="#" method="post">
+      <h2><span lang="en">Login Admin</span></h2>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <input type="code" name="code" placeholder="Codice Admin" required>
+      <input type="submit" class="accountButton" value="Accedi">
+      <p>Non hai un account? <a href="#" onclick="toggleForm()">Registrati qui</a></p>
+    </form>
+
+    <form class="form hidden" id="registrazione" action="#" method="post">
+      <h2>Registrazione <span lang="en">Admin</span></h2>
+      <input type="text" name="nome" placeholder="Nome" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <input type="code" name="code" placeholder="Codice Admin" required>
+      <input type="submit" class="accountButton" value="Registrati">
+      <p>Hai già un account? <a href="#" onclick="toggleForm()">Accedi qui</a></p>
+    </form>
+  </div>
+  
+ </div>
+
   <script>
     function toggleForm() {
       const loginForm = document.querySelector('.form');
@@ -62,31 +86,33 @@
 
       loginForm.classList.toggle('hidden');
       registrationForm.classList.toggle('hidden');
+  
     }
   </script>
 
-<a href="#" id="buttonToTop">Torna in cima ↑</a>
+
+<a href="#" id="buttonToTop">Torna in cima</a>
 
 </main>
 
 <footer>
   <div id="contacts">
-    <h2>Contatti</h2>
+    <h3>Contatti</h3>
     <ul>
       <li>E-Mail: <a href="mailto:tecweb2024@gmail.com">tecweb2024@gmail.com</a></li>
       <li>Telefono: <a href="tel:+123456789">+39 123-456-789</a></li>
       <li>Sede: Via Trieste, 63, 35121 Padova (<abbr title="Padova">PD</abbr>)</li>
   </ul>
   </div>
-  <div id="social_List">
-    <h2>Seguici Su</h2>
-    <a href="https://www.instagram.com/" id="instaImage">Instagram</a>
+  <div id="social">
+    <h4>Seguici Su</h4>
+    <a href="https://www.instagram.com/" id="instaImage"><span lang="en">Instagram</span></a>
 
-    <a href="https://www.youtube.com/" id="youtubeImage">Youtube</a>
-  
-    <a href="https://www.facebook.com/" id="facebookImage">Facebook</a>
+      <a href="https://www.youtube.com/" id="youtubeImage"><span lang="en">Youtube</span></a>
+    
+      <a href="https://www.facebook.com/" id="facebookImage"><span lang="en">Facebook</span></a>
 
-    <a href="https://www.twitter.com/" id="twitterImage">Twitter</a>
+      <a href="https://www.twitter.com/" id="twitterImage"><span lang="en">Twitter</span></a>
   </div>
   <div id="footer_Text"><p>&copy; 2024 <span lang="en">Olympo Fitness</span>. Tutti i diritti riservati.</p></div> 
 </footer>

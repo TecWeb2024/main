@@ -17,15 +17,16 @@ DROP TABLE IF EXISTS prodotto;
 CREATE TABLE `categoria` (
   `ID` int(5) UNSIGNED NOT NULL,
   `nome` varchar(11) NOT NULL,
+  `immagineSfondo` varchar(100) NOT NULL,
   `keywords` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `categoria` (`ID`, `nome`,`keywords`) VALUES
-(1,'Accessori','Olympo Fitness, palestra, negozio palestra, accessori palestra, accessori, pesi liberi , macchinari palestra, macchinari, nutrizione'),
-(2,'Pesi Liberi','Olympo Fitness, palestra, negozio palestra, pesi liberi , macchinari palestra, macchinari, nutrizione, accessori palestra'),
-(3,'Nutrizione','Olympo Fitness, palestra, negozio palestra, nutrizione, pesi liberi , macchinari palestra, macchinari, accessori palestra'),
-(4,'Macchinari','Olympo Fitness, palestra, negozio palestra, pesi liberi , macchinari palestra, macchinari, macchine, nutrizione, accessori palestra');
+INSERT INTO `categoria` (`ID`, `nome`, `immagineSfondo`, `keywords`) VALUES
+(1,'Accessori','images/accessorifatto.jpg','Olympo Fitness, palestra, negozio palestra, accessori palestra, accessori, pesi liberi , macchinari palestra, macchinari, nutrizione'),
+(2,'Pesi Liberi','images/pasiliberifatto2.jpg','Olympo Fitness, palestra, negozio palestra, pesi liberi , macchinari palestra, macchinari, nutrizione, accessori palestra'),
+(3,'Nutrizione','images/nutrizionefatto2.png','Olympo Fitness, palestra, negozio palestra, nutrizione, pesi liberi , macchinari palestra, macchinari, accessori palestra'),
+(4,'Macchinari','images/macchinarifatto2.jpg','Olympo Fitness, palestra, negozio palestra, pesi liberi , macchinari palestra, macchinari, macchine, nutrizione, accessori palestra');
 --macchinari o macchine?
 
 
@@ -64,7 +65,7 @@ CREATE TABLE `marca` (
   `nome` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+--manca colonna immagine per php
 INSERT INTO `marca` (`ID`, `nome`) VALUES
 (1, 'Optimum Nutrition'),
 (2, 'Cousin Trestec'),

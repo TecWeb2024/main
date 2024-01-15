@@ -1,5 +1,5 @@
 <?php
-
+/*PER ORA INUTILE TUTTO QUESTO FILE*/
 use DB\DBAccess;
 
 require_once('connection.php');

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Carrello - Olympo Fitness</title>
+  <meta name="keywords"
+    content="Olympo Fitness, palestra, negozio palestra, carrello, pesi liberi, macchinari palestra, macchinari, nutrizione, accessori palestra">
+  <meta name="author" content="Olympo Fitness">
+  <link rel="stylesheet" href="style.css" media="screen">
+  <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 508px)">
+  <link rel="stylesheet" href="tablet.css" media="screen and (min-width: 509px) and (max-width: 768px)">
+  <link rel="stylesheet" href="print.css" media="print">
+</head>
+
+<body>
+  <header>
+    <nav aria-label="Aiuti alla navigazione">
+      <a class="navigationHelp" href="#content">Vai al contenuto</a>
+    </nav>
+
+    <h1 class="logo"><span lang="en">Olympo Fitness</span></h1>
+
+    <nav id="menu" aria-label="menù del sito">
+      <a class="navigationHelp" href="#content">Salta il menù di navigazione</a>
+      <ul>
+        <li><a href="index.html" lang="en">Home</a></li>
+        <li><a href="chiSiamo.html">Chi Siamo</a></li>
+        <li><a href="faq.html"><abbr title="Frequently Asked Questions" lang="en">FAQ</abbr></a></li>
+        <li>Carrello</li>
+        <li><a href="account.html" lang="en">Account</a></li>
+      </ul>
+    </nav>
+  </header>
+  <nav id="breadcrumb" aria-label="Percorso">
+    <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; Carrello</p>
+  </nav>
+
+  <main id="content">
+
+    <div id="cart_Page">
+
+      <h2>Carrello</h2>
+
+      <div id="headerCart">
+        <h3>Riepilogo Ordine:</h3>
+          <ul>
+            <!--<li>Prezzo parziale: ...€</li>
+            <li>Costo spedizione: ...€</li>
+            <li>Totale: ...€ (2 articoli selezionati)</li>-->
+            {riepilogoOrdine}
+          </ul>
+          
+        <button id="buy_Now">Acquista ora</button> <!--sistemare-->
+      </div>
+
+    <ul id="cart_Container">
+
+      <!--<li>
+        <img src="images/BorsoneAperto.jpg" alt="Prodotto 1">
+        <div class="product-details">
+          <p>Nome Prodotto € Prezzo</p>
+            <select>
+              <option value="1">Quantità: 1</option>
+            </select>
+            <select>
+              <option value="XL">Taglia: XL</option>
+            </select>
+            <button class="remove-product">Rimuovi Prodotto dal carrello</button>
+        </div>
+      </li>
+
+      <li>
+        <img src="images/tapis1.jpg" alt="Prodotto 1">
+        <div class="product-details">
+          <p>Nome Prodotto € Prezzo</p>
+            <select>
+              <option value="1">Quantità: 1</option>
+            </select>
+            <select>
+              <option value="XL">Taglia: XL</option>
+            </select>
+            <button class="remove-product">Rimuovi Prodotto dal carrello</button>
+        </div>
+      </li>-->
+      {prodottiCarrello}
+
+    </ul>
+
+
+    <!--qui cosa facciamo? Salviamo su database? Oppure è inutile altrimenti-->
+    <section id="order_Details"> <!--sistemare campi corretti-->
+      <div id="delivery_Address">
+        <h3>Indirizzo di consegna:</h3>
+        <form class="order_Form">
+          <label for="name">Nome:</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="address">Indirizzo:</label>
+          <textarea id="address" name="address" rows="4" required></textarea>
+
+        </form>
+      </div>
+<!--qui cosa facciamo? Salviamo su database? Oppure è inutile altrimenti-->
+      <div id="delivery_Payments">
+        <h3>Modalità di pagamento:</h3>
+        <form class="order_Form">
+          <label for="payment-method">Pagamento con:</label>
+          <select id="payment-method" name="payment-method" required>
+            <option value="" disabled selected hidden>Scegli un metodo di pagamento</option>
+            <option value="credit-card">Carta di credito/debito</option>
+            <option value="paypal">PayPal</option>
+            <option value="google-pay">Google Pay</option>
+          </select>
+          
+<!--qui cosa facciamo? Salviamo su database? Oppure è inutile altrimenti-->
+          <div id="credit-card-details" class="payment-details">
+            <label for="card-name">Nome sulla carta:</label>
+            <input type="text" id="card-name" name="card-name" required>
+            <br>
+            <label for="card-number">Numero della carta:</label>
+            <input type="text" id="card-number" name="card-number" required>
+            <br>
+            <label for="expiration">Scadenza:</label>
+            <input type="text" id="expiration" name="expiration" placeholder="MM/YY" required>
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" required>
+          </div>
+          <!-- Altri campi per i dettagli della carta di credito -->
+
+          <!-- <div id="paypal-details" class="payment-details">
+          <label for="paypal-email">Indirizzo email PayPal:</label>
+          <input type="email" id="paypal-email" name="paypal-email" required>
+        </div>
+
+        <div id="google-pay-details" class="payment-details">
+          <label for="google-pay-email">Indirizzo email Google Pay:</label>
+          <input type="email" id="google-pay-email" name="google-pay-email" required>
+        </div> -->
+
+        </form>
+      </div>
+    </section>
+
+
+    <div class="popup">
+      <p id="popuptext">Acquisto effettuato con successo! Grazie per aver ordinato da Olympo Fitness.</p> <!-- span lang en-->
+      <button id="close-popup">Continua</button> <!-- input submit-->
+    </div>
+
+    <script>
+      const buyNowButton = document.querySelector('#buy_Now');
+      const popup = document.querySelector('.popup');
+      const closeButton = document.querySelector('#close-popup');
+
+      buyNowButton.addEventListener('click', () => {
+        // Logica per effettuare l'acquisto e mostrare il popup
+        popup.style.display = 'block';
+      });
+
+      closeButton.addEventListener('click', () => {
+        popup.style.display = 'none'; // Nascondi il popup
+      });
+    </script>
+
+    <a href="#" id="buttonToTop">Torna in cima</a>
+  </div>
+
+  </main>
+
+  <footer>
+    <div id="contacts">
+      <h3>Contatti</h3>
+      <ul>
+        <li>E-Mail: <a href="mailto:tecweb2024@gmail.com">tecweb2024@gmail.com</a></li>
+        <li>Telefono: <a href="tel:+123456789">+39 123-456-789</a></li>
+        <li>Sede: Via Trieste, 63, 35121 Padova (<abbr title="Padova">PD</abbr>)</li>
+    </ul>
+    </div>
+    <div id="social">
+      <h4>Seguici Su</h4>
+      <a href="https://www.instagram.com/" id="instaImage"><span lang="en">Instagram</span></a>
+
+      <a href="https://www.youtube.com/" id="youtubeImage"><span lang="en">Youtube</span></a>
+    
+      <a href="https://www.facebook.com/" id="facebookImage"><span lang="en">Facebook</span></a>
+
+      <a href="https://www.twitter.com/" id="twitterImage"><span lang="en">Twitter</span></a>
+    </div>
+    <div id="footer_Text"><p>&copy; 2024 <span lang="en">Olympo Fitness</span>. Tutti i diritti riservati.</p></div> 
+</footer>
+
+</body>
+
+</html>

@@ -1,5 +1,4 @@
 <?php
-// Connessione al database (sostituisci con i tuoi dettagli di connessione)
 require_once "connection.php";
 use DB\DBAccess;
 ini_set('display_errors', 1);
@@ -14,6 +13,7 @@ $listaCategorie = "";
 $listaBrands = "";
 $stringaBrands = "";
 $nomeLinkMinuscolo = "";
+$nomeCategorieMinuscolo = "";
 
 $connection = new DBAccess();
 $connectionOk = $connection->openDBConnection();
@@ -23,7 +23,8 @@ if ($connectionOk) {
 
     if ($listaCategorie != null) {
         foreach ($listaCategorie as $categoria) {
-            $stringaCategorie .= '<li><a href="' . $categoria["nome"] . '.html"><img src="' . $categoria["immagineSfondo"] . '" alt="">' . $categoria["nome"] . '</a></li>';
+            $nomeCategorieMinuscolo .= strtolower(str_replace(' ', '', $categoria["nome"])); //MODIFICARE QUI PER COLLEGAMENTO CON PESI LIBERI.PHP
+            $stringaCategorie .= '<li><a href="' . $nomeCategorieMinuscolo . '.php"><img src="' . $categoria["immagineSfondo"] . '" alt="">' . $categoria["nome"] . '</a></li>';
         }
     } else {
         $stringaCategorie .= "<li>Non sono presenti categorie</li>";
@@ -43,13 +44,15 @@ if ($connectionOk) {
     $listaBrands = $connection->getBrandsFromDatabase();
     
     if ($listaBrands != null) {
+        $stringaBrands = ''; // Inizializza la variabile $stringaBrands
         foreach ($listaBrands as $brands) {
-            $nomeLinkMinuscolo .= strtolower(str_replace(' ', '', $brands["nome"]));
-            $stringaBrands .= '<li><a href="' . $nomeLinkMinuscolo . '.html"><img src="' . $brands["immagineSfondo"] . '" alt="' . $brands["nome"] . '"></a></li>';
+            $nomeLinkMinuscolo = strtolower(str_replace(' ', '', $brands["nome"]));
+            $stringaBrands .= '<li><a href="https://www.' . $nomeLinkMinuscolo . '.com/"><img src="' . $brands["immagineSfondo"] . '" alt="' . $brands["nome"] . '"></a></li>';
         }
     } else {
-        $stringaBrands .= "<li>Non sono presenti brand</li>";
+        $stringaBrands = "<li>Non sono presenti brand</li>";
     }
+    
 
     $connection->closeDBConnection();
 } else {

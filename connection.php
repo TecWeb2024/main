@@ -28,7 +28,7 @@ class DBAccess {
 
 
 
-
+//PAGINA HOME
     public function getCategoriesFromDatabase() {
         $categories = array();
     
@@ -78,6 +78,42 @@ class DBAccess {
     
         return $brands;
     }
+
+
+
+//PAGINA ACCESSORI
+public function getAccessoriFromDatabase() {
+    $accessori = array();
+
+    $query = "SELECT ID,nome,immagine1,prezzo FROM prodotto WHERE categoria=1";
+    $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+
+    if ($result && $result->num_rows > 0) {
+        // Fetch dei dati e inserimento nell'array $categories
+        while ($row = $result->fetch_assoc()) {
+            $accessori[] = $row;
+        }
+
+        // Libera la memoria del risultato
+        $result->free_result();
+    } else {
+        // Se la query non ha prodotto risultati o ha fallito, gestisci il caso vuoto
+        // Puoi impostare $categories su un valore predefinito o fare altre operazioni necessarie.
+        // Ad esempio, impostare $categories su un array vuoto:
+        $accessori = array();
+    }
+
+    return $accessori;
+}
+
+
+
+
+
+
+
+
+
 
 
     public function closeDBConnection(){

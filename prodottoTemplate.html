@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <!--qui ci serve una variabile, deve cambiare per ogni prodotto, sia titolo che keywords-->
+  <title>Borsone Adidas - Olympo Fitness</title>
+  <meta name="keywords" content="Olympo Fitness, palestra, negozio palestra, prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione">
+  <meta name="author" content="Olympo Fitness">
+  <link rel="stylesheet" href="style.css" media="screen">
+  <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 508px)">
+  <link rel="stylesheet" href="tablet.css" media="screen and (min-width: 509px) and (max-width: 768px)">
+  <link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+
+  <header>
+    <nav aria-label="Aiuti alla navigazione">
+      <a class="navigationHelp" href="#content">Vai al contenuto</a>
+    </nav>
+   
+    <h1 class="logo"><span lang="en">Olympo Fitness</span></h1>
+
+    <nav id="menu" aria-label="menù del sito">
+      <a class="navigationHelp" href="#content">Salta il menù di navigazione</a>
+      <ul>
+        <li><a href="index.html" lang="en">Home</a></li>
+        <li><a href="chiSiamo.html">Chi Siamo</a></li>
+        <li><a href="faq.html"><abbr title="Frequently Asked Questions" lang="en">FAQ</abbr></a></li>
+        <li><a href="carrello.html">Carrello</a></li>
+        <li><a href="account.html" lang="en">Account</a></li>
+      </ul>
+    </nav>
+</header>
+    <!--qui mettere variabile per breadcrumb-->
+  <nav id="breadcrumb" aria-label="Percorso">
+    <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; <a href="accessori.html">Accessori</a> &gt; Borsone Adidas</p>
+  </nav>
+
+<main id="content">
+
+  <div id="product_Page">
+    <h2><!--Borsone Adidas--> {titoloProdotto}</h2>
+
+    <div id="product_Images">
+      <!-- Immagini del prodotto -->
+      <!--<img src="images/BorsoneDavanti.jpg" class="grid_Image" alt="Vista frontale del borsone Adidas">
+      <img src="images/BorsoneDietro.jpg" class="grid_Image" alt="Vista posteriore del borsone Adidas">
+      <img src="images/BorsoneAperto.jpg" class="grid_Image" alt="Borsone Adidas aperto con scomparti visibili">
+      <img src="images/BorsoneChiuso.jpg" class="grid_Image" alt="Borsone Adidas chiuso, pronto per il trasporto">-->
+      {immaginiProdotto}
+    </div>
+
+    <div id="product_Details"> <!-- mettere tutto dentro questro div che ha float -->
+      <h3>Specifiche Prodotto</h3>
+
+      <ul id="product_Specs"><!-- unita di misura servono tag? -->
+        <!--<li><span class="specs_List">Prezzo:</span> 35 €</li>
+        <li><span class="specs_List">Peso:</span> 1.5 kg</li> 
+        <li><span class="specs_List">Dimensioni:</span> 22 cm x 56 cm x 28 cm</li>
+        <li><span class="specs_List">Colore:</span> Nero</li>
+        <li><span class="specs_List">Volume:</span> 39 L</li>
+        <li><span class="specs_List">Materiali:</span> tela, 100% poliestere riciclato</li>
+        <li><span class="specs_List">Azienda:</span> Adidas</li>-->
+        {specificheProdotto}
+      </ul>
+
+      <ul id="cart_Specs"> <!-- style da cambiare -->
+        <li><span class="cart_List">Quantità:</span>
+          <select id="quantity">
+         <!-- <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>-->
+          {quantitaProdotto}
+          </select>
+        </li>
+            
+        <li><span class="cart_List">Taglia:</span> 
+          <select id="size">
+          <!--<option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="L">XL</option>-->
+          {tagliaProdotto}
+          </select>
+        </li>
+      </ul>
+      <!--qui scrivere funzione che toglie la quantità dal database e aggiunge la card nel carrello-->
+      <input type="submit" id="addToCart" value="Aggiungi al carrello">
+
+      <div id="product_Description">
+        <h3>Descrizione</h3>
+        <!--<p>La scelta ideale per la palestra e le gite nel <span lang="en">weekend</span>. Questo borsone adidas ha una base robusta per proteggere il contenuto. Lo scomparto principale è dotato di una <span lang="en">zip</span> bidirezionale per un accesso rapido da entrambi i lati. Le numerose tasche offrono la massima praticità e lo scomparto interno ti consente di tenere separate le <span lang="en">sneaker</span>.</p>-->
+        {descrizioneProdotto}
+      </div>
+
+      <div id="delivery_Details"><!--AGUALE PER TUTTI,LASCIARLO COSI-->
+        <h3>Dettagli di Consegna</h3>
+          <ul id="delivery_List">
+            <li>Consegna in 3-5 giorni lavorativi</li>
+            <li>Spedizione gratuita per ordini superiori a 50 €</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+  <a href="#" id="buttonToTop">Torna in cima</a>
+
+</main>
+
+<footer>
+  <div id="contacts">
+    <h3>Contatti</h3>
+    <ul>
+      <li>E-Mail: <a href="mailto:tecweb2024@gmail.com">tecweb2024@gmail.com</a></li>
+      <li>Telefono: <a href="tel:+123456789">+39 123-456-789</a></li>
+      <li>Sede: Via Trieste, 63, 35121 Padova (<abbr title="Padova">PD</abbr>)</li>
+  </ul>
+  </div>
+  <div id="social">
+    <h4>Seguici Su</h4>
+    <a href="https://www.instagram.com/" id="instaImage"><span lang="en">Instagram</span></a>
+
+    <a href="https://www.youtube.com/" id="youtubeImage"><span lang="en">Youtube</span></a>
+    
+    <a href="https://www.facebook.com/" id="facebookImage"><span lang="en">Facebook</span></a>
+
+    <a href="https://www.twitter.com/" id="twitterImage"><span lang="en">Twitter</span></a>
+  </div>
+  <div id="footer_Text"><p>&copy; 2024 <span lang="en">Olympo Fitness</span>. Tutti i diritti riservati.</p></div> 
+</footer>
+
+</body>
+</html>

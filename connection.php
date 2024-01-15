@@ -34,7 +34,7 @@ class DBAccess {
     
         // Query per ottenere le categorie dalla tabella 'categoria'
         $query = "SELECT * FROM categoria";
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+        $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
     
         if ($result && $result->num_rows > 0) {
             // Fetch dei dati e inserimento nell'array $categories
@@ -53,8 +53,12 @@ class DBAccess {
     
         return $categories;
     }
-    
 
+    public function closeDBConnection(){
+        if($this->connection != null){
+            mysqli_close($this->connection);
+        }
+    }
 
 
     /*public function exec_select_query($query){
@@ -100,11 +104,5 @@ class DBAccess {
         }
     }*/
     
-
-    public function closeConnection(){
-        if($this->connection != null){
-            mysqli_close($this->connection);
-        }
-    }
 }
 ?>

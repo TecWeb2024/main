@@ -21,7 +21,7 @@ CREATE TABLE `categoria` (
   `keywords` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+-- nomi categorie in piccolo
 INSERT INTO `categoria` (`ID`, `nome`, `immagineSfondo`, `keywords`) VALUES
 (1,'Accessori','images/accessorifatto.jpg','Olympo Fitness, palestra, negozio palestra, accessori palestra, accessori, pesi liberi , macchinari palestra, macchinari, nutrizione'),
 (2,'Pesi Liberi','images/pasiliberifatto2.jpg','Olympo Fitness, palestra, negozio palestra, pesi liberi , macchinari palestra, macchinari, nutrizione, accessori palestra'),

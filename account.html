@@ -37,43 +37,22 @@
   <!--PROVA DEL FORM, ho usato javascript perchè altrimenti non si poteva entrare nel form di registrazione. Nel campo action dobbiamo mettere il server quando ce l'avremo-->
   <div id="account_Page">
 
-  <div id="form_ContainerUtente">
+  <div id="form_Container">
     <form class="form" action="#" method="post">
-      <h2><span lang="en">Login</span> Utente</h2>
+      <h2><span lang="en">Login</span></h2>
       <input type="email" name="email" placeholder="Email" required>
       <input type="password" name="password" placeholder="Password" required>
       <input type="submit" class="accountButton" value="Accedi"> <!--sistemare css + bottoni altre pagine-->
-      <p>Non hai un account? <a href="#" onclick="toggleForm()">Registrati qui</a></p>
+      <p>Non hai un <span lang="en">account</span>? <div class="account_Link"><a href="#" onclick="toggleForm()">Registrati qui</a></div></p>
     </form>
 
     <form class="form hidden" id="registrazione" action="#" method="post">
-      <h2>Registrazione Utente</h2>
+      <h2>Registrazione</h2>
       <input type="text" name="nome" placeholder="Nome" required>
       <input type="email" name="email" placeholder="Email" required>
       <input type="password" name="password" placeholder="Password" required>
       <input type="submit" class="accountButton" value="Registrati">
-      <p>Hai già un account? <a href="#" onclick="toggleForm()">Accedi qui</a></p>
-    </form>
-  </div>
-
-  <div id="form_ContainerAdmin">
-    <form class="form" action="#" method="post">
-      <h2><span lang="en">Login Admin</span></h2>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <input type="code" name="code" placeholder="Codice Admin" required>
-      <input type="submit" class="accountButton" value="Accedi">
-      <p>Non hai un account? <a href="#" onclick="toggleForm()">Registrati qui</a></p>
-    </form>
-
-    <form class="form hidden" id="registrazione" action="#" method="post">
-      <h2>Registrazione <span lang="en">Admin</span></h2>
-      <input type="text" name="nome" placeholder="Nome" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <input type="code" name="code" placeholder="Codice Admin" required>
-      <input type="submit" class="accountButton" value="Registrati">
-      <p>Hai già un account? <a href="#" onclick="toggleForm()">Accedi qui</a></p>
+      <p>Hai già un <span lang="en">account</span>? <div class="account_Link"><a href="#" onclick="toggleForm()">Accedi qui</a></div></p>
     </form>
   </div>
   

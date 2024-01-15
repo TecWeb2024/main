@@ -78,6 +78,10 @@ header {
     margin: 0em;
 }
 
+#brand_Container li{
+    flex-basis: 35%;
+}
+
 /*payments*/
 
 #payments{
@@ -292,8 +296,11 @@ footer{
 
 /*ACCOUNT*/
 
+#account_Page{
+    width: 90%;
+}
+
 #form_Container {
-    width: auto;
     padding: 0.5em;
 }
 
@@ -306,11 +313,16 @@ footer{
 }
 
 .accountButton{
-    padding: 1.5em;
+    padding: 0.5em;
+    width: auto;
 }
 
 .accountButton:hover {
     background-color: #757575;
+}
+
+.account_Link{
+    font-size: 110%;
 }
 
 /*CART*/

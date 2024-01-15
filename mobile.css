@@ -372,4 +372,38 @@ footer{
 }
 
 
+/*AREA_UTENTE_FAQ*/
+
+   #q_a_container {
+    text-align: center;
+  }
+
+  #q_a_container h2{
+    padding: 1%;
+    text-align: center;
+  }
+
+  #q_a_container .q_a_box{
+    margin-bottom: 10%;
+    list-style: none;
+    border: 1px solid #000;
+  }
+
+
+
+/*AREA_ADMIN_RISPOSTE*/
+
+  
+  .questions_container{
+    padding: 3%;
+    text-align: center;
+  }
+
+  .box_q_a{
+    padding: 1%;
+    border: #000 solid 2px;
+    margin-bottom: 2%;
+
+  }
+
 

@@ -3,9 +3,9 @@ namespace DB;
 
 class DBAccess {
     private const HOST_DB = "localhost";
-    private const DATABASE_NAME = "fpivetta"; // Inserisci il nome del tuo database
-    private const USERNAME = "fpivetta"; // Inserisci il tuo nome utente del database
-    private const PASSWORD = "iecog8Eiqu9utupi"; // Inserisci la tua password del database
+    private const DATABASE_NAME = "tcorbu"; // Inserisci il nome del tuo database
+    private const USERNAME = "tcorbu"; // Inserisci il tuo nome utente del database
+    private const PASSWORD = "Ogh2uutie4IwaiCh"; // Inserisci la tua password del database
 
     private $connection;
 
@@ -53,6 +53,32 @@ class DBAccess {
     
         return $categories;
     }
+
+    public function getBrandsFromDatabase() {
+        $brands = array();
+    
+        // Query per ottenere le categorie dalla tabella 'categoria'
+        $query = "SELECT * FROM marca";
+        $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+    
+        if ($result && $result->num_rows > 0) {
+            // Fetch dei dati e inserimento nell'array $categories
+            while ($row = $result->fetch_assoc()) {
+                $brands[] = $row;
+            }
+    
+            // Libera la memoria del risultato
+            $result->free_result();
+        } else {
+            // Se la query non ha prodotto risultati o ha fallito, gestisci il caso vuoto
+            // Puoi impostare $categories su un valore predefinito o fare altre operazioni necessarie.
+            // Ad esempio, impostare $categories su un array vuoto:
+            $brands = array();
+        }
+    
+        return $brands;
+    }
+
 
     public function closeDBConnection(){
         if($this->connection != null){

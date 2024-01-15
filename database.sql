@@ -1,4 +1,4 @@
-USE fpivetta;
+USE tcorbu;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -62,17 +62,18 @@ INSERT INTO `faq` (`ID`, `domanda`, `risposta`, `utente`, `amministratore`) VALU
 
 CREATE TABLE `marca` (
   `ID` int(20) UNSIGNED NOT NULL,
-  `nome` varchar(50) NOT NULL
+  `nome` varchar(50) NOT NULL,
+  `immagineSfondo` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --manca colonna immagine per php
-INSERT INTO `marca` (`ID`, `nome`) VALUES
-(1, 'Optimum Nutrition'),
-(2, 'Cousin Trestec'),
-(3, 'Technogym'),
-(4, 'Baodelong'),
-(5, 'Adidas'),
-(6, 'My Protein');
+INSERT INTO `marca` (`ID`, `nome`, `immagineSfondo`) VALUES
+(1, 'Optimum Nutrition', 'images/OptimumNutrition.jpg'),
+(2, 'Cousin Trestec', 'images/cousintrestecImage.png'),
+(3, 'Technogym', 'images/Technogym.jpg'),
+(4, 'Baodelong', 'images/baodelong.jpg'),
+(5, 'Adidas', 'images/adidas.jpg'),
+(6, 'My Protein', 'images/myprotein.png');
 
 --modificato
 CREATE TABLE `prodotto` (

@@ -3,9 +3,9 @@ namespace DB;
 
 class DBAccess {
     private const HOST_DB = "localhost";
-    private const DATABASE_NAME = "tcorbu"; // Inserisci il nome del tuo database
-    private const USERNAME = "tcorbu"; // Inserisci il tuo nome utente del database
-    private const PASSWORD = "Ogh2uutie4IwaiCh"; // Inserisci la tua password del database
+    private const DATABASE_NAME = "mpan"; // Inserisci il nome del tuo database
+    private const USERNAME = "mpan"; // Inserisci il tuo nome utente del database
+    private const PASSWORD = "jih7Xooghoog7wi0"; // Inserisci la tua password del database
 
     private $connection;
 
@@ -57,12 +57,12 @@ class DBAccess {
     public function getBrandsFromDatabase() {
         $brands = array();
     
-        // Query per ottenere le categorie dalla tabella 'categoria'
+        // Query per ottenere le categorie dalla tabella 'Brands'
         $query = "SELECT * FROM marca";
         $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
     
         if ($result && $result->num_rows > 0) {
-            // Fetch dei dati e inserimento nell'array $categories
+            // Fetch dei dati e inserimento nell'array $brands
             while ($row = $result->fetch_assoc()) {
                 $brands[] = $row;
             }
@@ -71,7 +71,7 @@ class DBAccess {
             $result->free_result();
         } else {
             // Se la query non ha prodotto risultati o ha fallito, gestisci il caso vuoto
-            // Puoi impostare $categories su un valore predefinito o fare altre operazioni necessarie.
+            // Puoi impostare $brands su un valore predefinito o fare altre operazioni necessarie.
             // Ad esempio, impostare $categories su un array vuoto:
             $brands = array();
         }
@@ -89,9 +89,119 @@ public function getAccessoriFromDatabase() {
     $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
     if ($result && $result->num_rows > 0) {
-        // Fetch dei dati e inserimento nell'array $categories
+        // Fetch dei dati e inserimento nell'array $accessori
         while ($row = $result->fetch_assoc()) {
             $accessori[] = $row;
+        }
+
+        // Libera la memoria del risultato
+        $result->free_result();
+    } else {
+
+        $accessori = array();
+    }
+
+    return $accessori;
+}
+
+
+
+
+//PAGINA PESI LIBERI
+public function getPesiLiberiFromDatabase() {
+    $pesiLiberi = array();
+
+    $query = "SELECT ID,nome,immagine1,prezzo FROM prodotto WHERE categoria=2";
+    $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+
+    if ($result && $result->num_rows > 0) {
+        // Fetch dei dati e inserimento nell'array $pesiLiberi
+        while ($row = $result->fetch_assoc()) {
+            $pesiLiberi[] = $row;
+        }
+
+        // Libera la memoria del risultato
+        $result->free_result();
+    } else {
+
+        $pesiLiberi = array();
+    }
+
+    return $pesiLiberi;
+}
+
+
+
+
+
+//PAGINA NUTRIZIONE
+public function getNutrizioneFromDatabase() {
+    $Nutrizione = array();
+
+    $query = "SELECT ID,nome,immagine1,prezzo FROM prodotto WHERE categoria=3";
+    $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+
+    if ($result && $result->num_rows > 0) {
+        // Fetch dei dati e inserimento nell'array $Nutrizione
+        while ($row = $result->fetch_assoc()) {
+            $Nutrizione[] = $row;
+        }
+
+        // Libera la memoria del risultato
+        $result->free_result();
+    } else {
+
+        $Nutrizione = array();
+    }
+
+    return $Nutrizione;
+}
+
+
+
+
+
+//PAGINA MACCHINE
+public function getMacchineFromDatabase() {
+    $Macchine = array();
+
+    $query = "SELECT ID,nome,immagine1,prezzo FROM prodotto WHERE categoria=4";
+    $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+
+    if ($result && $result->num_rows > 0) {
+        // Fetch dei dati e inserimento nell'array $Macchine
+        while ($row = $result->fetch_assoc()) {
+            $Macchine[] = $row;
+        }
+
+        // Libera la memoria del risultato
+        $result->free_result();
+    } else {
+
+        $Macchine = array();
+    }
+
+    return $Macchine;
+}
+
+
+
+
+
+
+
+//PAGINA FAQ
+//variabile di input con ID dell'utente?
+public function getFaqFromDataBase() {
+    $domande_risposta = array();
+
+    $query = "SELECT domanda, risposta FROM faq WHERE utente=1";//cambiare
+    $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+
+    if ($result && $result->num_rows > 0) {
+        // Fetch dei dati e inserimento nell'array $domande
+        while ($row = $result->fetch_assoc()) {
+            $domande_risposta[] = $row;
         }
 
         // Libera la memoria del risultato
@@ -100,12 +210,11 @@ public function getAccessoriFromDatabase() {
         // Se la query non ha prodotto risultati o ha fallito, gestisci il caso vuoto
         // Puoi impostare $categories su un valore predefinito o fare altre operazioni necessarie.
         // Ad esempio, impostare $categories su un array vuoto:
-        $accessori = array();
+        $domande_risposta = array();
     }
 
-    return $accessori;
+    return $domande_risposta;
 }
-
 
 
 

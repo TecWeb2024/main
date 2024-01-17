@@ -107,6 +107,7 @@ public function getAccessoriFromDatabase() {
 }
 
 
+//PAGINA LOGIN
 
 
 
@@ -123,48 +124,5 @@ public function getAccessoriFromDatabase() {
     }
 
 
-    /*public function exec_select_query($query){
-        try {
-            $res = mysqli_query($this->connection, $query);
-            if (!$res) {
-                throw new \Exception("Errore DB: " . mysqli_error($this->connection));
-            }
-    
-            $resArray = array();
-            
-            if(mysqli_num_rows($res) > 0){
-                while($row = mysqli_fetch_assoc($res)){
-                    $resArray[] = $row;
-                }
-            }
-    
-            return $resArray;
-        } catch (\Exception $e) {
-            // Puoi gestire l'eccezione come desideri (log, mostrare messaggio, ecc.)
-            // In questo esempio, verrà restituito un array vuoto in caso di errore.
-            return array();
-        } finally {
-            if ($res) {
-                $res->free();
-            }
-        }
-    }
-    
-    // Esegui query che alterano il sistema
-    public function exec_alter_query($query){
-        try {
-            $res = mysqli_query($this->connection, $query);
-            if (!$res) {
-                throw new \Exception("Errore DB: " . mysqli_error($this->connection));
-            }
-    
-            return $res;
-        } catch (\Exception $e) {
-            // Puoi gestire l'eccezione come desideri (log, mostrare messaggio, ecc.)
-            // In questo esempio, verrà restituito `false` in caso di errore.
-            return false;
-        }
-    }*/
-    
 }
 ?>

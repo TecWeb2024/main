@@ -34,12 +34,12 @@ CREATE TABLE `utente` (
   `ID` int(10) UNSIGNED NOT NULL,
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(150) NOT NULL,
+  `passw` varchar(150) NOT NULL,
   `amministratore` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `utente` (`ID`, `nome`, `email`, `password`, `amministratore`) VALUES
+INSERT INTO `utente` (`ID`, `nome`, `email`, `passw`, `amministratore`) VALUES
 (1, 'user', 'user@user.com', 'user', 0),
 (2, 'admin', 'admin@admin.com', 'admin', 1);
 
@@ -100,7 +100,7 @@ CREATE TABLE `prodotto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-
+--cancellare taglia dal database E tempoConsegna
 INSERT INTO `prodotto` (`ID`, `nome`, `immagine1`, `immagine2`, `immagine3`, `immagine4`, `categoria`, `keywords`, `prezzo`, `peso`, `dimensione`, `colore`, `volume`, `materialeUtilizzato`, `quantita` , `taglia` , `descrizione`, `tempoConsegna`, `marca`) VALUES
 (1, 'Borsone Adidas', 'images/BorsoneDavanti.jpg', 'images/BorsoneDietro.jpg', 'images/BorsoneAperto.jpg', 'images/BorsoneChiuso.jpg', 1, 'Olympo Fitness, palestra, negozio palestra, borsone, borsone adidas, adidas, prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 35, '1.5 kg', ' 22 cm x 56 cm x 28 cm', 'Nero', '39 L', 'tela, 100% poliestere riciclato', 10, null, 'La scelta ideale per la palestra e le gite nel weekend. Questo borsone adidas ha una base robusta per proteggere il contenuto. Lo scomparto principale è dotato di una zip bidirezionale per un accesso rapido da entrambi i lati. Le numerose tasche offrono la massima praticità e lo scomparto interno ti consente di tenere separate le sneaker.', 'Consegna in 3-5 giorni lavorativi',5),
 (2, 'Borraccia Adidas', 'images/borraccia1.jpg', 'images/borraccia2.jpg', 'images/borraccia3.jpg', 'images/borraccia4.jpg', 1 , 'Olympo Fitness, palestra, negozio palestra, pantalone, adias , borraccia adidas , prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 27, '1.0 kg', ' 25 cm x 30 cm x 31 cm', 'Nero', NULL, 'poliestere riciclato', 15, NULL, 'Borraccia  Adidas per fitness, ideale per tutte le attività fitness. Facile da infilare nella borsa.', 'Consegna in 3-5 giorni lavorativi',5),

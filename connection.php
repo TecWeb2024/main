@@ -27,6 +27,82 @@ class DBAccess {
     }
 
 
+//PAGINA LOGIN controllo admin
+function isLoggedIn(bool $isAdmin=false){
+
+    if(isset($_SESSION['user'])){
+
+        $connection = new DBAccess();
+
+        if($connection->openDBConnection()){
+
+            $id = $_SESSION['user'];
+
+            $users = $connection->exec_select_query("SELECT id,admin FROM utente WHERE id=$id");
+
+            if(count($users)>0){
+
+                $user = $users[0];
+               
+                if($isAdmin){
+                    return $user['admin']==1; //ritorna true se esiste ed è admin
+                }else{
+                    return true; //ritorna true se esiste
+                }
+
+            }else{
+                return false; //utente non esiste
+            }
+
+        }else{
+            return false; //non è possibile collegarsi al DB
+        }
+
+    }else{
+        return false; //nessuna sessione attiva
+    }
+
+}
+//trovare admin nel database
+public function getAdminFromDatabase($nome) {
+    $admin = array();
+
+    // Query per ottenere le categorie dalla tabella 'categoria'
+    $query ="SELECT id,passw,amministratore FROM utente WHERE nome='$nome' AND amministratore=1";
+    $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+
+    if ($result && $result->num_rows > 0) {
+        // Fetch dei dati e inserimento nell'array $categories
+        while ($row = $result->fetch_assoc()) {
+            $admin[] = $row;
+        }
+
+        // Libera la memoria del risultato
+        $result->free_result();
+    } else {
+        // Se la query non ha prodotto risultati o ha fallito, gestisci il caso vuoto
+        // Puoi impostare $categories su un valore predefinito o fare altre operazioni necessarie.
+        // Ad esempio, impostare $categories su un array vuoto:
+        $admin = array();
+    }
+
+    return $admin;
+}
+
+
+
+
+
+
+
+function DBConnectionError(bool $uscita = false){
+    return '<p class="errorDB">I sistemi sono momentaneamente fuori servizio. Ci scusiamo per il disagio.
+    Torna alla <a href="'.($uscita?'../':'').'index.php">Home</a> o riprova più tardi.</p>';
+}
+
+
+
+
 
 //PAGINA HOME
     public function getCategoriesFromDatabase() {
@@ -217,7 +293,7 @@ public function getFaqFromDataBase() {
 }
 
 
-//PAGINA LOGIN
+
 
 
 

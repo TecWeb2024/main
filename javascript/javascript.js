@@ -104,9 +104,9 @@ function setAdminLoginChecks(){
             }
         },
         password:{
-            message:"Inserire una <span lang='en'>password</span> con almeno 6 caratteri.",
+            message:"Inserire una <span lang='en'>password</span> con almeno 4 caratteri.",
             condition: function(str){
-                return str.length>=6;
+                return str.length>=4;
             }
         }
     };

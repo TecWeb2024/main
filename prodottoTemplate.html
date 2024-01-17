@@ -39,7 +39,8 @@
 <main id="content">
 
   <div id="product_Page">
-    <h2><!--Borsone Adidas--> {titoloProdotto}</h2>
+    {titoloProdotto}  <!-- deve contenere il tag h2-->
+   <!-- <h2>Borsone Adidas</h2>-->
 
     <div id="product_Images">
       <!-- Immagini del prodotto -->
@@ -61,7 +62,7 @@
         <li><span class="specs_List">Volume:</span> 39 L</li>
         <li><span class="specs_List">Materiali:</span> tela, 100% poliestere riciclato</li>
         <li><span class="specs_List">Azienda:</span> Adidas</li>-->
-        {specificheProdotto}
+        {specificheProdotto} <!-- se il campo è null allora non ci deve essere li, tutto la riga corrispondente -->
       </ul>
 
       <ul id="cart_Specs"> <!-- style da cambiare -->
@@ -76,15 +77,15 @@
           </select>
         </li>
             
-        <li><span class="cart_List">Taglia:</span> 
+        <!--<li><span class="cart_List">Taglia:</span>    TOGLIERLO DAL CSS!
           <select id="size">
-          <!--<option value="S">S</option>
+          <option value="S">S</option>
           <option value="M">M</option>
           <option value="L">L</option>
-          <option value="L">XL</option>-->
-          {tagliaProdotto}
+          <option value="L">XL</option>
+          {tagliaProdotto} 
           </select>
-        </li>
+        </li>-->
       </ul>
       <!--qui scrivere funzione che toglie la quantità dal database e aggiunge la card nel carrello-->
       <input type="submit" id="addToCart" value="Aggiungi al carrello">

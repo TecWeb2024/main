@@ -40,10 +40,11 @@
   <div id="form_Container">
     <form class="form" action="#" method="post">
       <h2><span lang="en">Login</span></h2>
-      <input type="email" name="email" placeholder="Email" required>
+      {errori}
+      <input type="nome" name="nome" placeholder="Nome" required>
       <input type="password" name="password" placeholder="Password" required>
       <!--mettere funzione che controlla che i dati inseriti siano validi nel database-->
-      <input type="submit" class="accountButton" value="Accedi"> <!--sistemare css + bottoni altre pagine-->
+      <input type="submit" name="submit" class="accountButton" value="Accedi"> <!--sistemare css + bottoni altre pagine-->
       <p>Non hai un <span lang="en">account</span>? <div class="account_Link"><a href="#" onclick="toggleForm()">Registrati qui</a></div></p>
     </form>
 

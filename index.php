@@ -22,6 +22,7 @@ if ($connectionOk) {
     $listaCategorie = $connection->getCategoriesFromDatabase();
 
     if ($listaCategorie != null) {
+        $stringaCategorie = '';
         foreach ($listaCategorie as $categoria) {
             $nomeCategorieMinuscolo .= strtolower(str_replace(' ', '', $categoria["nome"])); //MODIFICARE QUI PER COLLEGAMENTO CON PESI LIBERI.PHP
             $stringaCategorie .= '<li><a href="' . $nomeCategorieMinuscolo . '.php"><img src="' . $categoria["immagineSfondo"] . '" alt="">' . $categoria["nome"] . '</a></li>';

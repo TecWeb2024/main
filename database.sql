@@ -1,4 +1,4 @@
-USE mpan;
+USE tcorbu;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -54,10 +54,10 @@ CREATE TABLE `faq` (
 
 
 
-INSERT INTO `faq` (`ID`, `domanda`, `risposta`, `utente`, `amministratore`) VALUES
-(1, 'Quale compagnia si occupa della spedizione?', 'Le spadizioni sono a carico della ditta DHL.', 1, 2),
-(2, 'Quali brand collaborano con Olympo Fitness?', 'Puoi consultare l''insieme dei brand tramite la pagine Home, nella sezione: I Nostri Brand.', 1, 2),
-(3, 'Avete intenzione di aggiungere nuovi prodotti alimentari in futuro?', 'Si, siamo sempre alla ricerca dei prodotti che soddisfino i nostri clienti.', 1, 2);
+INSERT INTO `faq` (`ID`, `domanda`, `risposta`, `utente`) VALUES
+(1, 'Quale compagnia si occupa della spedizione?', 'Le spedizioni sono a carico della ditta DHL.', 1),
+(2, 'Quali brand collaborano con Olympo Fitness?', 'Puoi consultare l''insieme dei brand tramite la pagine Home, nella sezione: I Nostri Brand.', 1),
+(3, 'Avete intenzione di aggiungere nuovi prodotti alimentari in futuro?', 'Si, siamo sempre alla ricerca dei prodotti che soddisfino i nostri clienti.', 1);
 
 
 

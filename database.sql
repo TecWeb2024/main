@@ -1,16 +1,16 @@
-USE tcorbu;
+USE mpan;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-
+DROP TABLE IF EXISTS prodotto;
 DROP TABLE IF EXISTS categoria;
 DROP TABLE IF EXISTS utente;
 DROP TABLE IF EXISTS faq;
 DROP TABLE IF EXISTS marca;
-DROP TABLE IF EXISTS prodotto;
+
 
 
 
@@ -34,12 +34,12 @@ CREATE TABLE `utente` (
   `ID` int(10) UNSIGNED NOT NULL,
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `passw` varchar(150) NOT NULL,
+  `password` varchar(150) NOT NULL,
   `amministratore` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `utente` (`ID`, `nome`, `email`, `passw`, `amministratore`) VALUES
+INSERT INTO `utente` (`ID`, `nome`, `email`, `password`, `amministratore`) VALUES
 (1, 'user', 'user@user.com', 'user', 0),
 (2, 'admin', 'admin@admin.com', 'admin', 1);
 
@@ -54,10 +54,10 @@ CREATE TABLE `faq` (
 
 
 
-INSERT INTO `faq` (`ID`, `domanda`, `risposta`, `utente`) VALUES
-(1, 'Quale compagnia si occupa della spedizione?', 'Le spedizioni sono a carico della ditta DHL.', 1),
-(2, 'Quali brand collaborano con Olympo Fitness?', 'Puoi consultare l''insieme dei brand tramite la pagine Home, nella sezione: I Nostri Brand.', 1),
-(3, 'Avete intenzione di aggiungere nuovi prodotti alimentari in futuro?', 'Si, siamo sempre alla ricerca dei prodotti che soddisfino i nostri clienti.', 1);
+INSERT INTO `faq` (`ID`, `domanda`, `risposta`, `utente`, `amministratore`) VALUES
+(1, 'Quale compagnia si occupa della spedizione?', 'Le spadizioni sono a carico della ditta DHL.', 1, 2),
+(2, 'Quali brand collaborano con Olympo Fitness?', 'Puoi consultare l''insieme dei brand tramite la pagine Home, nella sezione: I Nostri Brand.', 1, 2),
+(3, 'Avete intenzione di aggiungere nuovi prodotti alimentari in futuro?', 'Si, siamo sempre alla ricerca dei prodotti che soddisfino i nostri clienti.', 1, 2);
 
 
 
@@ -100,10 +100,10 @@ CREATE TABLE `prodotto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
---cancellare taglia dal database E tempoConsegna
+
 INSERT INTO `prodotto` (`ID`, `nome`, `immagine1`, `immagine2`, `immagine3`, `immagine4`, `categoria`, `keywords`, `prezzo`, `peso`, `dimensione`, `colore`, `volume`, `materialeUtilizzato`, `quantita` , `taglia` , `descrizione`, `tempoConsegna`, `marca`) VALUES
 (1, 'Borsone Adidas', 'images/BorsoneDavanti.jpg', 'images/BorsoneDietro.jpg', 'images/BorsoneAperto.jpg', 'images/BorsoneChiuso.jpg', 1, 'Olympo Fitness, palestra, negozio palestra, borsone, borsone adidas, adidas, prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 35, '1.5 kg', ' 22 cm x 56 cm x 28 cm', 'Nero', '39 L', 'tela, 100% poliestere riciclato', 10, null, 'La scelta ideale per la palestra e le gite nel weekend. Questo borsone adidas ha una base robusta per proteggere il contenuto. Lo scomparto principale è dotato di una zip bidirezionale per un accesso rapido da entrambi i lati. Le numerose tasche offrono la massima praticità e lo scomparto interno ti consente di tenere separate le sneaker.', 'Consegna in 3-5 giorni lavorativi',5),
-(2, 'Borraccia Adidas', 'images/borraccia1.jpg', 'images/borraccia2.jpg', 'images/borraccia3.jpg', 'images/borraccia4.jpg', 1 , 'Olympo Fitness, palestra, negozio palestra, pantalone, adias , borraccia adidas , prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 27, '1.0 kg', ' 25 cm x 30 cm x 31 cm', 'Nero', NULL, 'poliestere riciclato', 15, NULL, 'Borraccia  Adidas per fitness, ideale per tutte le attività fitness. Facile da infilare nella borsa.', 'Consegna in 3-5 giorni lavorativi',5),
+(2, 'Borraccia Adidas', 'images/borraccia1.jpg', 'images/borraccia2.jpg', 'images/borraccia3.jpg', 'images/borraccia4.jpg', 1 , 'Olympo Fitness, palestra, negozio palestra, adias , borraccia adidas , prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 27, '1.0 kg', ' 25 cm x 30 cm x 31 cm', 'Nero', NULL, 'poliestere riciclato', 15, NULL, 'Borraccia  Adidas per fitness, ideale per tutte le attività fitness. Facile da infilare nella borsa.', 'Consegna in 3-5 giorni lavorativi',5),
 (3, 'Rullo di schiuma Adidas', 'images/rullo1.jpg', 'images/rullo2.jpg', 'images/rullo3.jpg', 'images/rullo4.jpg',1 , 'Olympo Fitness, palestra, negozio palestra, rullo, adias , maglietta adidas , prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 45, '1.5 kg', ' 25 cm x 50 cm x 8 cm', 'Nero', NULL, 'gomma', 25, 'M', 'Per recuperare più velocemente dall affaticamento dei tessuti molli.', 'Consegna in 3-5 giorni lavorativi',5),
 (4, 'Telo Adidas', 'images/TeloAdidas1.jpg', 'images/TeloAdidas2.jpg', 'images/TeloAdidas3.jpg', 'images/TeloAdidas4.jpg', 1, 'Olympo Fitness, palestra, negozio palestra, telo, asciugamano, adidas,  prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 35, '1.5 kg', ' 140 cm x 70 cm', 'Nero', NULL, '100% cotone', 25, 'L', 'Tessuto robusto e leggero, Deisgn moderno.', 'Consegna in 3-5 giorni lavorativi',5),
 (5, 'Hexagon Dumbbell', 'images/peso1.jpg', 'images/peso2.jpg', 'images/peso3.jpg', 'images/peso4.jpg', 2, 'Olympo Fitness, palestra, negozio palestra, peso, peso libero, technogy, prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 60, '20 kg', ' 30 cm x 10 cm', 'Nero/Argento', NULL, 'Acciaio', 25, NULL, 'Progettati per la forza e l’allenamento funzionale. La forma esagonale e l’impugnatura zigrinata permettono di ampliare al massimo la varietà di esercizi includendo anche quelli in appoggio a terra.', 'Consegna in 3-5 giorni lavorativi',3),

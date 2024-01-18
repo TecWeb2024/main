@@ -19,7 +19,7 @@ if ($connectionOk) {
 
     if ($listaPesiLiberi != null) {
         foreach ($listaPesiLiberi as $pesiLiberi) {
-            $stringaPesiLiberi .= '<li><a href="' . $pesiLiberi["nome"] . '.html"><img src="' . $pesiLiberi["immagine1"] . '" alt=""><p>' . $pesiLiberi["nome"] . ' - €' . $pesiLiberi["prezzo"] . '</p></a></li>';
+            $stringaPesiLiberi .= '<li><a href="prodotto.php?id=' . $pesiLiberi["ID"] . '"><img src="' . $pesiLiberi["immagine1"] . '" alt=""><p>' . $pesiLiberi["nome"] . ' - €' . $pesiLiberi["prezzo"] . '</p></a></li>';
         }
     } else {
         $stringaPesiLiberi .= "<li>Non sono presenti pesi liberi</li>";

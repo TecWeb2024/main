@@ -19,7 +19,7 @@ if ($connectionOk) {
 
     if ($listaNutrizione != null) {
         foreach ($listaNutrizione as $Nutrizione) {
-            $stringaNutrizione .= '<li><a href="' . $Nutrizione["nome"] . '.html"><img src="' . $Nutrizione["immagine1"] . '" alt=""><p>' . $Nutrizione["nome"] . ' - €' . $Nutrizione["prezzo"] . '</p></a></li>';
+            $stringaNutrizione .= '<li><a href="prodotto.php?id=' . $Nutrizione["ID"] . '"><img src="' . $Nutrizione["immagine1"] . '" alt=""><p>' . $Nutrizione["nome"] . ' - €' . $Nutrizione["prezzo"] . '</p></a></li>';
         }
     } else {
         $stringaNutrizione .= "<li>Non sono presenti alimentari</li>";

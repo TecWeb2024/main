@@ -19,7 +19,7 @@ if ($connectionOk) {
 
     if ($listaMacchine != null) {
         foreach ($listaMacchine as $macchine) {
-            $stringaMacchine .= '<li><a href="' . $macchine["nome"] . '.html"><img src="' . $macchine["immagine1"] . '" alt=""><p>' . $macchine["nome"] . ' - €' . $macchine["prezzo"] . '</p></a></li>';
+            $stringaMacchine .= '<li><a href="prodotto.php?id=' . $macchine["ID"] . '"><img src="' . $macchine["immagine1"] . '" alt=""><p>' . $macchine["nome"] . ' - €' . $macchine["prezzo"] . '</p></a></li>';
         }
     } else {
         $stringaMacchine .= "<li>Non sono presenti accessori</li>";

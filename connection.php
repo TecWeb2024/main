@@ -3,9 +3,9 @@ namespace DB;
 
 class DBAccess {
     private const HOST_DB = "localhost";
-    private const DATABASE_NAME = "tcorbu"; // Inserisci il nome del tuo database
-    private const USERNAME = "tcorbu"; // Inserisci il tuo nome utente del database
-    private const PASSWORD = "Ogh2uutie4IwaiCh"; // Inserisci la tua password del database
+    private const DATABASE_NAME = "mpan"; // Inserisci il nome del tuo database
+    private const USERNAME = "mpan"; // Inserisci il tuo nome utente del database
+    private const PASSWORD = "jih7Xooghoog7wi0"; // Inserisci la tua password del database
 
     private $connection;
 
@@ -25,132 +25,6 @@ class DBAccess {
             return true;
         }
     }
-
-
-    public function getPeopleId($id) {
-        $tuples = array();
-    
-        // Query per ottenere le categorie dalla tabella 'categoria'
-        $query ="SELECT id,amministratore FROM utente WHERE id='$id'";
-        $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
-    
-        if ($result && $result->num_rows > 0) {
-            // Fetch dei dati e inserimento nell'array $categories
-            while ($row = $result->fetch_assoc()) {
-                $tuples[] = $row;
-            }
-    
-            // Libera la memoria del risultato
-            $result->free_result();
-        } else {
-            // Se la query non ha prodotto risultati o ha fallito, gestisci il caso vuoto
-            // Puoi impostare $categories su un valore predefinito o fare altre operazioni necessarie.
-            // Ad esempio, impostare $categories su un array vuoto:
-            $tuples= array();
-        }
-    
-        return $tuples;
-    }
-//PAGINA LOGIN controllo se loggato e admin
-function isLoggedInAdmin(){
-
-    if(isset($_SESSION['user'])){
-
-        $connection = new DBAccess();
-
-        if($connection->openDBConnection()){
-
-            $id = $_SESSION['user'];
-
-            $users = $connection->getPeopleId($id);
-
-            if(count($users)>0){
-
-                $user = $users[0];
-                return $user['amministratore']==1; //ritorna true se esiste ed è admin
-            }else{
-                return false; //utente non esiste
-            }
-
-        }else{
-            return false; //non è possibile collegarsi al DB
-        }
-
-    }else{
-        return false; //nessuna sessione attiva
-    }
-
-}
-
-//controllo se loggato e utente normale
-function isLoggedInUser(){
-
-    if(isset($_SESSION['user'])){
-
-        $connection = new DBAccess();
-
-        if($connection->openDBConnection()){
-
-            $id = $_SESSION['user'];
-
-            $users = $connection->getPeopleId($id);
-
-            if(count($users)>0){
-
-                $user = $users[0];
-               
-                return $user['amministratore']==0; //ritorna true se è user
-            }else{
-                return false; //utente non esiste
-            }
-
-        }else{
-            return false; //non è possibile collegarsi al DB
-        }
-
-    }else{
-        return false; //nessuna sessione attiva
-    }
-
-}
-//trovare admin nel database
-public function getRowsFromDatabase($nome) {
-    $people = array();
-
-    // Query per ottenere le categorie dalla tabella 'categoria'
-    $query ="SELECT id,passw,amministratore FROM utente WHERE nome='$nome'";
-    $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
-
-    if ($result && $result->num_rows > 0) {
-        // Fetch dei dati e inserimento nell'array $categories
-        while ($row = $result->fetch_assoc()) {
-            $people[] = $row;
-        }
-
-        // Libera la memoria del risultato
-        $result->free_result();
-    } else {
-        // Se la query non ha prodotto risultati o ha fallito, gestisci il caso vuoto
-        // Puoi impostare $categories su un valore predefinito o fare altre operazioni necessarie.
-        // Ad esempio, impostare $categories su un array vuoto:
-        $people= array();
-    }
-
-    return $people;
-}
-
-
-
-
-
-
-
-function DBConnectionError(bool $uscita = false){
-    return '<p class="errorDB">I sistemi sono momentaneamente fuori servizio. Ci scusiamo per il disagio.
-    Torna alla <a href="'.($uscita?'../':'').'index.php">Home</a> o riprova più tardi.</p>';
-}
-
-
 
 
 
@@ -343,11 +217,54 @@ public function getFaqFromDataBase() {
 }
 
 
+//PAGINA FAQ
+//salvare funzione nel DB
+public function saveQuestionToDatabase($question, $userId) {
+    $question = mysqli_real_escape_string($this->connection, $question);
+
+    $query = "INSERT INTO faq (domanda, utente) VALUES ('$question', $userId)";
+    
+    $result = mysqli_query($this->connection, $query);
+
+    if ($result) {
+        return true;
+    } else {
+        echo "Errore nell'invio della domanda: " . mysqli_error($this->connection);
+        return false;
+    }
+}
 
 
 
 
 
+public function getProdottoById($idProdotto) {
+    try {
+        $query = "SELECT * FROM `prodotto` WHERE `ID` = ?";
+        $stmt = $this->connection->prepare($query);
+
+        if ($stmt) {
+            $stmt->bind_param("i", $idProdotto); // "i" indica un parametro di tipo intero
+            $stmt->execute();
+
+            $result = $stmt->get_result();
+
+            if ($result && $result->num_rows > 0) {
+                $prodotto = $result->fetch_assoc();
+                $stmt->close();
+                return $prodotto;
+            } else {
+                $stmt->close();
+                return null;
+            }
+        } else {
+            throw new \Exception("Errore durante la preparazione della query.");
+        }
+    } catch (\Exception $e) {
+        error_log("Errore durante il recupero del prodotto: " . $e->getMessage());
+        return false;
+    }
+}
 
 
 
@@ -359,5 +276,48 @@ public function getFaqFromDataBase() {
     }
 
 
+    /*public function exec_select_query($query){
+        try {
+            $res = mysqli_query($this->connection, $query);
+            if (!$res) {
+                throw new \Exception("Errore DB: " . mysqli_error($this->connection));
+            }
+    
+            $resArray = array();
+            
+            if(mysqli_num_rows($res) > 0){
+                while($row = mysqli_fetch_assoc($res)){
+                    $resArray[] = $row;
+                }
+            }
+    
+            return $resArray;
+        } catch (\Exception $e) {
+            // Puoi gestire l'eccezione come desideri (log, mostrare messaggio, ecc.)
+            // In questo esempio, verrà restituito un array vuoto in caso di errore.
+            return array();
+        } finally {
+            if ($res) {
+                $res->free();
+            }
+        }
+    }
+    
+    // Esegui query che alterano il sistema
+    public function exec_alter_query($query){
+        try {
+            $res = mysqli_query($this->connection, $query);
+            if (!$res) {
+                throw new \Exception("Errore DB: " . mysqli_error($this->connection));
+            }
+    
+            return $res;
+        } catch (\Exception $e) {
+            // Puoi gestire l'eccezione come desideri (log, mostrare messaggio, ecc.)
+            // In questo esempio, verrà restituito `false` in caso di errore.
+            return false;
+        }
+    }*/
+    
 }
 ?>

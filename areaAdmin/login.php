@@ -1,20 +1,20 @@
 <?php
     //area admin
-    require_once "connection.php";
-    require_once "funzioni.php";
+    require_once "../connection.php";
+    require_once "../funzioni.php";
     session_start();
 
     use DB\DBAccess;
 
-    $paginaHTML     = file_get_contents('accountTemplate.html'); //login.html
+    $paginaHTML     = file_get_contents('../loginTemplate.html'); //login.html
 
 
     $stringaErrori = "";
 
-    if(false){ //isLoggedIn(true)
+    if(isLoggedInAdmin()){
 
-        //header("Location: index.php");
-        //die();
+        header("Location: index.php");
+        die();
 
     }else{ //se non è ancora loggato
 

@@ -27,8 +27,32 @@ class DBAccess {
     }
 
 
-//PAGINA LOGIN controllo admin
-function isLoggedIn(bool $isAdmin=false){
+    public function getPeopleId($id) {
+        $tuples = array();
+    
+        // Query per ottenere le categorie dalla tabella 'categoria'
+        $query ="SELECT id,amministratore FROM utente WHERE id='$id'";
+        $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+    
+        if ($result && $result->num_rows > 0) {
+            // Fetch dei dati e inserimento nell'array $categories
+            while ($row = $result->fetch_assoc()) {
+                $tuples[] = $row;
+            }
+    
+            // Libera la memoria del risultato
+            $result->free_result();
+        } else {
+            // Se la query non ha prodotto risultati o ha fallito, gestisci il caso vuoto
+            // Puoi impostare $categories su un valore predefinito o fare altre operazioni necessarie.
+            // Ad esempio, impostare $categories su un array vuoto:
+            $tuples= array();
+        }
+    
+        return $tuples;
+    }
+//PAGINA LOGIN controllo se loggato e admin
+function isLoggedInAdmin(){
 
     if(isset($_SESSION['user'])){
 
@@ -38,18 +62,44 @@ function isLoggedIn(bool $isAdmin=false){
 
             $id = $_SESSION['user'];
 
-            $users = $connection->exec_select_query("SELECT id,admin FROM utente WHERE id=$id");
+            $users = $connection->getPeopleId($id);
+
+            if(count($users)>0){
+
+                $user = $users[0];
+                return $user['amministratore']==1; //ritorna true se esiste ed è admin
+            }else{
+                return false; //utente non esiste
+            }
+
+        }else{
+            return false; //non è possibile collegarsi al DB
+        }
+
+    }else{
+        return false; //nessuna sessione attiva
+    }
+
+}
+
+//controllo se loggato e utente normale
+function isLoggedInUser(){
+
+    if(isset($_SESSION['user'])){
+
+        $connection = new DBAccess();
+
+        if($connection->openDBConnection()){
+
+            $id = $_SESSION['user'];
+
+            $users = $connection->getPeopleId($id);
 
             if(count($users)>0){
 
                 $user = $users[0];
                
-                if($isAdmin){
-                    return $user['admin']==1; //ritorna true se esiste ed è admin
-                }else{
-                    return true; //ritorna true se esiste
-                }
-
+                return $user['amministratore']==0; //ritorna true se è user
             }else{
                 return false; //utente non esiste
             }
@@ -64,17 +114,17 @@ function isLoggedIn(bool $isAdmin=false){
 
 }
 //trovare admin nel database
-public function getAdminFromDatabase($nome) {
-    $admin = array();
+public function getRowsFromDatabase($nome) {
+    $people = array();
 
     // Query per ottenere le categorie dalla tabella 'categoria'
-    $query ="SELECT id,passw,amministratore FROM utente WHERE nome='$nome' AND amministratore=1";
+    $query ="SELECT id,passw,amministratore FROM utente WHERE nome='$nome'";
     $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
     if ($result && $result->num_rows > 0) {
         // Fetch dei dati e inserimento nell'array $categories
         while ($row = $result->fetch_assoc()) {
-            $admin[] = $row;
+            $people[] = $row;
         }
 
         // Libera la memoria del risultato
@@ -83,10 +133,10 @@ public function getAdminFromDatabase($nome) {
         // Se la query non ha prodotto risultati o ha fallito, gestisci il caso vuoto
         // Puoi impostare $categories su un valore predefinito o fare altre operazioni necessarie.
         // Ad esempio, impostare $categories su un array vuoto:
-        $admin = array();
+        $people= array();
     }
 
-    return $admin;
+    return $people;
 }
 
 

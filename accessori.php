@@ -19,7 +19,7 @@ if ($connectionOk) {
 
     if ($listaAccessori != null) {
         foreach ($listaAccessori as $accessorio) {
-            $stringaAccessori .= '<li><a href="' . $accessorio["nome"] . '.html"><img src="' . $accessorio["immagine1"] . '" alt=""><p>' . $accessorio["nome"] . ' - €' . $accessorio["prezzo"] . '</p></a></li>';
+            $stringaAccessori .= '<li><a href="prodotto.php?id=' . $accessorio["ID"] . '"><img src="' . $accessorio["immagine1"] . '" alt=""><p>' . $accessorio["nome"] . ' - €' . $accessorio["prezzo"] . '</p></a></li>';
         }
     } else {
         $stringaAccessori .= "<li>Non sono presenti accessori</li>";

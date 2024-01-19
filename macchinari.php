@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 setlocale(LC_ALL, 'it_IT');
 
-$paginaHTML = file_get_contents("macchineTemplate.html");
+$paginaHTML = file_get_contents("macchinariTemplate.html");
 $stringaMacchine = "";
 $listaMacchine = "";
 

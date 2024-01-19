@@ -388,6 +388,32 @@ public function getProdottoById($idProdotto) {
 }
 
 
+public function getCategoriaFromId($idCategoria) {
+    $query = "SELECT nome FROM categoria WHERE ID = $idCategoria";
+    $result = $this->connection->query($query);
+
+    if (!$result) {
+        die("Errore nell'esecuzione della query: " . $this->connection->error);
+    }
+
+    $categoria = '';
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $categoria = $row['nome'];
+    }
+
+    $result->free_result();
+
+    return $categoria;
+}
+
+
+
+
+
+    
+
 
 
     public function closeDBConnection(){

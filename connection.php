@@ -3,9 +3,9 @@ namespace DB;
 
 class DBAccess {
     private const HOST_DB = "localhost";
-    private const DATABASE_NAME = "mpan"; // Inserisci il nome del tuo database
-    private const USERNAME = "mpan"; // Inserisci il tuo nome utente del database
-    private const PASSWORD = "jih7Xooghoog7wi0"; // Inserisci la tua password del database
+    private const DATABASE_NAME = "tcorbu"; // Inserisci il nome del tuo database
+    private const USERNAME = "tcorbu"; // Inserisci il tuo nome utente del database
+    private const PASSWORD = "Ogh2uutie4IwaiCh"; // Inserisci la tua password del database
 
     private $connection;
 
@@ -139,16 +139,19 @@ public function getRowsFromDatabase($nome) {
     return $people;
 }
 
+//INSERIMENTO NEL DATABASE GENERALE, VA BENE SIA PER REGISTRAZIONE CHE PER FAQ E PRODOTTO
 
+public function insertIntoDatabase($query) {
 
-
-
-
-
-function DBConnectionError(bool $uscita = false){
-    return '<p class="errorDB">I sistemi sono momentaneamente fuori servizio. Ci scusiamo per il disagio.
-    Torna alla <a href="'.($uscita?'../':'').'index.php">Home</a> o riprova più tardi.</p>';
+    $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+    return $result;
 }
+
+
+
+
+
+
 //PAGINA HOME
     public function getCategoriesFromDatabase() {
         $categories = array();

@@ -12,6 +12,7 @@
 
     $stringaErrori = "";
     $stringaLogout = "";
+    $DBerror = "";
 
     if($connection->isLoggedInAdmin()){
 

@@ -34,12 +34,12 @@ CREATE TABLE `utente` (
   `ID` int(10) UNSIGNED NOT NULL,
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(150) NOT NULL,
+  `passw` varchar(150) NOT NULL,
   `amministratore` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `utente` (`ID`, `nome`, `email`, `password`, `amministratore`) VALUES
+INSERT INTO `utente` (`ID`, `nome`, `email`, `passw`, `amministratore`) VALUES
 (1, 'user', 'user@user.com', 'user', 0),
 (2, 'admin', 'admin@admin.com', 'admin', 1);
 
@@ -54,10 +54,10 @@ CREATE TABLE `faq` (
 
 
 
-INSERT INTO `faq` (`ID`, `domanda`, `risposta`, `utente`, `amministratore`) VALUES
-(1, 'Quale compagnia si occupa della spedizione?', 'Le spadizioni sono a carico della ditta DHL.', 1, 2),
-(2, 'Quali brand collaborano con Olympo Fitness?', 'Puoi consultare l''insieme dei brand tramite la pagine Home, nella sezione: I Nostri Brand.', 1, 2),
-(3, 'Avete intenzione di aggiungere nuovi prodotti alimentari in futuro?', 'Si, siamo sempre alla ricerca dei prodotti che soddisfino i nostri clienti.', 1, 2);
+INSERT INTO `faq` (`ID`, `domanda`, `risposta`, `utente`) VALUES
+(1, 'Quale compagnia si occupa della spedizione?', 'Le spedizioni sono a carico della ditta DHL.', 1),
+(2, 'Quali brand collaborano con Olympo Fitness?', 'Puoi consultare l''insieme dei brand tramite la pagine Home, nella sezione: I Nostri Brand.', 1),
+(3, 'Avete intenzione di aggiungere nuovi prodotti alimentari in futuro?', 'Si, siamo sempre alla ricerca dei prodotti che soddisfino i nostri clienti.', 1);
 
 
 

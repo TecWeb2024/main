@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS categoria;
 DROP TABLE IF EXISTS utente;
 DROP TABLE IF EXISTS faq;
 DROP TABLE IF EXISTS marca;
+DROP TABLE IF EXISTS carrello;
 
 
 
@@ -120,6 +121,16 @@ INSERT INTO `prodotto` (`ID`, `nome`, `immagine1`, `immagine2`, `immagine3`, `im
 (16, 'Artis Arm Curl',  'images/artis1.jpg', 'images/artis2.jpg', 'images/artis3.jpg', 'images/artis4.jpg', 4, 'Olympo Fitness, palestra, negozio palestra, Artis Arm Curl, braccia, TechnoGym, ,prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 90, '205 kg', '140 cm x 95 cm x 103 cm', NULL,  NULL,'Acciaio', 60, NULL, 'Artis Arm è specificamente progettata per allenare in modo sicuro ed efficace, ed in comoda posizione seduta, i muscoli delle braccia, specialmente i bicipiti.','Consegna in 3-5 giorni lavorativi',3);
 
 
+CREATE TABLE `carrello` (
+  `IDutente` int(10) UNSIGNED NOT NULL,
+  `IDprodotto` int(10) UNSIGNED NOT NULL,
+  `quantita` int(255) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `carrello` (`IDutente`, `IDprodotto`, `quantita`) VALUES
+(1, 1, 3),
+(1, 2, 2),
+(1, 3, 2);
 
 
 
@@ -142,6 +153,12 @@ ALTER TABLE `prodotto`
   ADD KEY `categoria` (`categoria`),
   ADD KEY `marca` (`marca`);
 
+ALTER TABLE `carrello`
+  ADD PRIMARY KEY (`IDutente`,`IDprodotto`);
+
+
+
+
 
 
 
@@ -163,7 +180,12 @@ ALTER TABLE `prodotto`
 
 
 
+
 ALTER TABLE `prodotto`
   ADD CONSTRAINT `categoria` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `marca` FOREIGN KEY (`marca`) REFERENCES `marca` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `carrello`
+  ADD CONSTRAINT `IDutente` FOREIGN KEY (`IDutente`) REFERENCES `utente` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `IDprodotto` FOREIGN KEY (`IDprodotto`) REFERENCES `prodotto` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;

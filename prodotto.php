@@ -21,6 +21,15 @@ if ($connectionOk) {
 
         if ($prodotto != null){
 
+            $NomeCategoria = $connection->getCategoriaFromId($prodotto['categoria']);
+            $categoriaLink = strtolower(str_replace(' ', '', $NomeCategoria));
+
+            $breadcrumb = '<a href="index.php" lang="en">Home</a> &gt; 
+                        <a href="' . $categoriaLink . '.php"> ' . $NomeCategoria . ' </a> &gt;
+                        ' . $prodotto['nome'];
+
+                            
+
             //HEADER
             $titolo =  $prodotto['nome'];
             $keywords = $prodotto['keywords'];
@@ -37,7 +46,8 @@ if ($connectionOk) {
                                     <li><span class="specs_List">Colore:</span> '       . $prodotto['colore']       . '</li>
                                     <li><span class="specs_List">Volume:</span> '       . $prodotto['volume']       . ' L</li>
                                     <li><span class="specs_List">Materiali:</span> '    . $prodotto['materialeUtilizzato'] . '</li>
-                                    <li><span class="specs_List">Azienda:</span> '      . $prodotto['marca']        . '</li>';
+                                    <li><span class="specs_List">Azienda:</span> '      . $prodotto['marca'] . '</li>
+                                    <li><span class="specs_List">Categoria:</span> '    . $connection->getCategoriaFromId($prodotto['categoria']) . '</li>';
             
             
             $descrizioneProdotto= '<p>' . $prodotto['descrizione'] . '</p>';
@@ -48,8 +58,6 @@ if ($connectionOk) {
                 $quantitaProdotto .= '<option value="' . $i . '"> ' . $i . '</option>';
             }
 
-            //Taglia Prodotto DA TOGLIERE ?
-            $tagliaProdotto = '1';
 
 
             //replacement
@@ -58,13 +66,14 @@ if ($connectionOk) {
             $paginaHTML = str_replace("{titolo}",   $titolo, $paginaHTML);
             $paginaHTML = str_replace('{keywords}',   $keywords, $paginaHTML);
             //body
+            //breadcrumb
+            $paginaHTML = str_replace("{breadcrumb}",   $breadcrumb, $paginaHTML);
 
             
             $paginaHTML = str_replace("{titoloProdotto}",   $titoloProdotto, $paginaHTML);
             $paginaHTML = str_replace("{immaginiProdotto}", $immaginiProdotto, $paginaHTML);
             $paginaHTML = str_replace("{specificheProdotto}", $specificheProdotto, $paginaHTML);
             $paginaHTML = str_replace("{quantitaProdotto}", $quantitaProdotto, $paginaHTML);
-            $paginaHTML = str_replace("{tagliaProdotto}",   $tagliaProdotto, $paginaHTML);
             $paginaHTML = str_replace("{descrizioneProdotto}", $descrizioneProdotto, $paginaHTML);
         
             echo $paginaHTML;

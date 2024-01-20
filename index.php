@@ -1,11 +1,11 @@
 <?php
 require_once "connection.php";
 use DB\DBAccess;
-ini_set('display_errors', 1);
+/*ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+error_reporting(E_ALL);*/
 
-setlocale(LC_ALL, 'it_IT');
+setlocale(LC_ALL, 'it_IT'); //forse mettere su tutte le pagine php
 
 $paginaHTML = file_get_contents("indexTemplate.html");
 $stringaCategorie = "";
@@ -54,7 +54,6 @@ if ($connectionOk) {
         $stringaBrands = "<li>Non sono presenti brand</li>";
     }
     
-
     $connection->closeDBConnection();
 } else {
     $stringaBrands = "<li>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio</li>";

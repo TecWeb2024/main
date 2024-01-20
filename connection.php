@@ -413,6 +413,40 @@ public function getCategoriaFromId($idCategoria) {
 
 
 
+//PAGINA CARRELLO
+public function getRiepilogoFromDatabase($id) {
+    $prezzo = 0;
+    $quantita = 0;
+
+    $query1 = " CREATE VIEW prezzoTotale(idProdotto,prezzoTotaleProdotto) AS
+                SELECT carrello.IDprodotto AS idProdotto, prodotto.prezzo * carrello.quantita AS prezzoTotaleProdotto
+                FROM carrello, prodotto
+                WHERE carrello.IDprodotto = prodotto.ID;
+    
+                SELECT carrello.IDutente, SUM(prezzoTotale.prezzoTotaleProdotto) AS prezzoTotaleUtente
+                FROM carrello, prezzoTotale  
+                WHERE carrello.IDprodotto = prezzoTotale.idProdotto AND carrello.IDutente = $id;
+                GROUP BY carrello.IDutente;
+
+                DROP VIEW prezzoTotale(idProdotto,prezzoTotaleProdotto)
+                ";
+    
+    $query2 = "SELECT SUM(quantita) FROM carrello WHERE IDutente= $id";
+
+    $result1 = mysqli_query($this->connection, $query1) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+    $result2 = mysqli_query($this->connection, $query2) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+
+    if ($result1 && $result1->num_rows > 0 && $result2 && $result2->num_rows > 0) {
+       
+       $prezzo = $result1;
+       $quantita = $result2;
+        // Libera la memoria del risultato
+        $result1->free_result();
+        $result2->free_result();
+    }
+    return array($prezzo, $quantita);
+}
+
 
 
     
@@ -424,50 +458,6 @@ public function getCategoriaFromId($idCategoria) {
             mysqli_close($this->connection);
         }
     }
-
-
-    /*public function exec_select_query($query){
-        try {
-            $res = mysqli_query($this->connection, $query);
-            if (!$res) {
-                throw new \Exception("Errore DB: " . mysqli_error($this->connection));
-            }
-    
-            $resArray = array();
-            
-            if(mysqli_num_rows($res) > 0){
-                while($row = mysqli_fetch_assoc($res)){
-                    $resArray[] = $row;
-                }
-            }
-    
-            return $resArray;
-        } catch (\Exception $e) {
-            // Puoi gestire l'eccezione come desideri (log, mostrare messaggio, ecc.)
-            // In questo esempio, verrà restituito un array vuoto in caso di errore.
-            return array();
-        } finally {
-            if ($res) {
-                $res->free();
-            }
-        }
-    }
-    
-    // Esegui query che alterano il sistema
-    public function exec_alter_query($query){
-        try {
-            $res = mysqli_query($this->connection, $query);
-            if (!$res) {
-                throw new \Exception("Errore DB: " . mysqli_error($this->connection));
-            }
-    
-            return $res;
-        } catch (\Exception $e) {
-            // Puoi gestire l'eccezione come desideri (log, mostrare messaggio, ecc.)
-            // In questo esempio, verrà restituito `false` in caso di errore.
-            return false;
-        }
-    }*/
     
 }
 ?>

@@ -6,7 +6,6 @@
 
     use DB\DBAccess;
     $connection = new DBAccess();
-    $connectionOk = $connection->openDBConnection();
     $paginaHTML     = file_get_contents('loginTemplate.html'); //login.html
 
 
@@ -63,7 +62,7 @@
             }
 
             if(count($errori)==0){
-                $connection = new DBAccess();
+
                 if($connection->openDBconnection()){
                     
                     //Cerca admin con quell'id
@@ -83,7 +82,7 @@
                                 die();
     
                             }else{ //era role="alert" dentro il tag, password errata
-                                array_push($errori,'<p class="error_Message">1Nome o <span lang="en">password</span> non corretti</p>');
+                                array_push($errori,'<p class="error_Message">Nome o <span lang="en">password</span> non corretti</p>');
                             }
                         }
                         elseif($user['amministratore']==0)
@@ -96,7 +95,7 @@
                                 die();
     
                             }else{ //era role="alert" dentro il tag, password errata
-                                array_push($errori,'<p class="error_Message">1Nome o <span lang="en">password</span> non corretti</p>');
+                                array_push($errori,'<p class="error_Message">Nome o <span lang="en">password</span> non corretti</p>');
                             }
                         }
 

@@ -6,9 +6,8 @@
 
     use DB\DBAccess;
     $connection = new DBAccess();
-    $connectionOk = $connection->openDBConnection();
-    $paginaHTML     = file_get_contents('registrazioneTemplate.html'); //login.html
 
+    $paginaHTML     = file_get_contents('registrazioneTemplate.html'); //login.html
 
     $stringaErrori = "";
     $stringaQuery = "";
@@ -30,8 +29,6 @@
         $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
     }
     else{
-        
-        $connection = new DBAccess();
                 if($connection->openDBconnection()){
                     if(isset($_POST['submit'])){
                         //Invio del form
@@ -59,7 +56,7 @@
                             $query="INSERT INTO utente(nome, email, passw, amministratore) VALUES('$nome', '$email', '$password', 0);";
                             $checkQuery=$connection->insertIntoDatabase($query);
                             if($checkQuery){
-                                $stringaQuery .= '<p class="success_Message">Registrazione effettuata con successo. Ora puoi accedere dalla pagina di <span lang="en">Login</span></p>';
+                                $stringaQuery .= '<p class="success_Message">Registrazione effettuata con successo. Ora puoi effettuare il <span lang="en">login</span> dalla pagina <span lang="en">Account</span></p>';
                                 $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
                                 $paginaHTML = str_replace("{erroriRegistrazione}",$DBerror,$paginaHTML);
                             }else{
@@ -82,17 +79,16 @@
                     $paginaHTML = str_replace("{erroriRegistrazione}",$stringaErrori,$paginaHTML);
                     $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
                     }
+
+                    $connection->close_DBconnection();
+
                 }else{
                     $DBerror .= DBConnectionError(true);
                     $paginaHTML = str_replace("{erroriRegistrazione}",$DBerror,$paginaHTML);
                     $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
                 }
-
-
         
     }   
-
-    
 
     echo $paginaHTML;
 

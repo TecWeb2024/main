@@ -9,7 +9,7 @@
 
     $connection = new DBAccess();
     
-    $paginaHTML = file_get_contents('carrelloTemplate.html');
+    $paginaHTML = file_get_contents('../carrelloTemplate.html');
 
     $stringaRiepilogo = "";
     $stringaMessaggio = "";
@@ -17,7 +17,7 @@
 
     if($connection->isLoggedInAdmin()){
         //non puoi comprare
-    $stringaMessaggio = '<p class="error_Message">Questa pagina non è disponibile perché sei collegato con l''<span lang="en">account</span> amministratore. Per regola, un amministratore non può usufruire del carrello. Ti preghiamo di accedere con un <span lang="en">account</span> utente.</p>';
+    $stringaMessaggio = '<p class="error_Message">Questa pagina non è disponibile perché sei collegato con l\'<span lang="en">account</span> amministratore. Per regola, un amministratore non può usufruire del carrello. Ti preghiamo di accedere con un <span lang="en">account</span> utente.</p>';
 
     }
     else{ //ridirezionamento fuori areaAdmin

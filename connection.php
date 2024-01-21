@@ -141,7 +141,7 @@ public function getRowsFromDatabase($nome) {
 
 //INSERIMENTO NEL DATABASE GENERALE, VA BENE SIA PER REGISTRAZIONE CHE PER FAQ E PRODOTTO
 
-public function insertIntoDatabase($query) {
+public function modifyDatabase($query) {
 
     $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
     return $result;
@@ -418,46 +418,71 @@ public function getRiepilogoFromDatabase($id) {
     $prezzo = 0;
     $quantita = 0;
 
-    $query1 = " CREATE VIEW prezzoTotale(idProdotto,prezzoTotaleProdotto) AS
-                SELECT carrello.IDprodotto AS idProdotto, prodotto.prezzo * carrello.quantita AS prezzoTotaleProdotto
-                FROM carrello, prodotto
-                WHERE carrello.IDprodotto = prodotto.ID;
-    
-                SELECT carrello.IDutente, SUM(prezzoTotale.prezzoTotaleProdotto) AS prezzoTotaleUtente
-                FROM carrello, prezzoTotale  
-                WHERE carrello.IDprodotto = prezzoTotale.idProdotto AND carrello.IDutente = $id;
-                GROUP BY carrello.IDutente;
+    $query1 = "CREATE VIEW prezzoTotale AS
+    SELECT carrello.IDprodotto AS idProdotto, prodotto.prezzo * carrello.quantita AS prezzoTotaleProdotto
+    FROM carrello
+    JOIN prodotto ON carrello.IDprodotto = prodotto.ID";
 
-                DROP VIEW prezzoTotale(idProdotto,prezzoTotaleProdotto)
-                ";
+    $query2 = "SELECT CAST(SUM(prezzoTotale.prezzoTotaleProdotto) AS SIGNED) AS prezzoTotaleUtente
+    FROM carrello
+    JOIN prezzoTotale ON carrello.IDprodotto = prezzoTotale.idProdotto
+    WHERE carrello.IDutente = $id
+    GROUP BY carrello.IDutente";
+
+    $query3 = "DROP VIEW prezzoTotale";
+
+    // Esegui le query separatamente
     
-    $query2 = "SELECT SUM(quantita) FROM carrello WHERE IDutente= $id";
+    $queryQuantita = "SELECT SUM(quantita) FROM carrello WHERE IDutente= $id";
 
     $result1 = mysqli_query($this->connection, $query1) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
     $result2 = mysqli_query($this->connection, $query2) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+    $result3 = mysqli_query($this->connection, $query3) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+    
+    $resultQuantita = mysqli_query($this->connection, $queryQuantita) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
-    if ($result1 && $result1->num_rows > 0 && $result2 && $result2->num_rows > 0) {
-       
-       $prezzo = $result1;
-       $quantita = $result2;
+    if ($result2 && $result2->num_rows > 0 && $resultQuantita && $resultQuantita->num_rows > 0) {
+    
+        $prezzo = $result2->fetch_assoc();
+        $quantita = $resultQuantita->fetch_assoc();
+
         // Libera la memoria del risultato
-        $result1->free_result();
+        //$result1->free_result();
         $result2->free_result();
+        //$result3->free_result();
+        $resultQuantita->free_result();
     }
     return array($prezzo, $quantita);
 }
-
-
-
     
+public function getProdottiCarrello($id){
+    $prodotti = array();
 
+    $query = "SELECT IDprodotto,nome,prezzo,carrello.quantita,immagine1 FROM carrello,prodotto WHERE idUtente=$id AND IDprodotto=ID"; //mettere anche alt quando lo metteremo nel db
+    $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
-
-    public function closeDBConnection(){
-        if($this->connection != null){
-            mysqli_close($this->connection);
+    if ($result && $result->num_rows > 0) {
+        // Fetch dei dati e inserimento nell'array $prodotti
+        while ($row = $result->fetch_assoc()) {
+            $prodotti[] = $row;
         }
+
+        // Libera la memoria del risultato
+        $result->free_result();
+    } else {
+
+        $prodotti = array();
     }
+
+    return $prodotti;
+}
+
+
+public function closeDBConnection(){
+    if($this->connection != null){
+        mysqli_close($this->connection);
+    }
+}
     
 }
 ?>

@@ -78,7 +78,7 @@
 
                                 $_SESSION['user'] = $user['id'];
     
-                                header("Location: faq.html");
+                                header("Location: areaAdmin/carrello.php");
                                 die();
     
                             }else{ //era role="alert" dentro il tag, password errata
@@ -91,7 +91,7 @@
 
                                 $_SESSION['user'] = $user['id'];
     
-                                header("Location: index.php");
+                                header("Location: areaUtente/carrello.php");
                                 die();
     
                             }else{ //era role="alert" dentro il tag, password errata

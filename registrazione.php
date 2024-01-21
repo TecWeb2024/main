@@ -18,13 +18,13 @@
 
     if($connection->isLoggedInAdmin()){
 
-        $stringaErrori .= '<p>Sei già registrato come amministratore nel sistema</p>';
+        $stringaErrori .= '<p role="alertdialog">Sei già registrato come amministratore nel sistema</p>';
         $paginaHTML = str_replace("{erroriRegistrazione}",$stringaErrori,$paginaHTML);
         $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
     }
     elseif($connection->isLoggedInUser()){
 
-        $stringaErrori .= '<p>Sei già registrato come utente nel sistema</p>';
+        $stringaErrori .= '<p role="alertdialog">Sei già registrato come utente nel sistema</p>';
         $paginaHTML = str_replace("{erroriRegistrazione}",$stringaErrori,$paginaHTML);
         $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
     }
@@ -41,26 +41,26 @@
                 
                 
                         if(!filter_var($email, FILTER_VALIDATE_EMAIL)){ //forse filterinput   $email = filter_input(INPUT_GET, 'email', FILTER_VALIDATE_EMAIL);
-                            array_push($errori,'<p class="error_Message">Inserire una <span lang="en">email</span> valida.</p>');
+                            array_push($errori,'<p class="error_Message" role="alertdialog">Inserire una <span lang="en">email</span> valida.</p>');
                         }
                         if(!preg_match('/\w{3,}/',$nome)){
-                            array_push($errori,'<p class="error_Message">Formato del nome non corretto</p>');
+                            array_push($errori,'<p class="error_Message" role="alertdialog">Formato del nome non corretto</p>');
                         }
                 
                         if(strlen($password)<4){
-                            array_push($errori,'<p class="error_Message">Formato della <span lang="en">password</span> non corretto.</p>');
+                            array_push($errori,'<p class="error_Message" role="alertdialog">Formato della <span lang="en">password</span> non corretto.</p>');
                         }
                 
                         if(count($errori)==0){
                             $query="";
                             $query="INSERT INTO utente(nome, email, passw, amministratore) VALUES('$nome', '$email', '$password', 0);";
-                            $checkQuery=$connection->insertIntoDatabase($query);
+                            $checkQuery=$connection->modifyDatabase($query);
                             if($checkQuery){
-                                $stringaQuery .= '<p class="success_Message">Registrazione effettuata con successo. Ora puoi effettuare il <span lang="en">login</span> dalla pagina <span lang="en">Account</span></p>';
+                                $stringaQuery .= '<p class="success_Message" role="alertdialog">Registrazione effettuata con successo. Ora puoi effettuare il <span lang="en">login</span> dalla pagina <span lang="en">Account</span></p>';
                                 $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
                                 $paginaHTML = str_replace("{erroriRegistrazione}",$DBerror,$paginaHTML);
                             }else{
-                                $stringaQuery .= '<p class="error_Message">Errore durante la registrazione. Le informazioni per contattarci le trovi in fondo alla pagina</p>';
+                                $stringaQuery .= '<p class="error_Message" role="alertdialog">Errore durante la registrazione. Le informazioni per contattarci le trovi in fondo alla pagina</p>';
                                 $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
                                 $paginaHTML = str_replace("{erroriRegistrazione}",$DBerror,$paginaHTML);
                             }
@@ -80,7 +80,7 @@
                     $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
                     }
 
-                    $connection->close_DBconnection();
+                    $connection->closeDBconnection();
 
                 }else{
                     $DBerror .= DBConnectionError(true);

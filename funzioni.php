@@ -24,7 +24,7 @@ function sanitizeInput($input) {
 }
 
 function DBConnectionError(bool $uscita = false){
-    return '<p class="errorDB">I sistemi sono momentaneamente fuori servizio. Ci scusiamo per il disagio.
+    return '<p class="errorDB" role="alertdialog">I sistemi sono momentaneamente fuori servizio. Ci scusiamo per il disagio.
     Torna alla <a href="'.($uscita?'../':'').'index.php">Home</a> o riprova più tardi.</p>'; //da modificare la struttura della cartella main
 }
 

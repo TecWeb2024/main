@@ -43,40 +43,32 @@
       <h2>Carrello</h2>
       {errori}
       <div id="headerCart">
-        <h3>Riepilogo Ordine:</h3>
-          <ul>
-            <!--<li>Prezzo parziale: ...€</li>
-            <li>Costo spedizione: ...€</li>
-            <li>Totale: ...€ (2 articoli selezionati)</li>-->
+        <!--<h3>Riepilogo Ordine:</h3> -->
+          <dl>
+            <dt>Riepilogo Ordine:</dt>
+            <!--
+              <dd>Prezzo Parziale: ...€</dd>
+              <dd>Costo spedizione: ...€</dd>
+              <dd>Totale: ...€ (2 articoli selezionati)</dd> -->
             {riepilogoOrdine}
-          </ul>
+            </dl>
 
-        <input type="submit" name="shopButton" id="buy_Now">Acquista ora</input> <!--sistemare, prima era button-->
+        <input type="submit" name="shopButton" id="buy_Now" value="Acquista ora"> <!--sistemare, prima era button-->
       </div>
 
     <ul id="cart_Container">
 
-      <!--<li>
-        <img src="images/BorsoneAperto.jpg" alt="Prodotto 1">
-        <div class="product-details">
-          <p>Nome Prodotto € Prezzo</p>
+     <!-- <li><a href="prodotto.html">
+        <img src="images/BorsoneAperto.jpg" alt="">
+        <div class="product_Info">
+          <p>Nome Prodotto € Prezzo</p></a>
+          <label for="cars">Quantità:</label>
             <select>
-              <option value="1">Quantità: 1</option>
+              <option>1</option>
             </select>
-            <input type="submit" name="removeProduct" class="remove-product">Rimuovi Prodotto dal carrello</input> creare funzione che toglie dal carrello e riaggiunge la quantità nella tabella prodotto
+            <input type="submit" name="submit" class="accountButton" value="Rimuovi prodotto">
         </div>
-      </li>
-
-      <li>
-        <img src="images/tapis1.jpg" alt="Prodotto 1">
-        <div class="product-details">
-          <p>Nome Prodotto € Prezzo</p>
-            <select>
-              <option value="1">Quantità: 1</option>
-            </select>
-            <button class="remove-product">Rimuovi Prodotto dal carrello</button>
-        </div>
-      </li>-->
+      </li> -->
       {prodottiCarrello}
 
     </ul>
@@ -138,11 +130,7 @@
     </section>
 
 
-    <div class="popup">
-      <p id="popuptext">Acquisto effettuato con successo! Grazie per aver ordinato da Olympo Fitness.</p> <!-- span lang en-->
-      <button id="close-popup">Continua</button> <!-- input submit-->
-    </div>
-
+    <!--
     <script> //cancellare da qui
       const buyNowButton = document.querySelector('#buy_Now');
       const popup = document.querySelector('.popup');
@@ -156,7 +144,7 @@
       closeButton.addEventListener('click', () => {
         popup.style.display = 'none'; // Nascondi il popup
       });
-    </script>
+    </script> -->
 
     <a href="#" id="buttonToTop">Torna in cima</a>
   </div>

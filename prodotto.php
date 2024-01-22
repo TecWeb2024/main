@@ -7,6 +7,8 @@ error_reporting(E_ALL);
 
 setlocale(LC_ALL, 'it_IT');
 
+session_start();
+
 $paginaHTML = file_get_contents("prodottoTemplate.html");
 $stringaProdotto = "";
 $listaProdotto = "";
@@ -18,28 +20,18 @@ if ($connectionOk) {
     if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         $idProdotto = $_GET['id'];
         $prodotto = $connection->getProdottoById($idProdotto);
-
+        
         if ($prodotto != null){
-
             $NomeCategoria = $connection->getCategoriaFromId($prodotto['categoria']);
             $categoriaLink = strtolower(str_replace(' ', '', $NomeCategoria));
-
-            $breadcrumb = '<a href="index.php" lang="en">Home</a> &gt; 
-                        <a href="' . $categoriaLink . '.php"> ' . $NomeCategoria . ' </a> &gt;
-                        ' . $prodotto['nome'];
-
-                            
-
-            //HEADER
+            $breadcrumb = '<a href="index.php" lang="en">Home</a> &gt; <a href="' . $categoriaLink . '.php"> ' . $NomeCategoria . ' </a> &gt;' . $prodotto['nome'];
             $titolo =  $prodotto['nome'];
             $keywords = $prodotto['keywords'];
             $titoloProdotto =      '<h2>' . $prodotto['nome'] . '</h2>';
-            
             $immaginiProdotto =    '<img src="' . $prodotto['immagine1'] . '" class="grid_Image" alt=' . $prodotto['descrizione'] .'>
                                     <img src="' . $prodotto['immagine2'] . '" class="grid_Image" alt=' . $prodotto['descrizione'] .'>
                                     <img src="' . $prodotto['immagine3'] . '" class="grid_Image" alt=' . $prodotto['descrizione'] .'>
                                     <img src="' . $prodotto['immagine4'] . '" class="grid_Image" alt=' . $prodotto['descrizione'] .'>'; 
-        
             $specificheProdotto =  '<li><span class="specs_List">Prezzo:</span> '       . $prodotto['prezzo']       . '€</li>
                                     <li><span class="specs_List">Peso:</span> '         . $prodotto['peso']         . '</li> 
                                     <li><span class="specs_List">Dimensioni:</span> '   . $prodotto['dimensione']   . '</li>
@@ -48,37 +40,66 @@ if ($connectionOk) {
                                     <li><span class="specs_List">Materiali:</span> '    . $prodotto['materialeUtilizzato'] . '</li>
                                     <li><span class="specs_List">Azienda:</span> '      . $prodotto['marca'] . '</li>
                                     <li><span class="specs_List">Categoria:</span> '    . $connection->getCategoriaFromId($prodotto['categoria']) . '</li>';
-            
-            
             $descrizioneProdotto= '<p>' . $prodotto['descrizione'] . '</p>';
-            //Quantità prodotto
+            
+
+            // Quantità prodotto
             $qnt = $prodotto['quantita'];
             $quantitaProdotto = '';
-            for ($i = 0; $i <= $qnt; $i++) {
-                $quantitaProdotto .= '<option value="' . $i . '"> ' . $i . '</option>';
+            if($qnt != 0){
+                $quantitaProdotto .= '<span class="cart_List">Seleziona quantità:</span>
+                                      <select name="opzione_selezionata" id="quantity"> ';
+                for ($i = 1; $i <= $qnt; $i++) {
+                    $quantitaProdotto .= '<option value="' . $i . '"> ' . $i . '</option>';
+                }
+                $quantitaProdotto .= ' </select> ';
+            }else if($qnt == 0){
+                $quantitaProdotto .= '<p> Prodotto esaurito! Ci dispiace per il disagio, presto tornerà disponibile!</p>';
+            }
+            
+
+            // Carrello dinamico
+            $carrello='';
+            if($connection->isLoggedInUser() &&  $qnt > 0){
+                $carrello = '<input type="submit" name="addToCart" id="addToCart" value="Aggiungi al carrello.">';
+            }
+            if($connection->isLoggedInAdmin()){
+                $carrello = '<p>Sei resgistrato come Amministratore. Le funzionalità del carrello sono disabilitate.</p>';
+            }
+            if(!($connection->isLoggedInAdmin()) && !($connection->isLoggedInUser())){
+                $carrello = '<p>Effettua il login per poter effettuare i tuoi acquisti: <a href="login.php" lang="en">Account</a></p>';
+            }
+            if(isset($_POST['addToCart'])){
+                if($connection->isLoggedInUser() || $connection->isLoggedInAdmin()){
+                    $quantita_selezionata = $_POST['opzione_selezionata'];
+                    $utente_sessione = $_SESSION['user'];
+                    $connection->saveToCart($utente_sessione,$idProdotto,$quantita_selezionata);
+                    $connection->updateProductQuantity($idProdotto,$quantita_selezionata);
+                    echo '<script>window.location.href = "carrello.php";</script>';
+                   
+                    
+                }elseif(!$connection->isLoggedInUser() || $connection->isLoggedInAdmin()){
+                    //echo "non connesso";
+                    
+                }else{
+                    //echo "Errore addToCart";
+                }
             }
 
-
-
-            //replacement
+            //REPLACEMENT
             $paginaHTML = file_get_contents("prodottoTemplate.html");
-            //header
             $paginaHTML = str_replace("{titolo}",   $titolo, $paginaHTML);
             $paginaHTML = str_replace('{keywords}',   $keywords, $paginaHTML);
-            //body
-            //breadcrumb
             $paginaHTML = str_replace("{breadcrumb}",   $breadcrumb, $paginaHTML);
-
-            
             $paginaHTML = str_replace("{titoloProdotto}",   $titoloProdotto, $paginaHTML);
             $paginaHTML = str_replace("{immaginiProdotto}", $immaginiProdotto, $paginaHTML);
             $paginaHTML = str_replace("{specificheProdotto}", $specificheProdotto, $paginaHTML);
             $paginaHTML = str_replace("{quantitaProdotto}", $quantitaProdotto, $paginaHTML);
             $paginaHTML = str_replace("{descrizioneProdotto}", $descrizioneProdotto, $paginaHTML);
-        
+            $paginaHTML = str_replace("{carrello}", $carrello, $paginaHTML);
+            
             echo $paginaHTML;
             
-
         } else {
             echo "Prodotto non trovato.";
         }

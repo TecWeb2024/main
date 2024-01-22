@@ -22,11 +22,11 @@
     <nav id="menu" aria-label="menù del sito">
       <a class="navigationHelp" href="#content">Salta il menù di navigazione</a>
       <ul>
-        <li><a href="index.html" lang="en">Home</a></li>
+        <li><a href="index.php" lang="en">Home</a></li>
         <li><a href="chiSiamo.html">Chi Siamo</a></li>
-        <li><a href="faq.html"><abbr title="Frequently Asked Questions" lang="en">FAQ</abbr></a></li>
-        <li><a href="carrello.html">Carrello</a></li>
-        <li><a href="account.html" lang="en">Account</a></li>
+        <li><a href="faq.php"><abbr title="Frequently Asked Questions" lang="en">FAQ</abbr></a></li>
+        <li><a href="carrello.php">Carrello</a></li>
+        <li><a href="login.php" lang="en">Account</a></li>
       </ul>
     </nav>
 </header>
@@ -66,22 +66,15 @@
         {specificheProdotto}
       </ul>
 
-      <ul id="cart_Specs"> <!-- style da cambiare -->
-        <li><span class="cart_List">Quantità:</span>
-          <select id="quantity">
-         <!-- <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>-->
-          {quantitaProdotto}
-          </select>
-        </li>
-            
       
-      </ul>
-      <!--qui scrivere funzione che toglie la quantità dal database e aggiunge la card nel carrello-->
-      <input type="submit" id="addToCart" value="Aggiungi al carrello">
+      <form class="form" method="post">
+            {quantitaProdotto}
+            {carrello}
+        <!--<input type="submit" name="addToCart" class="CartButton" value="Aggiungi al carrello."> -->
+      </form>
+    
+
+
 
       <div id="product_Description">
         <h3>Descrizione</h3>

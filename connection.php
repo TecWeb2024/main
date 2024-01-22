@@ -3,9 +3,9 @@ namespace DB;
 
 class DBAccess {
     private const HOST_DB = "localhost";
-    private const DATABASE_NAME = "tcorbu"; // Inserisci il nome del tuo database
-    private const USERNAME = "tcorbu"; // Inserisci il tuo nome utente del database
-    private const PASSWORD = "Ogh2uutie4IwaiCh"; // Inserisci la tua password del database
+    private const DATABASE_NAME = "mpan"; // Inserisci il nome del tuo database
+    private const USERNAME = "mpan"; // Inserisci il tuo nome utente del database
+    private const PASSWORD = "jih7Xooghoog7wi0"; // Inserisci la tua password del database
 
     private $connection;
 
@@ -410,6 +410,90 @@ public function getCategoriaFromId($idCategoria) {
 
     return $categoria;
 }
+
+    
+public function saveToCart($user_Id, $product_Id, $quantity_Id) {
+    // Esegue l'escape delle variabili per evitare SQL injection
+    $userId = mysqli_real_escape_string($this->connection, $user_Id);
+    $productId = mysqli_real_escape_string($this->connection, $product_Id);
+    $quantity = mysqli_real_escape_string($this->connection, $quantity_Id);
+
+    //verifica se il prodotto è già nel carrello
+    $checkQuery = "SELECT * FROM carrello WHERE IDutente='$userId' AND IDprodotto='$productId'";
+    $checkResult = mysqli_query($this->connection, $checkQuery);
+
+    if (mysqli_num_rows($checkResult) > 0) {
+        //il prodotto è già nel carrello, aumenta la quantità
+        $updateQuery = "UPDATE carrello SET quantita = quantita + '$quantity' WHERE IDutente='$userId' AND IDprodotto='$productId'";
+        $updateResult = mysqli_query($this->connection, $updateQuery);
+
+        if ($updateResult) {
+            echo "Quantità aggiornata nel carrello!";
+            return true;
+        } else {
+            echo "Errore nell'aggiornamento del carrello: " . mysqli_error($this->connection);
+            return false;
+        }
+    } else {
+        //il prodotto non è nel carrello
+        $insertQuery = "INSERT INTO carrello (IDutente, IDprodotto, quantita) VALUES ('$userId', '$productId', '$quantity')";
+        $insertResult = mysqli_query($this->connection, $insertQuery);
+
+        if ($insertResult) {
+            //echo "Aggiunto al carrello!";
+            return true;
+        } else {
+            //echo "Errore nell'inserimento nel carrello: " . mysqli_error($this->connection);
+            return false;
+        }
+    }
+}
+
+
+public function updateProductQuantity($product_Id, $quantity) {
+    // Esegue l'escape delle variabili per evitare SQL injection
+    $productId = mysqli_real_escape_string($this->connection, $product_Id);
+    $quantity = mysqli_real_escape_string($this->connection, $quantity);
+
+    // Verifica se il prodotto è presente nel database
+    $checkQuery = "SELECT * FROM prodotto WHERE ID='$productId'";
+    $checkResult = mysqli_query($this->connection, $checkQuery);
+
+    if (mysqli_num_rows($checkResult) > 0) {
+        $updateQuery = "UPDATE prodotto SET quantita = GREATEST(quantita - '$quantity', 0) WHERE ID='$productId'";
+        $updateResult = mysqli_query($this->connection, $updateQuery);
+
+        if ($updateResult) {
+            //echo "Quantità disponibile aggiornata!";
+            return true;
+        } else {
+           // echo "Errore nell'aggiornamento della quantità disponibile: " . mysqli_error($this->connection);
+            return false;
+        }
+    } else {
+        //prodotto non presente nel DB
+        //echo "Prodotto non trovato nel database.";
+        return false;
+    }
+}
+
+
+
+
+public function addProduct($nome, $immagine1, $immagine2, $immagine3, $immagine4, $categoria, $keywords, $prezzo, $peso, $dimensione, $colore, $volume, $materialeUtilizzato, $quantita, $taglia, $descrizione, $tempoConsegna, $marca) {
+    $Query = "INSERT INTO prodotto (nome, immagine1, immagine2, immagine3, immagine4, categoria, keywords, prezzo, peso, dimensione, colore, volume, materialeUtilizzato, quantita, taglia, descrizione, tempoConsegna, marca) VALUES ('$nome', 'images/$immagine1', 'images/$immagine2', 'images/$immagine3', 'images/$immagine4', '$categoria', '$keywords', '$prezzo', '$peso', '$dimensione', '$colore', '$volume', '$materialeUtilizzato', '$quantita', '$taglia', '$descrizione', '$tempoConsegna', '$marca')";
+    $result = mysqli_query($this->connection, $Query);
+
+    if ($result) {
+        echo "Inserimento avvenuto correttamente";
+        return true;
+    } else {
+        echo "Errore: " . mysqli_error($this->connection);
+        return false;
+    }
+}
+
+
 
 
 

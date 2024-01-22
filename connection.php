@@ -411,6 +411,75 @@ public function getCategoriaFromId($idCategoria) {
     return $categoria;
 }
 
+    
+public function saveToCart($user_Id, $product_Id, $quantity_Id) {
+    // Esegue l'escape delle variabili per evitare SQL injection
+    $userId = mysqli_real_escape_string($this->connection, $user_Id);
+    $productId = mysqli_real_escape_string($this->connection, $product_Id);
+    $quantity = mysqli_real_escape_string($this->connection, $quantity_Id);
+
+    //verifica se il prodotto è già nel carrello
+    $checkQuery = "SELECT * FROM carrello WHERE IDutente='$userId' AND IDprodotto='$productId'";
+    $checkResult = mysqli_query($this->connection, $checkQuery);
+
+    if (mysqli_num_rows($checkResult) > 0) {
+        //il prodotto è già nel carrello, aumenta la quantità
+        $updateQuery = "UPDATE carrello SET quantita = quantita + '$quantity' WHERE IDutente='$userId' AND IDprodotto='$productId'";
+        $updateResult = mysqli_query($this->connection, $updateQuery);
+
+        if ($updateResult) {
+            //echo "Quantità aggiornata nel carrello!";
+            return true;
+        } else {
+            //echo "Errore nell'aggiornamento del carrello: " . mysqli_error($this->connection);
+            return false;
+        }
+    } else {
+        //il prodotto non è nel carrello
+        $insertQuery = "INSERT INTO carrello (IDutente, IDprodotto, quantita) VALUES ('$userId', '$productId', '$quantity')";
+        $insertResult = mysqli_query($this->connection, $insertQuery);
+
+        if ($insertResult) {
+            //echo "Aggiunto al carrello!";
+            return true;
+        } else {
+            //echo "Errore nell'inserimento nel carrello: " . mysqli_error($this->connection);
+            return false;
+        }
+    }
+}
+
+
+public function updateProductQuantity($product_Id, $quantity) {
+    // Esegue l'escape delle variabili per evitare SQL injection
+    $productId = mysqli_real_escape_string($this->connection, $product_Id);
+    $quantity = mysqli_real_escape_string($this->connection, $quantity);
+
+    // Verifica se il prodotto è presente nel database
+    $checkQuery = "SELECT * FROM prodotto WHERE ID='$productId'";
+    $checkResult = mysqli_query($this->connection, $checkQuery);
+
+    if (mysqli_num_rows($checkResult) > 0) {
+        $updateQuery = "UPDATE prodotto SET quantita = GREATEST(quantita - '$quantity', 0) WHERE ID='$productId'";
+        $updateResult = mysqli_query($this->connection, $updateQuery);
+
+        if ($updateResult) {
+            //echo "Quantità disponibile aggiornata!";
+            return true;
+        } else {
+           // echo "Errore nell'aggiornamento della quantità disponibile: " . mysqli_error($this->connection);
+            return false;
+        }
+    } else {
+        //prodotto non presente nel DB
+        //echo "Prodotto non trovato nel database.";
+        return false;
+    }
+}
+
+
+
+
 
 
 //PAGINA CARRELLO

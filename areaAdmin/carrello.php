@@ -13,7 +13,8 @@
 
     $stringaRiepilogo = "";
     $stringaMessaggio = "";
-    $DBerror = "";
+    $error = "";
+    $stringaPagamento = "";
 
     if($connection->isLoggedInAdmin()){
         //non puoi comprare
@@ -24,8 +25,9 @@
         header("Location: ../index.php");
         die();
     }
-    $paginaHTML = str_replace("{errori}",$DBerror,$paginaHTML);
+    $paginaHTML = str_replace("{errori}",$error,$paginaHTML);
     $paginaHTML = str_replace("{riepilogoOrdine}",$stringaRiepilogo,$paginaHTML);
+    $paginaHTML = str_replace("{formCarrello}",$stringaPagamento,$paginaHTML);
     $paginaHTML = str_replace("{prodottiCarrello}",$stringaMessaggio,$paginaHTML);
 
     echo $paginaHTML;

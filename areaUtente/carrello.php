@@ -16,13 +16,20 @@
     $error = "";
     $listaProdotti = "";
     $stringaProdotti = "";
+    $stringaPagamento = "";
+
+    $arrayRemove = array();
+
+    $errorForm = [];
     
     $prezzoParziale = 0;
     $prezzoSpedizione = 0; //se prezzoParziale >50 questa variabile resta 0; altrimenti diventa 7
     $prezzoTotale = 0;
     $numeroProdotti = 0;
 
+
     if($connection->isLoggedInUser()){
+        
         if($connection->openDBConnection()){ // connessione aperta
             $risultato=array();
             // Chiamata alla funzione
@@ -33,7 +40,35 @@
 
 
             $connection->closeDBConnection();
-           
+
+            $stringaPagamento ='<fieldset>
+            <input type="submit" name="shopButton" class="button" value="Acquista ora">
+            <div id="delivery_Address">
+            <h3>Indirizzo di consegna:</h3>
+  
+            <label for="address">Indirizzo:</label>
+            <input type="text" name="address" placeholder="Via Rossi 53" required>
+            
+            <label for="city">Città:</label>
+            <input type="text" name="city" placeholder="Vicenza" required>
+            
+            <label for="cap"><abbr title="Codice Avviamento Postale">CAP</abbr>:</label>
+            <input type="text" name="cap" placeholder="36100" required>
+  
+            </div>
+            <div id="delivery_Payments">
+            <h3>Modalità di pagamento:</h3>
+  
+            <label for="payment_method">Scegli un metodo di pagamento:</label>
+            <select id="payment-method" name="payment_method" required>
+              <option value="credit_card">Carta di credito/debito</option>
+              <option value="paypal"><span lang="en">PayPal</span></option>
+              <option value="google_pay"><span lang="en">Google Pay</span></option>
+            </select>
+  
+            </div>
+            </fieldset> ';
+            
             if($listaProdotti != null && $risultato != null) {
 
                 $prezzoParziale = (array_values($risultato[0])[0]);
@@ -46,30 +81,73 @@
                 $stringaRiepilogo .= '<dd>Prezzo parziale: ' .$prezzoParziale.'€</dd><dd>Costo spedizione: ' .$prezzoSpedizione.'€</dd> <dd>Totale: ' .$prezzoTotale.' € ( ' .$numeroProdotti.' articoli selezionati)</dd>';
            
                 foreach ($listaProdotti as $prodotti) { // aggiungere alt
+                    
                     $stringaProdotti .='<li><a href="prodotto.php?id=' . $prodotti["IDprodotto"] . '"><img src="' . $prodotti["immagine1"] . '" alt=""><div class="product_Info"><p>' . $prodotti["nome"] . ' € ' . $prodotti["prezzo"] . '</p>
-                    <p>Quantità: ' . $prodotti["quantita"] . '</p></a><input type="submit" name="submit" class="accountButton" value="Rimuovi prodotto"></div></li>';
+                    <p>Quantità: ' . $prodotti["quantita"] . '</p></a><form action="carrello.php" method="get"><input type="submit" name="' . $prodotti["IDprodotto"] . '" class="button" value="Rimuovi prodotto"></form></div></li>';
+                    //AGGIUNGERE A VALUE L'ID DEL PRODOTTO, MA SENZA CAMBIARE LA SCRITTA DEL PULSANTE
+                    /*$arrayRemove[$prodotti["IDprodotto"]] = $prodotti["quantita"];*/
                 }
             }else{
                 $stringaRiepilogo = "<dd>Prezzo Parziale: 0€</dd><dd>Costo spedizione: 0€</dd><dd>Totale: 0€ (0 articoli selezionati)</dd> ";
-                $stringaProdotti .= "<li>Non sono presenti prodotti nel tuo carrello.</li>";
+                $stringaProdotti = "<p>Non sono presenti prodotti nel tuo carrello.</p>";
             }
 
+            if(isset($_GET[$prodotti["IDprodotto"]])){
+
+                $current_url = $_SERVER['REQUEST_URI'];
+                /*
+                if($connection->openDBConnection()){
+
+                $query1 = "UPDATE prodotto SET quantita = quantita + $prodotti["quantita"] WHERE ID = $prodotti["IDprodotto"]";
+                $query2 = "DELETE FROM carrello WHERE IDutente = $id AND IDprodotto = $prodotti["IDprodotto"];";
+
+                $checkQuery1=$connection->modifyDatabase($query1);
+                $checkQuery2=$connection->modifyDatabase($query2);
+                    if($checkQuery1 && $checkQuery2){
+                        $error = '<p class="success_Message">Eliminazione prodotto dal carrello avvenuta con successo.</p>';
+                    }else{
+                        $error = '<p class="error_Message" role="alertdialog">Errore nella rimozione dal carrello.</p>';
+                    }
+                    $connection->closeDBConnection();
+                             
+                }else{
+                    $error .= DBConnectionError(true);
+                }*/
+            }
+        
             if(isset($_POST['shopButton'])){
-                if($listaProdotti != null){
+
+
+                $indirizzo = sanitizeInput($_POST['address']);
+                $citta = sanitizeInput($_POST['city']);
+                $cap = sanitizeInput($_POST['cap']);
+        
+        
+                if(!preg_match('/^[A-Za-z]+(\s[A-Za-z]+)*\s\d+$/',$indirizzo)){
+                    array_push($errorForm,'<p class="error_Message" role="alertdialog">Inserire un indirizzo valido.</p>');
+                }
+                if(!preg_match('/^[A-Za-z]+$/',$citta)){
+                    array_push($errorForm,'<p class="error_Message" role="alertdialog">Nome della città non corretto.</p>');
+                }
+        
+                if(!preg_match('/^\d{5}$/',$cap)){
+                    array_push($errorForm,'<p class="error_Message" role="alertdialog">Formato del <abbr title="Codice Avviamento Postale">CAP</abbr> non corretto.</p>');
+                }
+                
+                if(count($errorForm)==0){
+                    if($listaProdotti != null){
                     if($connection->openDBConnection()){
 
                         $query = "DELETE FROM carrello WHERE IDutente=$id;";
                         $checkQuery=$connection->modifyDatabase($query);
                         if($checkQuery){
                             $stringaRiepilogo = "<dd>Prezzo Parziale: 0€</dd><dd>Costo spedizione: 0€</dd><dd>Totale: 0€ (0 articoli selezionati)</dd> ";
-                            $stringaProdotti = "<li>Non sono presenti prodotti nel tuo carrello.</li>";
+                            $stringaProdotti = "<p>Non sono presenti prodotti nel tuo carrello.</p>";
 
-                            $errori = '<p class="success_Message" role="alertdialog">Acquisto effettuato con successo.</p>';
+                            $error = '<p class="success_Message" role="alertdialog">Acquisto effettuato con successo.</p>';
    
                         }else{
-                            
                             $error = '<p class="error_Message" role="alertdialog">Per fare un acquisto devi avere almeno un prodotto nel tuo carrello</p>' ;
-                   
                         }
 
                     $connection->closeDBConnection();
@@ -78,19 +156,29 @@
                         $error .= DBConnectionError(true);
                     }
 
+                    }else{
+                        $error = '<p class="error_Message" role="alertdialog">Per fare un acquisto devi avere almeno un prodotto nel tuo carrello</p>' ;
+                    }
                 }else{
-                    $error = '<p class="error_Message" role="alertdialog">Per fare un acquisto devi avere almeno un prodotto nel tuo carrello</p>' ;
+                    $error = '<ul>';
+                        foreach($errorForm as $errorList){
+                            $error .= '<li>'.$errorList.'</li>';
+                        }
+                    $error .= '</ul>';
                 }
-            }
 
+            }
+            
             $paginaHTML = str_replace("{errori}",$error,$paginaHTML);
             $paginaHTML = str_replace("{riepilogoOrdine}",$stringaRiepilogo,$paginaHTML);
+            $paginaHTML = str_replace("{formCarrello}",$stringaPagamento,$paginaHTML);
             $paginaHTML = str_replace("{prodottiCarrello}",$stringaProdotti,$paginaHTML);
 
         }else{
             $error .= DBConnectionError(true);
             $paginaHTML = str_replace("{errori}",$error,$paginaHTML);
             $paginaHTML = str_replace("{riepilogoOrdine}",$stringaRiepilogo,$paginaHTML);
+            $paginaHTML = str_replace("{formCarrello}",$stringaPagamento,$paginaHTML);
             $paginaHTML = str_replace("{prodottiCarrello}",$stringaProdotti,$paginaHTML);
         }
     }    
@@ -98,6 +186,7 @@
         $stringaMessaggio = '<p class="error_Message" role="alertdialog">Questa pagina non è disponibile perché sei collegato con l\'<span lang="en">account</span> amministratore. Per regola, un amministratore non può usufruire del carrello. Ti preghiamo di accedere con un <span lang="en">account</span> utente.</p>';
         $paginaHTML = str_replace("{errori}",$error,$paginaHTML);
         $paginaHTML = str_replace("{riepilogoOrdine}",$stringaRiepilogo,$paginaHTML);
+        $paginaHTML = str_replace("{formCarrello}",$stringaPagamento,$paginaHTML);
         $paginaHTML = str_replace("{prodottiCarrello}",$stringaProdotti,$paginaHTML);
     }
     else{ //ridirezionamento fuori areaAdmin

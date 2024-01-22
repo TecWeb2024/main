@@ -1,16 +1,19 @@
-USE tcorbu;
+USE mpan;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-DROP TABLE IF EXISTS prodotto;
-DROP TABLE IF EXISTS categoria;
-DROP TABLE IF EXISTS utente;
-DROP TABLE IF EXISTS faq;
-DROP TABLE IF EXISTS marca;
+ALTER TABLE `prodotto` DROP FOREIGN KEY `categoria`;
+ALTER TABLE `carrello` DROP FOREIGN KEY `IDprodotto`;
+
 DROP TABLE IF EXISTS carrello;
+DROP TABLE IF EXISTS prodotto;
+DROP TABLE IF EXISTS marca;
+DROP TABLE IF EXISTS faq;
+DROP TABLE IF EXISTS utente;
+DROP TABLE IF EXISTS categoria;
 
 
 
@@ -93,7 +96,7 @@ CREATE TABLE `prodotto` (
   `colore` varchar(100) DEFAULT NULL,
   `volume` varchar(100) DEFAULT NULL,
   `materialeUtilizzato` varchar(100) DEFAULT NULL,
-  `quantita` int(255) UNSIGNED NOT NULL,
+  `quantita` int(255) UNSIGNED ,
   `taglia` varchar(100) DEFAULT NULL,
   `descrizione` text NOT NULL, -- da controllare se funziona
   `tempoConsegna` text NOT NULL,
@@ -101,7 +104,7 @@ CREATE TABLE `prodotto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
---forse rimettere alt
+
 INSERT INTO `prodotto` (`ID`, `nome`, `immagine1`, `immagine2`, `immagine3`, `immagine4`, `categoria`, `keywords`, `prezzo`, `peso`, `dimensione`, `colore`, `volume`, `materialeUtilizzato`, `quantita` , `taglia` , `descrizione`, `tempoConsegna`, `marca`) VALUES
 (1, 'Borsone Adidas', 'images/BorsoneDavanti.jpg', 'images/BorsoneDietro.jpg', 'images/BorsoneAperto.jpg', 'images/BorsoneChiuso.jpg', 1, 'Olympo Fitness, palestra, negozio palestra, borsone, borsone adidas, adidas, prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 35, '1.5 kg', ' 22 cm x 56 cm x 28 cm', 'Nero', '39 L', 'tela, 100% poliestere riciclato', 10, null, 'La scelta ideale per la palestra e le gite nel weekend. Questo borsone adidas ha una base robusta per proteggere il contenuto. Lo scomparto principale è dotato di una zip bidirezionale per un accesso rapido da entrambi i lati. Le numerose tasche offrono la massima praticità e lo scomparto interno ti consente di tenere separate le sneaker.', 'Consegna in 3-5 giorni lavorativi',5),
 (2, 'Borraccia Adidas', 'images/borraccia1.jpg', 'images/borraccia2.jpg', 'images/borraccia3.jpg', 'images/borraccia4.jpg', 1 , 'Olympo Fitness, palestra, negozio palestra, adias , borraccia adidas , prodotto palestra, prodotto, pesi liberi , macchinari palestra, macchinari, nutrizione', 27, '1.0 kg', ' 25 cm x 30 cm x 31 cm', 'Nero', NULL, 'poliestere riciclato', 15, NULL, 'Borraccia  Adidas per fitness, ideale per tutte le attività fitness. Facile da infilare nella borsa.', 'Consegna in 3-5 giorni lavorativi',5),

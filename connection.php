@@ -3,9 +3,9 @@ namespace DB;
 
 class DBAccess {
     private const HOST_DB = "localhost";
-    private const DATABASE_NAME = "tcorbu"; // Inserisci il nome del tuo database
-    private const USERNAME = "tcorbu"; // Inserisci il tuo nome utente del database
-    private const PASSWORD = "Ogh2uutie4IwaiCh"; // Inserisci la tua password del database
+    private const DATABASE_NAME = "mpan"; // Inserisci il nome del tuo database
+    private const USERNAME = "mpan"; // Inserisci il tuo nome utente del database
+    private const PASSWORD = "jih7Xooghoog7wi0"; // Inserisci la tua password del database
 
     private $connection;
 
@@ -428,10 +428,10 @@ public function saveToCart($user_Id, $product_Id, $quantity_Id) {
         $updateResult = mysqli_query($this->connection, $updateQuery);
 
         if ($updateResult) {
-            //echo "Quantità aggiornata nel carrello!";
+            echo "Quantità aggiornata nel carrello!";
             return true;
         } else {
-            //echo "Errore nell'aggiornamento del carrello: " . mysqli_error($this->connection);
+            echo "Errore nell'aggiornamento del carrello: " . mysqli_error($this->connection);
             return false;
         }
     } else {

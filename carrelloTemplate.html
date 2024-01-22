@@ -55,9 +55,8 @@
       </div>
 
 
-
-      <!--non si salva su database--> <!--da mettere ogni volta come campo compilabile-->
-    <form id="order_Details"> <!--sistemare campi corretti-->
+    <form id="order_Details" action="carrello.php" method="post">
+    <!--  <fieldset>
 
       <input type="submit" name="shopButton" class="button" value="Acquista ora">
       
@@ -65,58 +64,32 @@
         <h3>Indirizzo di consegna:</h3>
 
           <label for="address">Indirizzo:</label>
-          <input type="text" name="address" placeholder="Indirizzo" required>
-
-          <label for="address">CAP:</label>
-          <input type="nome" name="cap" placeholder="CAP" required>
+          <input type="text" name="address" placeholder="Via Rossi, 53" required>
+          
+          <label for="city">Città:</label>
+          <input type="text" name="city" placeholder="Vicenza" required>
+          
+          <label for="cap"><abbr title="Codice Avviamento Postale">CAP</abbr>:</label>
+          <input type="text" name="cap" placeholder="36100" required>
 
       </div>
-<!--non si salva su database--> <!--da mettere ogni volta come campo compilabile-->
+
       <div id="delivery_Payments">
         <h3>Modalità di pagamento:</h3>
-        <form class="order_Form">
-          <label for="payment-method">Pagamento con:</label>
-          <select id="payment-method" name="payment-method" required>
-            <option value="" disabled selected hidden>Scegli un metodo di pagamento</option>
-            <option value="credit-card">Carta di credito/debito</option>
-            <option value="paypal">PayPal</option>
-            <option value="google-pay">Google Pay</option>
+
+          <label for="payment_method">Scegli un metodo di pagamento:</label>
+          <select id="payment-method" name="payment_method" required>
+            <option value="credit_card">Carta di credito/debito</option>
+            <option value="paypal"><span lang="en">PayPal</span></option>
+            <option value="google_pay"><span lang="en">Google Pay</span></option>
           </select>
-          
-<!--qui cosa facciamo? Salviamo su database? Oppure è inutile altrimenti-->
-          <div id="credit-card-details" class="payment-details">
-            <label for="card-name">Nome sulla carta:</label>
-            <input type="text" id="card-name" name="card-name" required>
-            <br>
-            <label for="card-number">Numero della carta:</label>
-            <input type="text" id="card-number" name="card-number" required>
-            <br>
-            <label for="expiration">Scadenza:</label>
-            <input type="text" id="expiration" name="expiration" placeholder="MM/YY" required>
 
-            <label for="cvv">CVV:</label>
-            <input type="text" id="cvv" name="cvv" required>
+      </div>  
 
-          </div>
-          <!-- Altri campi per i dettagli della carta di credito -->
-
-          <!-- <div id="paypal-details" class="payment-details">
-          <label for="paypal-email">Indirizzo email PayPal:</label>
-          <input type="email" id="paypal-email" name="paypal-email" required>
-        </div>
-
-        <div id="google-pay-details" class="payment-details">
-          <label for="google-pay-email">Indirizzo email Google Pay:</label>
-          <input type="email" id="google-pay-email" name="google-pay-email" required>
-        </div> -->
-
-        </form>
-      </div>
+      </fieldset> -->
+      {formCarrello}
     </form>
-
-
-
-
+      
     <ul id="cart_Container">
 
      <!-- <li><a href="prodotto.html">

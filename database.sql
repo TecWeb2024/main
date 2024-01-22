@@ -82,7 +82,7 @@ INSERT INTO `marca` (`ID`, `nome`, `immagineSfondo`) VALUES
 
 
 CREATE TABLE `prodotto` (
-  `ID` int(10) UNSIGNED NOT NULL,
+  `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `nome` varchar(200) NOT NULL,
   `immagine1` varchar(100) NOT NULL,
   `immagine2` varchar(100) NOT NULL,

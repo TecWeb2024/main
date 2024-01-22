@@ -43,7 +43,6 @@
       <h2>Carrello</h2>
       {errori}
       <div id="headerCart">
-        <!--<h3>Riepilogo Ordine:</h3> -->
           <dl>
             <dt>Riepilogo Ordine:</dt>
             <!--
@@ -53,39 +52,24 @@
             {riepilogoOrdine}
             </dl>
 
-        <input type="submit" name="shopButton" class="button" value="Acquista ora"> <!--sistemare, prima era button-->
       </div>
 
-    <ul id="cart_Container">
-
-     <!-- <li><a href="prodotto.html">
-        <img src="images/BorsoneAperto.jpg" alt="">
-        <div class="product_Info">
-          <p>Nome Prodotto € Prezzo</p></a>
-          <label for="cars">Quantità:</label>
-            <select>
-              <option>1</option>
-            </select>
-            <input type="submit" name="submit" class="accountButton" value="Rimuovi prodotto">
-        </div>
-      </li> -->
-      {prodottiCarrello}
-
-    </ul>
 
 
-    <!--non si salva su database--> <!--da mettere ogni volta come campo compilabile-->
-    <section id="order_Details"> <!--sistemare campi corretti-->
+      <!--non si salva su database--> <!--da mettere ogni volta come campo compilabile-->
+    <form id="order_Details"> <!--sistemare campi corretti-->
+
+      <input type="submit" name="shopButton" class="button" value="Acquista ora">
+      
       <div id="delivery_Address">
         <h3>Indirizzo di consegna:</h3>
-        <form class="order_Form">
-          <label for="name">Nome:</label>
-          <input type="text" id="name" name="name" required>
 
           <label for="address">Indirizzo:</label>
-          <textarea id="address" name="address" rows="4" required></textarea>
+          <input type="text" name="address" placeholder="Indirizzo" required>
 
-        </form>
+          <label for="address">CAP:</label>
+          <input type="nome" name="cap" placeholder="CAP" required>
+
       </div>
 <!--non si salva su database--> <!--da mettere ogni volta come campo compilabile-->
       <div id="delivery_Payments">
@@ -112,6 +96,7 @@
 
             <label for="cvv">CVV:</label>
             <input type="text" id="cvv" name="cvv" required>
+
           </div>
           <!-- Altri campi per i dettagli della carta di credito -->
 
@@ -127,24 +112,27 @@
 
         </form>
       </div>
-    </section>
+    </form>
 
 
-    <!--
-    <script> //cancellare da qui
-      const buyNowButton = document.querySelector('#buy_Now');
-      const popup = document.querySelector('.popup');
-      const closeButton = document.querySelector('#close-popup');
 
-      buyNowButton.addEventListener('click', () => {
-        // Logica per effettuare l'acquisto e mostrare il popup
-        popup.style.display = 'block';
-      });
 
-      closeButton.addEventListener('click', () => {
-        popup.style.display = 'none'; // Nascondi il popup
-      });
-    </script> -->
+    <ul id="cart_Container">
+
+     <!-- <li><a href="prodotto.html">
+        <img src="images/BorsoneAperto.jpg" alt="">
+        <div class="product_Info">
+          <p>Nome Prodotto € Prezzo</p></a>
+          <label for="cars">Quantità:</label>
+            <select>
+              <option>1</option>
+            </select>
+            <input type="submit" name="submit" class="accountButton" value="Rimuovi prodotto">
+        </div>
+      </li> -->
+      {prodottiCarrello}
+
+    </ul>
 
     <a href="#" id="buttonToTop">Torna in cima</a>
   </div>

@@ -134,6 +134,23 @@
     max-width: 1024px;
   }
 
+  /*BUTTONS*/
+
+  .button{
+    padding: 0.5em;
+    min-height: 44px;
+    min-width: 110px;
+    font-size: 120%;
+    background-color: #757575;
+    color: #FFFFFF;
+    border: 1px solid #000000;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #000000;
+  }
+
   /*PRODUCTS CARDS*/
 
   #categories{
@@ -774,29 +791,16 @@
     padding: 1em;
   }
 
-  #headerCart ul {
+  #headerCart dt{
     font-size: 150%;
     font-weight: bold;
     list-style-type: none;
   }
   
-  #headerCart li{
-    font-size: 80%;
+  #headerCart dd{
+    font-size: 90%;
     font-weight: normal;
     margin-top: 0.5em;
-  }
-
-  #buy_Now {
-    padding: 1em 2em;
-    font-size: 120%;
-    background-color: #757575;
-    color: #FFFFFF;
-    border: 1px solid #000000;
-    cursor: pointer;
-  }
-
-  #buy_Now:hover {
-    background-color: #000000;
   }
 
   #cart_Container{

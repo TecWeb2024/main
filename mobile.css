@@ -4,6 +4,10 @@ header {
     padding: 0em;
 }
 
+.button:hover {
+    background-color: #757575;
+}
+
 .logo{
     line-height: 2.5em;
     clear: both;
@@ -338,16 +342,13 @@ footer{
     margin-bottom: 0.3em;
 }
 
-#headerCart ul {
+#headerCart dt{
     font-size: 130%;
 }
 
-#buy_Now {
-    margin-top: 1em;
-}
-
-#buy_Now:hover {
-    background-color: #757575;
+#headerCart dd{
+    font-size: 110%;
+    margin-bottom: 1em;
 }
 
 #cart_Container{

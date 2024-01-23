@@ -24,7 +24,7 @@ if ($connectionOk) {
         if ($prodotto != null){
             $NomeCategoria = $connection->getCategoriaFromId($prodotto['categoria']);
             $categoriaLink = strtolower(str_replace(' ', '', $NomeCategoria));
-            $breadcrumb = '<a href="index.php"><span lang="en">Home</span></a> &gt; <a href="' . $categoriaLink . '.php"> ' . $NomeCategoria . ' </a> &gt;' . $prodotto['nome'];
+            $breadcrumb = '<a href="index.php" lang="en">Home</a> &gt; <a href="' . $categoriaLink . '.php"> ' . $NomeCategoria . ' </a> &gt;' . $prodotto['nome'];
             $titolo =  $prodotto['nome'];
             $keywords = $prodotto['keywords'];
             $titoloProdotto =      '<h2>' . $prodotto['nome'] . '</h2>';
@@ -61,13 +61,13 @@ if ($connectionOk) {
             // Carrello dinamico
             $carrello='';
             if($connection->isLoggedInUser() &&  $qnt > 0){
-                $carrello = '<input type="submit" name="addToCart" class="button" value="Aggiungi al carrello.">';
+                $carrello = '<input type="submit" name="addToCart" id="addToCart" value="Aggiungi al carrello.">';
             }
             if($connection->isLoggedInAdmin()){
-                $carrello = '<p>Sei registrato come Amministratore. Le funzionalità del carrello sono disabilitate.</p>';
+                $carrello = '<p>Sei resgistrato come Amministratore. Le funzionalità del carrello sono disabilitate.</p>';
             }
             if(!($connection->isLoggedInAdmin()) && !($connection->isLoggedInUser())){
-                $carrello = '<p>Effettua il login per poter effettuare i tuoi acquisti: <a href="login.php"><span lang="en">Account</span></a></p>';
+                $carrello = '<p>Effettua il login per poter effettuare i tuoi acquisti: <a href="login.php" lang="en">Account</a></p>';
             }
             if(isset($_POST['addToCart'])){
                 if($connection->isLoggedInUser() || $connection->isLoggedInAdmin()){

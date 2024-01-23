@@ -78,70 +78,33 @@
 
                 $prezzoTotale = $prezzoParziale + $prezzoSpedizione;
 
-                $stringaRiepilogo = '<dd>Prezzo parziale: ' .$prezzoParziale.'€</dd><dd>Costo spedizione: ' .$prezzoSpedizione.'€</dd> <dd>Totale: ' .$prezzoTotale.' € ( ' .$numeroProdotti.' articoli selezionati)</dd>';
+                $stringaRiepilogo .= '<dd>Prezzo parziale: ' .$prezzoParziale.'€</dd><dd>Costo spedizione: ' .$prezzoSpedizione.'€</dd> <dd>Totale: ' .$prezzoTotale.' € ( ' .$numeroProdotti.' articoli selezionati)</dd>';
            
                 foreach ($listaProdotti as $prodotti) { // aggiungere alt
                     
-                    $stringaProdotti .= '<li><a href="prodotto.php?id=' . $prodotti["IDprodotto"] . '"><img src="' . $prodotti["immagine1"] . '" alt=""><div class="product_Info"><p>' . $prodotti["nome"] . ' € ' . $prodotti["prezzo"] . '</p>
-                    <p>Quantità: ' . $prodotti["quantita"] . '</p></a>
-                    <form action="carrello.php" method="get">
-                        <input type="hidden" name="id" value="' . $prodotti["IDprodotto"] . '">
-                        <input type="submit" name="remove" class="button" value="Rimuovi Prodotto">
-                    </form></div></li>';
-
-                    $arrayRemove[$prodotti["IDprodotto"]] = $prodotti["quantita"];
+                    $stringaProdotti .='<li><a href="prodotto.php?id=' . $prodotti["IDprodotto"] . '"><img src="' . $prodotti["immagine1"] . '" alt=""><div class="product_Info"><p>' . $prodotti["nome"] . ' € ' . $prodotti["prezzo"] . '</p>
+                    <p>Quantità: ' . $prodotti["quantita"] . '</p></a><form action="carrello.php" method="get"><input type="submit" name="' . $prodotti["IDprodotto"] . '" class="button" value="Rimuovi prodotto"></form></div></li>';
+                    //AGGIUNGERE A VALUE L'ID DEL PRODOTTO, MA SENZA CAMBIARE LA SCRITTA DEL PULSANTE
+                    /*$arrayRemove[$prodotti["IDprodotto"]] = $prodotti["quantita"];*/
                 }
             }else{
                 $stringaRiepilogo = "<dd>Prezzo Parziale: 0€</dd><dd>Costo spedizione: 0€</dd><dd>Totale: 0€ (0 articoli selezionati)</dd> ";
                 $stringaProdotti = "<p>Non sono presenti prodotti nel tuo carrello.</p>";
             }
 
-            if(isset($_GET['remove'])){
+            if(isset($_GET[$prodotti["IDprodotto"]])){
 
-                $idRimozione = $_GET['id'];
-                
+                $current_url = $_SERVER['REQUEST_URI'];
+                /*
                 if($connection->openDBConnection()){
 
-                $query1 = "UPDATE prodotto SET quantita = quantita +  $arrayRemove[$idRimozione] WHERE ID = $idRimozione;";
-                $query2 = "DELETE FROM carrello WHERE IDutente = $id AND IDprodotto = $idRimozione;";
+                $query1 = "UPDATE prodotto SET quantita = quantita + $prodotti["quantita"] WHERE ID = $prodotti["IDprodotto"]";
+                $query2 = "DELETE FROM carrello WHERE IDutente = $id AND IDprodotto = $prodotti["IDprodotto"];";
 
                 $checkQuery1=$connection->modifyDatabase($query1);
                 $checkQuery2=$connection->modifyDatabase($query2);
                     if($checkQuery1 && $checkQuery2){
                         $error = '<p class="success_Message">Eliminazione prodotto dal carrello avvenuta con successo.</p>';
-
-                            $risultato=array();
-                
-                            $risultato = $connection->getRiepilogoFromDatabase($id);
-                            $listaProdotti = $connection->getProdottiCarrello($id);//cambiare funzione + alt
-                
-                            if($listaProdotti != null && $risultato != null) {
-
-                                $prezzoParziale = (array_values($risultato[0])[0]);
-                                $numeroProdotti = (array_values($risultato[1])[0]);
-                
-                                $prezzoParziale>50 ? $prezzoSpedizione=0 : $prezzoSpedizione=7;
-                
-                                $prezzoTotale = $prezzoParziale + $prezzoSpedizione;
-                
-                                $stringaRiepilogo = '<dd>Prezzo parziale: ' .$prezzoParziale.'€</dd><dd>Costo spedizione: ' .$prezzoSpedizione.'€</dd> <dd>Totale: ' .$prezzoTotale.' € ( ' .$numeroProdotti.' articoli selezionati)</dd>';
-                                $stringaProdotti = "";
-                                foreach ($listaProdotti as $prodotti) { // aggiungere alt
-                                    
-                                    $stringaProdotti .= '<li><a href="prodotto.php?id=' . $prodotti["IDprodotto"] . '"><img src="' . $prodotti["immagine1"] . '" alt=""><div class="product_Info"><p>' . $prodotti["nome"] . ' € ' . $prodotti["prezzo"] . '</p>
-                                    <p>Quantità: ' . $prodotti["quantita"] . '</p></a>
-                                    <form action="carrello.php" method="get">
-                                        <input type="hidden" name="id" value="' . $prodotti["IDprodotto"] . '">
-                                        <input type="submit" name="remove" class="button" value="Rimuovi Prodotto">
-                                    </form></div></li>';
-                
-                                    $arrayRemove[$prodotti["IDprodotto"]] = $prodotti["quantita"];
-                                }
-                            }else{
-                                $stringaRiepilogo = "<dd>Prezzo Parziale: 0€</dd><dd>Costo spedizione: 0€</dd><dd>Totale: 0€ (0 articoli selezionati)</dd> ";
-                                $stringaProdotti = "<p>Non sono presenti prodotti nel tuo carrello.</p>";
-                            }
-                       
                     }else{
                         $error = '<p class="error_Message" role="alertdialog">Errore nella rimozione dal carrello.</p>';
                     }
@@ -149,7 +112,7 @@
                              
                 }else{
                     $error .= DBConnectionError(true);
-                }
+                }*/
             }
         
             if(isset($_POST['shopButton'])){
@@ -219,7 +182,14 @@
             $paginaHTML = str_replace("{prodottiCarrello}",$stringaProdotti,$paginaHTML);
         }
     }    
-    else{ //ridirezionamento fuori areaUtente
+    elseif($connection->isLoggedInAdmin()){
+        $stringaMessaggio = '<p class="error_Message" role="alertdialog">Questa pagina non è disponibile perché sei collegato con l\'<span lang="en">account</span> amministratore. Per regola, un amministratore non può usufruire del carrello. Ti preghiamo di accedere con un <span lang="en">account</span> utente.</p>';
+        $paginaHTML = str_replace("{errori}",$error,$paginaHTML);
+        $paginaHTML = str_replace("{riepilogoOrdine}",$stringaRiepilogo,$paginaHTML);
+        $paginaHTML = str_replace("{formCarrello}",$stringaPagamento,$paginaHTML);
+        $paginaHTML = str_replace("{prodottiCarrello}",$stringaProdotti,$paginaHTML);
+    }
+    else{ //ridirezionamento fuori areaAdmin
         header("Location: ../index.php");
         die();
     }

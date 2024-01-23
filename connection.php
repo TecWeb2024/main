@@ -343,7 +343,7 @@ public function getFaqFromDataBase() {
 public function getQuestionsFromDataBaseForAdmin() {
     $domande_risposta = array();
 
-    $query = "SELECT domanda, risposta FROM faq WHERE risposta IS NULL";//cambiare
+    $query = "SELECT domanda, risposta FROM faq WHERE risposta IS NULL";
     $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
     if ($result && $result->num_rows > 0) {
@@ -360,6 +360,13 @@ public function getQuestionsFromDataBaseForAdmin() {
     }
 
     return $domande_risposta;
+}
+
+
+
+public function saveRisposta($risposta, $idDomanda){
+    $query = "UPDATE risposta = $risposta FROM faq WHERE id=$idDomanda";
+    $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 }
 
 
@@ -606,6 +613,9 @@ public function getRiepilogoFromDatabase($id) {
     return array($prezzo, $quantita);
 }
     
+
+
+
 public function getProdottiCarrello($id){
     $prodotti = array();
 

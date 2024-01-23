@@ -28,10 +28,10 @@ if ($connectionOk) {
             $titolo =  $prodotto['nome'];
             $keywords = $prodotto['keywords'];
             $titoloProdotto =      '<h2>' . $prodotto['nome'] . '</h2>';
-            $immaginiProdotto =    '<img src="' . $prodotto['immagine1'] . '" class="grid_Image" alt=' . $prodotto['descrizione'] .'>
-                                    <img src="' . $prodotto['immagine2'] . '" class="grid_Image" alt=' . $prodotto['descrizione'] .'>
-                                    <img src="' . $prodotto['immagine3'] . '" class="grid_Image" alt=' . $prodotto['descrizione'] .'>
-                                    <img src="' . $prodotto['immagine4'] . '" class="grid_Image" alt=' . $prodotto['descrizione'] .'>'; 
+            $immaginiProdotto =    '<img src="' . $prodotto['immagine1'] . '" class="immagine_prodotto" alt=' . $prodotto['descrizione'] .'>
+                                    <img src="' . $prodotto['immagine2'] . '" class="immagine_prodotto" alt=' . $prodotto['descrizione'] .'>
+                                    <img src="' . $prodotto['immagine3'] . '" class="immagine_prodotto" alt=' . $prodotto['descrizione'] .'>
+                                    <img src="' . $prodotto['immagine4'] . '" class="immagine_prodotto" alt=' . $prodotto['descrizione'] .'>'; 
             $specificheProdotto =  '<li><span class="specs_List">Prezzo:</span> '       . $prodotto['prezzo']       . '€</li>
                                     <li><span class="specs_List">Peso:</span> '         . $prodotto['peso']         . '</li> 
                                     <li><span class="specs_List">Dimensioni:</span> '   . $prodotto['dimensione']   . '</li>

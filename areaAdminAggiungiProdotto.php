@@ -124,25 +124,28 @@
 
 
             $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-            $fileExtension = strtolower(pathinfo($immagine1FileName, PATHINFO_EXTENSION));
-            $fileExtension = strtolower(pathinfo($immagine2FileName, PATHINFO_EXTENSION));
-            $fileExtension = strtolower(pathinfo($immagine3FileName, PATHINFO_EXTENSION));
-            $fileExtension = strtolower(pathinfo($immagine4FileName, PATHINFO_EXTENSION));
+            $fileExtension1 = strtolower(pathinfo($immagine1FileName, PATHINFO_EXTENSION));
+            $fileExtension2 = strtolower(pathinfo($immagine2FileName, PATHINFO_EXTENSION));
+            $fileExtension3 = strtolower(pathinfo($immagine3FileName, PATHINFO_EXTENSION));
+            $fileExtension4 = strtolower(pathinfo($immagine4FileName, PATHINFO_EXTENSION));
 
-            if (in_array($fileExtension, $allowedExtensions)) {
-                // Sposta l'immagine nella cartella images
+
+            if (in_array($fileExtension1, $allowedExtensions) &&
+                in_array($fileExtension2, $allowedExtensions) &&
+                in_array($fileExtension3, $allowedExtensions) &&
+                in_array($fileExtension4, $allowedExtensions)) {
+                // Sposta le immagini nella cartella images
                 move_uploaded_file($_FILES['immagine1']['tmp_name'], $immagine1Path);
                 move_uploaded_file($_FILES['immagine2']['tmp_name'], $immagine2Path);
                 move_uploaded_file($_FILES['immagine3']['tmp_name'], $immagine3Path);
                 move_uploaded_file($_FILES['immagine4']['tmp_name'], $immagine4Path);
             }
 
-
     
             $successo = $connection->addProduct($nome, $immagine1Path, $immagine2Path, $immagine3Path, $immagine4Path, $categoria, $keywords, $prezzo, $peso, $dimensione, $colore, $volume, $materialeUtilizzato, $quantita, $taglia, $descrizione, $tempoConsegna, $marca);
     
             if ($successo) {
-                //echo " - ok";
+                //echo "Prodotto aggiunto con successo!.";
             } else {
                 
                 //echo "Errore nell'inserimento del prodotto.";

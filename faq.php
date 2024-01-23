@@ -18,12 +18,11 @@ $connectionOk = $connection->openDBConnection();
 if ($connectionOk) {
 
     if($connection->isLoggedInUser()){
-        echo 'loogato';
+        
         $question = '
                     <label for="contenuto" class="formBig">Hai qualche domanda? Faccelo sapere qui sotto!</label>
                     <textarea name="question" id="question_Input" cols="20" rows="10" autocomplete="off"></textarea>
-                     <input type="submit" name="addQuestion" value="Invia Domanda">
-                    </form>
+                    <input type="submit" name="addQuestion" value="Invia Domanda">
                     ';
     }else{
         $question = '<h2> Hai qualche domanda? Registrati sul nostro sito!</h2>';

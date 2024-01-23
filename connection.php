@@ -328,17 +328,42 @@ public function getFaqFromDataBase() {
             $domande_risposta[] = $row;
         }
 
-        // Libera la memoria del risultato
+
         $result->free_result();
     } else {
-        // Se la query non ha prodotto risultati o ha fallito, gestisci il caso vuoto
-        // Puoi impostare $categories su un valore predefinito o fare altre operazioni necessarie.
-        // Ad esempio, impostare $categories su un array vuoto:
+
         $domande_risposta = array();
     }
 
     return $domande_risposta;
 }
+
+
+
+public function getQuestionsFromDataBaseForAdmin() {
+    $domande_risposta = array();
+
+    $query = "SELECT domanda, risposta FROM faq WHERE risposta IS NULL";//cambiare
+    $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+
+    if ($result && $result->num_rows > 0) {
+        
+        while ($row = $result->fetch_assoc()) {
+            $domande_risposta[] = $row;
+        }
+
+
+        $result->free_result();
+    } else {
+
+        $domande_risposta = array();
+    }
+
+    return $domande_risposta;
+}
+
+
+
 
 
 //PAGINA FAQ
@@ -428,10 +453,10 @@ public function saveToCart($user_Id, $product_Id, $quantity_Id) {
         $updateResult = mysqli_query($this->connection, $updateQuery);
 
         if ($updateResult) {
-            echo "Quantità aggiornata nel carrello!";
+            //echo "Quantità aggiornata nel carrello!";
             return true;
         } else {
-            echo "Errore nell'aggiornamento del carrello: " . mysqli_error($this->connection);
+            //echo "Errore nell'aggiornamento del carrello: " . mysqli_error($this->connection);
             return false;
         }
     } else {
@@ -480,6 +505,9 @@ public function updateProductQuantity($product_Id, $quantity) {
 
 
 
+
+
+
 public function addProduct($nome, $immagine1, $immagine2, $immagine3, $immagine4, $categoria, $keywords, $prezzo, $peso, $dimensione, $colore, $volume, $materialeUtilizzato, $quantita, $taglia, $descrizione, $tempoConsegna, $marca) {
     $Query = "INSERT INTO prodotto (nome, immagine1, immagine2, immagine3, immagine4, categoria, keywords, prezzo, peso, dimensione, colore, volume, materialeUtilizzato, quantita, taglia, descrizione, tempoConsegna, marca) VALUES ('$nome', '$immagine1', '$immagine2', '$immagine3', '$immagine4', '$categoria', '$keywords', '$prezzo', '$peso', '$dimensione', '$colore', '$volume', '$materialeUtilizzato', '$quantita', '$taglia', '$descrizione', '$tempoConsegna', '$marca')";
     $result = mysqli_query($this->connection, $Query);
@@ -492,6 +520,45 @@ public function addProduct($nome, $immagine1, $immagine2, $immagine3, $immagine4
         return false;
     }
 }
+
+
+public function customQuery($sql, $params = []) {
+    $stmt = $this->connection->prepare($sql);
+
+    if ($stmt === false) {
+        die("Errore nella preparazione della query: " . $this->connection->error);
+    }
+
+    if (!empty($params)) {
+        $types = str_repeat('s', count($params)); 
+        $stmt->bind_param($types, ...$params);
+    }
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $stmt->close();
+
+    return $result;
+}
+
+
+
+
+public function removeProductById($id){
+    $query = 'DELETE FROM prodotto WHERE ID = ' . $id ;
+    $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+
+    if($result){
+        //echo 'operazione buon fine';
+    }else{
+        //echo 'errore nella rimozione del prodotto';
+    }
+}
+
+
+
+
 
 
 

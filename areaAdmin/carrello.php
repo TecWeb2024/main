@@ -9,7 +9,7 @@
 
     $connection = new DBAccess();
     
-    $paginaHTML = file_get_contents('../carrelloTemplate.html');
+    $paginaHTML = file_get_contents('templates/carrelloTemplate.html');
 
     $stringaRiepilogo = "";
     $stringaMessaggio = "";

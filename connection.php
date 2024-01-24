@@ -566,6 +566,20 @@ public function removeProductById($id){
 
 
 
+public function aggiornaProdotto($nuovo_id, $nuovo_nome, $immagine1Path, $immagine2Path, $immagine3Path, $immagine4Path, $nuova_categoria, $nuove_keywords, $nuovo_prezzo, $nuovo_peso, $nuova_dimensione, $nuovo_colore, $nuovo_volume, $nuovo_materiale_utilizzato, $nuova_quantita, $nuova_taglia, $nuova_descrizione, $nuovo_tempo_consegna, $nuova_marca){
+    $Query = "INSERT INTO prodotto (id, nome, immagine1, immagine2, immagine3, immagine4, categoria, keywords, prezzo, peso, dimensione, colore, volume, materialeUtilizzato, quantita, taglia, descrizione, tempoConsegna, marca) 
+VALUES ('$nuovo_id', '$nuovo_nome', '$immagine1Path', '$immagine2Path', '$immagine3Path', '$immagine4Path', '$nuova_categoria', '$nuove_keywords', '$nuovo_prezzo', '$nuovo_peso', '$nuova_dimensione', '$nuovo_colore', '$nuovo_volume', '$nuovo_materiale_utilizzato', '$nuova_quantita', '$nuova_taglia', '$nuova_descrizione', '$nuovo_tempo_consegna', '$nuova_marca')";
+
+    $result = mysqli_query($this->connection, $Query);
+
+    if ($result) {
+        echo "Inserimento avvenuto correttamente";
+        return true;
+    } else {
+        echo "Errore: " . mysqli_error($this->connection);
+        return false;
+    } 
+}
 
 
 

@@ -20,11 +20,7 @@ $connectionOk = $connection->openDBConnection();
 
 if ($connectionOk) {
     $listaFAQ = $connection->getQuestionsFromDataBaseForAdmin();
-
-    echo '<pre>';
-    print_r($listaFAQ);
-    echo '</pre>';
-    
+ 
     if ($listaFAQ != null) {
         foreach ($listaFAQ as $domanda) {  
 

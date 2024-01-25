@@ -352,9 +352,9 @@ public function saveRisposta($risposta, $idDomanda){
 
     $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
     if($result){
-        echo "Risposta isnerita";
+        //echo "Risposta inserita";
     }else{
-        echo "Rispsota non inserita!";
+        //echo "Rispsota non inserita!";
     }
 }
 
@@ -369,10 +369,10 @@ public function saveQuestionToDatabase($question, $userId) {
     $result = mysqli_query($this->connection, $query);
 
     if ($result) {
-        echo "rispsota inserita correttamente";
+        //echo "rispsota inserita correttamente";
         return true;
     } else {
-        echo "Errore nell'invio della domanda: " . mysqli_error($this->connection);
+        //echo "Errore nell'invio della domanda: " . mysqli_error($this->connection);
         return false;
     }
 }

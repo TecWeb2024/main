@@ -180,12 +180,21 @@
 
 
 
+
+
+
+
+
+
+
+
        // MODIFICA UN PRODOTTO ESISTENTE
        $modifica = '';
        $sql = "SELECT * FROM prodotto";
        $result = $connection->customQuery($sql);
-       $FLAG_ID = '';
-       $FLAG_ARRAY='';
+       $prodotto_da_modificare = NULL;
+
+       $immagine_1_originale = '';
 
        $modifica .= '<h3> MODIFICA UN PRODOTTO </h3>
                    <form method="post" enctype="multipart/form-data">
@@ -208,10 +217,6 @@
            $id_prodotto_modifica = $_POST["lista_prodotti_modifica"];
            $prodotto_da_modificare = $connection->getProdottoById($id_prodotto_modifica);
 
-
-           $prodotto_da_modificare['immagine1'];
-
-
            // Creazione del modulo di modifica con i valori esistenti
            $modifica .= '<h3> MODIFICA PRODOTTO - ' . $prodotto_da_modificare['nome'] . '</h3>
              <form method="post" enctype="multipart/form-data">
@@ -225,7 +230,7 @@
              <label for="immagine1_mod">Immagine 1:</label>
              <input type="file" id="immagine1_mod" name="immagine1_mod" accept="image/*">
              <img src="' . $prodotto_da_modificare['immagine1'] . '" alt="Immagine 1 esistente" style="max-width: 100px; max-height: 100px;"  required><br>
-             
+                
              <label for="immagine2_mod">Immagine 2:</label>
              <input type="file" id="immagine2_mod" name="immagine2_mod" accept="image/*">
              <img src="' . $prodotto_da_modificare['immagine2'] . '" alt="Immagine 2 esistente" style="max-width: 100px; max-height: 100px;"><br>
@@ -294,14 +299,45 @@
        }
 
 
+
+
+
+
        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit_modifica"])) { 
+        $prodotto_references = $connection->getProdottoById($_POST['id_mod']);
            $connection->removeProductById($_POST['id_mod']);
+
            $nuovo_id = $_POST['id_mod'];
            $nuovo_nome = $_POST['nome_mod'];
-           $nuova_immagine1 = isset($_FILES['immagine1_mod']['name']);
-           $nuova_immagine2 = isset($_FILES['immagine2_mod']['name']);
-           $nuova_immagine3 = isset($_FILES['immagine3_mod']['name']); 
-           $nuova_immagine4 = isset($_FILES['immagine4_mod']['name']); 
+
+           if (empty($_FILES['immagine1_mod']['name'])) {
+            $nuova_immagine1 = $prodotto_references['immagine1'];
+            } else {
+                $nuova_immagine1 = 'images/' . basename($_FILES['immagine1_mod']['name']);
+                move_uploaded_file($_FILES['immagine1_mod']['tmp_name'], $nuova_immagine1);
+            }
+
+            if (empty($_FILES['immagine2_mod']['name'])) {
+                    $nuova_immagine2 = $prodotto_references['immagine2'];
+                } else {
+                    $nuova_immagine2 = 'images/' . basename($_FILES['immagine2_mod']['name']);
+                    move_uploaded_file($_FILES['immagine2_mod']['tmp_name'], $nuova_immagine2);
+            }
+
+            if (empty($_FILES['immagine3_mod']['name'])) {
+                $nuova_immagine3 = $prodotto_references['immagine3'];
+            } else {
+                $nuova_immagine3 = 'images/' . basename($_FILES['immagine3_mod']['name']);
+                move_uploaded_file($_FILES['immagine3_mod']['tmp_name'], $nuova_immagine3);
+            }
+
+            if (empty($_FILES['immagine4_mod']['name'])) {
+                $nuova_immagine4 = $prodotto_references['immagine4'];
+            } else {
+                $nuova_immagine4 = 'images/' . basename($_FILES['immagine4_mod']['name']);
+                move_uploaded_file($_FILES['immagine4_mod']['tmp_name'], $nuova_immagine4);
+            }
+           
            $nuova_categoria = $_POST['categoria_mod'];
            $nuovo_prezzo = $_POST['prezzo_mod'];
            $nuovo_peso = $_POST['peso_mod'];
@@ -316,38 +352,15 @@
            $nuove_keywords = $_POST['keywords_mod'];
            $nuova_marca = $_POST['marca_mod'];
 
-
-            $uploadDirectory = 'images/';
-            $immagine1FileName = uniqid() . '_' . $nuova_immagine1;
-            $immagine2FileName = uniqid() . '_' . $nuova_immagine2;
-            $immagine3FileName = uniqid() . '_' . $nuova_immagine3;
-            $immagine4FileName = uniqid() . '_' . $nuova_immagine4;
-
-            $immagine1Path = $uploadDirectory . basename($immagine1FileName);
-            $immagine2Path = $uploadDirectory . basename($immagine2FileName);
-            $immagine3Path = $uploadDirectory . basename($immagine3FileName);
-            $immagine4Path = $uploadDirectory . basename($immagine3FileName);
-
-            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-            $fileExtension1 = strtolower(pathinfo($immagine1FileName, PATHINFO_EXTENSION));
-            $fileExtension2 = strtolower(pathinfo($immagine2FileName, PATHINFO_EXTENSION));
-            $fileExtension3 = strtolower(pathinfo($immagine3FileName, PATHINFO_EXTENSION));
-            $fileExtension4 = strtolower(pathinfo($immagine4FileName, PATHINFO_EXTENSION));
-
-
-
-            $successo_modifica = $connection->aggiornaProdotto($nuovo_id, $nuovo_nome, $immagine1Path, $immagine2Path, $immagine3Path, $immagine4Path, $nuova_categoria, $nuove_keywords, $nuovo_prezzo, $nuovo_peso, $nuova_dimensione, $nuovo_colore, $nuovo_volume, $nuovo_materiale_utilizzato, $nuova_quantita, $nuova_taglia, $nuova_descrizione, $nuovo_tempo_consegna, $nuova_marca);
+            $successo_modifica = $connection->aggiornaProdotto($nuovo_id, $nuovo_nome, $nuova_immagine1, $nuova_immagine2, $nuova_immagine3, $nuova_immagine4, $nuova_categoria, $nuove_keywords, $nuovo_prezzo, $nuovo_peso, $nuova_dimensione, $nuovo_colore, $nuovo_volume, $nuovo_materiale_utilizzato, $nuova_quantita, $nuova_taglia, $nuova_descrizione, $nuovo_tempo_consegna, $nuova_marca);
 
             if ($successo_modifica) {
-                //echo "Prodotto aggiunto con successo!.";
+                //echo "Aggiunto con successo!";
             } else {
                 
                 //echo "Errore nell'inserimento del prodotto.";
             }
-
        } 
-    
-
     } //CONNECTIONOK
         
 

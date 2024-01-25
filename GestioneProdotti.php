@@ -8,7 +8,7 @@
     setlocale(LC_ALL, 'it_IT');
     session_start();
 
-    $paginaHTML = file_get_contents("AddRmvProductTemplate.html");
+    $paginaHTML = file_get_contents("GestioneProdottiTemplate.html");
 
 
     $connection = new DBAccess();
@@ -87,7 +87,7 @@
             <option value="6">My Protein</option>
         </select><br>
         
-        <input type="submit" name="submit" value="Aggiungi Prodotto">
+        <input  type="submit" name="submit" value="Aggiungi Prodotto">
         </form> ';
         
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) { 

@@ -32,19 +32,34 @@
     </header>
     
     <nav id="breadcrumb" aria-label="Percorso">
-        <p>Ti trovi in: <a href="areaAdminRimuoviProdotto.php" lang="en"> Area Admin - Rimuovi Prodotto </a> </p>
+        <p>Ti trovi in: <a href="faqAdmin.html" lang="en"> Area Admin - FAQ </a> </p>
     </nav>
     
 
-    <main>   
-        <form method="post">
-            <label for="lista_prodotti">Seleziona il prodotto da rimuovere:</label>
-            <select id="lista_prodotti" name="lista_prodotti">
-                {lista_prodotti}
-            </select>
+    <main>        
+        
+        <div class="questions_container">
+            <h2>DOMANDE APERTE:</h2>
+    
+            <form>
 
-            <button type="submit" name="conferma_scelta">Conferma Scelta</button>
-        </form>
+                <div class="box_q_a">
+                    <h3 class="question">domanda_da_db.... </h3>
+                    <input type="text" placeholder="Scrivi qui la rispsota" id="question_Input" required>
+                    <inpuit type="submit" id="addQuestion">Invia</input> 
+                </div>
+
+                <div class="box_q_a">
+                    <h3 class="question">domanda_da_db.... </h3>
+                    <input type="text" placeholder="Scrivi qui la rispsota" id="question_Input" required>
+                    <inpuit type="submit" id="addQuestion">Invia</input> 
+                </div>
+
+
+            </form>
+        </div>
+
+
 
         <a href="#" id="buttonToTop">Torna in cima ↑</a>
     </main>

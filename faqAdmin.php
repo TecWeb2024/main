@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 
 setlocale(LC_ALL, 'it_IT');
 
-$paginaHTML = file_get_contents("areaAdminRisposteTemplate.html");
+$paginaHTML = file_get_contents("faqAdminTemplate.html");
 
 
 
@@ -48,11 +48,6 @@ if ($connectionOk) {
             }
         }
     }
-    
-    
-
-
-
 
 
 }//CONNECTIONOK

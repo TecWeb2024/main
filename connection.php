@@ -205,6 +205,8 @@ public function modifyDatabase($query) {
 
 
 
+
+
 //PAGINA ACCESSORI
 public function getAccessoriFromDatabase() {
     $accessori = array();
@@ -227,9 +229,6 @@ public function getAccessoriFromDatabase() {
 
     return $accessori;
 }
-
-
-
 
 //PAGINA PESI LIBERI
 public function getPesiLiberiFromDatabase() {
@@ -254,10 +253,6 @@ public function getPesiLiberiFromDatabase() {
     return $pesiLiberi;
 }
 
-
-
-
-
 //PAGINA NUTRIZIONE
 public function getNutrizioneFromDatabase() {
     $Nutrizione = array();
@@ -280,10 +275,6 @@ public function getNutrizioneFromDatabase() {
 
     return $Nutrizione;
 }
-
-
-
-
 
 //PAGINA MACCHINE
 public function getMacchineFromDatabase() {
@@ -338,12 +329,9 @@ public function getFaqFromDataBase() {
     return $domande_risposta;
 }
 
-
-
 public function getQuestionsFromDataBaseForAdmin() {
     $domande_risposta = array();
-
-    $query = "SELECT domanda, risposta FROM faq WHERE risposta IS NULL";
+    $query = "SELECT ID, domanda, risposta FROM faq WHERE risposta IS NULL";
     $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
     if ($result && $result->num_rows > 0) {
@@ -352,25 +340,23 @@ public function getQuestionsFromDataBaseForAdmin() {
             $domande_risposta[] = $row;
         }
 
-
         $result->free_result();
     } else {
-
         $domande_risposta = array();
     }
-
     return $domande_risposta;
 }
 
-
-
 public function saveRisposta($risposta, $idDomanda){
-    $query = "UPDATE risposta = $risposta FROM faq WHERE id=$idDomanda";
+    $query = "UPDATE faq SET risposta = '$risposta' WHERE id = $idDomanda";
+
     $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+    if($result){
+        echo "Risposta isnerita";
+    }else{
+        echo "Rispsota non inserita!";
+    }
 }
-
-
-
 
 
 //PAGINA FAQ
@@ -383,16 +369,13 @@ public function saveQuestionToDatabase($question, $userId) {
     $result = mysqli_query($this->connection, $query);
 
     if ($result) {
+        echo "rispsota inserita correttamente";
         return true;
     } else {
         echo "Errore nell'invio della domanda: " . mysqli_error($this->connection);
         return false;
     }
 }
-
-
-
-
 
 public function getProdottoById($idProdotto) {
     try {
@@ -422,7 +405,6 @@ public function getProdottoById($idProdotto) {
     }
 }
 
-
 public function getCategoriaFromId($idCategoria) {
     $query = "SELECT nome FROM categoria WHERE ID = $idCategoria";
     $result = $this->connection->query($query);
@@ -442,8 +424,7 @@ public function getCategoriaFromId($idCategoria) {
 
     return $categoria;
 }
-
-    
+ 
 public function saveToCart($user_Id, $product_Id, $quantity_Id) {
     // Esegue l'escape delle variabili per evitare SQL injection
     $userId = mysqli_real_escape_string($this->connection, $user_Id);
@@ -481,7 +462,6 @@ public function saveToCart($user_Id, $product_Id, $quantity_Id) {
     }
 }
 
-
 public function updateProductQuantity($product_Id, $quantity) {
     // Esegue l'escape delle variabili per evitare SQL injection
     $productId = mysqli_real_escape_string($this->connection, $product_Id);
@@ -513,7 +493,7 @@ public function updateProductQuantity($product_Id, $quantity) {
 
 
 
-
+//PAGINA ADMIN [INSERIMENTO, RIMOZIONE, MODIFICA]
 
 public function addProduct($nome, $immagine1, $immagine2, $immagine3, $immagine4, $categoria, $keywords, $prezzo, $peso, $dimensione, $colore, $volume, $materialeUtilizzato, $quantita, $taglia, $descrizione, $tempoConsegna, $marca) {
     $Query = "INSERT INTO prodotto (nome, immagine1, immagine2, immagine3, immagine4, categoria, keywords, prezzo, peso, dimensione, colore, volume, materialeUtilizzato, quantita, taglia, descrizione, tempoConsegna, marca) VALUES ('$nome', '$immagine1', '$immagine2', '$immagine3', '$immagine4', '$categoria', '$keywords', '$prezzo', '$peso', '$dimensione', '$colore', '$volume', '$materialeUtilizzato', '$quantita', '$taglia', '$descrizione', '$tempoConsegna', '$marca')";
@@ -549,9 +529,6 @@ public function customQuery($sql, $params = []) {
     return $result;
 }
 
-
-
-
 public function removeProductById($id){
     $query = 'DELETE FROM prodotto WHERE ID = ' . $id ;
     $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
@@ -564,8 +541,6 @@ public function removeProductById($id){
 }
 
 
-
-
 public function aggiornaProdotto($nuovo_id, $nuovo_nome, $immagine1Path, $immagine2Path, $immagine3Path, $immagine4Path, $nuova_categoria, $nuove_keywords, $nuovo_prezzo, $nuovo_peso, $nuova_dimensione, $nuovo_colore, $nuovo_volume, $nuovo_materiale_utilizzato, $nuova_quantita, $nuova_taglia, $nuova_descrizione, $nuovo_tempo_consegna, $nuova_marca){
     $Query = "INSERT INTO prodotto (id, nome, immagine1, immagine2, immagine3, immagine4, categoria, keywords, prezzo, peso, dimensione, colore, volume, materialeUtilizzato, quantita, taglia, descrizione, tempoConsegna, marca) 
 VALUES ('$nuovo_id', '$nuovo_nome', '$immagine1Path', '$immagine2Path', '$immagine3Path', '$immagine4Path', '$nuova_categoria', '$nuove_keywords', '$nuovo_prezzo', '$nuovo_peso', '$nuova_dimensione', '$nuovo_colore', '$nuovo_volume', '$nuovo_materiale_utilizzato', '$nuova_quantita', '$nuova_taglia', '$nuova_descrizione', '$nuovo_tempo_consegna', '$nuova_marca')";
@@ -573,7 +548,7 @@ VALUES ('$nuovo_id', '$nuovo_nome', '$immagine1Path', '$immagine2Path', '$immagi
     $result = mysqli_query($this->connection, $Query);
 
     if ($result) {
-        echo "Inserimento avvenuto correttamente";
+        //echo "Inserimento avvenuto correttamente";
         return true;
     } else {
         echo "Errore: " . mysqli_error($this->connection);

@@ -35,33 +35,18 @@
     </header>
     
     <nav id="breadcrumb" aria-label="Percorso">
-        <p>Ti trovi in: <a href="GestioneProdotti.php" lang="en"> Area Admin - Gestione Prodotti </a> </p>
+        <p>Ti trovi in: <a href="dashboardAdmin.html" lang="en"> Area Admin</a> &gt; Rimuovi prodotto </p>
     </nav>
     
 
     <main>
-        <!--
-        <label for="adminMenu">Seleziona un'opzione di amministrazione:</label>
-        <select id="adminMenu" onchange="showSelectedOption()">
-            <option value="0" disabled>scelta...</option>
-            <option value="1">Aggiungi prodotto</option>
-            <option value="2">Rimuovi prodotto</option>
-            <option value="3">Modifica prodotto esistente</option>
-        </select>
-        -->
 
-        <div class="aggiungi_prdotto_container" id="aggiungiContainer">
-            {form_aggiungi} 
-        </div>
-        
-        <div class="rimuovi_prdotto_container" id="rimuoviContainer">
-            {form_rimuovi} 
-        </div>
-        
-        <div class="modifica_prdotto_container" id="modificaContainer">
-            {form_modifica} 
-        </div>
 
+        {rimuovi}
+
+
+        <a href="dashboardAdmin.html">Annulla</a>
+        
         <a href="#" id="buttonToTop">Torna in cima ↑</a>
     </main>
 
@@ -84,40 +69,6 @@
         <div id="footer_Text"><p>&copy; 2024 <span lang="en">Olympo Fitness</span>. Tutti i diritti riservati.</p></div> 
     </footer>
 
-
-<!--
-    <script>
-        function showSelectedOption() {
-            var adminMenu = document.getElementById("adminMenu");
-            var aggiungiContainer = document.getElementById("aggiungiContainer");
-            var rimuoviContainer = document.getElementById("rimuoviContainer");
-            var modificaContainer = document.getElementById("modificaContainer");
-
-            // Nascondi tutti i container
-            aggiungiContainer.style.display = "none";
-            rimuoviContainer.style.display = "none";
-            modificaContainer.style.display = "none";
-
-            // Mostra il container corrispondente all'opzione selezionata
-            if (adminMenu.value === "0") {
-                aggiungiContainer.style.display = "none";
-                rimuoviContainer.style.display = "none";
-                modificaContainer.style.display = "none";
-            }
-            if (adminMenu.value === "1") {
-                aggiungiContainer.style.display = "block";
-
-            } else if (adminMenu.value === "2") {
-                rimuoviContainer.style.display = "block";
-
-            } else if (adminMenu.value === "3") {
-                modificaContainer.style.display = "block";
-            }
-        }
-    </script>
--->
-
-    
 
 </body>
 </html>

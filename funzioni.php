@@ -8,7 +8,7 @@ function sanitizeInput($input) {
     // Rimuove eventuali tag HTML non consentiti
     $input = strip_tags($input);
 
-    // Applica htmlentities per prevenire XSS se $allowed_tags è vuoto o non fornito
+    // Applica htmlentities per prevenire XSS
     $input = htmlentities($input, ENT_QUOTES, 'UTF-8');
     
     // Rimuove eventuali barre invertite

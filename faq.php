@@ -1,5 +1,6 @@
 <?php
 require_once "connection.php";
+require_once "funzioni.php";
 use DB\DBAccess;
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -20,16 +21,16 @@ if ($connectionOk) {
     if($connection->isLoggedInUser()){
         
         $question = '
-                    <label for="contenuto" class="formBig">Hai qualche domanda? Faccelo sapere qui sotto!</label>
-                    <textarea name="question" id="question_Input" cols="20" rows="10" autocomplete="off"></textarea>
-                    <input type="submit" name="addQuestion" value="Invia Domanda">
+                    <label for="question_Input" class="formBig">Hai qualche domanda? Faccelo sapere qui sotto!</label>
+                    <input type="text" name="question_Input" id="question_Input" placeholder="Scrivi qui la domanda" required>
+                    <input type="submit" name="addQuestion" id="addQuestion" value="Invia Domanda">
                     ';
     }else{
         $question = '<h2> Hai qualche domanda? Registrati sul nostro sito!</h2>';
     }
 
     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['addQuestion'])) {
-        $domanda = $_POST['question'];
+        $domanda = sanitizeInput($_POST['question_Input']);
         $utenteID = $_SESSION['user'];
         $connection->saveQuestionToDatabase($domanda, $utenteID);
     }

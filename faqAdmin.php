@@ -40,7 +40,7 @@ if ($connectionOk) {
             $submitKey = "submit_" . $domanda["ID"];
             if (array_key_exists($submitKey, $_POST) && $_POST[$submitKey] !== null) {
                 $question_id = $_POST["question_id_" . $domanda["ID"]];
-                $answer = $_POST["answer_" . $domanda["ID"]];
+                $answer = sanitizeInput($_POST["answer_" . $domanda["ID"]]);
    
                 $connection->saveRisposta($answer, $question_id);
             } else {

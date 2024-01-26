@@ -23,11 +23,11 @@
                 <label for="lista_prodottia">Seleziona il prodotto da eliminare:</label>
                  <select id="lista_prodotti" name="lista_prodotti">';
 
-        while ($row = $result->fetch_assoc()) {
-            $id_prodotto = $row['ID'];
-            $nome_prodotto = $row['nome'];
-            $form .= '<option value=' . $id_prodotto . '>' . $nome_prodotto . '</option>';
-        }
+                while ($row = $result->fetch_assoc()) {
+                    $id_prodotto = $row['ID'];
+                    $nome_prodotto = $row['nome'];
+                    $form .= '<option value=' . $id_prodotto . '>' . $nome_prodotto . '</option>';
+                }
 
         $form .= '</select>
                 <button type="submit" name="conferma">Conferma Scelta</button>

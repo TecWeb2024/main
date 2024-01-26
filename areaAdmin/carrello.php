@@ -1,5 +1,4 @@
 <?php
-    //area carrello, ti ridireziona dopo un messaggio con link a fare il login se non sei ancora loggato, forse cambiare sfondo per colori link brutti
     require_once "../connection.php";
     require_once "../funzioni.php";
     session_start();
@@ -9,7 +8,7 @@
 
     $connection = new DBAccess();
     
-    $paginaHTML = file_get_contents('../carrelloTemplate.html');
+    $paginaHTML = file_get_contents('templates/carrelloTemplate.html');
 
     $stringaRiepilogo = "";
     $stringaMessaggio = "";

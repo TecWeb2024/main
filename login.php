@@ -1,49 +1,19 @@
 <?php
-    //area admin+utente
-    require_once "connection.php";
-    require_once "funzioni.php";
+
+    require_once "../connection.php";
+    require_once "../funzioni.php";
     session_start();
 
     use DB\DBAccess;
-    $connection = new DBAccess();
-    $paginaHTML     = file_get_contents('loginTemplate.html'); //login.html
+    setlocale(LC_ALL, 'it_IT');
 
+    $connection = new DBAccess();
+    $paginaHTML     = file_get_contents('templates/loginTemplate.html');
 
     $stringaErrori = "";
     $stringaLogout = "";
     $DBerror = "";
 
-    if($connection->isLoggedInAdmin()){
-
-        $stringaLogout .= '<p>Se vuoi disconnetterti:</p> <li><a href="logout.php" class="button">Esci</a></li>';
-       /* if(isset($_POST['logout']))
-        {
-            session_unset();
-
-        //Redirect al login
-        header("Location: index.php");
-        }*/
-        $paginaHTML = str_replace("{errori}",$stringaErrori,$paginaHTML);
-        $paginaHTML = str_replace("{logout}",$stringaLogout,$paginaHTML);
-        //die();
-
-    }
-    elseif($connection->isLoggedInUser()){
-
-        $stringaLogout .= '<p>Se vuoi disconnetterti:</p> <li><a href="logout.php" class="button">Esci</a></li>';
-       /* if(isset($_POST['logout']))
-        {
-            session_unset();
-
-        //Redirect al login
-        header("Location: index.php");
-        }*/
-        $paginaHTML = str_replace("{errori}",$stringaErrori,$paginaHTML);
-        $paginaHTML = str_replace("{logout}",$stringaLogout,$paginaHTML);
-        //die();
-
-    }
-    else{ //se non è ancora loggato,non puoi passare d aun'account all'altro senza sloggarti. SOLUZIONE: togliere gli else
         if(isset($_POST['submit'])){
             //Invio del form
 
@@ -74,11 +44,11 @@
                         $user = $users[0];
                         if($user['amministratore']==1)
                         {
-                            if($password==$user['passw']){ //password_verify($password,$user['passw'])
+                            if($password==$user['passw']){
 
                                 $_SESSION['user'] = $user['id'];
     
-                                header("Location: areaAdmin/carrello.php");
+                                header("Location: areaAdmin/areaAdminAggiungiProdotti.php"); // modificare nome pagina
                                 die();
     
                             }else{ //era role="alert" dentro il tag, password errata
@@ -91,7 +61,7 @@
 
                                 $_SESSION['user'] = $user['id'];
     
-                                header("Location: areaUtente/carrello.php");
+                                header("Location: areaUtente/index.php");
                                 die();
     
                             }else{ //era role="alert" dentro il tag, password errata
@@ -100,7 +70,7 @@
                         }
 
                     }else{//persona non trovata
-                        array_push($errori,'<p class="error_Message">2Nome o <span lang="en">password</span> non corretti</p>');
+                        array_push($errori,'<p class="error_Message">Nome o <span lang="en">password</span> non corretti</p>');
                     }
 
                     $stringaErrori = '<ul>';
@@ -129,8 +99,6 @@
             $paginaHTML = str_replace("{errori}",$stringaErrori,$paginaHTML);
             $paginaHTML = str_replace("{logout}",$stringaLogout,$paginaHTML);
         } 
-    }
-
 
     echo $paginaHTML;
 

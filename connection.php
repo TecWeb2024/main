@@ -347,16 +347,6 @@ public function getQuestionsFromDataBaseForAdmin() {
     return $domande_risposta;
 }
 
-public function saveRisposta($risposta, $idDomanda){
-    $query = "UPDATE faq SET risposta = '$risposta' WHERE id = $idDomanda";
-
-    $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
-    if($result){
-        //echo "Risposta inserita";
-    }else{
-        //echo "Rispsota non inserita!";
-    }
-}
 
 
 //PAGINA FAQ

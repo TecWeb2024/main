@@ -1,14 +1,14 @@
 <?php
 
-    require_once "../connection.php";
-    require_once "../funzioni.php";
+    require_once "connection.php";
+    require_once "funzioni.php";
     session_start();
 
     use DB\DBAccess;
     setlocale(LC_ALL, 'it_IT');
 
     $connection = new DBAccess();
-    $paginaHTML     = file_get_contents('templates/loginTemplate.html');
+    $paginaHTML     = file_get_contents('loginTemplate.html');
 
     $stringaErrori = "";
     $stringaLogout = "";
@@ -78,11 +78,12 @@
                         $stringaErrori .= '<li>'.$error.'</li>';
                     }
                     $stringaErrori .= '</ul>';
-                    $paginaHTML = str_replace("{errori}",$stringaErrori,$paginaHTML); //Contiene solo l'ultimo errore
+                    $paginaHTML = str_replace("{erroriLogin}",$stringaErrori,$paginaHTML); //Contiene solo l'ultimo errore
                     $paginaHTML = str_replace("{logout}",$stringaLogout,$paginaHTML);
+                    
                 }else{ //non è stato possibile aprire una connessione al database
                     $DBerror .= DBConnectionError(true);
-                    $paginaHTML = str_replace("{errori}",$DBerror,$paginaHTML);
+                    $paginaHTML = str_replace("{erroriLogin}",$DBerror,$paginaHTML);
                     $paginaHTML = str_replace("{logout}",$stringaLogout,$paginaHTML);
                 }                       
             }else{ //ci sono errori
@@ -92,11 +93,11 @@
                     $stringaErrori .= '<li>'.$error.'</li>';
                 }
                 $stringaErrori .= '</ul>'; //prima era '<ul>'
-                $paginaHTML = str_replace("{errori}",$stringaErrori,$paginaHTML);
+                $paginaHTML = str_replace("{erroriLogin}",$stringaErrori,$paginaHTML);
                 $paginaHTML = str_replace("{logout}",$stringaLogout,$paginaHTML);
             }
         }else{ //non hai inviato ancora il form
-            $paginaHTML = str_replace("{errori}",$stringaErrori,$paginaHTML);
+            $paginaHTML = str_replace("{erroriLogin}",$stringaErrori,$paginaHTML);
             $paginaHTML = str_replace("{logout}",$stringaLogout,$paginaHTML);
         } 
 

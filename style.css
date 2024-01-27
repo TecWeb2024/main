@@ -134,6 +134,7 @@
   /*BUTTONS*/
 
   .button{
+    text-decoration: none;
     padding: 0.5em;
     min-height: 44px;
     min-width: 110px;
@@ -161,7 +162,7 @@
     margin-bottom: 0.5em;
   }
 
-  .categories_Container{
+  #categories_Container{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -170,7 +171,7 @@
     margin: 0 -10px;
   }
 
-  .categories_Container li{  
+  #categories_Container li{  
     border: 1px solid black;
     margin: 10px;
     padding: 0px;
@@ -182,12 +183,12 @@
     text-align: center;
   }
   
-  .categories_Container li:hover {
+  #categories_Container li:hover {
     transform: scale(1.05);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   }
 
-  .categories_Container a{
+  #categories_Container a{
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
@@ -195,7 +196,7 @@
     color: var(--textCategories);
   }
 
-  .categories_Container img{
+  #categories_Container img{
     align-content: center;
     object-fit:cover;
     width: 100%;
@@ -925,19 +926,22 @@
     white-space: pre;
   }
 
-  /***************
-   *             *
-   *   ACCOUNT   *
-   *             *
-   ***************/
+  /*******************************************
+   *                                         *
+   *   ACCOUNT(LOGIN-LOGOUT-REGISTRAZIONE)   *
+   *                                         *
+   *******************************************/
   
-  #account_Page{
+
+  #form_Container{
+    padding: 2em;
     width: 50%;
     margin: auto;
   }
-  
-  #form_Container{
-    padding: 1.5em;
+
+  #logout{
+    margin-bottom: 2em;
+    font-size: 120%;
   }
 
   #form_Container h2{
@@ -947,13 +951,24 @@
     margin-top: 1em;  
   }
 
+  #form_Container p{
+    margin-top: 2em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+
   .form {
+    font-size: 110%;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1em;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .form label{
+    width: 90%;
   }
   
   .form input[type="email"],
@@ -967,52 +982,14 @@
     border-radius: 5px;
     border: 1px solid #000000;
   }
-  
-  .accountButton{
-    width: 30%;
-    padding: 0.5em;
-    font-size: 170%;
-    border: none;
-    border-radius: 5px;
-    background-color: #757575;
-    color: #FFFFFF;
-    cursor: pointer;
-  }
-  
-  .accountButton:hover {
-    background-color: #000000;
-  }
-
-  .form p {
-    margin-top: 1.5em;
-    margin-bottom: 1em;
-    text-align: center;
-    font-size: 130%;
-  }
-  
-  .account_Link{
-    background-color: #757575;
-    font-size: 140%;
-    padding: 0.5em;
-  }
-
-  .form a:link{
-    color: var(--linkColor);
-  }
-
-  .form a:visited{
-    color: var(--visitedLinkColor);
-  }
-  
 
 
 
-
-  /***********************
+  /************************
    *                      *
    *    AREA_UTENTE_FAQ   *
    *                      *
-   ***********************/
+   ************************/
 
   #q_a_container {
     text-align: center;

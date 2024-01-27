@@ -6,13 +6,11 @@
     <title>Area Admin - Olympo Fitness</title>
     <meta name="keywords" content="Olympo Fitness, palestra, negozio palestra, chi siamo, pesi liberi , macchinari palestra, macchinari, nutrizione, accessori palestra">
     <meta name="author" content="Olympo Fitness">
-    <link rel="stylesheet" href="style.css" media="screen">
-    <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 508px)">
-    <link rel="stylesheet" href="tablet.css" media="screen and (min-width: 509px) and (max-width: 768px)">
-    <link rel="stylesheet" href="print.css" media="print">
+    <link rel="stylesheet" href="../../style.css" media="screen">
+    <link rel="stylesheet" href="../../mobile.css" media="screen and (max-width: 508px)">
+    <link rel="stylesheet" href="../../tablet.css" media="screen and (min-width: 509px) and (max-width: 768px)">
+    <link rel="stylesheet" href="../../print.css" media="print">
 </head>
-
-
 <body>
     <header>
         <nav aria-label="Aiuti alla navigazione">
@@ -23,7 +21,9 @@
             <a class="navigationHelp" href="#content">Salta il menù di navigazione</a>
             <ul>
                 <li><a href="index.html" lang="en">Home</a></li>
-                <li>Chi Siamo</li>
+                <li>>Area Risposte</li>
+                <li><a href="GestioneProdotti.php">Area Prodotti</a></li> <!--forse mettere iconcine per il mobile-->
+                <li><a href="chiSiamo.html"></a>Chi Siamo</a></li>
                 <li><a href="faq.html"><abbr title="Frequently Asked Questions" lang="en">FAQ</abbr></a></li>
                 <li><a href="carrello.html">Carrello</a></li>
                 <li><a href="account.html" lang="en">Account</a></li>
@@ -32,60 +32,54 @@
     </header>
     
     <nav id="breadcrumb" aria-label="Percorso">
-        <p>Ti trovi in: <a href="faqAdmin.php" lang="en"> Area Admin - FAQ </a> </p>
+        <p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> &gt; Area Risposte</a></p>
     </nav>
     
-
-    <main>        
-        
+    <main id="content">        
         <div class="questions_container">
-            <h2>DOMANDE APERTE:</h2>
-    
-            <form>
-            <!--
-                <div class="box_q_a">
+            <h2>Domande degli Utenti:</h2>
+            {erroriFaq}
+            <!--<div class="box_q_a">
                     <h3 class="question">domanda_da_db.... </h3>
                     <input type="text" placeholder="Scrivi qui la rispsota" id="question_Input" required>
-                    <inpuit type="submit" id="addQuestion">Invia</input> 
+                    <input type="submit" id="addQuestion">Invia</input> 
                 </div>
 
                 <div class="box_q_a">
                     <h3 class="question">domanda_da_db.... </h3>
                     <input type="text" placeholder="Scrivi qui la rispsota" id="question_Input" required>
                     <inpuit type="submit" id="addQuestion">Invia</input> 
-                </div>
-            -->
+                </div>-->
             {faq}
-            </form>
         </div>
 
-
-
-        <a href="#" id="buttonToTop">Torna in cima ↑</a>
+        <a href="#" id="buttonToTop">Torna in cima</a>
     </main>
-
-
 
     <footer>
         <div id="contacts">
-            <h2>Contatti</h2>
-            <ul>
-                <li aria-label="email">E-Mail: <a href="mailto:tecweb2024@gmail.com">tecweb2024@gmail.com</a></li>
-                <li aria-label="telefono">Telefono: <a href="tel:+123456789">+39 123-456-789</a></li>
-                <li aria-label="sede fisica">Sede: Via Trieste, 63, 35121 Padova (<abbr title="Padova">PD</abbr>)</li>
-            </ul>
+          <h3>Contatti</h3>
+          <ul>
+            <li><span lang="en">Email</span>: <a href="mailto:tecweb2024@gmail.com">tecweb2024@gmail.com</a></li>
+            <li>Telefono: <a href="tel:+123456789">+39 123-456-789</a></li>
+            <li>Sede: Via Trieste, 63, 35121 Padova (<abbr title="Padova">PD</abbr>)</li>
+        </ul>
         </div>
-        <div id="social_List">
-            <h2>Seguici Su</h2>
-            <a href="https://www.instagram.com/" id="instaImage">Instagram</a>
-            <a href="https://www.youtube.com/" id="youtubeImage">Youtube</a>
-            <a href="https://www.facebook.com/" id="facebookImage">Facebook</a>
-            <a href="https://www.twitter.com/" id="twitterImage">Twitter</a>
+        <div id="social">
+          <h4>Seguici Su</h4>
+          <a href="https://www.instagram.com/" id="instaImage"><span lang="en">Instagram</span></a>
+      
+          <a href="https://www.youtube.com/" id="youtubeImage"><span lang="en">Youtube</span></a>
+          
+          <a href="https://www.facebook.com/" id="facebookImage"><span lang="en">Facebook</span></a>
+      
+          <a href="https://www.twitter.com/" id="twitterImage"><span lang="en">Twitter</span></a>
         </div>
         <div id="footer_Text"><p>&copy; 2024 <span lang="en">Olympo Fitness</span>. Tutti i diritti riservati.</p></div> 
-    </footer>
-
-</body>
+      </footer>
+    
+    </body>
+    </html>
 
 
 

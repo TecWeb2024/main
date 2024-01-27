@@ -15,7 +15,7 @@
     if($connection->isLoggedInUser()){
 
         $stringaLogout .= '<p>Se vuoi disconnetterti:</p> <li><a href="logout.php" class="button">Esci</a></li>';
-        $paginaHTML = str_replace("{errori}",$stringaErrori,$paginaHTML);
+        $paginaHTML = str_replace("{erroriLogin}",$stringaErrori,$paginaHTML);
         $paginaHTML = str_replace("{logout}",$stringaLogout,$paginaHTML);
     
     }

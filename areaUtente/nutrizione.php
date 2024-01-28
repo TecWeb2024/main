@@ -10,7 +10,7 @@ $listaNutrizione = "";
 
 $connection = new DBAccess();
 
-if($connection->isLoggedInAdmin()){
+if($connection->isLoggedInUser()){
     
     $stringaNutrizione = '<ul id="products_Container">';
     if($connection->openDBConnection()) {
@@ -31,13 +31,10 @@ if($connection->isLoggedInAdmin()){
     $stringaNutrizione .= "</ul>";
 
 }else{
-    //ridirezionamento fuori areaAdmin
+    //ridirezionamento fuori areaUtente
     header("Location: ../index.php");
     die();
 }
-
-
-
 
 $paginaHTML = str_replace("{nutrizione}", $stringaNutrizione, $paginaHTML);
 echo $paginaHTML;

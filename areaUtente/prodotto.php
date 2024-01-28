@@ -18,15 +18,15 @@ $immaginiProdotto = "";
 $specificheProdotto = "";
 $quantitaProdotto = "";
 $carrello = "";
+$stringaMessaggio = "";
 $descrizioneProdotto = "";
 $consegna = "";
-
-$stringaProdotto = "";
-$listaProdotto = "";
+$aggiornamento1= "";
+$aggiornamento2= "";
 
 $connection = new DBAccess();
 
-if($connection->isLoggedInAdmin()){ // colore, volume, materiale,    mancano keywords se null
+if($connection->isLoggedInUser()){ // mancano keywords se null
     if ($connection->openDBConnection()){
 
         if(isset($_GET['id'])){
@@ -79,67 +79,65 @@ if($connection->isLoggedInAdmin()){ // colore, volume, materiale,    mancano key
                 }
 
                 $specificheProdotto .= '<li><span class="specs_List">Azienda:</span> '      . $prodotto['marca'] . '</li>
-                                        <li><span class="specs_List">Categoria:</span> '    . $nomeCategoria . '</li>';
+                                        <li><span class="specs_List">Categoria:</span> '    . $nomeCategoria . '</li></ul>';
             
-                if($prodotto['quantita']>0){
-                    $specificheProdotto .= '<li><span class="specs_List">Quantità Disponibile:</span> ' . $prodotto['quantita'] . '</li></ul>';
-                }else{
-                    $specificheProdotto .= '<li><span class="specs_List">Quantità Disponibile:</span> Prodotto esaurito </li></ul>';
-                }
 
+                $qnt = $prodotto['quantita']; // controllare come esce
+                $quantitaProdotto = '<form action="prodotto.php" class="form" method="post"><div id="cart_Specs">';
+                    if($qnt != 0){
+                        $quantitaProdotto .= '<p class="cart_List">Seleziona quantità:</p>
+                            <select name="opzione_selezionata" id="quantity"> ';
+                        for ($i = 1; $i <= $qnt; $i++) {
+                            $quantitaProdotto .= '<option value="' . $i . '"> ' . $i . '</option>';
+                        }
+                        $quantitaProdotto .= ' </select> ';
+                    }elseif($qnt == 0){
+                        $quantitaProdotto .= '<p> Prodotto esaurito! Ci dispiace per il disagio, presto tornerà disponibile!</p>';
+                    }
+                $quantitaProdotto .= '</div><input type="submit" name="addToCart" class="button" value="Aggiungi al carrello."></form>';
+                     
                 $descrizioneProdotto = '<div id="product_Description"><h3>Descrizione</h3><p>' . $prodotto['descrizione'] . '</p></div>';
-
+                
                 $consegna = '<div id="delivery_Details"><h3>Dettagli di Consegna</h3><ul id="delivery_List">
                 <li>Consegna in 3-5 giorni lavorativi.</li>
                 <li>Spedizione gratuita per ordini superiori a 50 €.</li>
                 </ul></div> ';
+
+               
+                if(isset($_POST['addToCart'])){ // aggiungi al carrello
+                    if ($connection->openDBConnection()){
                 
-                /* Quantità prodotto
-                $qnt = $prodotto['quantita']; // controllare come esce
-                $quantitaProdotto = '<form action="prodotto.php" class="form" method="post"><div id="cart_Specs">';
-                if($qnt != 0){
-                $quantitaProdotto .= '<p class="cart_List">Seleziona quantità:</p>
-                                      <select name="opzione_selezionata" id="quantity"> ';
-                for ($i = 1; $i <= $qnt; $i++) {
-                    $quantitaProdotto .= '<option value="' . $i . '"> ' . $i . '</option>';
-                }
-                $quantitaProdotto .= ' </select> ';
-                }elseif($qnt == 0){
-                $quantitaProdotto .= '<p> Prodotto esaurito! Ci dispiace per il disagio, presto tornerà disponibile!</p>';
-                }
-                $quantitaProdotto .= '</div>';
-            
-                $quantitaProdotto .= '</form>';
-                // Carrello dinamico
-                $carrello='';
-                if($connection->isLoggedInUser() &&  $qnt > 0){
-                $carrello = '<input type="submit" name="addToCart" class="button" value="Aggiungi al carrello.">';
-                }
-                if($connection->isLoggedInAdmin()){
-                $carrello = '<p>Sei registrato come Amministratore. Le funzionalità del carrello sono disabilitate.</p>';
-                }
-                if(!($connection->isLoggedInAdmin()) && !($connection->isLoggedInUser())){
-                $carrello = '<p>Effettua il login per poter effettuare i tuoi acquisti: <a href="login.php"><span lang="en">Account</span></a></p>';
-                }
-                if(isset($_POST['addToCart'])){
-                if($connection->isLoggedInUser() || $connection->isLoggedInAdmin()){
                     $quantita_selezionata = $_POST['opzione_selezionata'];
                     $utente_sessione = $_SESSION['user'];
-                    $connection->saveToCart($utente_sessione,$idProdotto,$quantita_selezionata);
-                    $connection->updateProductQuantity($idProdotto,$quantita_selezionata);
-                    echo '<script>window.location.href = "carrello.php";</script>';
-                   
                     
-                }elseif(!$connection->isLoggedInUser() || $connection->isLoggedInAdmin()){
-                    //echo "non connesso";
-                    
-                }else{
-                    //echo "Errore addToCart";
-                }
+                    $aggiornamento1 = $connection->saveToCart($utente_sessione,$idProdotto,$quantita_selezionata);
 
-                */
+                    if($aggiornamento1 == 1){// aggiunto al carrello
+                        $aggiornamento2 = $connection->updateProductQuantity($idProdotto,$quantita_selezionata);
+
+                        if($aggiornamento2 == 0){// errato update quantità
+                            $query = "";
+                            $query = "DELETE FROM carrello WHERE $idProdotto=IDprodotto;";
+                            $checkQuery=$connection->modifyDatabase($query);
+    
+                            if($checkQuery){//DELETE eseguita correttamente
+                                $stringaMessaggio = '<p class="error_Message" role="alert">Errore nell\'inserimento nel carrello.</p>';
+                            }
+                        }else{ //corretto update quantità
+                            $stringaMessaggio = '<p class="success_Message" role="alert">Prodotto aggiunto al carrello.</p>';
+                        }
+                    }else{// non aggiunto al carrello
+                        $stringaMessaggio = '<p class="error_Message" role="alert">Errore nell\'inserimento nel carrello.</p>';
+                    }
+                    $connection->closeDBConnection();
+                    $paginaHTML = str_replace("{errori}",$stringaMessaggio,$paginaHTML);
+
+                    }else{
+                        $error = DBConnectionError(true);
+                    }
+                }
+        
             }else{ // Prodotto non trovato
-                $connection->closeDBConnection();
                 $titolo = 'Prodotto Non Trovato';
                 $breadcrumb = '<a href="index.php"><span lang="en">Home</span></a> &gt; Errore prodotto non trovato';
                 $titoloProdotto = 'Prodotto non trovato';
@@ -151,6 +149,7 @@ if($connection->isLoggedInAdmin()){ // colore, volume, materiale,    mancano key
             $error = '<p>Nessun prodotto che abbiamo attualmente nei nostri magazzini corrisponde a quello selezionato.</p>';
         }
 
+        $connection->closeDBConnection();
         $paginaHTML = str_replace("{errori}",$error,$paginaHTML);
         $paginaHTML = str_replace("{titolo}", $titolo, $paginaHTML);
         $paginaHTML = str_replace("{keywords}", $keywords, $paginaHTML);
@@ -180,7 +179,7 @@ if($connection->isLoggedInAdmin()){ // colore, volume, materiale,    mancano key
         $paginaHTML = str_replace("{consegna}", $consegna, $paginaHTML);
     }
 }else{
-    //ridirezionamento fuori areaAdmin
+    //ridirezionamento fuori areaUtente
     header("Location: ../index.php");
     die();
 }

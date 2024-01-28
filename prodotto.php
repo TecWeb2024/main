@@ -35,7 +35,7 @@ if ($connectionOk) {
                                     <li><span class="specs_List">Peso:</span> '         . $prodotto['peso']         . '</li> 
                                     <li><span class="specs_List">Dimensioni:</span> '   . $prodotto['dimensione']   . '</li>
                                     <li><span class="specs_List">Colore:</span> '       . $prodotto['colore']       . '</li>
-                                    <li><span class="specs_List">Volume:</span> '       . $prodotto['volume']       . ' L</li>
+                                    <li><span class="specs_List">Volume:</span> '       . $prodotto['volume']       . '</li>
                                     <li><span class="specs_List">Materiali:</span> '    . $prodotto['materialeUtilizzato'] . '</li>
                                     <li><span class="specs_List">Azienda:</span> '      . $prodotto['marca'] . '</li>
                                     <li><span class="specs_List">Categoria:</span> '    . $connection->getCategoriaFromId($prodotto['categoria']) . '</li>';

@@ -174,7 +174,7 @@ class DBAccess {
     public function getAccessoriFromDatabase() {
     $accessori = array();
 
-    $query = "SELECT ID,nome,immagine1,prezzo FROM prodotto WHERE categoria=1";
+    $query = "SELECT ID,nome,immagine1,prezzo,alt FROM prodotto WHERE categoria=1";
     $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
     if ($result && $result->num_rows > 0) {
@@ -192,7 +192,7 @@ class DBAccess {
     public function getPesiLiberiFromDatabase() {
     $pesiLiberi = array();
 
-    $query = "SELECT ID,nome,immagine1,prezzo FROM prodotto WHERE categoria=2";
+    $query = "SELECT ID,nome,immagine1,prezzo,alt FROM prodotto WHERE categoria=2";
     $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
     if ($result && $result->num_rows > 0) {
@@ -210,7 +210,7 @@ class DBAccess {
     public function getNutrizioneFromDatabase() {
     $nutrizione = array();
 
-    $query = "SELECT ID,nome,immagine1,prezzo FROM prodotto WHERE categoria=3";
+    $query = "SELECT ID,nome,immagine1,prezzo,alt FROM prodotto WHERE categoria=3";
     $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
     if ($result && $result->num_rows > 0) {
@@ -228,7 +228,7 @@ class DBAccess {
     public function getMacchinariFromDatabase() {
     $macchinari = array();
 
-    $query = "SELECT ID,nome,immagine1,prezzo FROM prodotto WHERE categoria=4";
+    $query = "SELECT ID,nome,immagine1,prezzo,alt FROM prodotto WHERE categoria=4";
     $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
     if ($result && $result->num_rows > 0) {
@@ -286,22 +286,6 @@ class DBAccess {
     
 
 
-//usare modifyDB
-public function saveQuestionToDatabase($question, $userId) {
-    $question = mysqli_real_escape_string($this->connection, $question);
-
-    $query = "INSERT INTO faq (domanda, utente) VALUES ('$question', $userId)";
-    
-    $result = mysqli_query($this->connection, $query);
-
-    if ($result) {
-        //echo "rispsota inserita correttamente";
-        return true;
-    } else {
-        //echo "Errore nell'invio della domanda: " . mysqli_error($this->connection);
-        return false;
-    }
-}
 
     // controllare funzione
     public function getProdottoById($idProdotto) {
@@ -353,7 +337,7 @@ public function getCategoriaFromId($idCategoria) {
     return $categoria;
 }
 
-// modificare
+
 public function saveToCart($user_Id, $product_Id, $quantity_Id) {
     // Esegue l'escape delle variabili per evitare SQL injection
     $userId = mysqli_real_escape_string($this->connection, $user_Id);
@@ -362,36 +346,31 @@ public function saveToCart($user_Id, $product_Id, $quantity_Id) {
 
     //verifica se il prodotto è già nel carrello
     $checkQuery = "SELECT * FROM carrello WHERE IDutente='$userId' AND IDprodotto='$productId'";
-    $checkResult = mysqli_query($this->connection, $checkQuery);
+    $checkResult = mysqli_query($this->connection, $checkQuery) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
     if (mysqli_num_rows($checkResult) > 0) {
         //il prodotto è già nel carrello, aumenta la quantità
         $updateQuery = "UPDATE carrello SET quantita = quantita + '$quantity' WHERE IDutente='$userId' AND IDprodotto='$productId'";
-        $updateResult = mysqli_query($this->connection, $updateQuery);
+        $updateResult = mysqli_query($this->connection, $updateQuery) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
         if ($updateResult) {
-            //echo "Quantità aggiornata nel carrello!";
-            return true;
+            return 1;
         } else {
-            //echo "Errore nell'aggiornamento del carrello: " . mysqli_error($this->connection);
-            return false;
+            return 0;
         }
     } else {
         //il prodotto non è nel carrello
         $insertQuery = "INSERT INTO carrello (IDutente, IDprodotto, quantita) VALUES ('$userId', '$productId', '$quantity')";
-        $insertResult = mysqli_query($this->connection, $insertQuery);
+        $insertResult = mysqli_query($this->connection, $insertQuery) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
         if ($insertResult) {
-            //echo "Aggiunto al carrello!";
-            return true;
+            return 1;
         } else {
-            //echo "Errore nell'inserimento nel carrello: " . mysqli_error($this->connection);
-            return false;
+            return 0;
         }
     }
 }
 
-// modificare
 public function updateProductQuantity($product_Id, $quantity) {
     // Esegue l'escape delle variabili per evitare SQL injection
     $productId = mysqli_real_escape_string($this->connection, $product_Id);
@@ -399,23 +378,18 @@ public function updateProductQuantity($product_Id, $quantity) {
 
     // Verifica se il prodotto è presente nel database
     $checkQuery = "SELECT * FROM prodotto WHERE ID='$productId'";
-    $checkResult = mysqli_query($this->connection, $checkQuery);
+    $checkResult = mysqli_query($this->connection, $checkQuery) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
     if (mysqli_num_rows($checkResult) > 0) {
         $updateQuery = "UPDATE prodotto SET quantita = GREATEST(quantita - '$quantity', 0) WHERE ID='$productId'";
-        $updateResult = mysqli_query($this->connection, $updateQuery);
+        $updateResult = mysqli_query($this->connection, $updateQuery) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
         if ($updateResult) {
-            //echo "Quantità disponibile aggiornata!";
-            return true;
+            return '<p class="success_Message" role="alert">Quantità disponibile aggiornata.</p>';
         } else {
-           // echo "Errore nell'aggiornamento della quantità disponibile: " . mysqli_error($this->connection);
-            return false;
-        }
+           return '<p class="error_Message" role="alert">Errore nell\'aggiornamento della quantità.</p>';
     } else {
-        //prodotto non presente nel DB
-        //echo "Prodotto non trovato nel database.";
-        return false;
+        return '<p class="error_Message" role="alert">Prodotto non trovato nel nostro <span lang="en">server</span>.</p>';
     }
 }
 

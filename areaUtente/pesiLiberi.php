@@ -10,7 +10,7 @@ $listaPesiLiberi = "";
 
 $connection = new DBAccess();
 
-if($connection->isLoggedInAdmin()){
+if($connection->isLoggedInUser()){
 
     $stringaPesiLiberi = '<ul id="products_Container">';
     if ($connection->openDBConnection()) {
@@ -30,7 +30,7 @@ if($connection->isLoggedInAdmin()){
 
     $stringaPesiLiberi .= '</ul>';
 }else{
-    //ridirezionamento fuori areaAdmin
+    //ridirezionamento fuori areaUtente
     header("Location: ../index.php");
     die();
 }

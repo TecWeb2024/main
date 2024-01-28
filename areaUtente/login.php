@@ -6,16 +6,13 @@
     use DB\DBAccess;
     setlocale(LC_ALL, 'it_IT');
 
-    $paginaHTML     = file_get_contents('templates/loginTemplate.html');
+    $paginaHTML = file_get_contents('templates/loginTemplate.html');
 
-
-    $stringaErrori = "";
     $stringaLogout = "";
 
     if($connection->isLoggedInUser()){
 
         $stringaLogout .= '<p>Se vuoi disconnetterti:</p> <li><a href="logout.php" class="button">Esci</a></li>';
-        $paginaHTML = str_replace("{erroriLogin}",$stringaErrori,$paginaHTML);
         $paginaHTML = str_replace("{logout}",$stringaLogout,$paginaHTML);
     
     }

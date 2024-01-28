@@ -744,23 +744,11 @@
     margin-bottom: 1em;
   }
 
-  #question_Input {
+  #question_Input { /*correggere faq stile*/
     width: 50%;
     padding: 1em;
     margin-right: 1em;
     border: 1px solid #000000;
-  }
-  
-  #addQuestion{
-    padding: 1em 2em;
-    background-color: #757575;
-    color: #FFFFFF;
-    border: 1px solid #000000;
-    cursor: pointer;
-  }
-  
-  #addQuestion:hover {
-    background-color: var(--colorButtonHover);
   }
 
   /***************

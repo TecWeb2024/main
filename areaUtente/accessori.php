@@ -10,7 +10,7 @@ $listaAccessori = "";
 
 $connection = new DBAccess();
 
-if($connection->isLoggedInAdmin()){
+if($connection->isLoggedInUser()){
 $stringaAccessori = '<ul id="products_Container">';
 
 if ($connection->openDBConnection()) {
@@ -30,7 +30,7 @@ if ($connection->openDBConnection()) {
 
 $stringaAccessori .= '</ul>';
 }else{
-    //ridirezionamento fuori areaAdmin
+    //ridirezionamento fuori areaUtente
     header("Location: ../index.php");
     die();
 }

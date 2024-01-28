@@ -10,7 +10,7 @@ $listaMacchine = "";
 
 $connection = new DBAccess();
 
-if($connection->isLoggedInAdmin()){
+if($connection->isLoggedInUser()){
     $stringaMacchine = '<ul id="products_Container">';
     if ($connection->openDBConnection()) {
         $listaMacchine = $connection->getMacchinariFromDatabase();
@@ -28,13 +28,12 @@ if($connection->isLoggedInAdmin()){
     }
         $stringaMacchine .= '</ul>';
 }else{
-    //ridirezionamento fuori areaAdmin
+    //ridirezionamento fuori areaUtente
     header("Location: ../index.php");
     die();
 }
 
 $paginaHTML = str_replace("{macchinari}", $stringaMacchine, $paginaHTML);
 echo $paginaHTML;
-
 
 ?>

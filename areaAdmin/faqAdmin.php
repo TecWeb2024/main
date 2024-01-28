@@ -51,7 +51,8 @@ if(isset($_GET['submit'])){
     if(strlen($risposta)<20){
        $error = '<p class="error_Message" role="alert">La risposta deve essere maggiore di 20 caratteri.</p>';
     }
-    else{ 
+
+    if(!empty($risposta)){ 
         if($connection->openDBConnection()){
 
         $query="";
@@ -75,6 +76,8 @@ if(isset($_GET['submit'])){
         }
     }
 }
+$paginaHTML = str_replace("{erroriFaq}",$error,$paginaHTML);
+$paginaHTML = str_replace("{faq}",$stringaFAQ,$paginaHTML);
 
 }else{
     //ridirezionamento fuori areaAdmin

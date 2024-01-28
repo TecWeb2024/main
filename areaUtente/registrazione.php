@@ -11,7 +11,7 @@
     $stringaErrori = "";
     $stringaQuery = "";
 
-    if($connection->isLoggedInAdmin()){
+    if($connection->isLoggedInUser()){
 
         if(isset($_POST['submit'])){
         
@@ -25,18 +25,20 @@
             if(!preg_match('/\w{3,}/',$nome)){
                 array_push($errori,'<p class="error_Message" role="alert">Formato del nome non corretto</p>');
             }
+        
             if(strlen($password)<4){
                 array_push($errori,'<p class="error_Message" role="alert">Formato della <span lang="en">password</span> non corretto.</p>');
             }
         
             if(count($errori)==0){
-                $query="";
-                $query="INSERT INTO utente(nome, email, passw, amministratore) VALUES('$nome', '$email', '$password', 0);";
 
                 if($connection->openDBconnection()){
+                    $query="";
+                    $query="INSERT INTO utente(nome, email, passw, amministratore) VALUES('$nome', '$email', '$password', 0);";
+                    
                     $checkQuery=$connection->modifyDatabase($query);
                     $connection->closeDBconnection();
-                    
+
                     if($checkQuery){
                         $stringaQuery .= '<p class="success_Message" role="alert">Registrazione effettuata con successo. Ora puoi effettuare il <span lang="en">login</span> dalla pagina <span lang="en">Account</span></p>';
                         $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
@@ -47,28 +49,28 @@
                         $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
                         $paginaHTML = str_replace("{erroriRegistrazione}",$stringaErrori,$paginaHTML);
                     }
+
                 }else{
                     $stringaErrori = DBConnectionError(true);
                     $paginaHTML = str_replace("{erroriRegistrazione}",$stringaErrori,$paginaHTML);
                     $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
                 }
             }else{
-                //Mostra form con errori di formato
                 $stringaErrori = '<ul>';
                 foreach($errori as $error){
                     $stringaErrori .= '<li>'.$error.'</li>';
                 }
                 $stringaErrori .= '</ul>';
-
+                    
                 $paginaHTML = str_replace("{erroriRegistrazione}",$stringaErrori,$paginaHTML);
                 $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
-            }  
+            }      
         }else{ //non hai inviato ancora il form
             $paginaHTML = str_replace("{erroriRegistrazione}",$stringaErrori,$paginaHTML);
             $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
-        } 
+        }
     }else{
-        //ridirezionamento fuori areaAdmin
+        //ridirezionamento fuori areaUtente
         header("Location: ../index.php"); 
         die();
     }   

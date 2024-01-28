@@ -65,18 +65,19 @@ if($connection->isLoggedInAdmin()){
             $descrizioneProdotto = '<p>' . $prodotto['descrizione'] . '</p>';
 
             // Quantità prodotto
-            $qnt = $prodotto['quantita'];
-            $quantitaProdotto = '';
+            $qnt = $prodotto['quantita']; // controllare come esce
+            $quantitaProdotto = '<div id="cart_Specs">';
             if($qnt != 0){
-                $quantitaProdotto .= '<span class="cart_List">Seleziona quantità:</span>
+                $quantitaProdotto .= '<p class="cart_List">Seleziona quantità:</p>
                                       <select name="opzione_selezionata" id="quantity"> ';
                 for ($i = 1; $i <= $qnt; $i++) {
                     $quantitaProdotto .= '<option value="' . $i . '"> ' . $i . '</option>';
                 }
                 $quantitaProdotto .= ' </select> ';
-            }else if($qnt == 0){
+            }elseif($qnt == 0){
                 $quantitaProdotto .= '<p> Prodotto esaurito! Ci dispiace per il disagio, presto tornerà disponibile!</p>';
             }
+            $quantitaProdotto .= '</div>';
             
 
             // Carrello dinamico
@@ -107,7 +108,7 @@ if($connection->isLoggedInAdmin()){
                 }
             }
             $consegna = '<li>Consegna in 3-5 giorni lavorativi.</li><li>Spedizione gratuita per ordini superiori a 50 €.</li>';
-       
+        
             $paginaHTML = str_replace("{errori}",$error,$paginaHTML);
             $paginaHTML = str_replace("{titolo}", $titolo, $paginaHTML);
             $paginaHTML = str_replace('{keywords}', $keywords, $paginaHTML);

@@ -13,7 +13,7 @@ $connection = new DBAccess();
 if($connection->isLoggedInAdmin()){
     $stringaMacchine = '<ul id="products_Container">';
     if ($connection->openDBConnection()) {
-        $listaMacchine = $connection->getMacchineFromDatabase();
+        $listaMacchine = $connection->getMacchinariFromDatabase();
         $connection->closeDBConnection();
 
         if ($listaMacchine != null) {

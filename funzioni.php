@@ -1,32 +1,28 @@
 <?php
-/*PER ORA INUTILE TUTTO QUESTO FILE*/
+
 use DB\DBAccess;
 
 require_once('connection.php');
 
-function sanitizeInput($input) {
-    // Rimuove eventuali tag HTML non consentiti
-    $input = strip_tags($input);
+    function sanitizeInput($input) {
+        
+        $input = strip_tags($input); // Rimuove eventuali tag HTML non consentiti
 
-    // Applica htmlentities per prevenire XSS
-    $input = htmlentities($input, ENT_QUOTES, 'UTF-8');
+        $input = htmlentities($input, ENT_QUOTES, 'UTF-8'); // Applica htmlentities per prevenire XSS
     
-    // Rimuove eventuali barre invertite
-    $input = stripslashes($input);
+        $input = stripslashes($input); // Rimuove eventuali barre invertite
+    
+        $input = preg_replace('/\s+/', ' ', $input); // Rimuove eventuali spazi multipli
 
-    // Rimuove eventuali spazi multipli
-    $input = preg_replace('/\s+/', ' ', $input);
+        $input = trim($input);  // Elimina spazi bianchi all'inizio e alla fine della stringa
 
-    // Elimina spazi bianchi all'inizio e alla fine della stringa
-    $input = trim($input);
+        return $input;
+    }
 
-    return $input;
-}
-
-function DBConnectionError(bool $uscita = false){
-    return '<p class="errorDB" role="alert">I sistemi sono momentaneamente fuori servizio. Ci scusiamo per il disagio.
-    Torna alla <a href="'.($uscita?'../':'').'index.php">Home</a> o riprova più tardi.</p>'; //da modificare la struttura della cartella main
-}
+    function DBConnectionError(bool $uscita = false){
+        return '<p class="errorDB" role="alert">I sistemi sono momentaneamente fuori servizio. Ci scusiamo per il disagio.
+                Torna alla <a href="'.($uscita?'../':'').'index.php">Home</a> o riprova più tardi.</p>'; //da modificare la struttura della cartella main
+    }
 
 
 ?>

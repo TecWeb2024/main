@@ -7,10 +7,10 @@
   <meta name="keywords"
     content="Olympo Fitness, palestra, negozio palestra, carrello, pesi liberi, macchinari palestra, macchinari, nutrizione, accessori palestra">
   <meta name="author" content="Olympo Fitness">
-  <link rel="stylesheet" href="../style.css" media="screen">
-  <link rel="stylesheet" href="../mobile.css" media="screen and (max-width: 508px)">
-  <link rel="stylesheet" href="../tablet.css" media="screen and (min-width: 509px) and (max-width: 768px)">
-  <link rel="stylesheet" href="../print.css" media="print">
+  <link rel="stylesheet" href="../../style.css" media="screen">
+  <link rel="stylesheet" href="../../mobile.css" media="screen and (max-width: 508px)">
+  <link rel="stylesheet" href="../../tablet.css" media="screen and (min-width: 509px) and (max-width: 768px)">
+  <link rel="stylesheet" href="../../print.css" media="print">
 </head>
 
 <body>
@@ -25,8 +25,8 @@
       <a class="navigationHelp" href="#content">Salta il menù di navigazione</a>
       <ul>
         <li><a href="index.php"><span lang="en">Home</span></a></li>
-        <li><a href="areaAdminRisposte.php">Area Risposte</a></li>
-        <li><a href="areaAdminAggiungiProdotto.php">Area Prodotti</a></li> <!--forse mettere iconcine per il mobile-->
+        <li><a href="faqAdmin.php">Area Risposte</a></li>
+        <li><a href="GestioneProdotti.php">Area Prodotti</a></li> <!--forse mettere iconcine per il mobile-->
         <li><a href="chiSiamo.html">Chi Siamo</a></li>
         <li><a href="faq.php"><abbr title="Frequently Asked Questions" lang="en">FAQ</abbr></a></li>
         <li>Carrello</li>
@@ -45,21 +45,20 @@
 
       <h2>Carrello</h2>
       {errori}
-      <div id="headerCart">
-          <dl>
+      <!-- <div id="headerCart">
+            <dl>
             <dt>Riepilogo Ordine:</dt>
-            <!--
               <dd>Prezzo Parziale: ...€</dd>
               <dd>Costo spedizione: ...€</dd>
-              <dd>Totale: ...€ (2 articoli selezionati)</dd> -->
-            {riepilogoOrdine}
+              <dd>Totale: ...€ (2 articoli selezionati)</dd> 
             </dl>
+      </div> -->
+      {riepilogoOrdine}
+      
 
-      </div>
 
-
-    <form id="order_Details" action="carrello.php" method="post">
-    <!--  <fieldset>
+    <!--<form id="order_Details" action="carrello.php" method="post">
+      <fieldset>
 
       <input type="submit" name="shopButton" class="button" value="Acquista ora">
       
@@ -89,13 +88,12 @@
 
       </div>  
 
-      </fieldset> -->
-      {formCarrello}
-    </form>
+      </fieldset>
+    </form> -->
+    {formCarrello}
       
-    <ul id="cart_Container">
-
-     <!-- <li><a href="prodotto.html">
+    <!-- <ul id="cart_Container">
+       <li><a href="prodotto.html">
         <img src="images/BorsoneAperto.jpg" alt="">
         <div class="product_Info">
           <p>Nome Prodotto € Prezzo</p></a>
@@ -105,26 +103,25 @@
             </select>
             <input type="submit" name="submit" class="accountButton" value="Rimuovi prodotto">
         </div>
-      </li> -->
-      {prodottiCarrello}
-
-    </ul>
-
+      </li> 
+    </ul>-->
+    {prodottiCarrello}
+    
     <a href="#" id="buttonToTop">Torna in cima</a>
   </div>
 
   </main>
 
   <footer>
-    <address id="contacts">
+    <div id="contacts">
       <h3>Contatti</h3>
       <ul>
-        <li><span lang="en">E-Mail</span>: <a href="mailto:tecweb2024@gmail.com">tecweb2024@gmail.com</a></li>
+        <li><span lang="en">Email</span>: <a href="mailto:tecweb2024@gmail.com">tecweb2024@gmail.com</a></li>
         <li>Telefono: <a href="tel:+123456789">+39 123-456-789</a></li>
         <li>Sede: Via Trieste, 63, 35121 Padova (<abbr title="Padova">PD</abbr>)</li>
     </ul>
-    </address>
-    <address id="social">
+    </div>
+    <div id="social">
       <h4>Seguici Su</h4>
       <a href="https://www.instagram.com/" id="instaImage"><span lang="en">Instagram</span></a>
   
@@ -133,7 +130,7 @@
       <a href="https://www.facebook.com/" id="facebookImage"><span lang="en">Facebook</span></a>
   
       <a href="https://www.twitter.com/" id="twitterImage"><span lang="en">Twitter</span></a>
-    </address>
+    </div>
     <div id="footer_Text"><p>&copy; 2024 <span lang="en">Olympo Fitness</span>. Tutti i diritti riservati.</p></div> 
   </footer>
 

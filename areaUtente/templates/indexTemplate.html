@@ -6,10 +6,10 @@
   <title>Olympo Fitness</title>
   <meta name="keywords" content="Olympo Fitness, palestra, negozio palestra, pesi liberi , macchinari palestra, macchinari, nutrizione, accessori palestra, home">
   <meta name="author" content="Olympo Fitness">
-  <link rel="stylesheet" href="../style.css" media="screen">
-  <link rel="stylesheet" href="../mobile.css" media="screen and (max-width: 508px)">
-  <link rel="stylesheet" href="../tablet.css" media="screen and (min-width: 509px) and (max-width: 768px)">
-  <link rel="stylesheet" href="../print.css" media="print">
+  <link rel="stylesheet" href="../../style.css" media="screen">
+  <link rel="stylesheet" href="../../mobile.css" media="screen and (max-width: 508px)">
+  <link rel="stylesheet" href="../../tablet.css" media="screen and (min-width: 509px) and (max-width: 768px)">
+  <link rel="stylesheet" href="../../print.css" media="print">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
       <a class="navigationHelp" href="#content">Salta il menù di navigazione</a>
       <ul>
         <li><span lang="en">Home</span></li>
-        <li><a href="areaUtenteFaq.php">Area Domande</a></li>
+        <li><a href="areaUtenteFaq.php">Domande Fatte</a></li>
         <li><a href="chiSiamo.html">Chi Siamo</a></li>
         <li><a href="faq.php"><abbr title="Frequently Asked Questions" lang="en">FAQ</abbr></a></li>
         <li><a href="carrello.php">Carrello</a></li>
@@ -34,7 +34,7 @@
   </header>
 
   <nav id="breadcrumb" aria-label="Percorso">
-    <p>Ti trovi in: <span lang="en">Home</span>
+    <p>Ti trovi in: <span lang="en">Home</span></p>
   </nav>
 
   <main id="content">
@@ -42,23 +42,22 @@
     <div id="categories"> 
       <h2>Categorie Articoli</h2>
 
-        <ul class="categories_Container">
-           <!-- <li><a href="accessori.html"><img src="images/accessorifatto.jpg" alt="">Accessori</a></li> 
+        <!--<ul id="categories_Container">
+            <li><a href="accessori.html"><img src="images/accessorifatto.jpg" alt="">Accessori</a></li> 
             
             <li><a href="pesiLiberi.html"><img src="images/pasiliberifatto2.jpg" alt="">Pesi Liberi</a></li>
       
             <li><a href="nutrizione.html"><img src="images/nutrizionefatto2.png" alt="">Nutrizione</a></li>
 
-            <li><a href="macchine.html"><img src="images/macchinarifatto2.jpg" alt="">Macchinari</a></li>-->
-            {categorie}
-        </ul>
-
+            <li><a href="macchine.html"><img src="images/macchinarifatto2.jpg" alt="">Macchinari</a></li>
+        </ul>-->
+        {categorie}
     </div>
 
     <div id="brand">
-      <h3>I Nostri Brand :</h3>
-      <ul id="brand_Container"> <!-- cambiare le dim px ai file delle immagini in modo che siano tutte uguali -->
-       <!-- <li><a href="https://www.optimumnutrition.com/en-us"><img src="images/OptimumNutrition.jpg" alt="Optinum Nutrition"></a></li>
+      <h3>I Nostri Brand :</h3> 
+      <!-- <ul id="brand_Container"> 
+        <li><a href="https://www.optimumnutrition.com/en-us"><img src="images/OptimumNutrition.jpg" alt="Optinum Nutrition"></a></li>
 
         <li><a href="https://www.cousin-trestec.com/en/"><img src="images/cousintrestecImage.png" alt=""></a></li>
 
@@ -68,9 +67,10 @@
 
         <li><a href="https://www.adidas.it/"><img src="images/adidas.jpg" alt=""></a></li>
 
-        <li><a href="https://www.myprotein.it/"><img src="images/myprotein.png" alt=""></a></li>-->
-        {brands}
-      </ul>
+        <li><a href="https://www.myprotein.it/"><img src="images/myprotein.png" alt=""></a></li>
+        
+      </ul> -->
+      {brands}
     </div>
 
 
@@ -87,18 +87,17 @@
     <a href="#" id="buttonToTop">Torna in cima</a>
 
   </main>
-
   
   <footer>
-    <address id="contacts">
+    <div id="contacts">
       <h3>Contatti</h3>
       <ul>
-        <li><span lang="en">E-Mail</span>: <a href="mailto:tecweb2024@gmail.com">tecweb2024@gmail.com</a></li>
+        <li><span lang="en">Email</span>: <a href="mailto:tecweb2024@gmail.com">tecweb2024@gmail.com</a></li>
         <li>Telefono: <a href="tel:+123456789">+39 123-456-789</a></li>
         <li>Sede: Via Trieste, 63, 35121 Padova (<abbr title="Padova">PD</abbr>)</li>
     </ul>
-    </address>
-    <address id="social">
+    </div>
+    <div id="social">
       <h4>Seguici Su</h4>
       <a href="https://www.instagram.com/" id="instaImage"><span lang="en">Instagram</span></a>
   
@@ -107,7 +106,7 @@
       <a href="https://www.facebook.com/" id="facebookImage"><span lang="en">Facebook</span></a>
   
       <a href="https://www.twitter.com/" id="twitterImage"><span lang="en">Twitter</span></a>
-    </address>
+    </div>
     <div id="footer_Text"><p>&copy; 2024 <span lang="en">Olympo Fitness</span>. Tutti i diritti riservati.</p></div> 
   </footer>
 </body>

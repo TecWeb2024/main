@@ -1,0 +1,314 @@
+/* HOME PAGE */
+
+header {
+    padding: 1em;
+}
+
+.logo {
+    line-height: 3em;
+}
+
+#menu {
+    bottom: auto;
+    top: 0;
+    background-color: #757575;
+}
+
+#menu ul {
+    font-size: 1.1em;
+}
+
+#breadcrumb {
+    padding: 1em 1em 1em 1.5em;
+}
+
+/* CATEGORIES */
+
+#categories {
+    padding: 1em 2em 1em 2em;
+}
+
+#categories h2 {
+    font-size: 2em;
+}
+
+#categories_Container li {
+    flex: 0 0 50%;
+    font-size: 1.2em;
+}
+
+/* BRAND */
+
+#brand {
+    padding: 1em;
+}
+
+#brand h3 {
+    font-size: 1.5em;
+}
+
+#brand_Container li {
+    flex-basis: 40%;
+}
+
+/* PAYMENTS */
+
+#payments {
+    padding: 1em;
+}
+
+#payments h3 {
+    font-size: 1.5em;
+}
+
+#Mastercard,
+#Visa,
+#Googlepay,
+#Paypal {
+    width: 15em;
+}
+
+/* CONTACTS */
+
+#contacts h3 {
+    font-size: 1.5em;
+}
+
+/* SOCIAL */
+
+#social h4 {
+    font-size: 1.3em;
+}
+
+#social a {
+    margin: 0.5em;
+    padding: 1em;
+    height: 1em;
+    width: 1em;
+}
+
+/* BUTTON TO TOP */
+
+#buttonToTop {
+    bottom: 8em;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 1em;
+}
+
+/* PRODUCTS LIST */
+
+#products_List {
+    padding: 1em 1em 2em 1em;
+}
+
+#products_List h2 {
+    font-size: 2em;
+}
+
+#products_Container li {
+    flex: 0 0 50%;
+    font-size: 1.2em;
+}
+
+/* PRODUCT PAGE */
+
+#product_Page {
+    padding: 1em;
+}
+
+#product_Page h2 {
+    font-size: 2em;
+}
+
+#product_Images {
+    padding: 1em;
+}
+
+#product_Details h3 {
+    font-size: 1.8em;
+}
+
+#product_Specs {
+    font-size: 1.4em;
+}
+
+#product_Description h3 {
+    font-size: 1.5em;
+}
+
+#product_Description {
+    font-size: 1.3em;
+}
+
+#delivery_Details h3 {
+    font-size: 1.5em;
+}
+
+#delivery_Details {
+    font-size: 1.3em;
+}
+
+#cart_Specs {
+    clear: none;
+}
+
+#addToCart:hover {
+    background-color: #757575;
+}
+
+/* CHI SIAMO */
+
+#chiSiamo_Content {
+    padding: 1em;
+}
+
+#chiSiamo_Content h2 {
+    font-size: 2em;
+}
+
+#company_Info p {
+    font-size: 1.3em;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+#company_Info h3 {
+    font-size: 1.5em;
+}
+
+#company_Info img {
+    width: 100%;
+    height: auto;
+}
+
+#team_Members h3 {
+    font-size: 1.5em;
+}
+
+.members p {
+    font-size: 1.3em;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.members img {
+    width: 80%;
+}
+
+/* FAQ */
+
+#faq_Page h2 {
+    font-size: 2em;
+}
+
+.type_Questions {
+    font-size: 1.5em;
+    margin-left: 0;
+    margin-bottom: 1em;
+}
+
+.question h3 {
+    font-size: 1.4em;
+}
+
+#question_Input {
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+#addQuestion {
+    padding: 1em 2em;
+}
+
+#addQuestion:hover {
+    background-color: #757575;
+}
+
+/* ACCOUNT */
+
+#account_Page {
+    width: 90%;
+}
+
+#form_Container {
+    padding: 1em;
+}
+
+#form_Container h1 {
+    font-size: 1.6em;
+}
+
+#form_Container p {
+    font-size: 1.4em;
+}
+
+.accountButton {
+    padding: 1em;
+}
+
+.accountButton:hover {
+    background-color: #757575;
+}
+
+.account_Link {
+    font-size: 1.3em;
+}
+
+/* CART */
+
+#cart_Page {
+    padding: 1em;
+}
+
+#cart_Page h1 {
+    font-size: 2em;
+}
+
+#headerCart dt {
+    font-size: 1.5em;
+}
+
+#headerCart dd {
+    font-size: 1.3em;
+    margin-bottom: 1em;
+}
+
+#cart_Container li {
+    flex: 0 0 50%;
+    font-size: 1.2em;
+}
+
+/* ERROR 404 - 500 */
+
+#error_Message h2 {
+    font-size: 2em;
+}
+
+#error_Message p {
+    font-size: 1.3em;
+}
+
+/* AREA_UTENTE_FAQ */
+
+#q_a_container h2 {
+    padding: 2%;
+}
+
+.q_a_box {
+    margin-bottom: 5%;
+}
+
+/* AREA_ADMIN_RISPOSTE */
+
+.questions_container {
+    padding: 5%;
+}
+
+.box_q_a {
+    padding: 2%;
+    margin-bottom: 3%;
+}

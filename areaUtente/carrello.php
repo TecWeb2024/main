@@ -95,6 +95,8 @@
                 $stringaProdotti = "<p>Non sono presenti prodotti nel tuo carrello.</p>";
             }
 
+
+
             if(isset($_GET['remove'])){
 
                 $idRimozione = $_GET['id'];
@@ -142,13 +144,18 @@
                             }
                        
                     }else{
-                    $error = '<p class="error_Message" role="alertdialog">Errore nella rimozione dal carrello.</p>';
+                    $error = '<p class="error_Message" role="alert">Errore nella rimozione dal carrello.</p>';
                     }
                              
                 }else{
-                    $error .= DBConnectionError(true);
+                    $error = DBConnectionError(true);
                 }
             }
+
+
+
+
+
             if(isset($_POST['shopButton'])){
 
                 $indirizzo = sanitizeInput($_POST['address']);
@@ -157,14 +164,14 @@
         
         
                 if(!preg_match('/^[A-Za-z]+(\s[A-Za-z]+)*\s\d+$/',$indirizzo)){
-                    array_push($errorForm,'<p class="error_Message" role="alertdialog">Inserire un indirizzo valido.</p>');
+                    array_push($errorForm,'<p class="error_Message" role="alert">Inserire un indirizzo valido.</p>');
                 }
                 if(!preg_match('/^[A-Za-z]+$/',$citta)){
-                    array_push($errorForm,'<p class="error_Message" role="alertdialog">Nome della città non corretto.</p>');
+                    array_push($errorForm,'<p class="error_Message" role="alert">Nome della città non corretto.</p>');
                 }
         
                 if(!preg_match('/^\d{5}$/',$cap)){
-                    array_push($errorForm,'<p class="error_Message" role="alertdialog">Formato del <abbr title="Codice Avviamento Postale">CAP</abbr> non corretto.</p>');
+                    array_push($errorForm,'<p class="error_Message" role="alert">Formato del <abbr title="Codice Avviamento Postale">CAP</abbr> non corretto.</p>');
                 }
                 
                 if(count($errorForm)==0){
@@ -173,23 +180,22 @@
 
                         $query = "DELETE FROM carrello WHERE IDutente=$id;";
                         $checkQuery=$connection->modifyDatabase($query);
+                        $connection->closeDBConnection();
+
                             if($checkQuery){
                                 $stringaRiepilogo = "<dd>Prezzo Parziale: 0€</dd><dd>Costo spedizione: 0€</dd><dd>Totale: 0€ (0 articoli selezionati)</dd> ";
                                 $stringaProdotti = "<p>Non sono presenti prodotti nel tuo carrello.</p>";
 
-                                $error = '<p class="success_Message" role="alertdialog">Acquisto effettuato con successo.</p>';
+                                $error = '<p class="success_Message" role="alert">Acquisto effettuato con successo.</p>';
    
                             }else{
-                            $error = '<p class="error_Message" role="alertdialog">Per fare un acquisto devi avere almeno un prodotto nel tuo carrello</p>' ;
+                            $error = '<p class="error_Message" role="alert">Per fare un acquisto devi avere almeno un prodotto nel tuo carrello</p>' ;
                             }
-
-                        $connection->closeDBConnection();
-                             
                         }else{
-                            $error .= DBConnectionError(true);
+                            $error = DBConnectionError(true);
                         }
                     }else{
-                        $error = '<p class="error_Message" role="alertdialog">Per fare un acquisto devi avere almeno un prodotto nel tuo carrello</p>' ;
+                        $error = '<p class="error_Message" role="alert">Per fare un acquisto devi avere almeno un prodotto nel tuo carrello</p>' ;
                     }
                 }else{
                     $error = '<ul>';
@@ -199,6 +205,9 @@
                     $error .= '</ul>';
                 }
             }
+
+
+
             $paginaHTML = str_replace("{errori}",$error,$paginaHTML);
             $paginaHTML = str_replace("{riepilogoOrdine}",$stringaRiepilogo,$paginaHTML);
             $paginaHTML = str_replace("{formCarrello}",$stringaPagamento,$paginaHTML);

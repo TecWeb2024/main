@@ -24,26 +24,34 @@ if($connection->isLoggedInAdmin()){
         $listaBrands = $connection->getBrandsFromDatabase();
         
         $connection->closeDBConnection();
-    
+        $stringaCategorie = '<ul id="categories_Container">';
+
         if ($listaCategorie != null) {
-            $stringaCategorie = '';
+
             foreach ($listaCategorie as $categoria) {
                 $nomeCategorieMinuscolo = strtolower(str_replace(' ', '', $categoria["nome"]));
                 $stringaCategorie .= '<li><a href="' . $nomeCategorieMinuscolo . '.php"><img src="../' . $categoria["immagineSfondo"] . '" alt="">' . $categoria["nome"] . '</a></li>';
+                $nomeCategorieMinuscolo = "";
             }
+
         } else {
             $stringaCategorie .= "<li>Non sono presenti categorie</li>";
         }
+        $stringaCategorie .= '</ul>';
         
+        $stringaBrands ='<ul id="brand_Container">';
         if ($listaBrands != null) {
-            $stringaBrands = '';
+
             foreach ($listaBrands as $brands) {
                 $nomeLinkMinuscolo = strtolower(str_replace(' ', '', $brands["nome"]));
                 $stringaBrands .= '<li><a href="https://www.' . $nomeLinkMinuscolo . '.com/"><img src="../' . $brands["immagineSfondo"] . '" alt="' . $brands["nome"] . '"></a></li>';
+                $nomeLinkMinuscolo = "";
             }
         } else {
-            $stringaBrands = "<li>Non sono presenti brand</li>";
+            $stringaBrands .= "<li>Non sono presenti brand</li>";
         }
+
+        $stringaBrands .='</ul>';
         
     } else {
         $stringaCategorie .= DBConnectionError(true);

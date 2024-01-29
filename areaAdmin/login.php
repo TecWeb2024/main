@@ -4,22 +4,22 @@
     session_start();
 
     use DB\DBAccess;
+    $connection = new DBAccess();
     setlocale(LC_ALL, 'it_IT');
 
+    $stringaLogout = "";
     $paginaHTML     = file_get_contents('templates/loginTemplate.html');
-
-    $stringaErrori = "";
 
     if($connection->isLoggedInAdmin()){
 
-        $stringaLogout .= '<p>Se vuoi disconnetterti:</p> <li><a href="logout.php" class="button">Esci</a></li>';
-        $paginaHTML = str_replace("{errori}",$stringaErrori,$paginaHTML);
+        $stringaLogout = '<p id="logout">Se vuoi disconnetterti: <a href="logout.php" class="button">Esci</a></p>';
         $paginaHTML = str_replace("{logout}",$stringaLogout,$paginaHTML);
     
     }
     else{
         //ridirezionamento fuori areaAdmin
         header("Location: ../index.php");
+        die();
     }
 
     echo $paginaHTML;

@@ -2,9 +2,6 @@
     require_once "../connection.php";
     require_once "../funzioni.php";
     use DB\DBAccess;
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
 
     setlocale(LC_ALL, 'it_IT');
     session_start();
@@ -13,9 +10,8 @@
 
 
     $connection = new DBAccess();
-    $connectionOk = $connection->openDBConnection();
-
-    if ($connectionOk) {
+    if($connection->isLoggedInAdmin()){
+        if($connection->openDBConnection()){
             $modifica = '';
             $sql = "SELECT * FROM prodotto";
             $result = $connection->customQuery($sql);
@@ -184,11 +180,14 @@
                             exit();
                     } 
             }    
-    }//CONNECTION
+    }
 
-    //REPLACEMENT
+    }else{
+         //ridirezionamento fuori areaAdmin
+        header("Location: ../index.php");
+        die();
+    }
     $paginaHTML = str_replace("{modifica}", $modifica, $paginaHTML);
-
     
     echo $paginaHTML;
 ?>

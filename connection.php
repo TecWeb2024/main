@@ -166,9 +166,23 @@ class DBAccess {
         return $brands;
     }
 
-
-
-
+    public function getMarcaFromDatabase() {
+        $marca = array();
+    
+        $query = "SELECT ID,nome FROM marca";
+        $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+    
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $marca[] = $row;
+            }
+            $result->free_result();
+        } else {
+            $marca = array();
+        }
+        return $marca;
+    
+    }
 
     // PAGINA ACCESSORI
     public function getAccessoriFromDatabase() {
@@ -418,17 +432,6 @@ public function customQuery($sql, $params = []) {
     $stmt->close();
 
     return $result;
-}
-
-public function removeProductById($id){
-    $query = 'DELETE FROM prodotto WHERE ID = ' . $id ;
-    $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
-
-    if($result){
-        //echo 'operazione buon fine';
-    }else{
-        //echo 'errore nella rimozione del prodotto';
-    }
 }
 
 

@@ -16,28 +16,42 @@
     
     $listaCategoria = "";
     $stringaCategoria = "";
+    $contCat= 0;
+    $contMar= 0;
+
+    $listaMarca = "";
+    $stringaMarca= "";
 
     if($connection->isLoggedInAdmin()){
 
         if($connection->openDBConnection()){
 
             $listaCategoria = $connection->getCategoriesFromDatabase();
+            $listaMarca = $connection->getMarcaFromDatabase();
+
             $connection->closeDBConnection();
         
             if ($listaAccessori != null) {
-                foreach ($listaCategoria as $categoria) {
-                    $stringaCategoria .= '';
+                foreach ($listaCategoria as $cate) {
+                    $stringaCategoria .= '<option value="'.$cate['ID'].'">'.$cate['nome'].'</option>';
+                    $contCat=$contCat+1;
                 }
             } else {
                 $stringaCategoria = "<option value="0" disabled>Non sono presenti categorie</option>";
             }
-        $connection->closeDBconnection();
+
+            if ($listaMarca != null) {
+                foreach ($listaMarca as $mar) {
+                    $stringaMarca .= '<option value="'.$mar['ID'].'">'.$mar['nome'].'</option>';
+                    $contMar=$contMar+1;
+                }
+            } else {
+                $stringaMarca = "<option value="0" disabled>Non sono presenti marche</option>";
+            }
 
         }else{
             $stringaErrori = DBConnectionError(true);
         }
-        <option value="1">Accessori</option>
-        {selezioneCategoria}
 
         if(isset($_POST["submit"])){
 
@@ -47,7 +61,7 @@
             $immagine3 = sanitizeInput($_FILES['immagine3']['name']);
             $immagine4 = sanitizeInput($_FILES['immagine4']['name']);
 
-            $categoria = sanitizeInput($_POST['categoria']);
+            $categoria = $_POST['categoria'];
 
             $keywords = sanitizeInput($_POST['keywords']);
             $prezzo = sanitizeInput($_POST['prezzo']);
@@ -58,7 +72,9 @@
             $materialeUtilizzato = sanitizeInput($_POST['materialeUtilizzato']);
             $quantita = sanitizeInput($_POST['quantita']);
             $descrizione = sanitizeInput($_POST['descrizione']);
-            $marca = sanitizeInput($_POST['marca']);
+
+            $marca = $_POST['marca'];
+
             $alt = sanitizeInput($_POST['alt']);
 
             $uploadDirectory = '../images/';
@@ -115,11 +131,29 @@
             if($fileSize4 > $maxSize){ 
                 array_push($err,'<p class="error_Message" role="alert">Immagine 4 deve essere inferiore ad un <span>megabyte</span>.</p>');
             }
-            if(){ 
-                array_push($err,'<p class="error_Message" role="alert">.</p>');
+            if($categoria > 0 && $categoria <= $contCat){ 
+                array_push($err,'<p class="error_Message" role="alert">Non sono presenti categorie nel nostro sistema.</p>');
             }
-            if(){ 
-                array_push($err,'<p class="error_Message" role="alert">.</p>');
+            if($prezzo < 0){ 
+                array_push($err,'<p class="error_Message" role="alert">Non si possono inserire prodotti con prezzo minore o uguale a zero.</p>');
+            }
+            if(!preg_match('/\w{2,}/',$peso)){ 
+                array_push($err,'<p class="error_Message" role="alert">Peso inserito non corretto.</p>');
+            }
+            if(!preg_match('/\w{2,}/',$dimensione)){ 
+                array_push($err,'<p class="error_Message" role="alert">Dimensione inserita non corretta.</p>');
+            }
+            if($quantita < 0){ 
+                array_push($err,'<p class="error_Message" role="alert">Quantità non può essere minore o uguale a zero.</p>');
+            }
+            if(strlen($descrizione)<25){ 
+                array_push($err,'<p class="error_Message" role="alert">Descrizione deve essere superiore a 25 caratteri.</p>');
+            }
+            if($marca > 0 && $marca <= $contMar){ 
+                array_push($err,'<p class="error_Message" role="alert">Non sono presenti marche nel nostro sistema.</p>');
+            }
+            if(strlen($alt)<5 && strlen($alt)>75){ 
+                array_push($err,'<p class="error_Message" role="alert">Breve descrizione di supporto deve essere almeno di 5 caratteri e non superiore a 75 caratteri.</p>');
             }
         
             if(count($err)==0){
@@ -139,24 +173,31 @@
                     }
             }else{
                 $stringaErrori = DBConnectionError(true);
-                $paginaHTML = str_replace("{errori}",$stringaErrori,$paginaHTML);
-                $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
+                $paginaHTML = str_replace("{errori}",$stringaErrori,$paginaHTML);  
+                $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML); 
+                $paginaHTML = str_replace("{selezioneCategoria}",$stringaCategoria,$paginaHTML);
+                $paginaHTML = str_replace("{selezioneMarca}",$stringaMarca,$paginaHTML); 
             }
 
             }else{
             //Mostra form con errori di formato
             $stringaErrori = '<ul>';
-                foreach($errori as $error){
-                    $stringaErrori .= '<li>'.$error.'</li>';
+                foreach($err as $ers){
+                    $stringaErrori .= '<li>'.$ers.'</li>';
                 }
             $stringaErrori .= '</ul>';
 
             $paginaHTML = str_replace("{errori}",$stringaErrori,$paginaHTML);
             $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
+            $paginaHTML = str_replace("{selezioneCategoria}",$stringaCategoria,$paginaHTML);
+            $paginaHTML = str_replace("{selezioneMarca}",$stringaMarca,$paginaHTML);    
             }  
-        } // non hai premuto
+
+        } // non hai premuto, replace finali
         $paginaHTML = str_replace("{errori}",$stringaErrori,$paginaHTML);  
-        $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);      
+        $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML); 
+        $paginaHTML = str_replace("{selezioneCategoria}",$stringaCategoria,$paginaHTML);
+        $paginaHTML = str_replace("{selezioneMarca}",$stringaMarca,$paginaHTML);     
 
     }else{
         //ridirezionamento fuori areaAdmin

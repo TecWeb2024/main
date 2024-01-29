@@ -1,15 +1,17 @@
 <?php
     require_once "../connection.php";
     require_once "../funzioni.php";
-    session_start();
 
     use DB\DBAccess;
+    session_start();
     $connection = new DBAccess();
 
     $paginaHTML = file_get_contents('templates/registrazioneTemplate.html');
 
     $stringaErrori = "";
     $stringaQuery = "";
+    $errori = [];
+
 
     if($connection->isLoggedInUser()){
 

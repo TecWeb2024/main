@@ -1,37 +1,32 @@
 <?php
 require_once "connection.php";
 use DB\DBAccess;
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 setlocale(LC_ALL, 'it_IT');
 
-$paginaHTML = file_get_contents("nutrizioneTemplate.html");
+$paginaHTML = file_get_contents("templates/nutrizioneTemplate.html");
 $stringaNutrizione = "";
 $listaNutrizione = "";
 
 $connection = new DBAccess();
-$connectionOk = $connection->openDBConnection();
+    
+    $stringaNutrizione = '<ul id="products_Container">';
+    if($connection->openDBConnection()) {
+        $listaNutrizione = $connection->getNutrizioneFromDatabase();
+        $connection->closeDBConnection();
 
-if ($connectionOk) {
-    $listaNutrizione = $connection->getNutrizioneFromDatabase();
-
-    if ($listaNutrizione != null) {
-        foreach ($listaNutrizione as $Nutrizione) {
-            $stringaNutrizione .= '<li><a href="prodotto.php?id=' . $Nutrizione["ID"] . '"><img src="' . $Nutrizione["immagine1"] . '" alt=""><p>' . $Nutrizione["nome"] . ' - €' . $Nutrizione["prezzo"] . '</p></a></li>';
+        if($listaNutrizione != null) {
+            foreach ($listaNutrizione as $Nutrizione) {
+                $stringaNutrizione .= '<li><a href="prodotto.php?id=' . $Nutrizione["ID"] . '"><img src="' . $Nutrizione["immagine1"] . '" alt="' . $Nutrizione["alt"] . '"><p>' . $Nutrizione["nome"] . ' - €' . $Nutrizione["prezzo"] . '</p></a></li>';
+            }
+        }else {
+            $stringaNutrizione .= "<li>Non sono presenti alimentari</li>";
         }
     } else {
-        $stringaNutrizione .= "<li>Non sono presenti alimentari</li>";
+        $stringaNutrizione .= "<li>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio</li>";
     }
-    
-    $connection->closeDBConnection();
-} else {
-    $stringaNutrizione = "<li>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio</li>";
-}
 
-
-
+    $stringaNutrizione .= "</ul>";
 
 $paginaHTML = str_replace("{nutrizione}", $stringaNutrizione, $paginaHTML);
 echo $paginaHTML;

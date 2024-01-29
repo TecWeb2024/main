@@ -1,23 +1,21 @@
 <?php
-    require_once "connection.php";
-    require_once "funzioni.php";
+    require_once "../connection.php";
+    require_once "../funzioni.php";
 
     use DB\DBAccess;
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
 
     setlocale(LC_ALL, 'it_IT');
     session_start();
 
-    $paginaHTML = file_get_contents("aggiungiProdottoTemplate.html");
-
+    $paginaHTML = file_get_contents("templates/GestioneProdottiTemplate.html");
 
     $connection = new DBAccess();
-    $connectionOk = $connection->openDBConnection();
 
-    if ($connectionOk) {                
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) { 
+    if($connection->isLoggedInAdmin()){
+
+    if ($connection->openDBConnection()) {   
+
+        if (isset($_POST["submit"])) { 
             $nome = sanitizeInput($_POST['nome']);
             $immagine1 = sanitizeInput($_FILES['immagine1']['name']);
             $immagine2 = sanitizeInput($_FILES['immagine2']['name']);
@@ -75,11 +73,13 @@
                 //echo "Errore nell'inserimento del prodotto.";
             }
         }         
-    }//CONNECTION
+    }
+}else{
+    //ridirezionamento fuori areaAdmin
+    header("Location: ../index.php");
+    die();
+}
 
-    //REPLACEMENT
 
-
-    
     echo $paginaHTML;
 ?>

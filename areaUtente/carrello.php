@@ -2,9 +2,9 @@
     //qui puoi accedere al carrello normalmente
     require_once "../connection.php";
     require_once "../funzioni.php";
-    session_start();
 
     use DB\DBAccess;
+    session_start();
     $connection = new DBAccess();
 
     setlocale(LC_ALL, 'it_IT');

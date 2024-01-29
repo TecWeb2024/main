@@ -1,6 +1,7 @@
 <?php
 require_once "../connection.php";
 use DB\DBAccess;
+session_start();
 
 setlocale(LC_ALL, 'it_IT');
 session_start();
@@ -12,7 +13,8 @@ $question = "";
 
 if($connection->isLoggedInAdmin()){
 
-    $paginaHTML = str_replace("{domandaUtente}", $question, $paginaHTML);
+    $question = '<p>Sei collegato come amministratore, di conseguenza non puoi inviare alcuna domanda</p>';
+    $paginaHTML = str_replace("{erroriDomanda}", $question, $paginaHTML);
     
 }else{
     //ridirezionamento fuori areaAdmin

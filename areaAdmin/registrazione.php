@@ -1,15 +1,18 @@
 <?php
     require_once "../connection.php";
     require_once "../funzioni.php";
-    session_start();
+    
 
     use DB\DBAccess;
+    session_start();
     $connection = new DBAccess();
 
     $paginaHTML = file_get_contents('templates/registrazioneTemplate.html');
 
     $stringaErrori = "";
     $stringaQuery = "";
+    $errori = [];
+
 
     if($connection->isLoggedInAdmin()){
 
@@ -38,7 +41,7 @@
                     $connection->closeDBconnection();
                     
                     if($checkQuery){
-                        $stringaQuery .= '<p class="success_Message" role="alert">Registrazione effettuata con successo. Ora puoi effettuare il <span lang="en">login</span> dalla pagina <span lang="en">Account</span></p>';
+                        $stringaQuery .= '<p class="success_Message" role="alert">Registrazione effettuata con successo. Ora puoi effettuare il <span lang="en">login</span> dalla pagina <span lang="en">account</span></p>';
                         $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML);
                         $paginaHTML = str_replace("{erroriRegistrazione}",$stringaErrori,$paginaHTML);
                         

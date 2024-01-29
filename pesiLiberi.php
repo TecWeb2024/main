@@ -1,36 +1,32 @@
 <?php
 require_once "connection.php";
 use DB\DBAccess;
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 setlocale(LC_ALL, 'it_IT');
 
-$paginaHTML = file_get_contents("pesiLiberiTemplate.html");
+$paginaHTML = file_get_contents("templates/pesiLiberiTemplate.html");
 $stringaPesiLiberi = "";
 $listaPesiLiberi = "";
 
 $connection = new DBAccess();
-$connectionOk = $connection->openDBConnection();
 
-if ($connectionOk) {
-    $listaPesiLiberi = $connection->getPesiLiberiFromDatabase();
+    $stringaPesiLiberi = '<ul id="products_Container">';
+    if ($connection->openDBConnection()) {
+        $listaPesiLiberi = $connection->getPesiLiberiFromDatabase();
+        $connection->closeDBConnection();
 
-    if ($listaPesiLiberi != null) {
-        foreach ($listaPesiLiberi as $pesiLiberi) {
-            $stringaPesiLiberi .= '<li><a href="prodotto.php?id=' . $pesiLiberi["ID"] . '"><img src="' . $pesiLiberi["immagine1"] . '" alt=""><p>' . $pesiLiberi["nome"] . ' - €' . $pesiLiberi["prezzo"] . '</p></a></li>';
-        }
-    } else {
+        if ($listaPesiLiberi != null) {
+            foreach ($listaPesiLiberi as $pesiLiberi) {
+                $stringaPesiLiberi .= '<li><a href="prodotto.php?id=' . $pesiLiberi["ID"] . '"><img src="' . $pesiLiberi["immagine1"] . '" alt="' . $pesiLiberi["alt"] . '"><p>' . $pesiLiberi["nome"] . ' - €' . $pesiLiberi["prezzo"] . '</p></a></li>';
+            }
+        }else {
         $stringaPesiLiberi .= "<li>Non sono presenti pesi liberi</li>";
+    }   
+    }else {
+        $stringaPesiLiberi .= "<li>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio</li>";
     }
-    
-    $connection->closeDBConnection();
-} else {
-    $stringaPesiLiberi = "<li>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio</li>";
-}
 
-
+    $stringaPesiLiberi .= '</ul>';
 
 
 $paginaHTML = str_replace("{pesiLiberi}", $stringaPesiLiberi, $paginaHTML);

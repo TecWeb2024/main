@@ -8,7 +8,7 @@
     setlocale(LC_ALL, 'it_IT');
 
     $connection = new DBAccess();
-    $paginaHTML     = file_get_contents('loginTemplate.html');
+    $paginaHTML     = file_get_contents('templates/loginTemplate.html');
 
     $stringaErrori = "";
     $stringaLogout = "";
@@ -24,11 +24,11 @@
 
 
             if(!preg_match('/\w{3,}/',$nome)){
-                array_push($errori,'<p class="error_Message">Formato del nome non corretto</p>');
+                array_push($errori,'<p class="error_Message" role="alert">Formato del nome non corretto</p>');
             }
 
             if(strlen($password)<4){
-                array_push($errori,'<p class="error_Message">Formato della <span lang="en">password</span> non corretto.</p>');
+                array_push($errori,'<p class="error_Message" role="alert">Formato della <span lang="en">password</span> non corretto.</p>');
             }
 
             if(count($errori)==0){
@@ -52,7 +52,7 @@
                                 die();
     
                             }else{ //era role="alert" dentro il tag, password errata
-                                array_push($errori,'<p class="error_Message">Nome o <span lang="en">password</span> non corretti</p>');
+                                array_push($errori,'<p class="error_Message" role="alert">Nome o <span lang="en">password</span> non corretti</p>');
                             }
                         }
                         elseif($user['amministratore']==0)
@@ -65,12 +65,12 @@
                                 die();
     
                             }else{ //era role="alert" dentro il tag, password errata
-                                array_push($errori,'<p class="error_Message">Nome o <span lang="en">password</span> non corretti</p>');
+                                array_push($errori,'<p class="error_Message" role="alert">Nome o <span lang="en">password</span> non corretti</p>');
                             }
                         }
 
                     }else{//persona non trovata
-                        array_push($errori,'<p class="error_Message">Nome o <span lang="en">password</span> non corretti</p>');
+                        array_push($errori,'<p class="error_Message" role="alert">Nome o <span lang="en">password</span> non corretti</p>');
                     }
 
                     $stringaErrori = '<ul>';

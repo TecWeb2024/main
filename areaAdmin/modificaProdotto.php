@@ -1,6 +1,6 @@
 <?php
-    require_once "connection.php";
-    require_once "funzioni.php";
+    require_once "../connection.php";
+    require_once "../funzioni.php";
     use DB\DBAccess;
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
@@ -9,7 +9,7 @@
     setlocale(LC_ALL, 'it_IT');
     session_start();
 
-    $paginaHTML = file_get_contents("modificaProdottoTemplate.html");
+    $paginaHTML = file_get_contents("templates/modificaProdottoTemplate.html");
 
 
     $connection = new DBAccess();

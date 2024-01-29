@@ -1,9 +1,9 @@
 <?php
     require_once "../connection.php";
     require_once "../funzioni.php";
-    session_start();
 
     use DB\DBAccess;
+    session_start();
     setlocale(LC_ALL, 'it_IT');
 
     $paginaHTML = file_get_contents('templates/loginTemplate.html');

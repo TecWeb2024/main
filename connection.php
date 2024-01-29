@@ -388,6 +388,7 @@ public function updateProductQuantity($product_Id, $quantity) {
             return 1;
         } else {
            return 0;
+        }
     } else {
         return 0;
     }
@@ -397,21 +398,7 @@ public function updateProductQuantity($product_Id, $quantity) {
 
 
 
-//PAGINA ADMIN [INSERIMENTO, RIMOZIONE, MODIFICA]
-
-public function addProduct($nome, $immagine1, $immagine2, $immagine3, $immagine4, $categoria, $keywords, $prezzo, $peso, $dimensione, $colore, $volume, $materialeUtilizzato, $quantita, $taglia, $descrizione, $tempoConsegna, $marca) {
-    $Query = "INSERT INTO prodotto (nome, immagine1, immagine2, immagine3, immagine4, categoria, keywords, prezzo, peso, dimensione, colore, volume, materialeUtilizzato, quantita, taglia, descrizione, tempoConsegna, marca) VALUES ('$nome', '$immagine1', '$immagine2', '$immagine3', '$immagine4', '$categoria', '$keywords', '$prezzo', '$peso', '$dimensione', '$colore', '$volume', '$materialeUtilizzato', '$quantita', '$taglia', '$descrizione', '$tempoConsegna', '$marca')";
-    $result = mysqli_query($this->connection, $Query);
-
-    if ($result) {
-        //echo "Inserimento avvenuto correttamente";
-        return true;
-    } else {
-        //echo "Errore: " . mysqli_error($this->connection);
-        return false;
-    }
-}
-
+//PAGINA ADMIN [RIMOZIONE, MODIFICA]
 
 public function customQuery($sql, $params = []) {
     $stmt = $this->connection->prepare($sql);

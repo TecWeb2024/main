@@ -385,11 +385,11 @@ public function updateProductQuantity($product_Id, $quantity) {
         $updateResult = mysqli_query($this->connection, $updateQuery) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
         if ($updateResult) {
-            return '<p class="success_Message" role="alert">Quantità disponibile aggiornata.</p>';
+            return 1;
         } else {
-           return '<p class="error_Message" role="alert">Errore nell\'aggiornamento della quantità.</p>';
+           return 0;
     } else {
-        return '<p class="error_Message" role="alert">Prodotto non trovato nel nostro <span lang="en">server</span>.</p>';
+        return 0;
     }
 }
 

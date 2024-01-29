@@ -1,4 +1,8 @@
-/*HOME PAGE*/
+  /******************
+   *                *
+   *    HOME PAGE   *
+   *                *
+   ******************/
 
 header {
     padding: 0em;
@@ -83,7 +87,7 @@ header {
 }
 
 #brand_Container li{
-    flex-basis: 35%;
+    flex-basis: 30%;
 }
 
 /*payments*/
@@ -99,15 +103,19 @@ header {
 
 #Mastercard{
     width: 20%;
+    padding-bottom: 5%;
 }
 #Visa{
     width: 20%;
+    padding-bottom: 5%;
 }
 #Googlepay{
     width: 20%;
+    padding-bottom: 5%;
 }
 #Paypal{
     width: 20%;
+    padding-bottom: 5%;
 }
 
 /*contacts*/
@@ -143,7 +151,11 @@ footer{
     margin-bottom: 5em;
 }
 
-/*ACCESSORI - PESI LIBERI - NUTRIZIONE - MACCHINARI*/
+  /***********************************************************
+   *                                                         *
+   *    ACCESSORI - PESI LIBERI - NUTRIZIONE - MACCHINARI    *
+   *                                                         *
+   ***********************************************************/
 
 #products_List{
     padding: 0.5em 0.5em 1.5em 0.5em;
@@ -170,7 +182,7 @@ footer{
 
 /*PRODOTTI*/
 
-#product_Page {
+#product_Page{
     padding: 0.5em 0.5em 0.5em 0.5em;
 }
 
@@ -220,11 +232,11 @@ footer{
     clear: both;
 }
 
-#addToCart:hover {
-    background-color: #757575;
-}
-
-/*CHI SIAMO*/
+  /******************
+   *                *
+   *    CHI SIAMO   *
+   *                *
+   ******************/
 
 #chiSiamo_Content{
     width: 100%;
@@ -290,14 +302,6 @@ footer{
     width: 100%;
 }
 
-#addQuestion{
-    padding: 0.5em 1em;
-}
-
-#addQuestion:hover {
-    background-color: #757575;
-}
-
 /*ACCOUNT*/
 
 #account_Page{
@@ -314,15 +318,6 @@ footer{
 
 #form_Container p{
     font-size: 120%;
-}
-
-.accountButton{
-    padding: 0.5em;
-    width: auto;
-}
-
-.accountButton:hover {
-    background-color: #757575;
 }
 
 .account_Link{
@@ -404,7 +399,21 @@ footer{
     padding: 1%;
     border: #000 solid 2px;
     margin-bottom: 2%;
-
   }
 
+  /*********************
+   *                   *
+   *   ERROR 404-500   *
+   *                   *
+   *********************/
+
+  #error_m h2{
+    font-size: 160%;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+   }
+
+   #error_m p{
+    font-size: 110%;
+   }
 

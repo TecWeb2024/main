@@ -1,26 +1,29 @@
-/* HOME PAGE */
+  /******************
+   *                *
+   *    HOME PAGE   *
+   *                *
+   ******************/
 
 header {
     padding: 1em;
 }
 
 .logo {
-    line-height: 3em;
+    line-height: 2em;
 }
 
 #menu {
     bottom: auto;
     top: 0;
-    background-color: #757575;
 }
 
 #menu ul {
     font-size: 1.1em;
 }
 
-#breadcrumb {
-    padding: 1em 1em 1em 1.5em;
-}
+.button:hover {
+    background-color: #757575;
+  }
 
 /* CATEGORIES */
 
@@ -33,8 +36,13 @@ header {
 }
 
 #categories_Container li {
-    flex: 0 0 50%;
+    flex: 0 0 45%;
     font-size: 1.2em;
+}
+
+#categories_Container li:hover{
+    transform: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* BRAND */
@@ -48,7 +56,7 @@ header {
 }
 
 #brand_Container li {
-    flex-basis: 40%;
+    flex-basis: 20%;
 }
 
 /* PAYMENTS */
@@ -65,7 +73,14 @@ header {
 #Visa,
 #Googlepay,
 #Paypal {
-    width: 15em;
+    width: 20%
+}
+
+#Mastercard,
+#Visa,
+#Googlepay,
+#Paypal {
+    padding-bottom: 5%;
 }
 
 /* CONTACTS */
@@ -82,15 +97,12 @@ header {
 
 #social a {
     margin: 0.5em;
-    padding: 1em;
-    height: 1em;
-    width: 1em;
 }
 
 /* BUTTON TO TOP */
 
 #buttonToTop {
-    bottom: 8em;
+    bottom: 2em;
 }
 
 /* FOOTER */
@@ -99,7 +111,11 @@ footer {
     padding: 1em;
 }
 
-/* PRODUCTS LIST */
+  /***********************************************************
+   *                                                         *
+   *    ACCESSORI - PESI LIBERI - NUTRIZIONE - MACCHINARI    *
+   *                                                         *
+   ***********************************************************/
 
 #products_List {
     padding: 1em 1em 2em 1em;
@@ -110,8 +126,13 @@ footer {
 }
 
 #products_Container li {
-    flex: 0 0 50%;
-    font-size: 1.2em;
+    flex: 0 0 30%;
+    font-size: 1.1em;
+}
+
+#products_Container li:hover {
+    transform: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* PRODUCT PAGE */
@@ -156,11 +177,11 @@ footer {
     clear: none;
 }
 
-#addToCart:hover {
-    background-color: #757575;
-}
-
-/* CHI SIAMO */
+  /******************
+   *                *
+   *    CHI SIAMO   *
+   *                *
+   ******************/
 
 #chiSiamo_Content {
     padding: 1em;
@@ -181,7 +202,7 @@ footer {
 }
 
 #company_Info img {
-    width: 100%;
+    width: 90%;
     height: auto;
 }
 
@@ -196,7 +217,7 @@ footer {
 }
 
 .members img {
-    width: 80%;
+    width: 40%;
 }
 
 /* FAQ */
@@ -220,14 +241,6 @@ footer {
     margin-bottom: 1em;
 }
 
-#addQuestion {
-    padding: 1em 2em;
-}
-
-#addQuestion:hover {
-    background-color: #757575;
-}
-
 /* ACCOUNT */
 
 #account_Page {
@@ -244,14 +257,6 @@ footer {
 
 #form_Container p {
     font-size: 1.4em;
-}
-
-.accountButton {
-    padding: 1em;
-}
-
-.accountButton:hover {
-    background-color: #757575;
 }
 
 .account_Link {
@@ -282,16 +287,6 @@ footer {
     font-size: 1.2em;
 }
 
-/* ERROR 404 - 500 */
-
-#error_Message h2 {
-    font-size: 2em;
-}
-
-#error_Message p {
-    font-size: 1.3em;
-}
-
 /* AREA_UTENTE_FAQ */
 
 #q_a_container h2 {
@@ -311,4 +306,18 @@ footer {
 .box_q_a {
     padding: 2%;
     margin-bottom: 3%;
+}
+
+  /*********************
+   *                   *
+   *   ERROR 404-500   *
+   *                   *
+   *********************/
+
+#error_m h2 {
+    font-size: 1.8em;
+}
+
+#error_m p {
+    font-size: 1.2em;
 }

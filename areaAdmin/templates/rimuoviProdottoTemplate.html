@@ -38,12 +38,20 @@
     <main id="content">
         <div class="form">
             <p>Se vuoi aggiungere o modificare un prodotto puoi accedere alle rispettive aree:</p>
-            <a href="GestioneProdotti.php" class="form">Aggiungi Prodotto</a> <!--cambiare style-->
+            <a href="GestioneProdotti.php" class="button">Aggiungi Prodotto</a> <!--cambiare style-->
     
-            <a href="modificaProdotti.php" class="form">Modifica Prodotto</a>
+            <a href="modificaProdotto.php" class="button">Modifica Prodotto</a>
         </div>
         <div id="form_Container">
-        {rimuovi}
+                <form action="rimuoviProdotto.php" method="post">
+                    <h2>Rimuovi Prodotto</h2>
+                <label for="lista_prodotti">Seleziona il prodotto da eliminare:</label>
+                <select id="lista_prodotti" name="lista_prodotti">
+                    {rimuovi}
+                </select>
+                <input type="submit" name="conferma" class="button" value="Conferma Scelta">
+                {risultatoQuery}
+            </form>
         </div>
         
         <a href="#" id="buttonToTop">Torna in cima</a>

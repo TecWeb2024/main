@@ -24,6 +24,8 @@ $consegna = "";
 $aggiornamento1= "";
 $aggiornamento2= "";
 
+$listaprodotto = "";
+
 $connection = new DBAccess();
 
 if($connection->isLoggedInUser()){ // mancano keywords se null
@@ -31,18 +33,19 @@ if($connection->isLoggedInUser()){ // mancano keywords se null
 
         if(isset($_GET['id'])){
             $idProdotto = $_GET['id'];
-            $prodotto = $connection->getProdottoById($idProdotto);
+            $listaprodotto = $connection->getProdottoById($idProdotto);
         
-            if ($prodotto != null){
+            if ($listaprodotto != null){
 
+                foreach($listaprodotto as $prodotto){
                 $contenuto = '<div id="product_Details"><h3>Specifiche Prodotto</h3>';
 
                 $nomeCategoria = $connection->getCategoriaFromId($prodotto['categoria']);
                 $connection->closeDBConnection();
 
-                $categoriaLink = strtolower(str_replace(' ', '', $nomeCategoria));
+                $categoriaLink = strtolower(str_replace(' ', '', $nomeCategoria[0]['nome']));
             
-                $breadcrumb = '<a href="index.php"><span lang="en">Home</span></a> &gt; <a href="' . $categoriaLink . '.php"> ' . $nomeCategoria . ' </a> &gt;' . $prodotto['nome'];
+                $breadcrumb = '<a href="index.php"><span lang="en">Home</span></a> &gt; <a href="' . $categoriaLink . '.php"> ' . $nomeCategoria[0]['nome'] . ' </a> &gt;' . $prodotto['nome'];
             
                 $titolo =  $prodotto['nome'];
             
@@ -56,7 +59,8 @@ if($connection->isLoggedInUser()){ // mancano keywords se null
                                     <img src="../' . $prodotto['immagine3'] . '" class="immagine_prodotto" alt="">
                                     <img src="../' . $prodotto['immagine4'] . '" class="immagine_prodotto" alt=""></div>';
 
-                $specificheProdotto = '<ul id="product_Specs"><li><span class="specs_List">Prezzo:</span> '      . $prodotto['prezzo']       . '€</li>
+                $specificheProdotto = '<ul id="product_Specs">
+                                    <li><span class="specs_List">Prezzo:</span> '      . $prodotto['prezzo']       . '€</li>
                                     <li><span class="specs_List">Peso:</span> '         . $prodotto['peso']         . '</li> 
                                     <li><span class="specs_List">Dimensioni:</span> '   . $prodotto['dimensione']   . '</li>';
                 
@@ -79,22 +83,21 @@ if($connection->isLoggedInUser()){ // mancano keywords se null
                 }
 
                 $specificheProdotto .= '<li><span class="specs_List">Azienda:</span> '      . $prodotto['marca'] . '</li>
-                                        <li><span class="specs_List">Categoria:</span> '    . $nomeCategoria . '</li></ul>';
+                                        <li><span class="specs_List">Categoria:</span> '    . $nomeCategoria[0]['nome'] . '</li></ul>';
             
 
                 $qnt = $prodotto['quantita']; // controllare come esce
-                $quantitaProdotto = '<form action="prodotto.php" class="form" method="post"><div id="cart_Specs">';
                     if($qnt != 0){
-                        $quantitaProdotto .= '<p class="cart_List">Seleziona quantità:</p>
-                            <select name="opzione_selezionata" id="quantity"> ';
+                        $quantitaProdotto .= '<form action="prodotto.php" class="form" method="get"><div id="cart_Specs">
+                        <p class="cart_List">Seleziona quantità:</p><select name="opzione_selezionata" id="quantity"> ';
                         for ($i = 1; $i <= $qnt; $i++) {
                             $quantitaProdotto .= '<option value="' . $i . '"> ' . $i . '</option>';
                         }
-                        $quantitaProdotto .= ' </select> ';
+                        $quantitaProdotto .= ' </select></div><input type="hidden" name="id" value="'.$prodotto['ID'].'"></input>
+                        <input type="submit" name="addToCart" class="button" value="Aggiungi al carrello"></form>';
                     }elseif($qnt == 0){
-                        $quantitaProdotto .= '<p> Prodotto esaurito! Ci dispiace per il disagio, presto tornerà disponibile!</p>';
+                        $quantitaProdotto = '<p> Prodotto esaurito! Ci dispiace per il disagio, presto tornerà disponibile!</p>';
                     }
-                $quantitaProdotto .= '</div><input type="submit" name="addToCart" class="button" value="Aggiungi al carrello."></form>';
                      
                 $descrizioneProdotto = '<div id="product_Description"><h3>Descrizione</h3><p>' . $prodotto['descrizione'] . '</p></div>';
                 
@@ -102,13 +105,14 @@ if($connection->isLoggedInUser()){ // mancano keywords se null
                 <li>Consegna in 3-5 giorni lavorativi.</li>
                 <li>Spedizione gratuita per ordini superiori a 50 €.</li>
                 </ul></div> ';
-
+                }
                
-                if(isset($_POST['addToCart'])){ // aggiungi al carrello
+                if(isset($_GET['addToCart'])){ // aggiungi al carrello
                     if ($connection->openDBConnection()){
                 
-                    $quantita_selezionata = $_POST['opzione_selezionata'];
+                    $quantita_selezionata = $_GET['opzione_selezionata'];
                     $utente_sessione = $_SESSION['user'];
+                    $idProdotto = $_GET['id'];
                     
                     $aggiornamento1 = $connection->saveToCart($utente_sessione,$idProdotto,$quantita_selezionata);
 
@@ -117,7 +121,7 @@ if($connection->isLoggedInUser()){ // mancano keywords se null
 
                         if($aggiornamento2 == 0){// errato update quantità
                             $query = "";
-                            $query = "DELETE FROM carrello WHERE $idProdotto=IDprodotto;";
+                            $query = "DELETE FROM carrello WHERE IDprodotto=$idProdotto;";
                             $checkQuery=$connection->modifyDatabase($query);
     
                             if($checkQuery){//DELETE eseguita correttamente
@@ -125,6 +129,19 @@ if($connection->isLoggedInUser()){ // mancano keywords se null
                             }
                         }else{ //corretto update quantità
                             $stringaMessaggio = '<p class="success_Message" role="alert">Prodotto aggiunto al carrello.</p>';
+
+                            $qnt =  $qnt - $quantita_selezionata;
+                            if($qnt != 0){
+                                $quantitaProdotto = '<form action="prodotto.php" class="form" method="get"><div id="cart_Specs">
+                                <p class="cart_List">Seleziona quantità:</p><select name="opzione_selezionata" id="quantity"> ';
+                                for($i = 1; $i <= $qnt; $i++){
+                                    $quantitaProdotto .= '<option value="' . $i . '"> ' . $i . '</option>';
+                                }
+                                $quantitaProdotto .= ' </select></div><input type="hidden" name="id" value="'.$prodotto['ID'].'"></input>
+                                <input type="submit" name="addToCart" class="button" value="Aggiungi al carrello"></form>';
+                            }elseif($qnt == 0){
+                                $quantitaProdotto = '<p> Prodotto esaurito! Ci dispiace per il disagio, presto tornerà disponibile!</p>';
+                            }
                         }
                     }else{// non aggiunto al carrello
                         $stringaMessaggio = '<p class="error_Message" role="alert">Errore nell\'inserimento nel carrello.</p>';
@@ -147,7 +164,7 @@ if($connection->isLoggedInUser()){ // mancano keywords se null
 
         }else{ // ID non valido, ID non presente nel database
             $error = '<p>Nessun prodotto che abbiamo attualmente nei nostri magazzini corrisponde a quello selezionato.</p>';
-        }
+        } // manca breadcrumb , titolo , ecc
 
         $paginaHTML = str_replace("{errori}",$error,$paginaHTML);
         $paginaHTML = str_replace("{titolo}", $titolo, $paginaHTML);

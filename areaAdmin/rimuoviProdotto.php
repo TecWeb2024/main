@@ -6,7 +6,7 @@
     session_start();
 
     $paginaHTML = file_get_contents("templates/rimuoviProdottoTemplate.html");
-    $risultatoQuery = "";
+    $resultQuery = "";
 
     $connection = new DBAccess();
     
@@ -17,10 +17,7 @@
         $result = $connection->customQuery($sql);
         $connection->closeDBconnection();
 
-        $form = '<h3>Rimuovi Prodotto</h3>
-                <form action="rimuoviProdotto.php" method="post">
-                <label for="lista_prodotti">Seleziona il prodotto da eliminare:</label>
-                <select id="lista_prodotti" name="lista_prodotti">';
+        $form = "";
                 
             if ($result && $result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
@@ -33,30 +30,54 @@
                 $form .= '<option value="0" disabled>Non ci sono prodotti</option>';
             }
 
-        $form .= '</select><input type="submit" name="conferma" value="Conferma Scelta"></input>{risultatoQuery}</form>';
-
         if(isset($_POST["conferma"])) {
-
-        $scelta_prodotto = $_POST["lista_prodotti"];
+        if($result && $result->num_rows > 0){
+            $scelta_prodotto = $_POST["lista_prodotti"];
         
-            if($connection->openDBConnection()){
-                $query = "";
-                $query = "DELETE FROM prodotto WHERE ID = $scelta_prodotto;";
-                $resultQuery = $connection->modifyDatabase($query);
-                $connection->closeDBconnection();
+                if($connection->openDBConnection()){
+                    $query = "";
+                    $query = "DELETE FROM prodotto WHERE ID = $scelta_prodotto;";
+                    $resultQuery = $connection->modifyDatabase($query);
+                    $connection->closeDBconnection();
 
-                if($resultQuery){
-                    $risultatoQuery = '<p class="success_Message" role="alert">Rimozione avvenuta con successo.</p>';
+                    if($resultQuery){
+                    $resultQuery = '<p class="success_Message" role="alert">Rimozione avvenuta con successo.</p>';
+                    
+                    if($connection->openDBConnection()) {
+
+                        $sql = "SELECT * FROM prodotto";
+                        $result = $connection->customQuery($sql);
+                        $connection->closeDBconnection();
+                
+                        $form = "";
+                                
+                            if ($result && $result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    $id_prodotto = $row['ID'];
+                                    $nome_prodotto = $row['nome'];
+                                    $form .= '<option value=' . $id_prodotto . '>' . $nome_prodotto . '</option>';
+                                }
+                                $result->free_result();
+                            }else{
+                                $form .= '<option value="0" disabled>Non ci sono prodotti</option>';
+                            }
+                        }else{
+                            $stringaErrori = DBConnectionError(true);
+                        }
+                    }else{
+                        $resultQuery = '<p class="error_Message" role="alert">Fallito il tentativo di rimuovere il prodotto selezionato.</p>';
+                    }
                 }else{
-                    $risultatoQuery = '<p class="error_Message" role="alert">Fallito il tentativo di rimuovere il prodotto selezionato.</p>';
+                    $stringaErrori = DBConnectionError(true);
                 }
-            }else{
-                $stringaErrori = DBConnectionError(true);
-            }
+        }else{
+            $stringaErrori = '<p class="error_Message" role="alert">Non ci sono più prodotti nel nostro sistema.</p>';
+            $paginaHTML = str_replace("{risultatoQuery}",$stringaErrori,$paginaHTML);
+        }
         }
 
         $paginaHTML = str_replace("{rimuovi}",$form,$paginaHTML); 
-        $paginaHTML = str_replace("{risultatoQuery}",$result,$paginaHTML);
+        $paginaHTML = str_replace("{risultatoQuery}",$resultQuery,$paginaHTML);
                                               
     }else{
         $stringaErrori = DBConnectionError(true);

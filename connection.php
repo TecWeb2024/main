@@ -299,10 +299,42 @@ class DBAccess {
 
     
 
+    public function getProdottoById($idProdotto) {
+        $prodotto = array();
+    
+        $query = "SELECT * FROM prodotto WHERE ID = $idProdotto";
+        $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+    
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $prodotto[] = $row;
+            }
+            $result->free_result();
+        } else {
+            $prodotto = array();
+        }
+        return $prodotto;
+    }
 
+    public function getCategoriaFromId($idCategoria) {
+        $categoria = array();
+    
+        $query = "SELECT nome FROM categoria WHERE ID = $idCategoria";
+        $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+    
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $categoria[] = $row;
+            }
+            $result->free_result();
+        } else {
+            $categoria = array();
+        }
+        return $categoria;
+    }
 
     // controllare funzione
-    public function getProdottoById($idProdotto) {
+   /* public function getProdottoById($idProdotto) {
     try {
         $query = "SELECT * FROM `prodotto` WHERE `ID` = ?";
         $stmt = $this->connection->prepare($query);
@@ -349,7 +381,7 @@ public function getCategoriaFromId($idCategoria) {
     $result->free_result();
 
     return $categoria;
-}
+}*/
 
 
 public function saveToCart($user_Id, $product_Id, $quantity_Id) {

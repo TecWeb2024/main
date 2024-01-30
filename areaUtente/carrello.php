@@ -129,7 +129,7 @@
                                 $stringaProdotti = "";
                                 foreach ($listaProdotti as $prodotti) { // aggiungere alt
                                     
-                                    $stringaProdotti .= '<li><a href="prodotto.php?id=' . $prodotti["IDprodotto"] . '"><img src="' . $prodotti["immagine1"] . '" alt=""><div class="product_Info"><p>' . $prodotti["nome"] . ' € ' . $prodotti["prezzo"] . '</p>
+                                    $stringaProdotti .= '<li><a href="prodotto.php?id=' . $prodotti["IDprodotto"] . '"><img src="../' . $prodotti["immagine1"] . '" alt=""><div class="product_Info"><p>' . $prodotti["nome"] . ' € ' . $prodotti["prezzo"] . '</p>
                                     <p>Quantità: ' . $prodotti["quantita"] . '</p></a>
                                     <form action="carrello.php" method="get">
                                         <input type="hidden" name="id" value="' . $prodotti["IDprodotto"] . '">

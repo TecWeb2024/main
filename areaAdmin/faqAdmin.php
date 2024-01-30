@@ -1,5 +1,8 @@
 <?php
 require_once "../connection.php";
+require_once "../funzioni.php";
+
+
 use DB\DBAccess;
 session_start();
 
@@ -28,7 +31,7 @@ if ($connection->openDBConnection()) {
                             <label for="answer_">Risposta</label>
                             <input type="text" name="answer_' . $domanda["ID"] . '" id="answer_" placeholder="Scrivi qui la risposta" required>
                             <input type="hidden" name="id" value="' . $domanda["ID"] . '">
-                            <input type="submit" name="submit" value="Invia risposta">
+                            <input type="submit" name="submit" class="button" value="Invia risposta">
                             </form>
                             </div>';
         }
@@ -64,6 +67,34 @@ if(isset($_GET['submit'])){
 
         if($checkQuery){
             $error = '<p class="success_Message" role="alert">Risposta effettuata con successo.</p>';
+
+            if ($connection->openDBConnection()) {
+                $listaFAQ = $connection->getQuestionsFromDataBaseForAdmin();
+                $connection->closeDBconnection();
+            
+                if ($listaFAQ != null) {
+                    foreach ($listaFAQ as $domanda) {  
+            
+                        $stringaFAQ .= '<div class="box_q_a">
+                                        <h3 class="question"> Domanda: ' . $domanda["domanda"] . '</h3>
+                                        <form action="faqAdmin.php" class="form" method="get">
+                                        <label for="answer_">Risposta</label>
+                                        <input type="text" name="answer_' . $domanda["ID"] . '" id="answer_" placeholder="Scrivi qui la risposta" required>
+                                        <input type="hidden" name="id" value="' . $domanda["ID"] . '">
+                                        <input type="submit" name="submit" value="Invia risposta">
+                                        </form>
+                                        </div>';
+                    }
+                }else{
+                    $stringaFAQ = '<p>Non sono presenti domande da rispondere</p>';
+                    $paginaHTML = str_replace("{erroriFaq}",$error,$paginaHTML);
+                    $paginaHTML = str_replace("{faq}",$stringaFAQ,$paginaHTML);
+                }
+            }else{
+                $error = DBConnectionError(true);
+                $paginaHTML = str_replace("{erroriFaq}",$error,$paginaHTML);
+                $paginaHTML = str_replace("{faq}",$stringaFAQ,$paginaHTML);
+            }
         }else{
             $error = '<p class="error_Message" role="alert">Errore nell\'invio della risposta.</p>';
         }

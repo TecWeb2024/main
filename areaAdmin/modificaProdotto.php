@@ -13,6 +13,8 @@
     $stringaCategoria = "";
     $listaMarca = "";
     $stringaMarca= "";
+    $stringaErrori = "";
+    $stringaQuery = "";
     $ID = "";
 
     $contCat= 0;
@@ -154,7 +156,7 @@
                     
                     if(isset($_POST["submit_modifica"])){ 
                         $prodotto_references = $connection->getProdottoById($_POST['id_mod']);
-                        $connection->removeProductById($_POST['id_mod']);
+                        /*$connection->removeProductById($_POST['id_mod']);*/
 
                         $nuovo_nome = sanitizeInput($_POST['nome_mod']);
 
@@ -251,15 +253,28 @@
                     
                         if(count($err)==0){
                             $query = "";
-                            $query = "UPDATE prodotto SET nome=$nuovo_nome, categoria=$nuova_categoria, keywords=$nuove_keywords, prezzo=$nuovo_prezzo, peso=$nuovo_peso, dimensione=$nuova_dimensione, colore=$nuovo_colore, volume=$nuovo_volume, materialeUtilizzato=$nuovo_materiale_utilizzato, quantita=$nuova_quantita, descrizione=$nuova_descrizione, marca=$nuova_marca, alt=$nuovo_alt WHERE ID=$ID;";
+                            $query = "UPDATE prodotto SET 
+                                        nome='$nuovo_nome', 
+                                        categoria=$nuova_categoria, 
+                                        keywords='$nuove_keywords', 
+                                        prezzo=$nuovo_prezzo, 
+                                        peso='$nuovo_peso', 
+                                        dimensione='$nuova_dimensione', 
+                                        colore='$nuovo_colore', 
+                                        volume='$nuovo_volume', 
+                                        materialeUtilizzato='$nuovo_materiale_utilizzato', 
+                                        quantita=$nuova_quantita, 
+                                        descrizione='$nuova_descrizione', 
+                                        marca=$nuova_marca, 
+                                        alt='$nuovo_alt' 
+                                      WHERE ID=$ID";
+
                             $checkQuery = $connection->modifyDatabase($query);
                             if($checkQuery){
-                                $error = '<p class="success_Message" role="alert">Modifica del prodotto avvenuta con successo</p>';
-                                $paginaHTML = str_replace("{risultatoQuery}",$error,$paginaHTML); 
+                                $stringaQuery = '<p class="success_Message" role="alert">Modifica del prodotto avvenuta con successo</p>';
 
                             }else{
-                                $error = '<p class="error_Message" role="alert">Errore durante la modifica del prodotto</p>';
-                                $paginaHTML = str_replace("{risultatoQuery}",$error,$paginaHTML); 
+                                $stringaQuery = '<p class="error_Message" role="alert">Errore durante la modifica del prodotto</p>';
                             }
                         }else{
                             //Mostra form con errori di formato
@@ -269,10 +284,19 @@
                             }
                             $stringaErrori .= '</ul>';
  
-                            $paginaHTML = str_replace("{risultatoQuery}",$stringaErrori,$paginaHTML);  
+                            $paginaHTML = str_replace("{scegliProdotto}", $scelta, $paginaHTML);
+                            $paginaHTML = str_replace("{modifica}", $modifica, $paginaHTML);
+                            $paginaHTML = str_replace("{selezioneCategoria}",$stringaCategoria,$paginaHTML);
+                            $paginaHTML = str_replace("{selezioneMarca}",$stringaMarca,$paginaHTML); 
+                            $paginaHTML = str_replace("{risultatoQuery}",$stringaErrori,$paginaHTML);   
                         } 
+                        
                     }// non hai cliccato la seconda
-                    $paginaHTML = str_replace("{risultatoQuery}",$error,$paginaHTML); 
+                    $paginaHTML = str_replace("{scegliProdotto}", $scelta, $paginaHTML);
+                    $paginaHTML = str_replace("{modifica}", $modifica, $paginaHTML);
+                    $paginaHTML = str_replace("{selezioneCategoria}",$stringaCategoria,$paginaHTML);
+                    $paginaHTML = str_replace("{selezioneMarca}",$stringaMarca,$paginaHTML); 
+                    $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML); 
 
                 }else{
                     $error = DBConnectionError(true);
@@ -284,18 +308,23 @@
                 $paginaHTML = str_replace("{scegliProdotto}", $scelta, $paginaHTML);
                 $paginaHTML = str_replace("{modifica}", $error, $paginaHTML);
             }
+            
         }// non hai cliccato la prima
+        $paginaHTML = str_replace("{scegliProdotto}", $scelta, $paginaHTML);
+        $paginaHTML = str_replace("{modifica}", $modifica, $paginaHTML);
+        $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML); 
                 
     }else{
         //ridirezionamento fuori areaAdmin
        header("Location: ../index.php");
        die();
     }
-
+/*
     $paginaHTML = str_replace("{scegliProdotto}", $scelta, $paginaHTML);
     $paginaHTML = str_replace("{modifica}", $modifica, $paginaHTML);
     $paginaHTML = str_replace("{selezioneCategoria}",$stringaCategoria,$paginaHTML);
     $paginaHTML = str_replace("{selezioneMarca}",$stringaMarca,$paginaHTML); 
+    $paginaHTML = str_replace("{risultatoQuery}",$stringaErrori,$paginaHTML);  */
     
     echo $paginaHTML;
 

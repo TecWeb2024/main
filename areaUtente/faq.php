@@ -1,5 +1,7 @@
 <?php
 require_once "../connection.php";
+require_once "../funzioni.php";
+
 
 use DB\DBAccess;
 
@@ -24,7 +26,7 @@ if($connection->isLoggedInUser()){
         }
             $utenteID = $_SESSION['user'];
             
-        if(!empty($errori)){
+        if(empty($errori)){
 
             if($connection->openDBConnection()) {
                 $query = "";
@@ -38,11 +40,12 @@ if($connection->isLoggedInUser()){
                 }else{
                     $errori ='<p class="error_Message" role="alert">Non è stato possibile inviare la tua domanda. Per favore riprovare. Se l\'errore sussiste non esistare a contattarci tramite la nostra <span lang="en">email</span></p>';  
                 }
-                $paginaHTML = str_replace("{erroriDomanda}",$errori,$paginaHTML);
             }else{
                 $errori = DBConnectionError(true);
                 $paginaHTML = str_replace("{erroriDomanda}",$errori,$paginaHTML);
             }
+        }else{
+            $paginaHTML = str_replace("{erroriDomanda}",$errori,$paginaHTML);
         }
     }
     $paginaHTML = str_replace("{erroriDomanda}",$errori,$paginaHTML);

@@ -52,8 +52,7 @@ CREATE TABLE `faq` (
   `ID` int(10) UNSIGNED NOT NULL,
   `domanda` text NOT NULL,
   `risposta` text DEFAULT NULL,
-  `utente` int(10) UNSIGNED NOT NULL,
-  `amministratore` int(10) UNSIGNED DEFAULT NULL
+  `utente` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

@@ -25,7 +25,7 @@
                     $nome_prodotto = $row['nome'];
                     $form .= '<option value=' . $id_prodotto . '>' . $nome_prodotto . '</option>';
                 }
-                $result->free_result();
+                -----$result->free_result();
             }else{
                 $form .= '<option value="0" disabled>Non ci sono prodotti</option>';
             }*/

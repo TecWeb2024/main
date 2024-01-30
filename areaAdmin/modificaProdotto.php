@@ -16,9 +16,20 @@
     $stringaErrori = "";
     $stringaQuery = "";
     $ID = "";
-
-    $contCat= 0;
-    $contMar= 0;
+    
+    $nuova_categoria = "";
+    $nuovo_prezzo = "";
+    $nuovo_peso ="";
+    $nuova_dimensione = "";
+    $nuovo_colore = "";
+    $nuovo_volume ="";
+    $nuovo_materiale_utilizzato = "";
+    $nuova_quantita = "";
+    $nuova_descrizione = "";
+    $nuove_keywords = "";
+    $nuova_marca = "";
+    $nuovo_alt = "";
+    
     $err = [];
 
     $connection = new DBAccess();
@@ -59,11 +70,9 @@
                     $connection->closeDBconnection();
 
                     if($prodotto_da_modificare != null) {
-
                         if ($listaCategoria != null) {
                             foreach ($listaCategoria as $cate) {
                                 $stringaCategoria .= '<option value="'.$cate['ID'].'">'.$cate['nome'].'</option>';
-                                $contCat=$contCat+1;
                             }
                         } else {
                             $stringaCategoria = '<option value="0" disabled>Non sono presenti categorie</option>';
@@ -72,7 +81,6 @@
                         if ($listaMarca != null) {
                             foreach ($listaMarca as $mar) {
                                 $stringaMarca .= '<option value="'.$mar['ID'].'">'.$mar['nome'].'</option>';
-                                $contMar=$contMar+1;
                             }
                         } else {
                             $stringaMarca = '<option value="0" disabled>Non sono presenti marche</option>';
@@ -83,7 +91,7 @@
 
                         $scelta = '<option value=' .$prod['ID']. '>' . $prod['nome'] . '</option>';
 
-                        $modifica = '<form action="modificaProdotto.php" class="formAdmin" method="post"><h3> Modifica - ' . $prod['nome'] . '</h3>
+                        $modifica = '<h3> Modifica - ' . $prod['nome'] . '</h3>
                         <label for="nome_mod">Nome:</label>
                         <input type="text" id="nome_mod" name="nome_mod" value="' . $prod['nome'] . '" required>
                         <!--
@@ -141,9 +149,7 @@
                         <label for="marca_mod">Marca:</label>
                         <select id="marca_mod" name="marca_mod" required>        
                         {selezioneMarca}
-                        </select>
-                        <input type="submit" name="submit_modifica" value="Salva Modifiche" class="button">
-                        </form>';
+                        </select>';
                         }
                         
                         
@@ -155,6 +161,7 @@
                     
                     
                     if(isset($_POST["submit_modifica"])){ 
+                        echo 1;
                         $prodotto_references = $connection->getProdottoById($_POST['id_mod']);
                         /*$connection->removeProductById($_POST['id_mod']);*/
 
@@ -212,6 +219,7 @@
                         $fileSize4 = $_FILES['immagine4_mod']['size'];*/
 
                         if(!preg_match('/\w{3,}/',$nuovo_nome)){ 
+                            echo 2;
                             array_push($err,'<p class="error_Message" role="alert">Nome del prodotto deve essere maggiore di 3 lettere.</p>');
                         }
                         /*if($fileSize1 > $maxSize){
@@ -226,7 +234,7 @@
                         if($fileSize4 > $maxSize){ 
                             array_push($err,'<p class="error_Message" role="alert">Immagine 4 deve essere inferiore ad un <span>megabyte</span>.</p>');
                         }*/
-                        if($nuova_categoria > 0 && $nuova_categoria <= $contCat){ 
+                        if($nuova_categoria < 0){ 
                             array_push($err,'<p class="error_Message" role="alert">Non sono presenti categorie nel nostro sistema.</p>');
                         }
                         if($nuovo_prezzo < 0){ 
@@ -241,10 +249,10 @@
                         if($nuova_quantita < 0){ 
                             array_push($err,'<p class="error_Message" role="alert">Quantità non può essere minore o uguale a zero.</p>');
                         }
-                        if(strlen($nuova_descrizione)<25){ 
+                        if(strlen($nuova_descrizione)<25){
                             array_push($err,'<p class="error_Message" role="alert">Descrizione deve essere superiore a 25 caratteri.</p>');
                         }
-                        if($nuova_marca > 0 && $nuova_marca <= $contMar){ 
+                        if($nuova_marca < 0){ 
                             array_push($err,'<p class="error_Message" role="alert">Non sono presenti marche nel nostro sistema.</p>');
                         }
                         if(strlen($nuovo_alt)<5 && strlen($nuovo_alt)>75){ 
@@ -252,22 +260,23 @@
                         }
                     
                         if(count($err)==0){
+                            echo 3;
                             $query = "";
                             $query = "UPDATE prodotto SET 
                                         nome='$nuovo_nome', 
-                                        categoria=$nuova_categoria, 
+                                        categoria='$nuova_categoria', 
                                         keywords='$nuove_keywords', 
-                                        prezzo=$nuovo_prezzo, 
+                                        prezzo='$nuovo_prezzo', 
                                         peso='$nuovo_peso', 
                                         dimensione='$nuova_dimensione', 
                                         colore='$nuovo_colore', 
                                         volume='$nuovo_volume', 
                                         materialeUtilizzato='$nuovo_materiale_utilizzato', 
-                                        quantita=$nuova_quantita, 
+                                        quantita='$nuova_quantita', 
                                         descrizione='$nuova_descrizione', 
-                                        marca=$nuova_marca, 
+                                        marca='$nuova_marca', 
                                         alt='$nuovo_alt' 
-                                      WHERE ID=$ID";
+                                      WHERE ID='$ID'";
 
                             $checkQuery = $connection->modifyDatabase($query);
                             if($checkQuery){
@@ -312,7 +321,6 @@
         }// non hai cliccato la prima
         $paginaHTML = str_replace("{scegliProdotto}", $scelta, $paginaHTML);
         $paginaHTML = str_replace("{modifica}", $modifica, $paginaHTML);
-        $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML); 
                 
     }else{
         //ridirezionamento fuori areaAdmin

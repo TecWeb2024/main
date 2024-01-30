@@ -33,7 +33,7 @@
     </header>
     
     <nav id="breadcrumb" aria-label="Percorso">
-        <p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> &gt; <a href="GestionProdotti.php"> Area Prodotti</a> &gt; Modifica prodotto </p>
+        <p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> &gt; <a href="GestioneProdotti.php"> Area Prodotti</a> &gt; Modifica prodotto </p>
     </nav>
     
     <main id="content">
@@ -51,8 +51,12 @@
             </select>
             <input type="submit" name="conferma_modifica" class="button" value="Conferma Scelta">
         </form>
+
+        <form action="modificaProdotto.php" class="formAdmin" method="post">
             {modifica}
-            {risultatoQuery}
+        <input type="submit" name="submit_modifica" class="button" value="Salva Modifiche">
+        {risultatoQuery}
+        </form>
         
         <a href="#" id="buttonToTop">Torna in cima</a>
     </main>

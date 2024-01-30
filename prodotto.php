@@ -4,6 +4,8 @@ use DB\DBAccess;
 
 setlocale(LC_ALL, 'it_IT');
 
+session_start();
+
 $paginaHTML = file_get_contents("templates/prodottoTemplate.html");
 
 $error = "";
@@ -22,30 +24,34 @@ $consegna = "";
 $aggiornamento1= "";
 $aggiornamento2= "";
 
+$listaprodotto = "";
+
 $connection = new DBAccess();
+
 
     if ($connection->openDBConnection()){
 
         if(isset($_GET['id'])){
             $idProdotto = $_GET['id'];
-            $prodotto = $connection->getProdottoById($idProdotto);
+            $listaprodotto = $connection->getProdottoById($idProdotto);
         
-            if ($prodotto != null){
+            if ($listaprodotto != null){
 
+                foreach($listaprodotto as $prodotto){
                 $contenuto = '<div id="product_Details"><h3>Specifiche Prodotto</h3>';
 
                 $nomeCategoria = $connection->getCategoriaFromId($prodotto['categoria']);
                 $connection->closeDBConnection();
 
-                $categoriaLink = strtolower(str_replace(' ', '', $nomeCategoria));
+                $categoriaLink = strtolower(str_replace(' ', '', $nomeCategoria[0]['nome']));
             
-                $breadcrumb = '<a href="index.php"><span lang="en">Home</span></a> &gt; <a href="' . $categoriaLink . '.php"> ' . $nomeCategoria . ' </a> &gt;' . $prodotto['nome'];
+                $breadcrumb = '<a href="index.php"><span lang="en">Home</span></a> &gt; <a href="' . $categoriaLink . '.php"> ' . $nomeCategoria[0]['nome'] . ' </a> &gt;' . $prodotto['nome'];
             
                 $titolo =  $prodotto['nome'];
             
                 $keywords = $prodotto['keywords'];
             
-                $titoloProdotto = $prodotto['nome'];
+                $titoloProdotto = $prodotto['nome'] ;
             
                 $immaginiProdotto =    '<div id="product_Images">
                                     <img src="' . $prodotto['immagine1'] . '" class="immagine_prodotto" alt="">
@@ -53,7 +59,8 @@ $connection = new DBAccess();
                                     <img src="' . $prodotto['immagine3'] . '" class="immagine_prodotto" alt="">
                                     <img src="' . $prodotto['immagine4'] . '" class="immagine_prodotto" alt=""></div>';
 
-                $specificheProdotto = '<ul id="product_Specs"><li><span class="specs_List">Prezzo:</span> '      . $prodotto['prezzo']       . '€</li>
+                $specificheProdotto = '<ul id="product_Specs">
+                                    <li><span class="specs_List">Prezzo:</span> '      . $prodotto['prezzo']       . '€</li>
                                     <li><span class="specs_List">Peso:</span> '         . $prodotto['peso']         . '</li> 
                                     <li><span class="specs_List">Dimensioni:</span> '   . $prodotto['dimensione']   . '</li>';
                 
@@ -76,22 +83,21 @@ $connection = new DBAccess();
                 }
 
                 $specificheProdotto .= '<li><span class="specs_List">Azienda:</span> '      . $prodotto['marca'] . '</li>
-                                        <li><span class="specs_List">Categoria:</span> '    . $nomeCategoria . '</li></ul>';
+                                        <li><span class="specs_List">Categoria:</span> '    . $nomeCategoria[0]['nome'] . '</li></ul>';
             
 
                 $qnt = $prodotto['quantita']; // controllare come esce
-                $quantitaProdotto = '<form action="prodotto.php" class="form" method="post"><div id="cart_Specs">';
                     if($qnt != 0){
-                        $quantitaProdotto .= '<p class="cart_List">Seleziona quantità:</p>
-                            <select name="opzione_selezionata" id="quantity"> ';
+                        $quantitaProdotto .= '<form action="prodotto.php" class="form" method="get"><div id="cart_Specs">
+                        <p class="cart_List">Seleziona quantità:</p><select name="opzione_selezionata" id="quantity"> ';
                         for ($i = 1; $i <= $qnt; $i++) {
                             $quantitaProdotto .= '<option value="' . $i . '"> ' . $i . '</option>';
                         }
-                        $quantitaProdotto .= ' </select> ';
+                        $quantitaProdotto .= ' </select></div><input type="hidden" name="id" value="'.$prodotto['ID'].'"></input>
+                        <input type="submit" name="addToCart" class="button" value="Aggiungi al carrello"></form>';
                     }elseif($qnt == 0){
-                        $quantitaProdotto .= '<p> Prodotto esaurito! Ci dispiace per il disagio, presto tornerà disponibile!</p>';
+                        $quantitaProdotto = '<p> Prodotto esaurito! Ci dispiace per il disagio, presto tornerà disponibile!</p>';
                     }
-                $quantitaProdotto .= '</div><input type="submit" name="addToCart" class="button" value="Aggiungi al carrello."></form>';
                      
                 $descrizioneProdotto = '<div id="product_Description"><h3>Descrizione</h3><p>' . $prodotto['descrizione'] . '</p></div>';
                 
@@ -99,12 +105,11 @@ $connection = new DBAccess();
                 <li>Consegna in 3-5 giorni lavorativi.</li>
                 <li>Spedizione gratuita per ordini superiori a 50 €.</li>
                 </ul></div> ';
-
-               
-                if(isset($_POST['addToCart'])){ // aggiungi al carrello
-                    $error = '<p class="error_Message" role="alert">Per aggiungere il prodotto al carrello occorre effettuare l\'accesso tramite la pagina <span lang="en">account</span>.</p>';
                 }
-        
+               
+                if(isset($_GET['addToCart'])){ // aggiungi al carrello
+                    $error = '<p class="error_Message" role="alert">Per aggiungere al carrello bisogna effettuare l\'accesso tramite la pagina <span lang="en">account</span></p>';
+                }
             }else{ // Prodotto non trovato
                 $titolo = 'Prodotto Non Trovato';
                 $breadcrumb = '<a href="index.php"><span lang="en">Home</span></a> &gt; Errore prodotto non trovato';
@@ -115,9 +120,8 @@ $connection = new DBAccess();
 
         }else{ // ID non valido, ID non presente nel database
             $error = '<p>Nessun prodotto che abbiamo attualmente nei nostri magazzini corrisponde a quello selezionato.</p>';
-        }
+        } // manca breadcrumb , titolo , ecc
 
-        
         $paginaHTML = str_replace("{errori}",$error,$paginaHTML);
         $paginaHTML = str_replace("{titolo}", $titolo, $paginaHTML);
         $paginaHTML = str_replace("{keywords}", $keywords, $paginaHTML);

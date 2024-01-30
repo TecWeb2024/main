@@ -15,7 +15,6 @@
     $stringaMarca= "";
     $stringaErrori = "";
     $stringaQuery = "";
-    $ID = "";
     
     $nuova_categoria = "";
     $nuovo_prezzo = "";
@@ -29,6 +28,7 @@
     $nuove_keywords = "";
     $nuova_marca = "";
     $nuovo_alt = "";
+    $ID = "";
     
     $err = [];
 
@@ -87,11 +87,10 @@
                         }
 
                         foreach($prodotto_da_modificare as $prod){
-                        $ID = $prod['ID'];
 
                         $scelta = '<option value=' .$prod['ID']. '>' . $prod['nome'] . '</option>';
 
-                        $modifica = '<h3> Modifica - ' . $prod['nome'] . '</h3>
+                        $modifica = '<form action="modificaProdotto.php" class="formAdmin" method="post"><h3> Modifica - ' . $prod['nome'] . '</h3>
                         <label for="nome_mod">Nome:</label>
                         <input type="text" id="nome_mod" name="nome_mod" value="' . $prod['nome'] . '" required>
                         <!--
@@ -149,7 +148,8 @@
                         <label for="marca_mod">Marca:</label>
                         <select id="marca_mod" name="marca_mod" required>        
                         {selezioneMarca}
-                        </select>';
+                        </select><input type="hidden" name="IDp" value="'. $prod['ID'].'">
+                        <input type="submit" name="submit_modifica" class="button" value="Salva Modifiche"></form>';
                         }
                         
                         
@@ -158,154 +158,6 @@
                         $paginaHTML = str_replace("{scegliProdotto}", $scelta, $paginaHTML);
                         $paginaHTML = str_replace("{modifica}", $error, $paginaHTML);
                     }
-                    
-                    
-                    if(isset($_POST["submit_modifica"])){ 
-                        echo 1;
-                        $prodotto_references = $connection->getProdottoById($_POST['id_mod']);
-                        /*$connection->removeProductById($_POST['id_mod']);*/
-
-                        $nuovo_nome = sanitizeInput($_POST['nome_mod']);
-
-                        /*if(empty($_FILES['immagine1_mod']['name'])) {
-                            $nuova_immagine1 = $prodotto_references['immagine1'];
-                        }else{
-                            $nuova_immagine1 = 'images/' . sanitizeInput(basename($_FILES['immagine1_mod']['name']));
-                            move_uploaded_file(sanitizeInput($_FILES['immagine1_mod']['tmp_name']), $nuova_immagine1);
-                        }
-
-                        if(empty($_FILES['immagine2_mod']['name'])) {
-                            $nuova_immagine2 = $prodotto_references['immagine2'];
-                        }else{
-                            $nuova_immagine2 = 'images/' . sanitizeInput(basename($_FILES['immagine2_mod']['name']));
-                            move_uploaded_file(sanitizeInput($_FILES['immagine2_mod']['tmp_name']), $nuova_immagine2);
-                        }
-
-                        if(empty($_FILES['immagine3_mod']['name'])) {
-                            $nuova_immagine3 = $prodotto_references['immagine3'];
-                        }else{
-                            $nuova_immagine3 = 'images/' . sanitizeInput(basename($_FILES['immagine3_mod']['name']));
-                            move_uploaded_file(sanitizeInput($_FILES['immagine3_mod']['tmp_name']), $nuova_immagine3);
-                        }
-
-                        if(empty($_FILES['immagine4_mod']['name'])) {
-                            $nuova_immagine4 = $prodotto_references['immagine4'];
-                        }else{
-                            $nuova_immagine4 = 'images/' . sanitizeInput(basename($_FILES['immagine4_mod'])['name']);
-                            move_uploaded_file(sanitizeInput($_FILES['immagine4_mod']['tmp_name']), $nuova_immagine4);
-                        }*/
-                
-                        $nuova_categoria = sanitizeInput($_POST['categoria_mod']);
-                        $nuovo_prezzo = sanitizeInput($_POST['prezzo_mod']);
-                        $nuovo_peso = sanitizeInput($_POST['peso_mod']);
-                        $nuova_dimensione = sanitizeInput($_POST['dimensione_mod']);
-                        $nuovo_colore = sanitizeInput($_POST['colore_mod']);
-                        $nuovo_volume = sanitizeInput($_POST['volume_mod']);
-                        $nuovo_materiale_utilizzato = sanitizeInput($_POST['materialeUtilizzato_mod']);
-                        $nuova_quantita = sanitizeInput($_POST['quantita_mod']);
-                        $nuova_descrizione = sanitizeInput($_POST['descrizione_mod']);
-                        $nuove_keywords = sanitizeInput($_POST['keywords_mod']);
-                        $nuova_marca = sanitizeInput($_POST['marca_mod']);
-                        $nuovo_alt = sanitizeInput($_POST['alt_mod']);
-
-                        /*$maxSize = 1024 * 1024;
-            
-                        $fileSize1 = $_FILES['immagine1_mod']['size'];
-         
-                        $fileSize2 = $_FILES['immagine2_mod']['size'];
-
-                        $fileSize3 = $_FILES['immagine3_mod']['size'];
-
-                        $fileSize4 = $_FILES['immagine4_mod']['size'];*/
-
-                        if(!preg_match('/\w{3,}/',$nuovo_nome)){ 
-                            echo 2;
-                            array_push($err,'<p class="error_Message" role="alert">Nome del prodotto deve essere maggiore di 3 lettere.</p>');
-                        }
-                        /*if($fileSize1 > $maxSize){
-                            array_push($err,'<p class="error_Message" role="alert">Immagine 1 deve essere inferiore ad un <span>megabyte</span>.</p>');
-                        }
-                        if($fileSize2 > $maxSize){
-                            array_push($err,'<p class="error_Message" role="alert">Immagine 2 deve essere inferiore ad un <span>megabyte</span>.</p>');
-                        }
-                        if($fileSize3 > $maxSize){ 
-                            array_push($err,'<p class="error_Message" role="alert">Immagine 3 deve essere inferiore ad un <span>megabyte</span>.</p>');
-                        }
-                        if($fileSize4 > $maxSize){ 
-                            array_push($err,'<p class="error_Message" role="alert">Immagine 4 deve essere inferiore ad un <span>megabyte</span>.</p>');
-                        }*/
-                        if($nuova_categoria < 0){ 
-                            array_push($err,'<p class="error_Message" role="alert">Non sono presenti categorie nel nostro sistema.</p>');
-                        }
-                        if($nuovo_prezzo < 0){ 
-                            array_push($err,'<p class="error_Message" role="alert">Non si possono inserire prodotti con prezzo minore o uguale a zero.</p>');
-                        }
-                        if(!preg_match('/\w{2,}/',$nuovo_peso)){ 
-                            array_push($err,'<p class="error_Message" role="alert">Peso inserito non corretto.</p>');
-                        }
-                        if(!preg_match('/\w{2,}/',$nuova_dimensione)){ 
-                            array_push($err,'<p class="error_Message" role="alert">Dimensione inserita non corretta.</p>');
-                        }
-                        if($nuova_quantita < 0){ 
-                            array_push($err,'<p class="error_Message" role="alert">Quantità non può essere minore o uguale a zero.</p>');
-                        }
-                        if(strlen($nuova_descrizione)<25){
-                            array_push($err,'<p class="error_Message" role="alert">Descrizione deve essere superiore a 25 caratteri.</p>');
-                        }
-                        if($nuova_marca < 0){ 
-                            array_push($err,'<p class="error_Message" role="alert">Non sono presenti marche nel nostro sistema.</p>');
-                        }
-                        if(strlen($nuovo_alt)<5 && strlen($nuovo_alt)>75){ 
-                            array_push($err,'<p class="error_Message" role="alert">Breve descrizione di supporto deve essere almeno di 5 caratteri e non superiore a 75 caratteri.</p>');
-                        }
-                    
-                        if(count($err)==0){
-                            echo 3;
-                            $query = "";
-                            $query = "UPDATE prodotto SET 
-                                        nome='$nuovo_nome', 
-                                        categoria='$nuova_categoria', 
-                                        keywords='$nuove_keywords', 
-                                        prezzo='$nuovo_prezzo', 
-                                        peso='$nuovo_peso', 
-                                        dimensione='$nuova_dimensione', 
-                                        colore='$nuovo_colore', 
-                                        volume='$nuovo_volume', 
-                                        materialeUtilizzato='$nuovo_materiale_utilizzato', 
-                                        quantita='$nuova_quantita', 
-                                        descrizione='$nuova_descrizione', 
-                                        marca='$nuova_marca', 
-                                        alt='$nuovo_alt' 
-                                      WHERE ID='$ID'";
-
-                            $checkQuery = $connection->modifyDatabase($query);
-                            if($checkQuery){
-                                $stringaQuery = '<p class="success_Message" role="alert">Modifica del prodotto avvenuta con successo</p>';
-
-                            }else{
-                                $stringaQuery = '<p class="error_Message" role="alert">Errore durante la modifica del prodotto</p>';
-                            }
-                        }else{
-                            //Mostra form con errori di formato
-                            $stringaErrori = '<ul>';
-                            foreach($err as $ers){
-                            $stringaErrori .= '<li>'.$ers.'</li>';
-                            }
-                            $stringaErrori .= '</ul>';
- 
-                            $paginaHTML = str_replace("{scegliProdotto}", $scelta, $paginaHTML);
-                            $paginaHTML = str_replace("{modifica}", $modifica, $paginaHTML);
-                            $paginaHTML = str_replace("{selezioneCategoria}",$stringaCategoria,$paginaHTML);
-                            $paginaHTML = str_replace("{selezioneMarca}",$stringaMarca,$paginaHTML); 
-                            $paginaHTML = str_replace("{risultatoQuery}",$stringaErrori,$paginaHTML);   
-                        } 
-                        
-                    }// non hai cliccato la seconda
-                    $paginaHTML = str_replace("{scegliProdotto}", $scelta, $paginaHTML);
-                    $paginaHTML = str_replace("{modifica}", $modifica, $paginaHTML);
-                    $paginaHTML = str_replace("{selezioneCategoria}",$stringaCategoria,$paginaHTML);
-                    $paginaHTML = str_replace("{selezioneMarca}",$stringaMarca,$paginaHTML); 
-                    $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML); 
 
                 }else{
                     $error = DBConnectionError(true);
@@ -318,10 +170,157 @@
                 $paginaHTML = str_replace("{modifica}", $error, $paginaHTML);
             }
             
-        }// non hai cliccato la prima
+        }
+          
+        
+        if(isset($_POST["submit_modifica"])){ 
+            /*$prodotto_references = $connection->getProdottoById($ID);*/
+            /*$connection->removeProductById($_POST['id_mod']);*/
+            $ID = $_POST['IDp'];
+            $nuovo_nome = sanitizeInput($_POST['nome_mod']);
+
+            /*if(empty($_FILES['immagine1_mod']['name'])) {
+                $nuova_immagine1 = $prodotto_references['immagine1'];
+            }else{
+                $nuova_immagine1 = 'images/' . sanitizeInput(basename($_FILES['immagine1_mod']['name']));
+                move_uploaded_file(sanitizeInput($_FILES['immagine1_mod']['tmp_name']), $nuova_immagine1);
+            }
+
+            if(empty($_FILES['immagine2_mod']['name'])) {
+                $nuova_immagine2 = $prodotto_references['immagine2'];
+            }else{
+                $nuova_immagine2 = 'images/' . sanitizeInput(basename($_FILES['immagine2_mod']['name']));
+                move_uploaded_file(sanitizeInput($_FILES['immagine2_mod']['tmp_name']), $nuova_immagine2);
+            }
+
+            if(empty($_FILES['immagine3_mod']['name'])) {
+                $nuova_immagine3 = $prodotto_references['immagine3'];
+            }else{
+                $nuova_immagine3 = 'images/' . sanitizeInput(basename($_FILES['immagine3_mod']['name']));
+                move_uploaded_file(sanitizeInput($_FILES['immagine3_mod']['tmp_name']), $nuova_immagine3);
+            }
+
+            if(empty($_FILES['immagine4_mod']['name'])) {
+                $nuova_immagine4 = $prodotto_references['immagine4'];
+            }else{
+                $nuova_immagine4 = 'images/' . sanitizeInput(basename($_FILES['immagine4_mod'])['name']);
+                move_uploaded_file(sanitizeInput($_FILES['immagine4_mod']['tmp_name']), $nuova_immagine4);
+            }*/
+    
+            $nuova_categoria = sanitizeInput($_POST['categoria_mod']);
+            $nuovo_prezzo = sanitizeInput($_POST['prezzo_mod']);
+            $nuovo_peso = sanitizeInput($_POST['peso_mod']);
+            $nuova_dimensione = sanitizeInput($_POST['dimensione_mod']);
+            $nuovo_colore = sanitizeInput($_POST['colore_mod']);
+            $nuovo_volume = sanitizeInput($_POST['volume_mod']);
+            $nuovo_materiale_utilizzato = sanitizeInput($_POST['materialeUtilizzato_mod']);
+            $nuova_quantita = sanitizeInput($_POST['quantita_mod']);
+            $nuova_descrizione = sanitizeInput($_POST['descrizione_mod']);
+            $nuove_keywords = sanitizeInput($_POST['keywords_mod']);
+            $nuova_marca = sanitizeInput($_POST['marca_mod']);
+            $nuovo_alt = sanitizeInput($_POST['alt_mod']);
+
+            /*$maxSize = 1024 * 1024;
+
+            $fileSize1 = $_FILES['immagine1_mod']['size'];
+
+            $fileSize2 = $_FILES['immagine2_mod']['size'];
+
+            $fileSize3 = $_FILES['immagine3_mod']['size'];
+
+            $fileSize4 = $_FILES['immagine4_mod']['size'];*/
+
+            if(!preg_match('/\w{3,}/',$nuovo_nome)){ 
+                array_push($err,'<p class="error_Message" role="alert">Nome del prodotto deve essere maggiore di 3 lettere.</p>');
+            }
+            /*if($fileSize1 > $maxSize){
+                array_push($err,'<p class="error_Message" role="alert">Immagine 1 deve essere inferiore ad un <span>megabyte</span>.</p>');
+            }
+            if($fileSize2 > $maxSize){
+                array_push($err,'<p class="error_Message" role="alert">Immagine 2 deve essere inferiore ad un <span>megabyte</span>.</p>');
+            }
+            if($fileSize3 > $maxSize){ 
+                array_push($err,'<p class="error_Message" role="alert">Immagine 3 deve essere inferiore ad un <span>megabyte</span>.</p>');
+            }
+            if($fileSize4 > $maxSize){ 
+                array_push($err,'<p class="error_Message" role="alert">Immagine 4 deve essere inferiore ad un <span>megabyte</span>.</p>');
+            }*/
+            if($nuova_categoria < 0){ 
+                array_push($err,'<p class="error_Message" role="alert">Non sono presenti categorie nel nostro sistema.</p>');
+            }
+            if($nuovo_prezzo < 0){ 
+                array_push($err,'<p class="error_Message" role="alert">Non si possono inserire prodotti con prezzo minore o uguale a zero.</p>');
+            }
+            if(!preg_match('/\w{2,}/',$nuovo_peso)){ 
+                array_push($err,'<p class="error_Message" role="alert">Peso inserito non corretto.</p>');
+            }
+            if(!preg_match('/\w{2,}/',$nuova_dimensione)){ 
+                array_push($err,'<p class="error_Message" role="alert">Dimensione inserita non corretta.</p>');
+            }
+            if($nuova_quantita < 0){ 
+                array_push($err,'<p class="error_Message" role="alert">Quantità non può essere minore o uguale a zero.</p>');
+            }
+            if(strlen($nuova_descrizione)<25){
+                array_push($err,'<p class="error_Message" role="alert">Descrizione deve essere superiore a 25 caratteri.</p>');
+            }
+            if($nuova_marca < 0){ 
+                array_push($err,'<p class="error_Message" role="alert">Non sono presenti marche nel nostro sistema.</p>');
+            }
+            if(strlen($nuovo_alt)<5 && strlen($nuovo_alt)>75){ 
+                array_push($err,'<p class="error_Message" role="alert">Breve descrizione di supporto deve essere almeno di 5 caratteri e non superiore a 75 caratteri.</p>');
+            }
+        
+            if(count($err)==0){
+                if($connection->openDBConnection()){
+                $query = "";
+                $query = "UPDATE prodotto SET 
+                        nome='$nuovo_nome', 
+                        categoria=$nuova_categoria, 
+                        keywords='$nuove_keywords', 
+                        prezzo=$nuovo_prezzo, 
+                        peso='$nuovo_peso', 
+                        dimensione='$nuova_dimensione', 
+                        colore='$nuovo_colore', 
+                        volume='$nuovo_volume', 
+                        materialeUtilizzato='$nuovo_materiale_utilizzato', 
+                        quantita=$nuova_quantita,
+                        descrizione='$nuova_descrizione', 
+                        marca=$nuova_marca, 
+                        alt='$nuovo_alt' 
+                        WHERE ID=$ID";
+
+
+                $checkQuery = $connection->modifyDatabase($query);
+                $connection->closeDBconnection();
+                if($checkQuery){
+                    $stringaQuery = '<p class="success_Message" role="alert">Modifica del prodotto avvenuta con successo</p>';
+
+                }else{
+                    $stringaQuery = '<p class="error_Message" role="alert">Errore durante la modifica del prodotto</p>';
+                }
+            }else{
+                $stringaErrori = DBConnectionError(true);
+            } 
+        }else{
+            //Mostra form con errori di formato
+            $stringaErrori = '<ul>';
+            foreach($err as $ers){
+                $stringaErrori .= '<li>'.$ers.'</li>';
+            }
+            $stringaErrori .= '</ul>';
+
+            $paginaHTML = str_replace("{scegliProdotto}", $scelta, $paginaHTML);
+            $paginaHTML = str_replace("{modifica}", $modifica, $paginaHTML);
+            $paginaHTML = str_replace("{selezioneCategoria}",$stringaCategoria,$paginaHTML);
+            $paginaHTML = str_replace("{selezioneMarca}",$stringaMarca,$paginaHTML); 
+            $paginaHTML = str_replace("{risultatoQuery}",$stringaErrori,$paginaHTML);  
+        }
+        }// non hai cliccato la seconda
         $paginaHTML = str_replace("{scegliProdotto}", $scelta, $paginaHTML);
         $paginaHTML = str_replace("{modifica}", $modifica, $paginaHTML);
-                
+        $paginaHTML = str_replace("{selezioneCategoria}",$stringaCategoria,$paginaHTML);
+        $paginaHTML = str_replace("{selezioneMarca}",$stringaMarca,$paginaHTML); 
+        $paginaHTML = str_replace("{risultatoQuery}",$stringaQuery,$paginaHTML); 
     }else{
         //ridirezionamento fuori areaAdmin
        header("Location: ../index.php");

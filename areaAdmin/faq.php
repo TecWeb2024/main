@@ -1,7 +1,6 @@
 <?php
 require_once "../connection.php";
 use DB\DBAccess;
-session_start();
 
 setlocale(LC_ALL, 'it_IT');
 session_start();

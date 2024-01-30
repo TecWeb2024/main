@@ -3,6 +3,7 @@
     require_once "../funzioni.php";
 
     use DB\DBAccess;
+    $connection = new DBAccess();
     session_start();
     setlocale(LC_ALL, 'it_IT');
 

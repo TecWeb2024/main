@@ -1,7 +1,6 @@
 <?php
 require_once "../connection.php";
 use DB\DBAccess;
-session_start();
 
 setlocale(LC_ALL, 'it_IT');
 
@@ -49,13 +48,13 @@ if($connection->isLoggedInAdmin()){ // colore, volume, materiale,    mancano key
             
                 $keywords = $prodotto['keywords'];
             
-                $titoloProdotto = "'. $prodotto['nome'] . '";
+                $titoloProdotto = $prodotto['nome'];
             
-                $immaginiProdotto =    '<div id="product_Images">Immagini del prodotto
-                                    <img src="' . $prodotto['immagine1'] . '" class="immagine_prodotto" alt="">
-                                    <img src="' . $prodotto['immagine2'] . '" class="immagine_prodotto" alt="">
-                                    <img src="' . $prodotto['immagine3'] . '" class="immagine_prodotto" alt="">
-                                    <img src="' . $prodotto['immagine4'] . '" class="immagine_prodotto" alt=""></div>';
+                $immaginiProdotto =    '<div id="product_Images">
+                                    <img src="../' . $prodotto['immagine1'] . '" class="immagine_prodotto" alt="">
+                                    <img src="../' . $prodotto['immagine2'] . '" class="immagine_prodotto" alt="">
+                                    <img src="../' . $prodotto['immagine3'] . '" class="immagine_prodotto" alt="">
+                                    <img src="../' . $prodotto['immagine4'] . '" class="immagine_prodotto" alt=""></div>';
 
                 $specificheProdotto = '<ul id="product_Specs"><li><span class="specs_List">Prezzo:</span> '      . $prodotto['prezzo']       . '€</li>
                                     <li><span class="specs_List">Peso:</span> '         . $prodotto['peso']         . '</li> 
@@ -146,7 +145,7 @@ if($connection->isLoggedInAdmin()){ // colore, volume, materiale,    mancano key
                 $titoloProdotto = 'Prodotto non trovato';
                 $error = '<p>Il prodotto selezionato non è più presente nei nostri magazzini.</p>';
             }
-            $contenuto .= '</div>'
+            $contenuto .= '</div>';
 
         }else{ // ID non valido, ID non presente nel database
             $error = '<p>Nessun prodotto che abbiamo attualmente nei nostri magazzini corrisponde a quello selezionato.</p>';

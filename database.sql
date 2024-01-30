@@ -1,12 +1,12 @@
-USE mpan;
+USE tcorbu;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-ALTER TABLE `prodotto` DROP FOREIGN KEY `categoria`;
-ALTER TABLE `carrello` DROP FOREIGN KEY `IDprodotto`;
+ALTER TABLE IF EXISTS `prodotto` DROP FOREIGN KEY `categoria`;
+ALTER TABLE IF EXISTS `carrello` DROP FOREIGN KEY `IDprodotto`;
 
 DROP TABLE IF EXISTS carrello;
 DROP TABLE IF EXISTS prodotto;
@@ -27,8 +27,8 @@ CREATE TABLE `categoria` (
 
 
 INSERT INTO `categoria` (`ID`, `nome`, `immagineSfondo`, `keywords`) VALUES
-(1,'Accessori','images/accessoriLogojpg','Olympo Fitness, palestra, negozio palestra, accessori palestra, accessori, pesi liberi , macchinari palestra, macchinari, nutrizione'),
-(2,'Pesi Liberi','images/pasiliberiLogo.jpg','Olympo Fitness, palestra, negozio palestra, pesi liberi , macchinari palestra, macchinari, nutrizione, accessori palestra'),
+(1,'Accessori','images/accessoriLogo.jpg','Olympo Fitness, palestra, negozio palestra, accessori palestra, accessori, pesi liberi , macchinari palestra, macchinari, nutrizione'),
+(2,'Pesi Liberi','images/pesiliberiLogo.jpg','Olympo Fitness, palestra, negozio palestra, pesi liberi , macchinari palestra, macchinari, nutrizione, accessori palestra'),
 (3,'Nutrizione','images/nutrizioneLogo.png','Olympo Fitness, palestra, negozio palestra, nutrizione, pesi liberi , macchinari palestra, macchinari, accessori palestra'),
 (4,'Macchinari','images/macchinariLogo.jpg','Olympo Fitness, palestra, negozio palestra, pesi liberi , macchinari palestra, macchinari, macchine, nutrizione, accessori palestra');
 

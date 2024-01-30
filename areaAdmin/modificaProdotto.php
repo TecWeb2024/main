@@ -32,7 +32,7 @@
             }
 
             $modifica .= '</select>
-                        <button type="submit" name="conferma_modifica">Conferma Scelta</button>
+                        <button type="submit" name="conferma_modifica" class="button">Conferma Scelta</button>
                         </form>';
 
             
@@ -118,7 +118,7 @@
                         <option value="6" ' . ($prodotto_da_modificare['marca'] == 6 ? 'selected' : '') . '>My Protein</option>
                     </select><br>
                     
-                    <input type="submit" name="submit_modifica" value="Salva Modifiche">
+                    <input type="submit" name="submit_modifica" value="Salva Modifiche" class="button">
                     </form>';
             }
 

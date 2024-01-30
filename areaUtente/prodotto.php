@@ -48,13 +48,13 @@ if($connection->isLoggedInUser()){ // mancano keywords se null
             
                 $keywords = $prodotto['keywords'];
             
-                $titoloProdotto = "'. $prodotto['nome'] . '";
+                $titoloProdotto = $prodotto['nome'] ;
             
-                $immaginiProdotto =    '<div id="product_Images">Immagini del prodotto
-                                    <img src="' . $prodotto['immagine1'] . '" class="immagine_prodotto" alt="">
-                                    <img src="' . $prodotto['immagine2'] . '" class="immagine_prodotto" alt="">
-                                    <img src="' . $prodotto['immagine3'] . '" class="immagine_prodotto" alt="">
-                                    <img src="' . $prodotto['immagine4'] . '" class="immagine_prodotto" alt=""></div>';
+                $immaginiProdotto =    '<div id="product_Images">
+                                    <img src="../' . $prodotto['immagine1'] . '" class="immagine_prodotto" alt="">
+                                    <img src="../' . $prodotto['immagine2'] . '" class="immagine_prodotto" alt="">
+                                    <img src="../' . $prodotto['immagine3'] . '" class="immagine_prodotto" alt="">
+                                    <img src="../' . $prodotto['immagine4'] . '" class="immagine_prodotto" alt=""></div>';
 
                 $specificheProdotto = '<ul id="product_Specs"><li><span class="specs_List">Prezzo:</span> '      . $prodotto['prezzo']       . '€</li>
                                     <li><span class="specs_List">Peso:</span> '         . $prodotto['peso']         . '</li> 
@@ -143,13 +143,12 @@ if($connection->isLoggedInUser()){ // mancano keywords se null
                 $titoloProdotto = 'Prodotto non trovato';
                 $error = '<p>Il prodotto selezionato non è più presente nei nostri magazzini.</p>';
             }
-            $contenuto .= '</div>'
+            $contenuto .= '</div>';
 
         }else{ // ID non valido, ID non presente nel database
             $error = '<p>Nessun prodotto che abbiamo attualmente nei nostri magazzini corrisponde a quello selezionato.</p>';
         }
 
-        $connection->closeDBConnection();
         $paginaHTML = str_replace("{errori}",$error,$paginaHTML);
         $paginaHTML = str_replace("{titolo}", $titolo, $paginaHTML);
         $paginaHTML = str_replace("{keywords}", $keywords, $paginaHTML);

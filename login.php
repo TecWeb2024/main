@@ -48,7 +48,7 @@
 
                                 $_SESSION['user'] = $user['id'];
     
-                                header("Location: areaAdmin/areaAdminAggiungiProdotti.php"); // modificare nome pagina
+                                header("Location: areaAdmin/GestioneProdotti.php"); // modificare nome pagina
                                 die();
     
                             }else{ //era role="alert" dentro il tag, password errata

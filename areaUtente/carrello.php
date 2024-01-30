@@ -9,7 +9,7 @@
 
     setlocale(LC_ALL, 'it_IT');
     
-    $paginaHTML = file_get_contents('../carrelloTemplate.html');
+    $paginaHTML = file_get_contents('templates/carrelloTemplate.html');
 
     $stringaRiepilogo = "";
     $stringaMessaggio = "";
@@ -81,7 +81,7 @@
                 $stringaRiepilogo = '<dd>Prezzo parziale: ' .$prezzoParziale.'€</dd><dd>Costo spedizione: ' .$prezzoSpedizione.'€</dd> <dd>Totale: ' .$prezzoTotale.' € ( ' .$numeroProdotti.' articoli selezionati)</dd>';
                 foreach ($listaProdotti as $prodotti) { // aggiungere alt
                     
-                    $stringaProdotti .= '<li><a href="prodotto.php?id=' . $prodotti["IDprodotto"] . '"><img src="' . $prodotti["immagine1"] . '" alt=""><div class="product_Info"><p>' . $prodotti["nome"] . ' € ' . $prodotti["prezzo"] . '</p>
+                    $stringaProdotti .= '<li><a href="prodotto.php?id=' . $prodotti["IDprodotto"] . '"><img src="../' . $prodotti["immagine1"] . '" alt=""><div class="product_Info"><p>' . $prodotti["nome"] . ' € ' . $prodotti["prezzo"] . '</p>
                     <p>Quantità: ' . $prodotti["quantita"] . '</p></a>
                     <form action="carrello.php" method="get">
                         <input type="hidden" name="id" value="' . $prodotti["IDprodotto"] . '">

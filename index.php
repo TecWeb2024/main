@@ -27,7 +27,7 @@ $connection = new DBAccess();
 
             foreach ($listaCategorie as $categoria) {
                 $nomeCategorieMinuscolo = strtolower(str_replace(' ', '', $categoria["nome"]));
-                $stringaCategorie .= '<li><a href="' . $nomeCategorieMinuscolo . '.php"><img src="../' . $categoria["immagineSfondo"] . '" alt="">' . $categoria["nome"] . '</a></li>';
+                $stringaCategorie .= '<li><a href="' . $nomeCategorieMinuscolo . '.php"><img src="' . $categoria["immagineSfondo"] . '" alt="">' . $categoria["nome"] . '</a></li>';
                 $nomeCategorieMinuscolo = "";
             }
 
@@ -41,7 +41,7 @@ $connection = new DBAccess();
 
             foreach ($listaBrands as $brands) {
                 $nomeLinkMinuscolo = strtolower(str_replace(' ', '', $brands["nome"]));
-                $stringaBrands .= '<li><a href="https://www.' . $nomeLinkMinuscolo . '.com/"><img src="../' . $brands["immagineSfondo"] . '" alt="' . $brands["nome"] . '"></a></li>';
+                $stringaBrands .= '<li><a href="https://www.' . $nomeLinkMinuscolo . '.com/"><img src="' . $brands["immagineSfondo"] . '" alt="' . $brands["nome"] . '"></a></li>';
                 $nomeLinkMinuscolo = "";
             }
         } else {

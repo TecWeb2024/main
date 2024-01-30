@@ -31,13 +31,13 @@
 
             $connection->closeDBConnection();
         
-            if ($listaAccessori != null) {
+            if ($listaCategoria != null) {
                 foreach ($listaCategoria as $cate) {
                     $stringaCategoria .= '<option value="'.$cate['ID'].'">'.$cate['nome'].'</option>';
                     $contCat=$contCat+1;
                 }
             } else {
-                $stringaCategoria = "<option value="0" disabled>Non sono presenti categorie</option>";
+                $stringaCategoria = '<option value="0" disabled>Non sono presenti categorie</option>';
             }
 
             if ($listaMarca != null) {
@@ -46,7 +46,7 @@
                     $contMar=$contMar+1;
                 }
             } else {
-                $stringaMarca = "<option value="0" disabled>Non sono presenti marche</option>";
+                $stringaMarca = '<option value="0" disabled>Non sono presenti marche</option>';
             }
 
         }else{

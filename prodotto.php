@@ -45,9 +45,9 @@ $connection = new DBAccess();
             
                 $keywords = $prodotto['keywords'];
             
-                $titoloProdotto = "'. $prodotto['nome'] . '";
+                $titoloProdotto = $prodotto['nome'];
             
-                $immaginiProdotto =    '<div id="product_Images">Immagini del prodotto
+                $immaginiProdotto =    '<div id="product_Images">
                                     <img src="' . $prodotto['immagine1'] . '" class="immagine_prodotto" alt="">
                                     <img src="' . $prodotto['immagine2'] . '" class="immagine_prodotto" alt="">
                                     <img src="' . $prodotto['immagine3'] . '" class="immagine_prodotto" alt="">
@@ -111,13 +111,13 @@ $connection = new DBAccess();
                 $titoloProdotto = 'Prodotto non trovato';
                 $error = '<p>Il prodotto selezionato non è più presente nei nostri magazzini.</p>';
             }
-            $contenuto .= '</div>'
+            $contenuto .= '</div>';
 
         }else{ // ID non valido, ID non presente nel database
             $error = '<p>Nessun prodotto che abbiamo attualmente nei nostri magazzini corrisponde a quello selezionato.</p>';
         }
 
-        $connection->closeDBConnection();
+        
         $paginaHTML = str_replace("{errori}",$error,$paginaHTML);
         $paginaHTML = str_replace("{titolo}", $titolo, $paginaHTML);
         $paginaHTML = str_replace("{keywords}", $keywords, $paginaHTML);

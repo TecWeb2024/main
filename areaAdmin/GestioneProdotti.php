@@ -16,11 +16,27 @@
     
     $listaCategoria = "";
     $stringaCategoria = "";
-    $contCat= 0;
-    $contMar= 0;
 
     $listaMarca = "";
     $stringaMarca= "";
+
+    $nome = "";
+    /*$immagine1 = "";
+    $immagine2 = "";
+    $immagine3 = "";
+    $immagine4 = "";*/
+    $categoria = "";
+    $keywords = "";
+    $prezzo = "";
+    $peso = "";
+    $colore = "";
+    $dimensione = "";
+    $volume = "";
+    $materialeUtilizzato = "";
+    $quantita = "";
+    $descrizione = "";
+    $marca = "";
+    $alt = "";
 
     if($connection->isLoggedInAdmin()){
 
@@ -34,7 +50,6 @@
             if ($listaCategoria != null) {
                 foreach ($listaCategoria as $cate) {
                     $stringaCategoria .= '<option value="'.$cate['ID'].'">'.$cate['nome'].'</option>';
-                    $contCat=$contCat+1;
                 }
             } else {
                 $stringaCategoria = '<option value="0" disabled>Non sono presenti categorie</option>';
@@ -43,7 +58,6 @@
             if ($listaMarca != null) {
                 foreach ($listaMarca as $mar) {
                     $stringaMarca .= '<option value="'.$mar['ID'].'">'.$mar['nome'].'</option>';
-                    $contMar=$contMar+1;
                 }
             } else {
                 $stringaMarca = '<option value="0" disabled>Non sono presenti marche</option>';
@@ -54,12 +68,12 @@
         }
 
         if(isset($_POST["submit"])){
-
+           
             $nome = sanitizeInput($_POST['nome']);
-            $immagine1 = sanitizeInput($_FILES['immagine1']['name']);
-            $immagine2 = sanitizeInput($_FILES['immagine2']['name']);
-            $immagine3 = sanitizeInput($_FILES['immagine3']['name']);
-            $immagine4 = sanitizeInput($_FILES['immagine4']['name']);
+            /* $immagine1 = sanitizeInput($_FILES['immagine1']['tmp_name']);
+            $immagine2 = sanitizeInput($_FILES['immagine2']['tmp_name']);
+            $immagine3 = sanitizeInput($_FILES['immagine3']['tmp_name']);
+            $immagine4 = sanitizeInput($_FILES['immagine4']['tmp_name']);*/
 
             $categoria = $_POST['categoria'];
 
@@ -72,11 +86,11 @@
             $materialeUtilizzato = sanitizeInput($_POST['materialeUtilizzato']);
             $quantita = sanitizeInput($_POST['quantita']);
             $descrizione = sanitizeInput($_POST['descrizione']);
-
+            
             $marca = $_POST['marca'];
 
             $alt = sanitizeInput($_POST['alt']);
-
+            /*
             $uploadDirectory = '../images/';
             $immagine1FileName = uniqid() . '_' . $immagine1;
             $immagine2FileName = uniqid() . '_' . $immagine2;
@@ -104,7 +118,7 @@
                 move_uploaded_file($_FILES['immagine3']['tmp_name'], $immagine3Path);
                 move_uploaded_file($_FILES['immagine4']['tmp_name'], $immagine4Path);
             }
-
+            
             $maxSize = 1024 * 1024;
             
             $fileSize1 = $_FILES['immagine1']['size'];
@@ -113,12 +127,12 @@
 
             $fileSize3 = $_FILES['immagine3']['size'];
 
-            $fileSize4 = $_FILES['immagine4']['size'];
+            $fileSize4 = $_FILES['immagine4']['size']; */
             
             
             if(!preg_match('/\w{3,}/',$nome)){ 
                 array_push($err,'<p class="error_Message" role="alert">Nome del prodotto deve essere maggiore di 3 lettere.</p>');
-            }
+            }/*
             if($fileSize1 > $maxSize){
                 array_push($err,'<p class="error_Message" role="alert">Immagine 1 deve essere inferiore ad un <span>megabyte</span>.</p>');
             }
@@ -130,8 +144,8 @@
             }
             if($fileSize4 > $maxSize){ 
                 array_push($err,'<p class="error_Message" role="alert">Immagine 4 deve essere inferiore ad un <span>megabyte</span>.</p>');
-            }
-            if($categoria > 0 && $categoria <= $contCat){ 
+            }*/
+            if($categoria < 0){ 
                 array_push($err,'<p class="error_Message" role="alert">Non sono presenti categorie nel nostro sistema.</p>');
             }
             if($prezzo < 0){ 
@@ -149,7 +163,7 @@
             if(strlen($descrizione)<25){ 
                 array_push($err,'<p class="error_Message" role="alert">Descrizione deve essere superiore a 25 caratteri.</p>');
             }
-            if($marca > 0 && $marca <= $contMar){ 
+            if($marca < 0){ 
                 array_push($err,'<p class="error_Message" role="alert">Non sono presenti marche nel nostro sistema.</p>');
             }
             if(strlen($alt)<5 && strlen($alt)>75){ 
@@ -161,9 +175,9 @@
             if($connection->openDBConnection()){
 
                 $query = "";
-                $query = "INSERT INTO prodotto(nome, immagine1, immagine2, immagine3, immagine4, categoria, keywords, prezzo, peso, dimensione, colore, volume, materialeUtilizzato, quantita, descrizione, marca, alt) VALUES ('$nome', '$immagine1', '$immagine2', '$immagine3', '$immagine4', '$categoria', '$keywords', '$prezzo', '$peso', '$dimensione', '$colore', '$volume', '$materialeUtilizzato', '$quantita', '$descrizione', '$marca', '$alt')";
+                $query = "INSERT INTO prodotto(nome, categoria, keywords, prezzo, peso, dimensione, colore, volume, materialeUtilizzato, quantita, descrizione, marca, alt) VALUES ('$nome', '$categoria', '$keywords', '$prezzo', '$peso', '$dimensione', '$colore', '$volume', '$materialeUtilizzato', '$quantita', '$descrizione', '$marca', '$alt')";
     
-                $checkQuery = $connection->modifyDatabase($nome, $immagine1Path, $immagine2Path, $immagine3Path, $immagine4Path, $categoria, $keywords, $prezzo, $peso, $dimensione, $colore, $volume, $materialeUtilizzato, $quantita, $descrizione, $marca, $alt);
+                $checkQuery = $connection->modifyDatabase($query);
                 $connection->closeDBconnection();
 
                     if($checkQuery) {

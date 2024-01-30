@@ -11,14 +11,14 @@
     $connection = new DBAccess();
     
     if($connection->isLoggedInAdmin()){
-        if($connection->openDBConnection()) {
-
-        $sql = "SELECT * FROM prodotto";
-        $result = $connection->customQuery($sql);
-        $connection->closeDBconnection();
+        if($connection->openDBConnection()) {/*
+        $query = "";
+        $query = "SELECT * FROM prodotto";
+        $result = $connection->modifyDatabase($query); // cambiare
+        $connection->closeDBconnection();*/
 
         $form = "";
-                
+                /*
             if ($result && $result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     $id_prodotto = $row['ID'];
@@ -28,10 +28,22 @@
                 $result->free_result();
             }else{
                 $form .= '<option value="0" disabled>Non ci sono prodotti</option>';
+            }*/
+
+            $result = $connection->getProductsFromDatabase();
+            $connection->closeDBconnection();
+
+            if($result != null) {
+                foreach($result as $prodotto){
+                    $form .= '<option value=' .$prodotto['ID']. '>' . $prodotto['nome'] . '</option>';
+                }
+            }else{
+                $form = '<option value="0" disabled>Non ci sono prodotti</option>';
             }
 
+
         if(isset($_POST["conferma"])) {
-        if($result && $result->num_rows > 0){
+        if($result != null){
             $scelta_prodotto = $_POST["lista_prodotti"];
         
                 if($connection->openDBConnection()){
@@ -45,12 +57,12 @@
                     
                     if($connection->openDBConnection()) {
 
-                        $sql = "SELECT * FROM prodotto";
+                       /* $sql = "SELECT * FROM prodotto";
                         $result = $connection->customQuery($sql);
-                        $connection->closeDBconnection();
+                        $connection->closeDBconnection();*/
                 
                         $form = "";
-                                
+                                /*
                             if ($result && $result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
                                     $id_prodotto = $row['ID'];
@@ -60,6 +72,17 @@
                                 $result->free_result();
                             }else{
                                 $form .= '<option value="0" disabled>Non ci sono prodotti</option>';
+                            }*/
+
+                            $result = $connection->getProductsFromDatabase();
+                            $connection->closeDBconnection();
+
+                            if($result != null) {
+                                foreach($result as $prodotto){
+                                    $form .= '<option value=' .$prodotto['ID']. '>' . $prodotto['nome'] . '</option>';
+                                }
+                            }else{
+                                $form = '<option value="0" disabled>Non ci sono prodotti</option>';
                             }
                         }else{
                             $stringaErrori = DBConnectionError(true);

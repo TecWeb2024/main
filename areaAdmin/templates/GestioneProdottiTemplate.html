@@ -47,24 +47,24 @@
     </div>
         <div id="form_Container">
         
-          <form action="GestioneProdotto.php" class="form" method="post">
+          <form action="GestioneProdotti.php" class="form" method="post">
           <h2>Aggiungi Prodotto</h2>
           {errori}
           <label for="nome">Nome:</label>
           <input type="text" id="nome" name="nome" placeholder="Inserisci un nome" required>
+          <!--
+          <label for="immagine1">Immagine in Alto a Sinistra:</label>
+          <input type="file" id="immagine1" name="immagine1" accept="image/*" required>
           
-          <label for="immagine1">Immagine 1:</label>
-          <input type="file" id="immagine1" name="immagine1" accept="../../images/*" required>
+          <label for="immagine2">Immagine in Alto a Destra:</label>
+          <input type="file" id="immagine2" name="immagine2" accept="image/*" required>
           
-          <label for="immagine2">Immagine 2:</label>
-          <input type="file" id="immagine2" name="immagine2" accept="../../images/*" required>
+          <label for="immagine3">Immagine in Basso a Sinistra:</label>
+          <input type="file" id="immagine3" name="immagine3" accept="image/*" required>
           
-          <label for="immagine3">Immagine 3:</label>
-          <input type="file" id="immagine3" name="immagine3" accept="../../images/*" required>
-          
-          <label for="immagine4">Immagine 4:</label>
-          <input type="file" id="immagine4" name="immagine4" accept="../../images/*" required>
-          
+          <label for="immagine4">Immagine in Basso a Destra:</label>
+          <input type="file" id="immagine4" name="immagine4" accept="image/*" required>
+          -->
           <label for="categoria">Categoria:</label>
           <select id="categoria" name="categoria" required>
              <!--<option value="1">Accessori</option>
@@ -96,13 +96,13 @@
           <input type="number" id="quantita" name="quantita" placeholder="Inserisci la quantità disponibile" required>
           
           <label for="descrizione">Descrizione:</label>
-          <textarea id="descrizione" name="descrizione" cols="30" rows="5" required placeholder="Inserisci qui una breve descrizione" required></textarea>
+          <textarea id="descrizione" name="descrizione" cols="30" rows="5" placeholder="Inserisci qui una breve descrizione" required></textarea>
   
-          <label for="keywords">Keywords:</label>
-          <textarea id="keywords" name="keywords"  cols="30" rows="5" required placeholder="Inserisci qui delle keywords" required></textarea>
+          <label for="keywords"><span lang="en">Keywords</span></label>
+          <textarea id="keywords" name="keywords"  cols="30" rows="5" placeholder="Inserisci qui delle keywords"></textarea>
           
           <label for="alt">Breve Descrizione di Supporto:</label>
-          <textarea id="alt" name="alt"  cols="30" rows="5" required placeholder="Inserisci qui delle breve descrizione" required></textarea>
+          <textarea id="alt" name="alt"  cols="30" rows="5" placeholder="Inserisci qui una breve descrizione" required></textarea>
           
           <label for="marca">Marca:</label>
           <select id="marca" name="marca" required>

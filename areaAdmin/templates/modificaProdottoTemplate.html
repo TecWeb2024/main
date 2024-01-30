@@ -43,9 +43,17 @@
     
             <a href="GestioneProdotti.php" class="button">Aggiungi Prodotto</a>
         </div>
+        <form action="modificaProdotto.php"class="formAdmin"method="post">
+            <h2>Modifica un prodotto:</h2>
+            <label for="lista_prodotti_modifica">Seleziona il prodotto da modificare:</label>
+            <select id="lista_prodotti_modifica" name="lista_prodotti_modifica">
+                {scegliProdotto}
+            </select>
+            <input type="submit" name="conferma_modifica" class="button" value="Conferma Scelta">
+        </form>
+            {modifica}
+            {risultatoQuery}
         
-        {modifica}
-
         <a href="#" id="buttonToTop">Torna in cima</a>
     </main>
 

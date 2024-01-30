@@ -41,7 +41,7 @@
 
             $connection->closeDBConnection();
 
-            $stringaPagamento ='<fieldset>
+            $stringaPagamento ='
             <input type="submit" name="shopButton" class="button" value="Acquista ora">
             <div id="delivery_Address">
             <h3>Indirizzo di consegna:</h3>
@@ -66,8 +66,7 @@
               <option value="google_pay"><span lang="en">Google Pay</span></option>
             </select>
   
-            </div>
-            </fieldset> ';
+            </div>';
             
             if($listaProdotti != null && $risultato != null) {
 

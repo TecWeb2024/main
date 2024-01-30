@@ -333,56 +333,6 @@ class DBAccess {
         return $categoria;
     }
 
-    // controllare funzione
-   /* public function getProdottoById($idProdotto) {
-    try {
-        $query = "SELECT * FROM `prodotto` WHERE `ID` = ?";
-        $stmt = $this->connection->prepare($query);
-
-        if ($stmt) {
-            $stmt->bind_param("i", $idProdotto); // "i" indica un parametro di tipo intero
-            $stmt->execute();
-
-            $result = $stmt->get_result();
-
-            if ($result && $result->num_rows > 0) {
-                $prodotto = $result->fetch_assoc();
-                $stmt->close();
-                return $prodotto;
-            } else {
-                $stmt->close();
-                return null;
-            }
-        } else {
-            throw new \Exception("Errore durante la preparazione della query.");
-        }
-    } catch (\Exception $e) {
-        error_log("Errore durante il recupero del prodotto: " . $e->getMessage());
-        return false;
-    }
-}
-
-// esisterebbe gia un get categoria che prende *
-public function getCategoriaFromId($idCategoria) {
-    $query = "SELECT nome FROM categoria WHERE ID = $idCategoria";
-    $result = $this->connection->query($query);
-
-    if (!$result) {
-        die("Errore nell'esecuzione della query: " . $this->connection->error);
-    }
-
-    $categoria = '';
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $categoria = $row['nome'];
-    }
-
-    $result->free_result();
-
-    return $categoria;
-}*/
-
 
 public function saveToCart($user_Id, $product_Id, $quantity_Id) {
     // Esegue l'escape delle variabili per evitare SQL injection
@@ -446,6 +396,23 @@ public function updateProductQuantity($product_Id, $quantity) {
 
 //PAGINA ADMIN [RIMOZIONE, MODIFICA]
 
+public function getProductsFromDatabase() {
+    $products = array();
+
+    $query = "SELECT * FROM prodotto";
+    $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
+
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $products[] = $row;
+        }
+        $result->free_result();
+    } else {
+        $products = array();
+    }
+    return $products;
+}
+/*
 public function customQuery($sql, $params = []) {
     $stmt = $this->connection->prepare($sql);
 
@@ -464,7 +431,7 @@ public function customQuery($sql, $params = []) {
     $stmt->close();
 
     return $result;
-}
+}*/
 
 
 public function aggiornaProdotto($nuovo_id, $nuovo_nome, $immagine1Path, $immagine2Path, $immagine3Path, $immagine4Path, $nuova_categoria, $nuove_keywords, $nuovo_prezzo, $nuovo_peso, $nuova_dimensione, $nuovo_colore, $nuovo_volume, $nuovo_materiale_utilizzato, $nuova_quantita, $nuova_taglia, $nuova_descrizione, $nuovo_tempo_consegna, $nuova_marca){

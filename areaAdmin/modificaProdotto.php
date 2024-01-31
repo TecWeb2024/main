@@ -89,7 +89,7 @@
 
                         $scelta = '<option value=' .$prod['ID']. '>' . $prod['nome'] . '</option>';
 
-                        $modifica = '<form action="modificaProdotto.php" class="formAdmin" method="post" onsubmit="validateFormProdotto()">
+                        $modifica = '<form action="modificaProdotto.php" class="form" method="post" onsubmit="validateFormProdotto()">
                         <h3> Modifica - ' . $prod['nome'] . '</h3>
                         <label for="nome">Nome:</label>
                         <input type="text" id="nome" name="nome" value="' . $prod['nome'] . '" required>

@@ -88,7 +88,7 @@ if($connection->isLoggedInUser()){ // mancano keywords se null
 
                 $qnt = $prodotto['quantita']; // controllare come esce
                     if($qnt != 0){
-                        $quantitaProdotto .= '<form action="prodotto.php" class="form" method="get"><div id="cart_Specs">
+                        $quantitaProdotto .= '<form action="prodotto.php" class="form" id="form" method="get"><div id="cart_Specs">
                         <p class="cart_List">Seleziona quantità:</p><select name="opzione_selezionata" id="quantity"> ';
                         for ($i = 1; $i <= $qnt; $i++) {
                             $quantitaProdotto .= '<option value="' . $i . '"> ' . $i . '</option>';

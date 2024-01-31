@@ -585,19 +585,23 @@
 
   
 
-
+  #quantity {
+    font-size: 100%;
+    height: 100%;
+    width: 15%; 
+  }
 
   #quantity,#size{
-    padding: 3px 3px;
+    padding: 5%, 5%;
   }
 
   #quantity option{
-    width: 100px;
+    width: 2em;
   }
 
   #quantity option,#size option{
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
   }
   
   #product_Description h3{

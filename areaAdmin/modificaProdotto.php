@@ -90,9 +90,10 @@
 
                         $scelta = '<option value=' .$prod['ID']. '>' . $prod['nome'] . '</option>';
 
-                        $modifica = '<form action="modificaProdotto.php" class="formAdmin" method="post"><h3> Modifica - ' . $prod['nome'] . '</h3>
-                        <label for="nome_mod">Nome:</label>
-                        <input type="text" id="nome_mod" name="nome_mod" value="' . $prod['nome'] . '" required>
+                        $modifica = '<form action="modificaProdotto.php" class="formAdmin" method="post" onsubmit="validateFormProdotto()">
+                        <h3> Modifica - ' . $prod['nome'] . '</h3>
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" value="' . $prod['nome'] . '" required>
                         <!--
                         <label for="immagine1_mod">Immagine in Alto a Sinistra:</label>
                         <input type="file" id="immagine1_mod" name="immagine1_mod" accept="image/*">
@@ -110,43 +111,43 @@
                         <input type="file" id="immagine4_mod" name="immagine4_mod" accept="image/*">
                         <img src="../' . $prod['immagine4'] . '" alt="" required> -->
                         
-                        <label for="categoria_mod">Categoria:</label>
-                        <select id="categoria_mod" name="categoria_mod" required>
+                        <label for="categoria">Categoria:</label>
+                        <select id="categoria" name="categoria" required>
                         {selezioneCategoria}
                         </select>
 
-                        <label for="prezzo_mod">Prezzo:</label>
-                        <input type="number" id="prezzo_mod" name="prezzo_mod" step="0.01" value="' . $prod['prezzo'] . '" required>
+                        <label for="prezzo">Prezzo:</label>
+                        <input type="text" id="prezzo" name="prezzo" value="' . $prod['prezzo'] . '" required>
 
-                        <label for="peso_mod">Peso:</label>
-                        <input type="text" id="peso_mod" name="peso_mod" value="' . $prod['peso'] . '" required>
+                        <label for="peso">Peso:</label>
+                        <input type="text" id="peso" name="peso" value="' . $prod['peso'] . '" required>
 
-                        <label for="dimensione_mod">Dimensione:</label>
-                        <input type="text" id="dimensione_mod" name="dimensione_mod" value="' . $prod['dimensione'] . '" required>
+                        <label for="dimensione">Dimensione:</label>
+                        <input type="text" id="dimensione" name="dimensione" value="' . $prod['dimensione'] . '" required>
                                 
-                        <label for="colore_mod">Colore:</label>
-                        <input type="text" id="colore_mod" name="colore_mod" value="' . $prod['colore'] . '">
+                        <label for="colore">Colore:</label>
+                        <input type="text" id="colore" name="colore" value="' . $prod['colore'] . '">
                                 
-                        <label for="volume_mod">Volume:</label>
-                        <input type="text" id="volume_mod" name="volume_mod" value="' . $prod['volume'] . '">
+                        <label for="volume">Volume:</label>
+                        <input type="text" id="volume" name="volume" value="' . $prod['volume'] . '">
 
-                        <label for="materialeUtilizzato_mod">Materiale Utilizzato:</label>
-                        <input type="text" id="materialeUtilizzato_mod" name="materialeUtilizzato_mod" value="' . $prod['materialeUtilizzato'] . '">
+                        <label for="materialeUtilizzato">Materiale Utilizzato:</label>
+                        <input type="text" id="materialeUtilizzato" name="materialeUtilizzato" value="' . $prod['materialeUtilizzato'] . '">
                            
-                        <label for="quantita_mod">Quantità:</label>
-                        <input type="number" id="quantita_mod" name="quantita_mod" value="' . $prod['quantita'] . '" required>       
+                        <label for="quantita">Quantità:</label>
+                        <input type="text" id="quantita" name="quantita" value="' . $prod['quantita'] . '" required>       
                                 
-                        <label for="descrizione_mod">Descrizione:</label>
-                        <textarea id="descrizione_mod" name="descrizione_mod" cols="30" rows="5" required>' . $prod['descrizione'] . '</textarea>
+                        <label for="descrizione">Descrizione:</label>
+                        <textarea id="descrizione" name="descrizione" cols="30" rows="5" required>' . $prod['descrizione'] . '</textarea>
                         
-                        <label for="keywords_mod"><span lang="en">Keywords</span>:</label>
-                        <textarea id="keywords_mod" name="keywords_mod" cols="30" rows="5">' . $prod['keywords'] . '</textarea>
+                        <label for="keywords"><span lang="en">Keywords</span>:</label>
+                        <textarea id="keywords" name="keywords" cols="30" rows="5">' . $prod['keywords'] . '</textarea>
                 
-                        <label for="alt_mod">Breve Descrizione di Supporto:</label>
-                        <textarea id="alt_mod" name="alt_mod"  cols="30" rows="5" required>'. $prod['alt'].'</textarea>
+                        <label for="alt">Breve Descrizione di Supporto:</label>
+                        <textarea id="alt" name="alt"  cols="30" rows="5" required>'. $prod['alt'].'</textarea>
                         
-                        <label for="marca_mod">Marca:</label>
-                        <select id="marca_mod" name="marca_mod" required>        
+                        <label for="marca">Marca:</label>
+                        <select id="marca" name="marca" required>        
                         {selezioneMarca}
                         </select><input type="hidden" name="IDp" value="'. $prod['ID'].'">
                         <input type="submit" name="submit_modifica" class="button" value="Salva Modifiche"></form>';
@@ -177,7 +178,7 @@
             /*$prodotto_references = $connection->getProdottoById($ID);*/
             /*$connection->removeProductById($_POST['id_mod']);*/
             $ID = $_POST['IDp'];
-            $nuovo_nome = sanitizeInput($_POST['nome_mod']);
+            $nuovo_nome = sanitizeInput($_POST['nome']);
 
             /*if(empty($_FILES['immagine1_mod']['name'])) {
                 $nuova_immagine1 = $prodotto_references['immagine1'];
@@ -207,18 +208,18 @@
                 move_uploaded_file(sanitizeInput($_FILES['immagine4_mod']['tmp_name']), $nuova_immagine4);
             }*/
     
-            $nuova_categoria = sanitizeInput($_POST['categoria_mod']);
-            $nuovo_prezzo = sanitizeInput($_POST['prezzo_mod']);
-            $nuovo_peso = sanitizeInput($_POST['peso_mod']);
-            $nuova_dimensione = sanitizeInput($_POST['dimensione_mod']);
-            $nuovo_colore = sanitizeInput($_POST['colore_mod']);
-            $nuovo_volume = sanitizeInput($_POST['volume_mod']);
-            $nuovo_materiale_utilizzato = sanitizeInput($_POST['materialeUtilizzato_mod']);
-            $nuova_quantita = sanitizeInput($_POST['quantita_mod']);
-            $nuova_descrizione = sanitizeInput($_POST['descrizione_mod']);
-            $nuove_keywords = sanitizeInput($_POST['keywords_mod']);
-            $nuova_marca = sanitizeInput($_POST['marca_mod']);
-            $nuovo_alt = sanitizeInput($_POST['alt_mod']);
+            $nuova_categoria = sanitizeInput($_POST['categoria']);
+            $nuovo_prezzo = sanitizeInput($_POST['prezzo']);
+            $nuovo_peso = sanitizeInput($_POST['peso']);
+            $nuova_dimensione = sanitizeInput($_POST['dimensione']);
+            $nuovo_colore = sanitizeInput($_POST['colore']);
+            $nuovo_volume = sanitizeInput($_POST['volume']);
+            $nuovo_materiale_utilizzato = sanitizeInput($_POST['materialeUtilizzato']);
+            $nuova_quantita = sanitizeInput($_POST['quantita']);
+            $nuova_descrizione = sanitizeInput($_POST['descrizione']);
+            $nuove_keywords = sanitizeInput($_POST['keywords']);
+            $nuova_marca = sanitizeInput($_POST['marca']);
+            $nuovo_alt = sanitizeInput($_POST['alt']);
 
             /*$maxSize = 1024 * 1024;
 

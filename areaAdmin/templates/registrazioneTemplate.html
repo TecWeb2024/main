@@ -9,8 +9,9 @@
   <link rel="stylesheet" href="../mobile.css" media="screen and (max-width: 508px)">
   <link rel="stylesheet" href="../tablet.css" media="screen and (min-width: 509px) and (max-width: 768px)">
   <link rel="stylesheet" href="../print.css" media="print">
+  <script src="../javascript/javascript.js"></script>
 </head>
-<body>
+<body onload="addOnBlurRegistrazione()">
   <header>
     <nav aria-label="Aiuti alla navigazione">
       <a class="navigationHelp" href="#content">Vai al contenuto</a>
@@ -38,7 +39,7 @@
   <main id="content">
 
     <div id="form_Container">
-    <form action="registrazione.php" class="form" method="post"> <!--forse mettere action e ridirezionamento a javascript.js-->
+    <form action="registrazione.php" class="form" method="post"  onsubmit="validateFormRegistrazione()">
     <h2>Registrazione</h2>
     {erroriRegistrazione}
     <label for="email"><span lang="en">Email</span></label>
@@ -52,7 +53,7 @@
 
     <input type="submit" name="submit" class="button" value="Registrati">
     {risultatoQuery}
-    <p>Hai già un <span lang="en">account</span>? <a href="login.php" class="button">Accedi qui</a></p>
+    <p>Vuoi disconnetterti? <a href="login.php" class="button">Esci da qui</a></p>
   </form>
   </div>
 

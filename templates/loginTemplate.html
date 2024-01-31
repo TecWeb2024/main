@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="print.css" media="print">
   <script src="javascript/javascript.js"></script>
 </head>
-<body>
+<body onload="addOnBlurLogin()">
   <header>
     <nav aria-label="Aiuti alla navigazione">
       <a class="navigationHelp" href="#content">Vai al contenuto</a>
@@ -38,7 +38,7 @@
 
     <div id="form_Container">
       {logout}
-      <form action="login.php" class="form" method="post">
+      <form action="login.php" class="form" method="post" onsubmit="validateFormLogin()">
         <h2><span lang="en">Login</span></h2>
         {erroriLogin}
         <label for="nome">Nome</label>

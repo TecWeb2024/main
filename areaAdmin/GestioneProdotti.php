@@ -131,7 +131,7 @@
             
             
             if(!preg_match('/\w{3,}/',$nome)){ 
-                array_push($err,'<p class="error_Message" role="alert">Nome del prodotto deve essere maggiore di 3 lettere.</p>');
+                array_push($err,'<p class="error_Message" role="alert">Nome del prodotto deve essere maggiore di 3 caratteri.</p>');
             }/*
             if($fileSize1 > $maxSize){
                 array_push($err,'<p class="error_Message" role="alert">Immagine 1 deve essere inferiore ad un <span>megabyte</span>.</p>');
@@ -145,19 +145,19 @@
             if($fileSize4 > $maxSize){ 
                 array_push($err,'<p class="error_Message" role="alert">Immagine 4 deve essere inferiore ad un <span>megabyte</span>.</p>');
             }*/
-            if($categoria < 0){ 
+            if($categoria < 0){
                 array_push($err,'<p class="error_Message" role="alert">Non sono presenti categorie nel nostro sistema.</p>');
             }
-            if($prezzo < 0){ 
+            if(floatval($prezzo) < 0){ 
                 array_push($err,'<p class="error_Message" role="alert">Non si possono inserire prodotti con prezzo minore o uguale a zero.</p>');
             }
-            if(!preg_match('/\w{2,}/',$peso)){ 
+            if(!preg_match('/\w{3,}/',$peso)){ 
                 array_push($err,'<p class="error_Message" role="alert">Peso inserito non corretto.</p>');
             }
             if(!preg_match('/\w{2,}/',$dimensione)){ 
                 array_push($err,'<p class="error_Message" role="alert">Dimensione inserita non corretta.</p>');
             }
-            if($quantita < 0){ 
+            if(intval($quantita) < 0){
                 array_push($err,'<p class="error_Message" role="alert">Quantità non può essere minore o uguale a zero.</p>');
             }
             if(strlen($descrizione)<25){ 
@@ -166,7 +166,7 @@
             if($marca < 0){ 
                 array_push($err,'<p class="error_Message" role="alert">Non sono presenti marche nel nostro sistema.</p>');
             }
-            if(strlen($alt)<5 && strlen($alt)>75){ 
+            if(strlen($alt)<5 || strlen($alt)>75){ 
                 array_push($err,'<p class="error_Message" role="alert">Breve descrizione di supporto deve essere almeno di 5 caratteri e non superiore a 75 caratteri.</p>');
             }
         

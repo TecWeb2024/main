@@ -27,7 +27,7 @@ if ($connection->openDBConnection()) {
 
             $stringaFAQ .= '<div class="box_q_a">
                             <h3 class="question"> Domanda: ' . $domanda["domanda"] . '</h3>
-                            <form action="faqAdmin.php" class="form" method="get">
+                            <form action="faqAdmin.php" class="form" method="get" onsubmit="validateFormFaqAdmin()">
                             <label for="answer_">Risposta</label>
                             <input type="text" name="answer_' . $domanda["ID"] . '" id="answer_" placeholder="Scrivi qui la risposta" required>
                             <input type="hidden" name="id" value="' . $domanda["ID"] . '">
@@ -52,8 +52,8 @@ if(isset($_GET['submit'])){
 
     $risposta = sanitizeInput($_GET['answer_' . $idRisposta . '']);
     
-    if(strlen($risposta)<20){
-       $error = '<p class="error_Message" role="alert">La risposta deve essere maggiore di 20 caratteri.</p>';
+    if(strlen($risposta)<10){
+       $error = '<p class="error_Message" role="alert">La risposta deve essere maggiore di 10 caratteri.</p>';
     }
 
     if(!empty($risposta)){ 
@@ -77,7 +77,7 @@ if(isset($_GET['submit'])){
             
                         $stringaFAQ .= '<div class="box_q_a">
                                         <h3 class="question"> Domanda: ' . $domanda["domanda"] . '</h3>
-                                        <form action="faqAdmin.php" class="form" method="get">
+                                        <form action="faqAdmin.php" class="form" method="get" onsubmit="validateFormFaqAdmin()">
                                         <label for="answer_">Risposta</label>
                                         <input type="text" name="answer_' . $domanda["ID"] . '" id="answer_" placeholder="Scrivi qui la risposta" required>
                                         <input type="hidden" name="id" value="' . $domanda["ID"] . '">

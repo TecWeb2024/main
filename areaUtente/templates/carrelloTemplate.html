@@ -11,9 +11,10 @@
   <link rel="stylesheet" href="../mobile.css" media="screen and (max-width: 508px)">
   <link rel="stylesheet" href="../tablet.css" media="screen and (min-width: 509px) and (max-width: 768px)">
   <link rel="stylesheet" href="../print.css" media="print">
+  <script src="../javascript/javascript.js"></script>
 </head>
 
-<body>
+<body onload="addOnBlurCart()">
   <header>
     <nav aria-label="Aiuti alla navigazione">
       <a class="navigationHelp" href="#content">Vai al contenuto</a>
@@ -57,7 +58,7 @@
       </div>
 
 
-    <form id="order_Details" action="carrello.php" method="post">
+    <form id="order_Details" action="carrello.php" method="post" onsubmit="validateFormCart()">
     <!--  <fieldset>
 
       <input type="submit" name="shopButton" class="button" value="Acquista ora">

@@ -31,5 +31,4 @@ $connection = new DBAccess();
 $paginaHTML = str_replace("{nutrizione}", $stringaNutrizione, $paginaHTML);
 echo $paginaHTML;
 
-
 ?>

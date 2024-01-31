@@ -11,9 +11,6 @@
     
     $paginaHTML = file_get_contents('templates/carrelloTemplate.html');
 
-    $error = "";
-    $stringaRiepilogo = "";
-    $stringaPagamento = "";
     $stringaMessaggio = "";
 
     if($connection->isLoggedInAdmin()){ //admin non può comprare
@@ -23,10 +20,7 @@
         header("Location: ../index.php");
         die();
     }
-    $paginaHTML = str_replace("{errori}",$error,$paginaHTML);
-    $paginaHTML = str_replace("{riepilogoOrdine}",$stringaRiepilogo,$paginaHTML);
-    $paginaHTML = str_replace("{formCarrello}",$stringaPagamento,$paginaHTML);
-    $paginaHTML = str_replace("{prodottiCarrello}",$stringaMessaggio,$paginaHTML);
+    $paginaHTML = str_replace("{errori}",$stringaMessaggio,$paginaHTML);
 
     echo $paginaHTML;
 

@@ -11,24 +11,9 @@
     $connection = new DBAccess();
     
     if($connection->isLoggedInAdmin()){
-        if($connection->openDBConnection()) {/*
-        $query = "";
-        $query = "SELECT * FROM prodotto";
-        $result = $connection->modifyDatabase($query); // cambiare
-        $connection->closeDBconnection();*/
+        if($connection->openDBConnection()) {
 
         $form = "";
-                /*
-            if ($result && $result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $id_prodotto = $row['ID'];
-                    $nome_prodotto = $row['nome'];
-                    $form .= '<option value=' . $id_prodotto . '>' . $nome_prodotto . '</option>';
-                }
-                -----$result->free_result();
-            }else{
-                $form .= '<option value="0" disabled>Non ci sono prodotti</option>';
-            }*/
 
             $result = $connection->getProductsFromDatabase();
             $connection->closeDBconnection();
@@ -56,24 +41,9 @@
                     $resultQuery = '<p class="success_Message" role="alert">Rimozione avvenuta con successo.</p>';
                     
                     if($connection->openDBConnection()) {
-
-                       /* $sql = "SELECT * FROM prodotto";
-                        $result = $connection->customQuery($sql);
-                        $connection->closeDBconnection();*/
                 
                         $form = "";
-                                /*
-                            if ($result && $result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    $id_prodotto = $row['ID'];
-                                    $nome_prodotto = $row['nome'];
-                                    $form .= '<option value=' . $id_prodotto . '>' . $nome_prodotto . '</option>';
-                                }
-                                $result->free_result();
-                            }else{
-                                $form .= '<option value="0" disabled>Non ci sono prodotti</option>';
-                            }*/
-
+                                
                             $result = $connection->getProductsFromDatabase();
                             $connection->closeDBconnection();
 
@@ -113,4 +83,5 @@
 }
 
     echo $paginaHTML;
+    
 ?>

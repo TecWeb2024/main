@@ -15,12 +15,6 @@ $keywords = "";
 $breadcrumb = "";
 $titoloProdotto = "";
 $immaginiProdotto = "";
-$specificheProdotto = "";
-$quantitaProdotto = "";
-$carrello = "";
-$stringaMessaggio = "";
-$descrizioneProdotto = "";
-$consegna = "";
 $aggiornamento1= "";
 $aggiornamento2= "";
 
@@ -82,11 +76,9 @@ $connection = new DBAccess();
                     $contenuto  .= '<li><span class="specs_List">Materiali:</span> Non disponibile';
                 }
 
-                $contenuto  .= '<li><span class="specs_List">Azienda:</span> '      . $prodotto['marca'] . '</li>
-                                        <li><span class="specs_List">Categoria:</span> '    . $nomeCategoria[0]['nome'] . '</li></ul>';
-            
+                $contenuto  .= '<li><span class="specs_List">Categoria:</span> '    . $nomeCategoria[0]['nome'] . '</li></ul>';
 
-                $qnt = $prodotto['quantita']; // controllare come esce
+                $qnt = $prodotto['quantita']; 
                     if($qnt != 0){
                         $contenuto  .= '<form action="prodotto.php" class="form" method="get"><div id="cart_Specs">
                         <p class="cart_List">Seleziona quantità:</p><select name="opzione_selezionata" id="quantity"> ';
@@ -109,7 +101,7 @@ $connection = new DBAccess();
                 }
 
                
-                if(isset($_GET['addToCart'])){ // aggiungi al carrello
+                if(isset($_GET['addToCart'])){ 
                     $error = '<p class="error_Message" role="alert">Per aggiungere al carrello bisogna effettuare l\'accesso tramite la pagina <span lang="en">account</span></p>';
                 }
             }else{ // Prodotto non trovato
@@ -118,11 +110,10 @@ $connection = new DBAccess();
                 $titoloProdotto = 'Prodotto non trovato';
                 $error = '<p>Il prodotto selezionato non è più presente nei nostri magazzini.</p>';
             }
-            // $contenuto .= '</div>';
 
         }else{ // ID non valido, ID non presente nel database
             $error = '<p>Nessun prodotto che abbiamo attualmente nei nostri magazzini corrisponde a quello selezionato.</p>';
-        } // manca breadcrumb , titolo , ecc
+        }
 
         $paginaHTML = str_replace("{errori}",$error,$paginaHTML);
         $paginaHTML = str_replace("{titolo}", $titolo, $paginaHTML);
@@ -131,11 +122,6 @@ $connection = new DBAccess();
         $paginaHTML = str_replace("{titoloProdotto}", $titoloProdotto, $paginaHTML); 
         $paginaHTML = str_replace("{immaginiProdotto}", $immaginiProdotto, $paginaHTML);
         $paginaHTML = str_replace("{contenutoProdotto}", $contenuto, $paginaHTML);
-        $paginaHTML = str_replace("{specificheProdotto}", $specificheProdotto, $paginaHTML);
-        $paginaHTML = str_replace("{quantitaProdotto}", $quantitaProdotto, $paginaHTML);
-        $paginaHTML = str_replace("{descrizioneProdotto}", $descrizioneProdotto, $paginaHTML);
-        $paginaHTML = str_replace("{carrello}", $carrello, $paginaHTML);
-        $paginaHTML = str_replace("{consegna}", $consegna, $paginaHTML);
 
     }else{
         $error = DBConnectionError(true);
@@ -146,11 +132,6 @@ $connection = new DBAccess();
         $paginaHTML = str_replace("{titoloProdotto}", $titoloProdotto, $paginaHTML);
         $paginaHTML = str_replace("{immaginiProdotto}", $immaginiProdotto, $paginaHTML);
         $paginaHTML = str_replace("{contenutoProdotto}", $contenuto, $paginaHTML);
-        $paginaHTML = str_replace("{specificheProdotto}", $specificheProdotto, $paginaHTML);
-        $paginaHTML = str_replace("{quantitaProdotto}", $quantitaProdotto, $paginaHTML);
-        $paginaHTML = str_replace("{descrizioneProdotto}", $descrizioneProdotto, $paginaHTML);
-        $paginaHTML = str_replace("{carrello}", $carrello, $paginaHTML);
-        $paginaHTML = str_replace("{consegna}", $consegna, $paginaHTML);
     }
 
 echo $paginaHTML;

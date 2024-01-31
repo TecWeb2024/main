@@ -22,7 +22,7 @@
             $nome = sanitizeInput($_POST['nome']);
             $password = sanitizeInput($_POST['password']);
         
-            if(!filter_var($email, FILTER_VALIDATE_EMAIL)){ //forse filterinput   $email = filter_input(INPUT_GET, 'email', FILTER_VALIDATE_EMAIL);
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)){ 
                 array_push($errori,'<p class="error_Message" role="alert">Inserire una <span lang="en">email</span> valida.</p>');
             }
             if(!preg_match('/\w{3,}/',$nome)){

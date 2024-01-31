@@ -15,12 +15,6 @@ $keywords = "";
 $breadcrumb = "";
 $titoloProdotto = "";
 $immaginiProdotto = "";
-$specificheProdotto = "";
-$quantitaProdotto = "";
-$carrello = "";
-$stringaMessaggio = "";
-$descrizioneProdotto = "";
-$consegna = "";
 $aggiornamento1= "";
 $aggiornamento2= "";
 
@@ -28,7 +22,7 @@ $listaprodotto = "";
 
 $connection = new DBAccess();
 
-if($connection->isLoggedInAdmin()){ // mancano keywords se null
+if($connection->isLoggedInAdmin()){ 
     if ($connection->openDBConnection()){
 
         if(isset($_GET['id'])){
@@ -79,14 +73,12 @@ if($connection->isLoggedInAdmin()){ // mancano keywords se null
                 if($prodotto['materialeUtilizzato'] != NULL){
                     $contenuto .= '<li><span class="specs_List">Materiali:</span> '    . $prodotto['materialeUtilizzato'] . '</li>';
                 }else{
-                    $$contenuto .= '<li><span class="specs_List">Materiali:</span> Non disponibile';
+                    $contenuto .= '<li><span class="specs_List">Materiali:</span> Non disponibile';
                 }
 
-                $contenuto .= '<li><span class="specs_List">Azienda:</span> '      . $prodotto['marca'] . '</li>
-                                        <li><span class="specs_List">Categoria:</span> '    . $nomeCategoria[0]['nome'] . '</li></ul>';
+                $contenuto .= '<li><span class="specs_List">Categoria:</span> '    . $nomeCategoria[0]['nome'] . '</li></ul>';
             
-
-                $qnt = $prodotto['quantita']; // controllare come esce
+                $qnt = $prodotto['quantita'];
                     if($qnt != 0){
                         $contenuto .= '<form action="prodotto.php" class="form" method="get"><div id="cart_Specs">
                         <p class="cart_List">Seleziona quantità:</p><select name="opzione_selezionata" id="quantity"> ';
@@ -122,7 +114,7 @@ if($connection->isLoggedInAdmin()){ // mancano keywords se null
 
         }else{ // ID non valido, ID non presente nel database
             $error = '<p>Nessun prodotto che abbiamo attualmente nei nostri magazzini corrisponde a quello selezionato.</p>';
-        } // manca breadcrumb , titolo , ecc
+        }
 
         $paginaHTML = str_replace("{errori}",$error,$paginaHTML);
         $paginaHTML = str_replace("{titolo}", $titolo, $paginaHTML);
@@ -131,11 +123,6 @@ if($connection->isLoggedInAdmin()){ // mancano keywords se null
         $paginaHTML = str_replace("{titoloProdotto}", $titoloProdotto, $paginaHTML); 
         $paginaHTML = str_replace("{immaginiProdotto}", $immaginiProdotto, $paginaHTML);
         $paginaHTML = str_replace("{contenutoProdotto}", $contenuto, $paginaHTML);
-        $paginaHTML = str_replace("{specificheProdotto}", $specificheProdotto, $paginaHTML);
-        $paginaHTML = str_replace("{quantitaProdotto}", $quantitaProdotto, $paginaHTML);
-        $paginaHTML = str_replace("{descrizioneProdotto}", $descrizioneProdotto, $paginaHTML);
-        $paginaHTML = str_replace("{carrello}", $carrello, $paginaHTML);
-        $paginaHTML = str_replace("{consegna}", $consegna, $paginaHTML);
 
     }else{
         $error = DBConnectionError(true);
@@ -146,11 +133,7 @@ if($connection->isLoggedInAdmin()){ // mancano keywords se null
         $paginaHTML = str_replace("{titoloProdotto}", $titoloProdotto, $paginaHTML);
         $paginaHTML = str_replace("{immaginiProdotto}", $immaginiProdotto, $paginaHTML);
         $paginaHTML = str_replace("{contenutoProdotto}", $contenuto, $paginaHTML);
-        $paginaHTML = str_replace("{specificheProdotto}", $specificheProdotto, $paginaHTML);
-        $paginaHTML = str_replace("{quantitaProdotto}", $quantitaProdotto, $paginaHTML);
-        $paginaHTML = str_replace("{descrizioneProdotto}", $descrizioneProdotto, $paginaHTML);
-        $paginaHTML = str_replace("{carrello}", $carrello, $paginaHTML);
-        $paginaHTML = str_replace("{consegna}", $consegna, $paginaHTML);
+
     }
 }else{
     //ridirezionamento fuori areaUtente

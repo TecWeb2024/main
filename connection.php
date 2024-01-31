@@ -3,9 +3,9 @@ namespace DB;
 
 class DBAccess {
     private const HOST_DB = "localhost";
-    private const DATABASE_NAME = "mpan"; // Inserisci il nome del tuo database
-    private const USERNAME = "mpan"; // Inserisci il tuo nome utente del database
-    private const PASSWORD = "jih7Xooghoog7wi0"; // Inserisci la tua password del database
+    private const DATABASE_NAME = "tcorbu"; // Inserisci il nome del tuo database
+    private const USERNAME = "tcorbu"; // Inserisci il tuo nome utente del database
+    private const PASSWORD = "Ogh2uutie4IwaiCh"; // Inserisci la tua password del database
 
     private $connection;
 
@@ -134,7 +134,6 @@ class DBAccess {
     public function getCategoriesFromDatabase() {
         $categories = array();
     
-        // Query per ottenere le categorie dalla tabella 'categoria'
         $query = "SELECT * FROM categoria";
         $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
     
@@ -142,7 +141,7 @@ class DBAccess {
             while ($row = $result->fetch_assoc()) {
                 $categories[] = $row;
             }
-            $result->free_result(); // Libera la memoria del risultato
+            $result->free_result();
         } else {
             $categories = array();
         }
@@ -261,10 +260,10 @@ class DBAccess {
 
 
     //PAGINA FAQ
-    public function getFaqFromDataBase() {
+    public function getFaqFromDataBase($id) {
     $domande_risposta = array();
 
-    $query = "SELECT domanda, risposta FROM faq WHERE utente=1";// cambiare con id utente
+    $query = "SELECT domanda, risposta FROM faq WHERE utente=$id";
     $result = mysqli_query($this->connection, $query) or die("Errore nell'accesso al database" .mysqli_error($this->connection));
 
     if ($result && $result->num_rows > 0) {
@@ -298,7 +297,7 @@ class DBAccess {
 
 
     
-
+    //PAGINA PRODOTTO
     public function getProdottoById($idProdotto) {
         $prodotto = array();
     
@@ -333,9 +332,7 @@ class DBAccess {
         return $categoria;
     }
 
-
-public function saveToCart($user_Id, $product_Id, $quantity_Id) {
-    // Esegue l'escape delle variabili per evitare SQL injection
+    public function saveToCart($user_Id, $product_Id, $quantity_Id) {
     $userId = mysqli_real_escape_string($this->connection, $user_Id);
     $productId = mysqli_real_escape_string($this->connection, $product_Id);
     $quantity = mysqli_real_escape_string($this->connection, $quantity_Id);
@@ -365,10 +362,9 @@ public function saveToCart($user_Id, $product_Id, $quantity_Id) {
             return 0;
         }
     }
-}
+    }
 
-public function updateProductQuantity($product_Id, $quantity) {
-    // Esegue l'escape delle variabili per evitare SQL injection
+    public function updateProductQuantity($product_Id, $quantity) {
     $productId = mysqli_real_escape_string($this->connection, $product_Id);
     $quantity = mysqli_real_escape_string($this->connection, $quantity);
 
@@ -388,15 +384,14 @@ public function updateProductQuantity($product_Id, $quantity) {
     } else {
         return 0;
     }
-}
+    }
 
 
 
 
 
-//PAGINA ADMIN [RIMOZIONE, MODIFICA]
-
-public function getProductsFromDatabase() {
+    //PAGINA ADMIN [RIMOZIONE, MODIFICA]
+    public function getProductsFromDatabase() {
     $products = array();
 
     $query = "SELECT * FROM prodotto";
@@ -411,27 +406,8 @@ public function getProductsFromDatabase() {
         $products = array();
     }
     return $products;
-}
-/*
-public function customQuery($sql, $params = []) {
-    $stmt = $this->connection->prepare($sql);
-
-    if ($stmt === false) {
-        die("Errore nella preparazione della query: " . $this->connection->error);
     }
 
-    if (!empty($params)) {
-        $types = str_repeat('s', count($params)); 
-        $stmt->bind_param($types, ...$params);
-    }
-
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    $stmt->close();
-
-    return $result;
-}*/
 
 
 

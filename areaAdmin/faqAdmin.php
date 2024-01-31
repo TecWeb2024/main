@@ -117,7 +117,6 @@ $paginaHTML = str_replace("{faq}",$stringaFAQ,$paginaHTML);
     die();
 }
 
-
 echo $paginaHTML;
 
 ?>

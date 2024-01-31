@@ -58,5 +58,4 @@ $paginaHTML = str_replace("{categorie}", $stringaCategorie, $paginaHTML);
 $paginaHTML = str_replace("{brands}", $stringaBrands, $paginaHTML);
 echo $paginaHTML;
 
-
 ?>

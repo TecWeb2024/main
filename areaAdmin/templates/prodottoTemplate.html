@@ -24,7 +24,7 @@
       <ul>
         <li><a href="index.php"><span lang="en">Home</span></a></li>
         <li><a href="faqAdmin.php">Area Risposte</a></li>
-        <li><a href="GestioneProdotti.php">Area Prodotti</a></li> <!--forse mettere iconcine per il mobile-->
+        <li><a href="GestioneProdotti.php">Area Prodotti</a></li> 
         <li><a href="chiSiamo.html">Chi Siamo</a></li>
         <li><a href="faq.php"><abbr title="Frequently Asked Questions" lang="en">FAQ</abbr></a></li>
         <li><a href="carrello.php">Carrello</a></li>
@@ -32,7 +32,6 @@
       </ul>
     </nav>
 </header>
-    <!--qui mettere variabile per breadcrumb-->
     <nav id="breadcrumb" aria-label="Percorso">
       <p>Ti trovi in: {breadcrumb}</p>
   </nav>
@@ -40,58 +39,12 @@
 <main id="content">
 
   <div id="product_Page">
-    <h2><!--Borsone Adidas-->{titoloProdotto}</h2>
+    <h2>{titoloProdotto}</h2>
     {errori}
 
-    <!-- <div id="product_Images">
-       Immagini del prodotto
-      <img src="images/BorsoneDavanti.jpg" class="grid_Image" alt="Vista frontale del borsone Adidas">
-      <img src="images/BorsoneDietro.jpg" class="grid_Image" alt="Vista posteriore del borsone Adidas">
-      <img src="images/BorsoneAperto.jpg" class="grid_Image" alt="Borsone Adidas aperto con scomparti visibili">
-      <img src="images/BorsoneChiuso.jpg" class="grid_Image" alt="Borsone Adidas chiuso, pronto per il trasporto">
-    </div> -->
     {immaginiProdotto}
 
     {contenutoProdotto}
-    <!-- <div id="product_Details"> mettere tutto dentro questro div che ha float
-      <h3>Specifiche Prodotto</h3>
-
-       <ul id="product_Specs"> unita di misura servono tag? -->
-        <!--<li><span class="specs_List">Prezzo:</span> 35 €</li>
-        <li><span class="specs_List">Peso:</span> 1.5 kg</li> 
-        <li><span class="specs_List">Dimensioni:</span> 22 cm x 56 cm x 28 cm</li>
-        <li><span class="specs_List">Colore:</span> Nero</li>
-        <li><span class="specs_List">Volume:</span> 39 L</li>
-        <li><span class="specs_List">Materiali:</span> tela, 100% poliestere riciclato</li>
-        <li><span class="specs_List">Azienda:</span> Adidas</li>
-      </ul> -->
-      {specificheProdotto}
-
-      
-      <!--<form action="prodotto.php" class="form" method="post">
-        <input type="submit" name="addToCart" class="CartButton" value="Aggiungi al carrello.">
-      </form> -->
-      {quantitaProdotto}
-      {carrello}
-
-
-      <!--<div id="product_Description">
-        <h3>Descrizione</h3>
-        <p>La scelta ideale per la palestra e le gite nel <span lang="en">weekend</span>. Questo borsone adidas ha una base robusta per proteggere il contenuto. Lo scomparto principale è dotato di una <span lang="en">zip</span> bidirezionale per un accesso rapido da entrambi i lati. Le numerose tasche offrono la massima praticità e lo scomparto interno ti consente di tenere separate le <span lang="en">sneaker</span>.</p>
-      </div> -->
-      {descrizioneProdotto}
-
-      <!--
-      <div id="delivery_Details">
-        <h3>Dettagli di Consegna</h3>
-          <ul id="delivery_List">
-            <li>Consegna in 3-5 giorni lavorativi</li>
-            <li>Spedizione gratuita per ordini superiori a 50 €</li>
-        </ul>
-      </div> -->
-      {consegna}
-
-   <!-- </div> -->
 
   </div>
 

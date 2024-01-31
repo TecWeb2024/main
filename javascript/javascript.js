@@ -1,21 +1,17 @@
 
 function showError(input, message) {
-    // Rimuovi eventuali messaggi di errore esistenti
     removeChildInput(input);
 
-    // Crea l'elemento di errore
     const errorElement = document.createElement("strong");
     errorElement.className = "error_Message";
     errorElement.appendChild(document.createTextNode(message));
 
-    // Inserisci l'elemento di errore dopo l'input
     input.parentNode.insertBefore(errorElement, input.nextSibling);
 }
 
 function removeChildInput(input) {
     const nextSibling = input.nextSibling;
 
-    // Verifica se il prossimo fratello è definito e se è un messaggio di errore
     if (nextSibling && nextSibling.classList && nextSibling.classList.contains("error_Message")) {
         input.parentNode.removeChild(nextSibling);
     }
@@ -111,7 +107,6 @@ function validateDomanda(inputDomanda){
     if(inputDomanda.value.length < 5){
         showError(inputDomanda,"Inserire una domanda aperta con almeno 5 caratteri.");
         inputDomanda.focus();
-        inputDomanda.select();
         return false;
     }
     return true;
@@ -348,7 +343,6 @@ function validateDescrizione(inputDescrizione){
     if(inputDescrizione.value.length < 25){
         showError(inputDescrizione,"Inserire una descrizione di almeno 25 caratteri.");
         inputDescrizione.focus();
-        inputDescrizione.select();
         return false;
     }
     return true;
@@ -360,7 +354,6 @@ function validateAlt(inputAlt){
     if(inputAlt.value.length < 5 || inputAlt.value.length > 75){
         showError(inputAlt,"Inserire una breve descrizione maggiore di 5 e minore di 75 caratteri.");
         inputAlt.focus();
-        inputAlt.select();
         return false;
     }
     return true;

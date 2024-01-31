@@ -26,7 +26,7 @@
           <ul>
             <li><a href="index.php"><span lang="en">Home</span></a></li>
             <li><a href="faqAdmin.php">Area Risposte</a></li>
-            <li>Area Prodotti</li> <!--forse mettere iconcine per il mobile-->
+            <li>Area Prodotti</li>
             <li><a href="chiSiamo.html">Chi Siamo</a></li>
             <li><a href="faq.php"><abbr title="Frequently Asked Questions" lang="en">FAQ</abbr></a></li>
             <li><a href="carrello.php">Carrello</a></li>
@@ -42,7 +42,7 @@
     <main id="content">   
       <div class="form">
         <p>Se vuoi rimuovere o modificare un prodotto puoi accedere alle rispettive aree:</p>
-        <a href="rimuoviProdotto.php" class="button">Rimuovi Prodotto</a> <!--cambiare style-->
+        <a href="rimuoviProdotto.php" class="button">Rimuovi Prodotto</a> 
 
         <a href="modificaProdotto.php" class="button">Modifica Prodotto</a>
     </div>
@@ -53,26 +53,11 @@
           {errori}
           <label for="nome">Nome:</label>
           <input type="text" id="nome" name="nome" placeholder="Inserisci un nome" required>
-          <!--
-          <label for="immagine1">Immagine in Alto a Sinistra:</label>
-          <input type="file" id="immagine1" name="immagine1" accept="image/*" required>
-          
-          <label for="immagine2">Immagine in Alto a Destra:</label>
-          <input type="file" id="immagine2" name="immagine2" accept="image/*" required>
-          
-          <label for="immagine3">Immagine in Basso a Sinistra:</label>
-          <input type="file" id="immagine3" name="immagine3" accept="image/*" required>
-          
-          <label for="immagine4">Immagine in Basso a Destra:</label>
-          <input type="file" id="immagine4" name="immagine4" accept="image/*" required>
-          -->
+    
           <div class="categoria_selettore">
           <label for="categoria">Categoria:</label>
           <select id="categoria" name="categoria" required>
-             <!--<option value="1">Accessori</option>
-              <option value="2">Macchinari</option>
-              <option value="3">Pesi Liberi</option>
-              <option value="4">Nutrizione</option> -->
+             
               {selezioneCategoria}
           </select>
           </div>
@@ -109,12 +94,6 @@
           
           <label for="marca">Marca:</label>
           <select id="marca" name="marca" required>
-              <!--<option value="1">Optimum Nutrition</option>
-              <option value="2">Cousin-Trestec</option>
-              <option value="3">Technogym</option>
-              <option value="4">Bodystrong Fitness</option>
-              <option value="5">Adidas</option>
-              <option value="6">My Protein</option> -->
               {selezioneMarca}
           </select>
           

@@ -16,7 +16,8 @@ $connection = new DBAccess();
 if($connection->isLoggedInUser()){
 
 if ($connection->openDBConnection()) {
-    $listaFAQ = $connection->getFaqFromDatabase();
+    $id = $_SESSION['user'];
+    $listaFAQ = $connection->getFaqFromDatabase($id);
     $connection->closeDBConnection();
 
     if ($listaFAQ != null) {

@@ -8,7 +8,6 @@
 
     $paginaHTML = file_get_contents("templates/modificaProdottoTemplate.html");
     $error = "";
-    $risultatoQuery = "";
     $listaCategoria = "";
     $stringaCategoria = "";
     $listaMarca = "";
@@ -176,39 +175,10 @@
           
         
         if(isset($_POST["submit_modifica"])){ 
-            /*$prodotto_references = $connection->getProdottoById($ID);*/
-            /*$connection->removeProductById($_POST['id_mod']);*/
+            
             $ID = $_POST['IDp'];
             $nuovo_nome = sanitizeInput($_POST['nome']);
 
-            /*if(empty($_FILES['immagine1_mod']['name'])) {
-                $nuova_immagine1 = $prodotto_references['immagine1'];
-            }else{
-                $nuova_immagine1 = 'images/' . sanitizeInput(basename($_FILES['immagine1_mod']['name']));
-                move_uploaded_file(sanitizeInput($_FILES['immagine1_mod']['tmp_name']), $nuova_immagine1);
-            }
-
-            if(empty($_FILES['immagine2_mod']['name'])) {
-                $nuova_immagine2 = $prodotto_references['immagine2'];
-            }else{
-                $nuova_immagine2 = 'images/' . sanitizeInput(basename($_FILES['immagine2_mod']['name']));
-                move_uploaded_file(sanitizeInput($_FILES['immagine2_mod']['tmp_name']), $nuova_immagine2);
-            }
-
-            if(empty($_FILES['immagine3_mod']['name'])) {
-                $nuova_immagine3 = $prodotto_references['immagine3'];
-            }else{
-                $nuova_immagine3 = 'images/' . sanitizeInput(basename($_FILES['immagine3_mod']['name']));
-                move_uploaded_file(sanitizeInput($_FILES['immagine3_mod']['tmp_name']), $nuova_immagine3);
-            }
-
-            if(empty($_FILES['immagine4_mod']['name'])) {
-                $nuova_immagine4 = $prodotto_references['immagine4'];
-            }else{
-                $nuova_immagine4 = 'images/' . sanitizeInput(basename($_FILES['immagine4_mod'])['name']);
-                move_uploaded_file(sanitizeInput($_FILES['immagine4_mod']['tmp_name']), $nuova_immagine4);
-            }*/
-    
             $nuova_categoria = sanitizeInput($_POST['categoria']);
             $nuovo_prezzo = sanitizeInput($_POST['prezzo']);
             $nuovo_peso = sanitizeInput($_POST['peso']);
@@ -222,31 +192,11 @@
             $nuova_marca = sanitizeInput($_POST['marca']);
             $nuovo_alt = sanitizeInput($_POST['alt']);
 
-            /*$maxSize = 1024 * 1024;
-
-            $fileSize1 = $_FILES['immagine1_mod']['size'];
-
-            $fileSize2 = $_FILES['immagine2_mod']['size'];
-
-            $fileSize3 = $_FILES['immagine3_mod']['size'];
-
-            $fileSize4 = $_FILES['immagine4_mod']['size'];*/
 
             if(!preg_match('/\w{3,}/',$nuovo_nome)){ 
                 array_push($err,'<p class="error_Message" role="alert">Nome del prodotto deve essere maggiore di 3 lettere.</p>');
             }
-            /*if($fileSize1 > $maxSize){
-                array_push($err,'<p class="error_Message" role="alert">Immagine 1 deve essere inferiore ad un <span>megabyte</span>.</p>');
-            }
-            if($fileSize2 > $maxSize){
-                array_push($err,'<p class="error_Message" role="alert">Immagine 2 deve essere inferiore ad un <span>megabyte</span>.</p>');
-            }
-            if($fileSize3 > $maxSize){ 
-                array_push($err,'<p class="error_Message" role="alert">Immagine 3 deve essere inferiore ad un <span>megabyte</span>.</p>');
-            }
-            if($fileSize4 > $maxSize){ 
-                array_push($err,'<p class="error_Message" role="alert">Immagine 4 deve essere inferiore ad un <span>megabyte</span>.</p>');
-            }*/
+            
             if($nuova_categoria < 0){ 
                 array_push($err,'<p class="error_Message" role="alert">Non sono presenti categorie nel nostro sistema.</p>');
             }
@@ -328,12 +278,6 @@
        header("Location: ../index.php");
        die();
     }
-/*
-    $paginaHTML = str_replace("{scegliProdotto}", $scelta, $paginaHTML);
-    $paginaHTML = str_replace("{modifica}", $modifica, $paginaHTML);
-    $paginaHTML = str_replace("{selezioneCategoria}",$stringaCategoria,$paginaHTML);
-    $paginaHTML = str_replace("{selezioneMarca}",$stringaMarca,$paginaHTML); 
-    $paginaHTML = str_replace("{risultatoQuery}",$stringaErrori,$paginaHTML);  */
     
     echo $paginaHTML;
 

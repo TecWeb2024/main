@@ -28,9 +28,7 @@ $connection = new DBAccess();
 
     $stringaPesiLiberi .= '</ul>';
 
-
 $paginaHTML = str_replace("{pesiLiberi}", $stringaPesiLiberi, $paginaHTML);
 echo $paginaHTML;
-
 
 ?>

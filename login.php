@@ -35,7 +35,7 @@
 
                 if($connection->openDBconnection()){
                     
-                    //Cerca admin con quell'id
+                    
                     $users = $connection->getRowsFromDatabase($nome);  
                     $connection->closeDBconnection();
 
@@ -48,23 +48,23 @@
 
                                 $_SESSION['user'] = $user['id'];
     
-                                header("Location: areaAdmin/GestioneProdotti.php"); // modificare nome pagina
+                                header("Location: areaAdmin/GestioneProdotti.php"); 
                                 die();
     
-                            }else{ //era role="alert" dentro il tag, password errata
+                            }else{ 
                                 array_push($errori,'<p class="error_Message" role="alert">Nome o <span lang="en">password</span> non corretti</p>');
                             }
                         }
                         elseif($user['amministratore']==0)
                         {
-                            if($password==$user['passw']){ //password_verify($password,$user['passw'])
+                            if($password==$user['passw']){
 
                                 $_SESSION['user'] = $user['id'];
     
                                 header("Location: areaUtente/index.php");
                                 die();
     
-                            }else{ //era role="alert" dentro il tag, password errata
+                            }else{ 
                                 array_push($errori,'<p class="error_Message" role="alert">Nome o <span lang="en">password</span> non corretti</p>');
                             }
                         }
@@ -78,7 +78,7 @@
                         $stringaErrori .= '<li>'.$error.'</li>';
                     }
                     $stringaErrori .= '</ul>';
-                    $paginaHTML = str_replace("{erroriLogin}",$stringaErrori,$paginaHTML); //Contiene solo l'ultimo errore
+                    $paginaHTML = str_replace("{erroriLogin}",$stringaErrori,$paginaHTML);
                     $paginaHTML = str_replace("{logout}",$stringaLogout,$paginaHTML);
                     
                 }else{ //non è stato possibile aprire una connessione al database
@@ -86,13 +86,13 @@
                     $paginaHTML = str_replace("{erroriLogin}",$DBerror,$paginaHTML);
                     $paginaHTML = str_replace("{logout}",$stringaLogout,$paginaHTML);
                 }                       
-            }else{ //ci sono errori
+            }else{
                  //Mostra form con errori di formato
                 $stringaErrori = '<ul>';
                 foreach($errori as $error){
                     $stringaErrori .= '<li>'.$error.'</li>';
                 }
-                $stringaErrori .= '</ul>'; //prima era '<ul>'
+                $stringaErrori .= '</ul>'; 
                 $paginaHTML = str_replace("{erroriLogin}",$stringaErrori,$paginaHTML);
                 $paginaHTML = str_replace("{logout}",$stringaLogout,$paginaHTML);
             }

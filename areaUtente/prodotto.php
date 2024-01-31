@@ -15,12 +15,8 @@ $keywords = "";
 $breadcrumb = "";
 $titoloProdotto = "";
 $immaginiProdotto = "";
-$specificheProdotto = "";
-$quantitaProdotto = "";
 $carrello = "";
 $stringaMessaggio = "";
-$descrizioneProdotto = "";
-$consegna = "";
 $aggiornamento1= "";
 $aggiornamento2= "";
 
@@ -28,7 +24,7 @@ $listaprodotto = "";
 
 $connection = new DBAccess();
 
-if($connection->isLoggedInUser()){ // mancano keywords se null
+if($connection->isLoggedInUser()){
     if ($connection->openDBConnection()){
 
         if(isset($_GET['id'])){
@@ -82,21 +78,20 @@ if($connection->isLoggedInUser()){ // mancano keywords se null
                     $contenuto .= '<li><span class="specs_List">Materiali:</span> Non disponibile';
                 }
 
-                $contenuto .= '<li><span class="specs_List">Azienda:</span> '      . $prodotto['marca'] . '</li>
-                                        <li><span class="specs_List">Categoria:</span> '    . $nomeCategoria[0]['nome'] . '</li></ul>';
+                $contenuto .= '<li><span class="specs_List">Categoria:</span> '    . $nomeCategoria[0]['nome'] . '</li></ul>{carrello}';
             
 
-                $qnt = $prodotto['quantita']; // controllare come esce
+                $qnt = $prodotto['quantita'];
                     if($qnt != 0){
-                        $contenuto .= '<form action="prodotto.php" class="form" id="form" method="get"><div id="cart_Specs">
+                        $carrello = '<form action="prodotto.php" class="form" id="form" method="get"><div id="cart_Specs">
                         <p class="cart_List">Seleziona quantità:</p><select name="opzione_selezionata" id="quantity"> ';
                         for ($i = 1; $i <= $qnt; $i++) {
-                            $contenuto .= '<option value="' . $i . '"> ' . $i . '</option>';
+                            $carrello .= '<option value="' . $i . '"> ' . $i . '</option>';
                         }
-                        $contenuto .= ' </select></div><input type="hidden" name="id" value="'.$prodotto['ID'].'"></input>
+                        $carrello .= ' </select></div><input type="hidden" name="id" value="'.$prodotto['ID'].'"></input>
                         <input type="submit" name="addToCart" class="button" value="Aggiungi al carrello"></form>';
                     }elseif($qnt == 0){
-                        $contenuto .= '<p> Prodotto esaurito! Ci dispiace per il disagio, presto tornerà disponibile!</p>';
+                        $carrello .= '<p> Prodotto esaurito! Ci dispiace per il disagio, presto tornerà disponibile!</p>';
                     }
                      
                     $contenuto .= '<div id="product_Description"><h3>Descrizione</h3><p>' . $prodotto['descrizione'] . '</p></div>';
@@ -125,7 +120,7 @@ if($connection->isLoggedInUser()){ // mancano keywords se null
                             $query = "DELETE FROM carrello WHERE IDprodotto=$idProdotto;";
                             $checkQuery=$connection->modifyDatabase($query);
     
-                            if($checkQuery){//DELETE eseguita correttamente
+                            if($checkQuery){
                                 $stringaMessaggio = '<p class="error_Message" role="alert">Errore nell\'inserimento nel carrello.</p>';
                             }
                         }else{ //corretto update quantità
@@ -133,15 +128,15 @@ if($connection->isLoggedInUser()){ // mancano keywords se null
 
                             $qnt =  $qnt - $quantita_selezionata;
                             if($qnt != 0){
-                                $quantitaProdotto = '<form action="prodotto.php" class="form" method="get"><div id="cart_Specs">
+                                $carrello = '<form action="prodotto.php" class="form" method="get"><div id="cart_Specs">
                                 <p class="cart_List">Seleziona quantità:</p><select name="opzione_selezionata" id="quantity"> ';
                                 for($i = 1; $i <= $qnt; $i++){
-                                    $quantitaProdotto .= '<option value="' . $i . '"> ' . $i . '</option>';
+                                    $carrello .= '<option value="' . $i . '"> ' . $i . '</option>';
                                 }
-                                $quantitaProdotto .= ' </select></div><input type="hidden" name="id" value="'.$prodotto['ID'].'"></input>
+                                $carrello .= ' </select></div><input type="hidden" name="id" value="'.$prodotto['ID'].'"></input>
                                 <input type="submit" name="addToCart" class="button" value="Aggiungi al carrello"></form>';
                             }elseif($qnt == 0){
-                                $quantitaProdotto = '<p> Prodotto esaurito! Ci dispiace per il disagio, presto tornerà disponibile!</p>';
+                                $carrello = '<p> Prodotto esaurito! Ci dispiace per il disagio, presto tornerà disponibile!</p>';
                             }
                         }
                     }else{// non aggiunto al carrello
@@ -165,7 +160,7 @@ if($connection->isLoggedInUser()){ // mancano keywords se null
 
         }else{ // ID non valido, ID non presente nel database
             $error = '<p>Nessun prodotto che abbiamo attualmente nei nostri magazzini corrisponde a quello selezionato.</p>';
-        } // manca breadcrumb , titolo , ecc
+        }
 
         $paginaHTML = str_replace("{errori}",$error,$paginaHTML);
         $paginaHTML = str_replace("{titolo}", $titolo, $paginaHTML);
@@ -174,11 +169,7 @@ if($connection->isLoggedInUser()){ // mancano keywords se null
         $paginaHTML = str_replace("{titoloProdotto}", $titoloProdotto, $paginaHTML); 
         $paginaHTML = str_replace("{immaginiProdotto}", $immaginiProdotto, $paginaHTML);
         $paginaHTML = str_replace("{contenutoProdotto}", $contenuto, $paginaHTML);
-        $paginaHTML = str_replace("{specificheProdotto}", $specificheProdotto, $paginaHTML);
-        $paginaHTML = str_replace("{quantitaProdotto}", $quantitaProdotto, $paginaHTML);
-        $paginaHTML = str_replace("{descrizioneProdotto}", $descrizioneProdotto, $paginaHTML);
         $paginaHTML = str_replace("{carrello}", $carrello, $paginaHTML);
-        $paginaHTML = str_replace("{consegna}", $consegna, $paginaHTML);
 
     }else{
         $error = DBConnectionError(true);
@@ -189,11 +180,7 @@ if($connection->isLoggedInUser()){ // mancano keywords se null
         $paginaHTML = str_replace("{titoloProdotto}", $titoloProdotto, $paginaHTML);
         $paginaHTML = str_replace("{immaginiProdotto}", $immaginiProdotto, $paginaHTML);
         $paginaHTML = str_replace("{contenutoProdotto}", $contenuto, $paginaHTML);
-        $paginaHTML = str_replace("{specificheProdotto}", $specificheProdotto, $paginaHTML);
-        $paginaHTML = str_replace("{quantitaProdotto}", $quantitaProdotto, $paginaHTML);
-        $paginaHTML = str_replace("{descrizioneProdotto}", $descrizioneProdotto, $paginaHTML);
         $paginaHTML = str_replace("{carrello}", $carrello, $paginaHTML);
-        $paginaHTML = str_replace("{consegna}", $consegna, $paginaHTML);
     }
 }else{
     //ridirezionamento fuori areaUtente

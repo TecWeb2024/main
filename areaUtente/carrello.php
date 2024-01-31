@@ -1,5 +1,4 @@
 <?php
-    //qui puoi accedere al carrello normalmente
     require_once "../connection.php";
     require_once "../funzioni.php";
 
@@ -30,13 +29,13 @@
 
     if($connection->isLoggedInUser()){
         
-        if($connection->openDBConnection()){ // connessione aperta
+        if($connection->openDBConnection()){
             $risultato=array();
-            // Chiamata alla funzione
+            
             $id = $_SESSION['user'];
 
             $risultato = $connection->getRiepilogoFromDatabase($id);
-            $listaProdotti = $connection->getProdottiCarrello($id);//cambiare funzione
+            $listaProdotti = $connection->getProdottiCarrello($id);
 
 
             $connection->closeDBConnection();
@@ -78,7 +77,7 @@
                 $prezzoTotale = $prezzoParziale + $prezzoSpedizione;
 
                 $stringaRiepilogo = '<dd>Prezzo parziale: ' .$prezzoParziale.'€</dd><dd>Costo spedizione: ' .$prezzoSpedizione.'€</dd> <dd>Totale: ' .$prezzoTotale.' € ( ' .$numeroProdotti.' articoli selezionati)</dd>';
-                foreach ($listaProdotti as $prodotti) { // aggiungere alt
+                foreach ($listaProdotti as $prodotti) {
                     
                     $stringaProdotti .= '<li><a href="prodotto.php?id=' . $prodotti["IDprodotto"] . '"><img src="../' . $prodotti["immagine1"] . '" alt="' . $prodotti["alt"] . '"><div class="product_Info"><p>' . $prodotti["nome"] . ' € ' . $prodotti["prezzo"] . '</p>
                     <p>Quantità: ' . $prodotti["quantita"] . '</p></a>
@@ -113,7 +112,7 @@
                 $risultato=array();
                 
                             $risultato = $connection->getRiepilogoFromDatabase($id);
-                            $listaProdotti = $connection->getProdottiCarrello($id);//cambiare funzione + alt
+                            $listaProdotti = $connection->getProdottiCarrello($id);
                 
                             if($listaProdotti != null && $risultato != null) {
 
@@ -126,7 +125,7 @@
                 
                                 $stringaRiepilogo = '<dd>Prezzo parziale: ' .$prezzoParziale.'€</dd><dd>Costo spedizione: ' .$prezzoSpedizione.'€</dd> <dd>Totale: ' .$prezzoTotale.' € ( ' .$numeroProdotti.' articoli selezionati)</dd>';
                                 $stringaProdotti = "";
-                                foreach ($listaProdotti as $prodotti) { // aggiungere alt
+                                foreach ($listaProdotti as $prodotti) {
                                     
                                     $stringaProdotti .= '<li><a href="prodotto.php?id=' . $prodotti["IDprodotto"] . '"><img src="../' . $prodotti["immagine1"] . '" alt="' . $prodotti["alt"] . '"><div class="product_Info"><p>' . $prodotti["nome"] . ' € ' . $prodotti["prezzo"] . '</p>
                                     <p>Quantità: ' . $prodotti["quantita"] . '</p></a>

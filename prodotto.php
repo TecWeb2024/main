@@ -59,53 +59,55 @@ $connection = new DBAccess();
                                     <img src="' . $prodotto['immagine3'] . '" class="immagine_prodotto" alt="">
                                     <img src="' . $prodotto['immagine4'] . '" class="immagine_prodotto" alt=""></div>';
 
-                $specificheProdotto = '<ul id="product_Specs">
+                $contenuto .= '<ul id="product_Specs">
                                     <li><span class="specs_List">Prezzo:</span> '      . $prodotto['prezzo']       . '€</li>
                                     <li><span class="specs_List">Peso:</span> '         . $prodotto['peso']         . '</li> 
                                     <li><span class="specs_List">Dimensioni:</span> '   . $prodotto['dimensione']   . '</li>';
                 
                 if($prodotto['colore'] != NULL){
-                    $specificheProdotto .= '<li><span class="specs_List">Colore:</span> '       . $prodotto['colore']       . '</li>';
+                    $contenuto .= '<li><span class="specs_List">Colore:</span> '       . $prodotto['colore']       . '</li>';
                 }else{
-                    $specificheProdotto .= '<li><span class="specs_List">Colore:</span> Non disponibile';
+                    $contenuto  .= '<li><span class="specs_List">Colore:</span> Non disponibile';
                 }
 
                 if($prodotto['volume'] != NULL){
-                    $specificheProdotto .= '<li><span class="specs_List">Volume:</span> '       . $prodotto['volume']       . '</li>';
+                    $contenuto  .= '<li><span class="specs_List">Volume:</span> '       . $prodotto['volume']       . '</li>';
                 }else{
-                    $specificheProdotto .= '<li><span class="specs_List">Volume:</span> Non disponibile';
+                    $contenuto  .= '<li><span class="specs_List">Volume:</span> Non disponibile';
                 }
 
                 if($prodotto['materialeUtilizzato'] != NULL){
-                    $specificheProdotto .= '<li><span class="specs_List">Materiali:</span> '    . $prodotto['materialeUtilizzato'] . '</li>';
+                    $contenuto  .= '<li><span class="specs_List">Materiali:</span> '    . $prodotto['materialeUtilizzato'] . '</li>';
                 }else{
-                    $specificheProdotto .= '<li><span class="specs_List">Materiali:</span> Non disponibile';
+                    $contenuto  .= '<li><span class="specs_List">Materiali:</span> Non disponibile';
                 }
 
-                $specificheProdotto .= '<li><span class="specs_List">Azienda:</span> '      . $prodotto['marca'] . '</li>
+                $contenuto  .= '<li><span class="specs_List">Azienda:</span> '      . $prodotto['marca'] . '</li>
                                         <li><span class="specs_List">Categoria:</span> '    . $nomeCategoria[0]['nome'] . '</li></ul>';
             
 
                 $qnt = $prodotto['quantita']; // controllare come esce
                     if($qnt != 0){
-                        $quantitaProdotto .= '<form action="prodotto.php" class="form" method="get"><div id="cart_Specs">
+                        $contenuto  .= '<form action="prodotto.php" class="form" method="get"><div id="cart_Specs">
                         <p class="cart_List">Seleziona quantità:</p><select name="opzione_selezionata" id="quantity"> ';
                         for ($i = 1; $i <= $qnt; $i++) {
-                            $quantitaProdotto .= '<option value="' . $i . '"> ' . $i . '</option>';
+                            $contenuto  .= '<option value="' . $i . '"> ' . $i . '</option>';
                         }
-                        $quantitaProdotto .= ' </select></div><input type="hidden" name="id" value="'.$prodotto['ID'].'"></input>
+                        $contenuto  .= ' </select></div><input type="hidden" name="id" value="'.$prodotto['ID'].'"></input>
                         <input type="submit" name="addToCart" class="button" value="Aggiungi al carrello"></form>';
                     }elseif($qnt == 0){
-                        $quantitaProdotto = '<p> Prodotto esaurito! Ci dispiace per il disagio, presto tornerà disponibile!</p>';
+                        $contenuto  .= '<p> Prodotto esaurito! Ci dispiace per il disagio, presto tornerà disponibile!</p>';
                     }
                      
-                $descrizioneProdotto = '<div id="product_Description"><h3>Descrizione</h3><p>' . $prodotto['descrizione'] . '</p></div>';
+                    $contenuto  .= '<div id="product_Description"><h3>Descrizione</h3><p>' . $prodotto['descrizione'] . '</p></div>';
                 
-                $consegna = '<div id="delivery_Details"><h3>Dettagli di Consegna</h3><ul id="delivery_List">
+                    $contenuto  .= '<div id="delivery_Details"><h3>Dettagli di Consegna</h3><ul id="delivery_List">
                 <li>Consegna in 3-5 giorni lavorativi.</li>
                 <li>Spedizione gratuita per ordini superiori a 50 €.</li>
                 </ul></div> ';
+                $contenuto .= '</div>';
                 }
+
                
                 if(isset($_GET['addToCart'])){ // aggiungi al carrello
                     $error = '<p class="error_Message" role="alert">Per aggiungere al carrello bisogna effettuare l\'accesso tramite la pagina <span lang="en">account</span></p>';
@@ -116,7 +118,7 @@ $connection = new DBAccess();
                 $titoloProdotto = 'Prodotto non trovato';
                 $error = '<p>Il prodotto selezionato non è più presente nei nostri magazzini.</p>';
             }
-            $contenuto .= '</div>';
+            // $contenuto .= '</div>';
 
         }else{ // ID non valido, ID non presente nel database
             $error = '<p>Nessun prodotto che abbiamo attualmente nei nostri magazzini corrisponde a quello selezionato.</p>';

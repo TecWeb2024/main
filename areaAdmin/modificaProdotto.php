@@ -94,6 +94,7 @@
                         <h3> Modifica - ' . $prod['nome'] . '</h3>
                         <label for="nome">Nome:</label>
                         <input type="text" id="nome" name="nome" value="' . $prod['nome'] . '" required>
+
                         <!--
                         <label for="immagine1_mod">Immagine in Alto a Sinistra:</label>
                         <input type="file" id="immagine1_mod" name="immagine1_mod" accept="image/*">

@@ -13,14 +13,14 @@
       display: block;
     }
     
-    #menu { /* menu è giusto cancellarlo*/
+    #menu { 
       display: none;
     }
 
     main {
-      margin-left: 0.8cm; /* circa 0.8cm in em considerando 16px di base */
+      margin-left: 0.8cm; 
       width: 100%;
-      padding: 0.3cm 0 0.5cm 0; /* circa 0.3cm e 0.5cm in em considerando 16px di base */
+      padding: 0.3cm 0 0.5cm 0;
   }  
 
      .logo{
@@ -32,23 +32,26 @@
       }
 
     a[href^="/"]:after {
-        content: " ( http://tecweb.studenti.math.unipd.it/tcorbu/" attr(href) ") ";
+        content: " ( http://tecweb.studenti.math.unipd.it/fpivetta/" attr(href) ") ";
     }
 
      a[href*="http"]:after{
             content: " ( " attr(href) " )";
      }
-    /* Nascondi il pulsante "Torna in cima" durante la stampa */
+    
     #buttonToTop { 
       display: none;
     }
+    .button{
+      display:none;
+    }
   
-    /* Nascondi i link di navigazione durante la stampa */
+    
     .navigationHelp { 
       display: none;
     }
   
-    /* Personalizzazione dello stile per il breadcrumb durante la stampa */
+   
     #breadcrumb {
       background-color: white;
       color: black;
@@ -56,100 +59,87 @@
       font-size: 16px;
       padding: 8px;
     }
-    #categories h1{
-        text-align: center;
-        font-size: 200%;
-    }
-    /* Personalizzazione dello stile per le categorie articoli durante la stampa */
+    
+    
     #categories {
       padding: 20px;
       background-color: white;
       color: black;
-      /*border: 1px solid black;*/
       font-size: 18px;
     }
-    .categories_Container {
-      text-align: center; /* Centra gli elementi */
+
+
+    #categories_Container{
+      list-style-type: none;
       padding: 0;
-      /*margin-left: 50%;*/
-      height: 90%;
+      margin: 0 -10px;
+    }
+  
+    #categories_Container li{  
+      display:inline-block;
+      border: 1px solid black;
+      margin:5px;
+      height: 100%;
+      padding: 0px;
+      width:250px;
+      text-align: center;
     }
     
-    .categories_Container li{
-      display: inline-block; /* Rende gli elementi blocchi in linea */
-      width: 100px; /* Larghezza fissa */
-      margin: 10px;
-      padding: 10px;
-      border: 1px solid black;
-      border-radius: 5px;
-      font-size: 16px;
-      color: black;
-      background-color: white;
-      text-align: center; /* Centra il testo all'interno */
-    }
-
+  
     #categories_Container a{
       text-decoration: none;
       text-transform: uppercase;
       font-weight: bold;
-      font-size: 170%;
-      color: var(--textCategories);
+      font-size: 20px;
+      color: black;
     }
   
     #categories_Container img{
+      height:90%;
+      width:100%;
       align-content: center;
       object-fit:cover;
-      width: 100%;
     }
-    
-    
-  
-    /* Personalizzazione dello stile per i brand durante la stampa */
-    #brand {
-      padding: 20px;
-      background-color: white;
-      color: black;
-      /*border: 1px solid black;*/
-      font-size: 18px;
-    }
+
     #brand_Container{
-      display:block;
-    }
-    #brand_Container a {
-      display:block;
-      border: 1px solid black;
-      margin: 10px;
-      padding: 10px;
-      border-radius: 10px;
-      font-size: 16px;
-      color: black;
-      background-color: white;
-      overflow: hidden;
-      height: 20px; /* Altezza dei box contenenti le immagini */
+      list-style-type: none;
+      padding: 0 3em 0 3em;
+      margin: 0 -10px;
     }
   
-    /* Personalizzazione dello stile per i pagamenti sicuri durante la stampa */
+    #brand_Container li{
+      margin: 1em;
+      height: 100%;
+      border-radius: 10px;
+    }
+  
+  
+    #brand_Container img{
+      display:none;
+    }
+  
+    
     #payments {
       padding: 20px;
       background-color: white;
       color: black;
-      /*border: 1px solid black;*/
+      
       font-size: 18px;
     }
     #payments h2 {
-      margin-bottom: 10px; /* Riduce lo spazio sotto il titolo */
+      margin-bottom: 10px; 
     }
     #payments_Grid {
       display: block;
-      margin-top: 0; /* Risolve il problema del float */
+      margin-top: 0; 
     }
     
     #Mastercard,
     #Visa,
     #Googlepay,
     #Paypal {
-      display: inline-block; /* Rende gli elementi blocchi in linea */
-      width: 100px; /* Larghezza fissa */
+      display: inline-block; 
+      width: 100px; 
       margin: 10px;
       padding: 10px;
       border: 1px solid black;
@@ -157,17 +147,12 @@
       font-size: 16px;
       color: black;
       background-color: white;
-      text-align: center; /* Centra il testo all'interno */
+      text-align: center; 
     }
     
   
-    /* Personalizzazione dello stile per i social durante la stampa */
+    
     #social_List {
-      /*padding: 20px;
-      background-color: white;
-      color: black;
-      border: 1px solid black;
-      font-size: 18px;*/
       display:none;
     }
 
@@ -195,12 +180,7 @@
    *                                                         *
    ***********************************************************/
   
-  #products_List h1{
-    font-size: 200%;
-    text-align: center;
-    margin-top: 0.5cm;
-    margin-bottom: 0.5cm;
-  }
+  
   
   #products_Container {
     display: inline-block;
@@ -212,24 +192,23 @@
   #products_Container li{
     display: inline-block;
     width: 250px;
-    height: 250px;
+    height: 100%;
     border: 1px solid black;
     margin: 10px;
     padding: 10px;
     border-radius: 5px;
-    font-size: 150%;
   }
    
   #products_Container img {
       align-content: center;
       object-fit:cover;
-      width: 80%;
+      width: 100%;
       height: 80%;
       margin-bottom: 0.3cm;
   }
 
   #products_Container a{
-    font-size: 100%;
+    font-size: 15px;
     text-decoration: none;
     text-align: center;
     color: black;
@@ -244,10 +223,7 @@
    *                *
    ******************/
 
-   #product_Page h1 {
-    text-align: center;
-    margin-bottom: 0.5cm;
-}
+   
 
 #product_Images {
     text-align: center;
@@ -258,20 +234,20 @@
     width: 150px;
     height: 150px;
     border: 1px solid black;
-    margin: 0 10px; /* Aggiunto margine orizzontale tra le immagini */
+    margin: 0 10px; 
 }
 
 
 #product_Details {
-  float: left; /* Aggiunto float right per posizionare a destra */
+  float: left; 
   width: 40%;
-  margin-top: 0; /* Eliminato il grande margine iniziale */
+  margin-top: 0; 
 }
 
 #product_Details h2 {
-  font-size: 180%; /* Conversione da 180% di 12px (valore di base) */
-  margin-top: 6px; /* Conversione da 0.5em a px */
-  margin-bottom: 6px; /* Conversione da 0.5em a px */
+  font-size: 180%; 
+  margin-top: 6px; 
+  margin-bottom: 6px; 
 }
 
 
@@ -327,7 +303,6 @@
     float: left;
     width:100px;
     height:100px;
-   /* max-height: 3.3cm;*/
 }
 
   /***********
@@ -358,7 +333,6 @@
    
 
    .question h2{
-   /*margin-top: 0.2cm;*/
     margin-bottom: 0;
     font-size: 14pt;
    }
@@ -387,10 +361,7 @@
     top: 0;
   }
   
-  #cart_Page h1 {
-    /*color: black;*/
-    text-align: center;
-  }
+
 
   #headerCart {
     display:block;
@@ -400,7 +371,7 @@
 
   #headerCart li
   {
-    list-style: none; /* Rimuove il segno di elenco */
+    list-style: none; 
     padding: 0;
   }
 
@@ -408,26 +379,33 @@
     display: none;
   }
   
-  #cart_Container {
-    padding: 0;
-    margin: 0;
-  }
-  
-  #cart_Container li {
-    width: 25%;
-    float: left;
-    margin: 10px;
-    padding: 0px;
-    height: 100%;
-    border: 1px solid black;
+  #cart_Container{
+    display: inline-block;
     list-style-type: none;
     padding: 0;
+    margin: 0 -10px;
   }
-  
-  #cart_Container img {
+
+  #cart_Container li{
+    display: inline-block;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 0px;
+    width:200px;
+    height: 100%;
+  }
+
+  #cart_Container a{
+    text-decoration: none;
+    color: #000000;
+  }
+
+  #cart_Container img{
+    align-content: center;
+    object-fit:contain;
     width: 100%;
   }
-  
+
   .product-details {
     font-size: 110%;
     margin: 2%;
@@ -440,6 +418,7 @@
   #order_Details {
     padding: 12px 0;
     margin-top: 18px;
+    margin-bottom: 5px;
   }
 
   #order_Details h2 {
@@ -448,21 +427,21 @@
 
   #delivery_Address {
     margin: 6px;
-    width: calc(50% - 12px); /* Metà del container */
-    float: left; /* Posizionamento a sinistra */
+    width: calc(50% - 12px); 
+    float: left; 
   }
 
   #delivery_Payments {
     margin: 6px;
-    width: calc(50% - 12px); /* Metà del container */
-    float: right; /* Posizionamento a destra */
+    width: calc(50% - 12px); 
+    float: right; 
   }
 
   #delivery_Address label,
   #delivery_Address input,
   #delivery_Address textarea {
-    display: block; /* Visualizza ogni elemento su una nuova riga */
-    margin-bottom: 6px; /* Aggiungi spazio tra gli elementi */
+    display: block; 
+    margin-bottom: 6px; 
   }
 
   .payment-details {
@@ -480,7 +459,7 @@
   }
   
   footer {
-    clear: both; /* Posizionare il footer sotto gli elementi float */
+    clear: both; 
   }
   
 
@@ -491,15 +470,11 @@
    *             *
    ***************/
 
-   .accountButton{
-    display:none;
-   }
+   
    #form_Container p{
     display:none;
    }
-   input[type="password"]{
-    display:none;
-   }
+   
 
 
 

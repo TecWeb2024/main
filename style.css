@@ -238,51 +238,6 @@
   }
 
 
-  
-  /*
-  #optimumnutritionImage{
-    background-image: url('images/OptimumNutrition.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-  }
-
-  #technogymImage{
-    background-image: url('images/Technogym.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-
-  #cousinTrestecImage{
-    background-image: url('images/cousintrestecImage.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-
-  #baodelongImage{
-    background-image: url('images/baodelong.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  
-  #adidasImage{
-    background-image: url('images/adidas.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  #myproteinImage{
-    background-image: url('images/myprotein.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  } 
-  */
-
   /*PAYMENTS*/
 
   #payments{
@@ -720,24 +675,7 @@
   .question p{
     font-size: 110%;
   }
-  /*
-  #ask_Question {
-    margin-top: 5em;
-    margin-bottom: 2em;
-  }
-
-  #ask_Question h3{
-    font-size: 120%;
-    margin-bottom: 1em;
-  }
-
-  #question_Input { correggere faq stile
-    width: 50%;
-    padding: 1em;
-    margin-right: 1em;
-    border: 1px solid #000000;
-  }*/
-
+  
   #formDomanda {
     margin-top: 15%;;
     font-size: 120%; 
@@ -810,7 +748,6 @@
     flex: 0 0 25%;
     height: 100%;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
   }
 
   #cart_Container a{

@@ -1,74 +1,131 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
   <meta charset="UTF-8">
-  <title>Errore Server - Olympo Fitness</title>
-  <meta name="keywords" content="Olympo Fitness, palestra, negozio palestra, pesi liberi , macchinari palestra, macchinari, nutrizione, accessori palestra, errore server, errore">
+  <title>Domande Fatte - Olympo Fitness</title>
+  <meta name="keywords"
+    content="Olympo Fitness, palestra, negozio palestra, carrello, pesi liberi, macchinari palestra, macchinari, nutrizione, accessori palestra">
   <meta name="author" content="Olympo Fitness">
   <link rel="stylesheet" href="../style.css" media="screen">
   <link rel="stylesheet" href="../mobile.css" media="screen and (max-width: 508px)">
   <link rel="stylesheet" href="../tablet.css" media="screen and (min-width: 509px) and (max-width: 768px)">
   <link rel="stylesheet" href="../print.css" media="print">
 </head>
+
 <body>
-  <header>
-    <nav aria-label="Aiuti alla navigazione">
-      <a class="navigationHelp" href="#content">Vai al contenuto</a>
+    <header>
+      <nav aria-label="Aiuti alla navigazione">
+        <a class="navigationHelp" href="#content">Vai al contenuto</a>
+      </nav>
+      
+      <h1 class="logo"><span lang="en">Olympo Fitness</span></h1>
+  
+      <nav id="menu" aria-label="menù del sito">
+        <a class="navigationHelp" href="#content">Salta il menù di navigazione</a>
+        <ul>
+          <li><a href="index.php"><span lang="en">Home</span></a></li>
+          <li>Domande Fatte</li>
+          <li><a href="chiSiamo.html">Chi Siamo</a></li>
+          <li><a href="faq.php"><abbr title="Frequently Asked Questions" lang="en">FAQ</abbr></a></li>
+          <li><a href="carrello.php">Carrello</a></li>
+          <li><a href="login.php"><span lang="en">Account</span></a></li>
+        </ul>
+      </nav>
+  </header>
+    
+    <nav id="breadcrumb" aria-label="Percorso">
+        <p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> &gt; Domande Fatte </a></p>
     </nav>
     
-    <h1 class="logo"><span lang="en">Olympo Fitness</span></h1>
+    <main id="content">
+        <div id="q_a_container">
+            <h2>Domande Effettuate:</h2>
+            <ul class="q_a_list">
+            {faq}
+            </ul>
+        </div>
+        <a href="#" id="buttonToTop">Torna in cima</a>
+    </main>
 
-    <nav id="menu" aria-label="menù del sito">
-      <a class="navigationHelp" href="#content">Salta il menù di navigazione</a>
-      <ul>
-        <li><a href="index.php"><span lang="en">Home</span></a></li>
-        <li><a href="areaUtenteFaq.php">Domande Fatte</a></li>
-        <li><a href="chiSiamo.html">Chi Siamo</a></li>
-        <li><a href="faq.php"><abbr title="Frequently Asked Questions" lang="en">FAQ</abbr></a></li>
-        <li><a href="carrello.php">Carrello</a></li>
-        <li><a href="login.php"><span lang="en">Account</span></a></li>
-      </ul>
-    </nav>
-</header>
-  <nav id="breadcrumb" aria-label="Percorso">
-    <p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> &gt; Errore comunicazione con il <span lang="en">server</span></p>
-  </nav>
+    <footer>
+        <div id="contacts">
+          <h3>Contatti</h3>
+          <form action="modificaProdotto.php" class="form" method="post" onsubmit="validateFormProdotto()">
+            <h3> Modifica - ' . $prod['nome'] . '</h3>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" value="' . $prod['nome'] . '" required>
 
-  <main id="content">
+            <!--
+            <label for="immagine1_mod">Immagine in Alto a Sinistra:</label>
+            <input type="file" id="immagine1_mod" name="immagine1_mod" accept="image/*">
+            <img src="../' . $prod['immagine1'] . '" alt="" required>
+            
+            <label for="immagine2_mod">Immagine in Alto a Destra:</label>
+            <input type="file" id="immagine2_mod" name="immagine2_mod" accept="image/*">
+            <img src="../' . $prod['immagine2'] . '" alt="" required>
+            
+            <label for="immagine3_mod">Immagine in Basso a Sinistra:</label>
+            <input type="file" id="immagine3_mod" name="immagine3_mod" accept="image/*">
+            <img src="../' . $prod['immagine3'] . '" alt="" required>
+            
+            <label for="immagine4_mod">Immagine in Basso a Destra:</label>
+            <input type="file" id="immagine4_mod" name="immagine4_mod" accept="image/*">
+            <img src="../' . $prod['immagine4'] . '" alt="" required> -->
+            
+            <label for="categoria">Categoria:</label>
+            <select id="categoria" name="categoria" required>
+            {selezioneCategoria}
+            </select>
 
-  <div id="error_Message">
-    <h2>Errore 500: Errore comunicazione con il <span lang="en">server</span>!</h2>
-    <p>
-      <span id="first_Sentence500">Abbiamo avuto un problema con il nostro <span lang="en">server</span>. Stiamo lavorando per risolverlo.</span>
-      <span id="second_Sentence500">Abbiamo chiamato i nostri allenatori esperti in informatica, ma sembra che siano impegnati in palestra!</span>
-    </p>
-  </div>
+            <label for="prezzo">Prezzo:</label>
+            <input type="text" id="prezzo" name="prezzo" value="' . $prod['prezzo'] . '" required>
 
-  <a href="#" id="buttonToTop">Torna in cima</a>
+            <label for="peso">Peso:</label>
+            <input type="text" id="peso" name="peso" value="' . $prod['peso'] . '" required>
 
-  </main>
+            <label for="dimensione">Dimensione:</label>
+            <input type="text" id="dimensione" name="dimensione" value="' . $prod['dimensione'] . '" required>
+                    
+            <label for="colore">Colore:</label>
+            <input type="text" id="colore" name="colore" value="' . $prod['colore'] . '">
+                    
+            <label for="volume">Volume:</label>
+            <input type="text" id="volume" name="volume" value="' . $prod['volume'] . '">
 
-  <footer>
-    <div id="contacts">
-      <h3>Contatti</h3>
-      <ul>
-        <li><span lang="en">Email</span>: <a href="mailto:tecweb2024@gmail.com">tecweb2024@gmail.com</a></li>
-        <li>Telefono: <a href="tel:+123456789">+39 123-456-789</a></li>
-        <li>Sede: Via Trieste, 63, 35121 Padova (<abbr title="Padova">PD</abbr>)</li>
-    </ul>
-    </div>
-    <div id="social">
-      <h4>Seguici Su</h4>
-      <a href="https://www.instagram.com/" id="instaImage"><span lang="en">Instagram</span></a>
-  
-      <a href="https://www.youtube.com/" id="youtubeImage"><span lang="en">Youtube</span></a>
+            <label for="materialeUtilizzato">Materiale Utilizzato:</label>
+            <input type="text" id="materialeUtilizzato" name="materialeUtilizzato" value="' . $prod['materialeUtilizzato'] . '">
+               
+            <label for="quantita">Quantità:</label>
+            <input type="text" id="quantita" name="quantita" value="' . $prod['quantita'] . '" required>       
+                    
+            <label for="descrizione">Descrizione:</label>
+            <textarea id="descrizione" name="descrizione" cols="30" rows="5" required>' . $prod['descrizione'] . '</textarea>
+            
+            <label for="keywords"><span lang="en">Keywords</span>:</label>
+            <textarea id="keywords" name="keywords" cols="30" rows="5">' . $prod['keywords'] . '</textarea>
+    
+            <label for="alt">Breve Descrizione di Supporto:</label>
+            <textarea id="alt" name="alt"  cols="30" rows="5" required>'. $prod['alt'].'</textarea>
+            
+            <label for="marca">Marca:</label>
+            <select id="marca" name="marca" required>        
+            {selezioneMarca}
+            </select><input type="hidden" name="IDp" value="'. $prod['ID'].'">
+            <input type="submit" name="submit_modifica" class="button" value="Salva Modifiche"></form>
+        </div>
+        <div id="social">
+          <h4>Seguici Su</h4>
+          <a href="https://www.instagram.com/" id="instaImage"><span lang="en">Instagram</span></a>
       
-      <a href="https://www.facebook.com/" id="facebookImage"><span lang="en">Facebook</span></a>
-  
-      <a href="https://www.twitter.com/" id="twitterImage"><span lang="en">Twitter</span></a>
-    </div>
-    <div id="footer_Text"><p>&copy; 2024 <span lang="en">Olympo Fitness</span>. Tutti i diritti riservati.</p></div> 
-  </footer>
+          <a href="https://www.youtube.com/" id="youtubeImage"><span lang="en">Youtube</span></a>
+          
+          <a href="https://www.facebook.com/" id="facebookImage"><span lang="en">Facebook</span></a>
+      
+          <a href="https://www.twitter.com/" id="twitterImage"><span lang="en">Twitter</span></a>
+        </div>
+        <div id="footer_Text"><p>&copy; 2024 <span lang="en">Olympo Fitness</span>. Tutti i diritti riservati.</p></div> 
+    </footer>
 
 </body>
 </html>

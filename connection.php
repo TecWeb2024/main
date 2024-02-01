@@ -3,9 +3,9 @@ namespace DB;
 
 class DBAccess {
     private const HOST_DB = "localhost";
-    private const DATABASE_NAME = "mpan"; // Inserisci il nome del tuo database
-    private const USERNAME = "mpan"; // Inserisci il tuo nome utente del database
-    private const PASSWORD = "jih7Xooghoog7wi0"; // Inserisci la tua password del database
+    private const DATABASE_NAME = "fpivetta"; // Inserisci il nome del tuo database
+    private const USERNAME = "fpivetta"; // Inserisci il tuo nome utente del database
+    private const PASSWORD = "iecog8Eiqu9utupi"; // Inserisci la tua password del database
 
     private $connection;
 

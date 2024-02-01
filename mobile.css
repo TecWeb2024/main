@@ -362,6 +362,10 @@ footer{
     text-align: center;
 }
 
+.questions_container h2{
+    font-size: 160%;
+}
+
 .box_q_a{
     padding: 1%;
     border: #000 solid 2px;

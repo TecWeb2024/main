@@ -126,7 +126,7 @@ footer {
 }
 
 #products_Container li {
-    flex: 0 0 30%;
+    flex: 0 0 40%;
     font-size: 1.1em;
 }
 
@@ -260,14 +260,11 @@ footer {
 
 #form_Container {
     padding: 1em;
+    text-align: center;
 }
 
 #form_Container h2 {
     font-size: 170%;
-}
-
-#form_Container p {
-    font-size: 1.4em;
 }
 
 
@@ -327,6 +324,11 @@ footer {
 
 .questions_container {
     padding: 5%;
+}
+
+
+.questions_container h2{
+    font-size: 170%;
 }
 
 .box_q_a {

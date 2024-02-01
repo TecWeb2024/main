@@ -75,7 +75,7 @@
       height: 90%;
     }
     
-    .categories_Container a {
+    .categories_Container li{
       display: inline-block; /* Rende gli elementi blocchi in linea */
       width: 100px; /* Larghezza fissa */
       margin: 10px;
@@ -86,6 +86,20 @@
       color: black;
       background-color: white;
       text-align: center; /* Centra il testo all'interno */
+    }
+
+    #categories_Container a{
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 170%;
+      color: var(--textCategories);
+    }
+  
+    #categories_Container img{
+      align-content: center;
+      object-fit:cover;
+      width: 100%;
     }
     
     

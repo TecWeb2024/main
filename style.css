@@ -139,6 +139,7 @@
     color: #FFFFFF;
     border: 1px solid #000000;
     cursor: pointer;
+    margin: 0.2em;
   }
 
   .button:hover {
@@ -587,24 +588,10 @@
     display: inline-block
   }
 
-  #quantity {
-    font-size: 100%;
-    height: 100%;
-    width: 15%; 
-  }
-
   #quantity{
-    padding: 5% 5%;
+    padding: 1.5em;
   }
 
-  #quantity option{
-    width: 2em;
-  }
-
-  #quantity option{
-    width: 5%;
-    height: 5%;
-  }
   
   #product_Description h3{
     font-size: 170%;
@@ -850,12 +837,10 @@
   }
 
   #order_Details input{
-    font-size: 100%;
     max-width: 70%;
   }
 
   #delivery_Address{
-    max-width: 70%;
     text-align: left;
     border: 5px;
     display: flex;
@@ -872,8 +857,7 @@
   #delivery_Address input {
     width: 100%;
     box-sizing: border-box; 
-    margin-bottom: 0.5em; 
-    border-radius: 20px;
+    margin-bottom: 1em; 
     border: 1px solid #000000;
     font-size: 100%;
   }
@@ -885,6 +869,10 @@
     margin: 2%;
     border-radius: 50px;
     border: 1px solid #000000;
+  }
+
+  .product_Info p{
+    margin-left: 0.5em;
   }
   
 
@@ -900,6 +888,7 @@
     padding: 2em;
     width: 50%;
     margin: auto;
+    text-align: center;
   }
 
   #logout{
@@ -909,7 +898,6 @@
 
   #form_Container h2{
     font-size: 200%;  
-    text-align: center;
     margin-bottom: 1em;
     margin-top: 1em;  
   }
@@ -917,7 +905,6 @@
   #form_Container p{
     margin-top: 2em;
     margin-bottom: 1em;
-    text-align: center;
   }
 
   .form {
@@ -957,6 +944,7 @@
 
   #q_a_container {
     text-align: center;
+    margin: 1em;
   }
 
   #q_a_container h2{
@@ -984,11 +972,20 @@
     text-align: center;
   }
 
+  .questions_container h2{
+    font-size: 200%;
+    margin-bottom: 1em;
+  }
+
   .box_q_a{
     padding: 1%;
     font-size: 120%;
     border: #000000 solid 1px;
     margin-bottom: 2%;
+  }
+
+  .box_q_a h3{
+    width: auto;
   }
   
 
@@ -1036,9 +1033,6 @@
     border-radius: 3px;
   }
   
-  .button{
-    margin: 5px;
-  }
 
   .form .button{
     display:inline-block;
@@ -1051,6 +1045,10 @@
 
   .form textarea{
     resize: none;
+  }
+
+  .form a{
+    margin: 0.5em;
   }
 
   .form_rimuovi select{

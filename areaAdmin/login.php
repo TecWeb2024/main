@@ -13,7 +13,8 @@
 
     if($connection->isLoggedInAdmin()){
 
-        $stringaLogout = '<p id="logout">Se vuoi disconnetterti: <a href="logout.php" class="button">Esci</a></p>';
+        $stringaLogout = '<p id="logout">Se vuoi disconnetterti premi il pulsante:</p> 
+        <a href="logout.php" class="button">Esci</a>';
         $paginaHTML = str_replace("{logout}",$stringaLogout,$paginaHTML);
     
     }

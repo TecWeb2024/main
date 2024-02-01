@@ -1,8 +1,8 @@
-  /******************
-   *                *
-   *    HOME PAGE   *
-   *                *
-   ******************/
+/******************
+ *                *
+ *    HOME PAGE   *
+ *                *
+ ******************/
 
 header {
     padding: 1em;
@@ -111,11 +111,11 @@ footer {
     padding: 1em;
 }
 
-  /***********************************************************
-   *                                                         *
-   *    ACCESSORI - PESI LIBERI - NUTRIZIONE - MACCHINARI    *
-   *                                                         *
-   ***********************************************************/
+/***********************************************************
+ *                                                         *
+ *    ACCESSORI - PESI LIBERI - NUTRIZIONE - MACCHINARI    *
+ *                                                         *
+ ***********************************************************/
 
 #products_List {
     padding: 1em 1em 2em 1em;
@@ -135,30 +135,42 @@ footer {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* PRODUCT PAGE */
+/******************
+ *                *
+ *    PRODOTTO    *
+ *                *
+ ******************/
 
 #product_Page {
     padding: 1em;
 }
 
 #product_Page h2 {
-    font-size: 2em;
+    font-size: 170%;
 }
 
 #product_Images {
-    padding: 1em;
+    justify-content: center;
+    clear: both;
+    width: 100%;
+    padding: 0.5em;
 }
 
 #product_Details h3 {
-    font-size: 1.8em;
+    font-size: 140%;
+}
+
+#product_Details{
+    clear: both;
+    width: 100%;
 }
 
 #product_Specs {
-    font-size: 1.4em;
+    font-size: 120%;
 }
 
 #product_Description h3 {
-    font-size: 1.5em;
+    font-size: 140%;
 }
 
 #product_Description {
@@ -166,7 +178,7 @@ footer {
 }
 
 #delivery_Details h3 {
-    font-size: 1.5em;
+    font-size: 140%;
 }
 
 #delivery_Details {
@@ -174,21 +186,23 @@ footer {
 }
 
 #cart_Specs {
-    clear: none;
+    clear: both;
 }
 
-  /******************
-   *                *
-   *    CHI SIAMO   *
-   *                *
-   ******************/
+
+
+/******************
+ *                *
+ *    CHI SIAMO   *
+ *                *
+ ******************/
 
 #chiSiamo_Content {
     padding: 1em;
 }
 
 #chiSiamo_Content h2 {
-    font-size: 2em;
+    font-size: 170%;
 }
 
 #company_Info p {
@@ -198,7 +212,7 @@ footer {
 }
 
 #company_Info h3 {
-    font-size: 1.5em;
+    font-size: 140%;
 }
 
 #company_Info img {
@@ -207,7 +221,7 @@ footer {
 }
 
 #team_Members h3 {
-    font-size: 1.5em;
+    font-size: 140%;
 }
 
 .members p {
@@ -216,14 +230,16 @@ footer {
     padding-right: 4%;
 }
 
-.members img {
-    width: 40%;
-}
 
-/* FAQ */
+
+/***********
+ *         *
+ *   FAQ   *
+ *         *
+ ***********/
 
 #faq_Page h2 {
-    font-size: 2em;
+    font-size: 170%;
 }
 
 .type_Questions {
@@ -233,44 +249,45 @@ footer {
 }
 
 .question h3 {
-    font-size: 1.4em;
+    font-size: 140%;
 }
 
-#question_Input {
-    padding: 1em;
-    margin-bottom: 1em;
-}
-
-/* ACCOUNT */
-
-#account_Page {
-    width: 90%;
-}
+/*******************************************
+ *                                         *
+ *   ACCOUNT(LOGIN-LOGOUT-REGISTRAZIONE)   *
+ *                                         *
+ *******************************************/
 
 #form_Container {
     padding: 1em;
 }
 
-#form_Container h1 {
-    font-size: 1.6em;
+#form_Container h2 {
+    font-size: 170%;
 }
 
 #form_Container p {
     font-size: 1.4em;
 }
 
-.account_Link {
-    font-size: 1.3em;
-}
 
-/* CART */
+
+/****************
+ *              *
+ *   CARRELLO   *
+ *              *
+ ****************/
 
 #cart_Page {
     padding: 1em;
 }
 
-#cart_Page h1 {
-    font-size: 2em;
+#cart_Page h2 {
+    font-size: 170%;
+}
+
+#cart_Page p{
+    width: auto;
 }
 
 #headerCart dt {
@@ -283,13 +300,18 @@ footer {
 }
 
 #cart_Container li {
-    flex: 0 0 50%;
+    flex: 0 0 35%;
     font-size: 1.2em;
 }
 
-/* AREA_UTENTE_FAQ */
+/**********************
+ *                    *
+ *    DOMANDE FATTE   *
+ *                    *
+ **********************/
 
 #q_a_container h2 {
+    font-size: 170%;
     padding: 2%;
 }
 
@@ -297,7 +319,11 @@ footer {
     margin-bottom: 5%;
 }
 
-/* AREA_ADMIN_RISPOSTE */
+/***************************
+ *                         *
+ *   AREA_ADMIN_RISPOSTE   *
+ *                         *
+ ***************************/
 
 .questions_container {
     padding: 5%;
@@ -305,19 +331,29 @@ footer {
 
 .box_q_a {
     padding: 2%;
+    font-size: 110%;
     margin-bottom: 3%;
 }
 
-  /*********************
-   *                   *
-   *   ERROR 404-500   *
-   *                   *
-   *********************/
+
+/*********************
+ *                   *
+ *   ERROR 404-500   *
+ *                   *
+ *********************/
 
 #error_m h2 {
-    font-size: 1.8em;
+    font-size: 170%;
 }
 
 #error_m p {
-    font-size: 1.2em;
+    font-size: 110%;
+}
+
+.error_Message{
+    font-size: 110%;
+}
+
+.success_Message{
+    font-size: 110%;
 }

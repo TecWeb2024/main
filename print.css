@@ -209,7 +209,7 @@
   #products_Container img {
       align-content: center;
       object-fit:cover;
-      width: 100%;
+      width: 80%;
       height: 80%;
       margin-bottom: 0.3cm;
   }
@@ -325,6 +325,23 @@
    #ask_Question{
     display:none;
    }
+
+   #formDomanda {
+    margin-top: 15%;;
+    font-size: 120%; 
+    text-align: left; 
+}
+
+  #question {
+    width: 100%; 
+    box-sizing: border-box;
+    resize: none; 
+}
+
+#formDomanda input[type="submit"] {
+  margin-bottom: 2em; 
+}
+   
 
    .question h2{
    /*margin-top: 0.2cm;*/
@@ -469,3 +486,67 @@
    input[type="password"]{
     display:none;
    }
+
+
+
+
+
+   /*******************************************
+   *                                         *
+   *   ACCOUNT(LOGIN-LOGOUT-REGISTRAZIONE)   *
+   *                                         *
+   *******************************************/
+  
+
+   #form_Container{
+    padding: 10px;
+    width: 50%;
+    margin: 0;
+    border: 100%;
+  }
+
+  #logout{
+    margin-bottom: 10px;
+    font-size: 120%;
+  }
+
+  #form_Container h2{
+    font-size: 200%;  
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;  
+  }
+
+
+  #form_Container p{
+    margin-top: 5px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .form {
+    font-size: 110%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .form label{
+    width: 90%;
+  }
+  
+  .form input[type="email"],
+  .form input[type="nome"],
+  .form input[type="password"],
+  .form input[type="text"],
+  .form input[type="code"]
+  .form input[type="number"] {
+    width: 90%;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+  }

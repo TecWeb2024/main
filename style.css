@@ -444,6 +444,8 @@
     text-align: center;
   }
 
+
+
   /***********************************************************
    *                                                         *
    *    ACCESSORI - PESI LIBERI - NUTRIZIONE - MACCHINARI    *
@@ -501,6 +503,8 @@
   #products_Container p{
     margin: 0px 2% 0px 2%;
   }
+
+
 
   /******************
    *                *
@@ -590,7 +594,7 @@
   }
 
   #quantity{
-    padding: 5%, 5%;
+    padding: 5% 5%;
   }
 
   #quantity option{
@@ -628,7 +632,6 @@
   }
 
 
-  
 
   /******************
    *                *
@@ -689,6 +692,8 @@
     padding: 1% 10% 3% 10%;
     text-align: center;
   }
+
+
 
   /***********
    *         *
@@ -762,11 +767,13 @@
   margin-bottom: 2em; 
 }
 
+
+
   /***************
   *              *
   *   CARRELLO   *
   *              *
-  ***************/
+  ****************/
 
   #cart_Page{
     width: 90%;
@@ -795,7 +802,7 @@
   }
   
   #headerCart dd{
-    font-size: 110%;
+    font-size: 120%;
     font-weight: normal;
     margin-top: 0.5em;
   }
@@ -850,7 +857,7 @@
   #delivery_Address{
     max-width: 70%;
     text-align: left;
-    border: 10%;
+    border: 5px;
     display: flex;
     flex-direction: column;
   }
@@ -882,10 +889,6 @@
   
 
 
-  
-
-  
-
   /*******************************************
    *                                         *
    *   ACCOUNT(LOGIN-LOGOUT-REGISTRAZIONE)   *
@@ -910,12 +913,6 @@
     margin-bottom: 1em;
     margin-top: 1em;  
   }
-
-  
-
-  
-
-  
 
   #form_Container p{
     margin-top: 2em;
@@ -950,6 +947,8 @@
     border: 1px solid #000000;
   }
 
+
+
   /**********************
    *                    *
    *    DOMANDE FATTE   *
@@ -962,14 +961,16 @@
 
   #q_a_container h2{
     padding: 1%;
+    font-size: 200%;
     text-align: center;
   }
 
   #q_a_container .q_a_box{
     margin-bottom: 2%;
     list-style: none;
-    border: 1px solid #000;
+    border: 1px solid #000000;
   }
+
 
 
   /***************************
@@ -986,13 +987,10 @@
   .box_q_a{
     padding: 1%;
     font-size: 120%;
-    border: #000 solid 2px;
+    border: #000000 solid 1px;
     margin-bottom: 2%;
-
   }
-
   
-
 
 
   /****************************
@@ -1037,7 +1035,7 @@
     border: 1px solid #000000;
     border-radius: 3px;
   }
-
+  
   .button{
     margin: 5px;
   }
@@ -1050,14 +1048,10 @@
     text-align: center;
     padding: 5%;
   }
-  
 
   .form textarea{
     resize: none;
   }
-
-
-
 
   .form_rimuovi select{
     width: 90%;
@@ -1067,13 +1061,7 @@
     margin: 1em 0em 1em 0em;
     border: 1px solid #000000;
     border-radius: 3px;
-
   }
-
-
-
-
-
 
   #lista_prodotti_modifica{
     width: 30%;

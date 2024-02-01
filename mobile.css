@@ -1,8 +1,4 @@
-  /******************
-   *                *
-   *    HOME PAGE   *
-   *                *
-   ******************/
+/*HOME PAGE*/
 
 header {
     padding: 0em;
@@ -151,11 +147,9 @@ footer{
     margin-bottom: 5em;
 }
 
-  /***********************************************************
-   *                                                         *
-   *    ACCESSORI - PESI LIBERI - NUTRIZIONE - MACCHINARI    *
-   *                                                         *
-   ***********************************************************/
+
+
+/*ACCESSORI - PESI LIBERI - NUTRIZIONE - MACCHINARI*/
 
 #products_List{
     padding: 0.5em 0.5em 1.5em 0.5em;
@@ -180,7 +174,9 @@ footer{
     font-size: 110%;
 }
 
-/*PRODOTTI*/
+
+
+/*PRODOTTO*/
 
 #product_Page{
     padding: 0.5em 0.5em 0.5em 0.5em;
@@ -209,7 +205,7 @@ footer{
 }
 
 #product_Specs{
-    font-size: 120%;
+    font-size: 110%;
 }
 
 #product_Description h3{
@@ -232,11 +228,9 @@ footer{
     clear: both;
 }
 
-  /******************
-   *                *
-   *    CHI SIAMO   *
-   *                *
-   ******************/
+
+
+/*CHI SIAMO*/
 
 #chiSiamo_Content{
     width: 100%;
@@ -274,9 +268,7 @@ footer{
     padding-right: 8%;
 }
 
-.members img{
-    width: 40%;
-}
+
 
 /*FAQ*/
 
@@ -295,43 +287,39 @@ footer{
 .question h3{
     font-size: 120%;
 }
-
+/*
 #question_Input {
     padding: 0.5em;
     margin-bottom: 1em;
     width: 100%;
-}
+}*/
 
 /*ACCOUNT*/
 
-#account_Page{
-    width: 90%;
-}
-
 #form_Container {
     padding: 0.5em;
+    width: auto;
 }
 
-#form_Container h1{
+#form_Container h2{
     font-size: 140%;
 }
 
 #form_Container p{
     font-size: 120%;
+    padding:10%;
 }
 
-.account_Link{
-    font-size: 110%;
-}
+
 
 /*CART*/
 
 #cart_Page {
-    width: 100%;
-    padding: 0.5em;
+    width: 90%;
+    padding: 5%;
 }
 
-#cart_Page h1{
+#cart_Page h2{
     font-size: 160%;
     margin-top: 0.3em;
     margin-bottom: 0.3em;
@@ -351,69 +339,44 @@ footer{
 }
 
 #cart_Container li{
-    flex: 0 0 60%;
+    flex: 0 0 40%;
     font-size: 100%;
 }
 
-/*ERROR 404 - 500*/
-
-#error_Message h2{
-    font-size: 160%;
-    margin-top: 0.3em;
-    margin-bottom: 0.3em;
-}
-
-#error_Message p{
-    font-size: 110%;
-}
 
 
-/*AREA_UTENTE_FAQ*/
+/*DOMANDE FATTE*/
 
-   #q_a_container {
-    text-align: center;
-  }
-
-  #q_a_container h2{
-    padding: 1%;
-    text-align: center;
-  }
-
-  #q_a_container .q_a_box{
-    margin-bottom: 10%;
+#q_a_container .q_a_box{
+    margin-bottom: 8%;
     list-style: none;
     border: 1px solid #000;
-  }
+}
 
 
 
 /*AREA_ADMIN_RISPOSTE*/
-
   
-  .questions_container{
+.questions_container{
     padding: 3%;
     text-align: center;
-  }
+}
 
-  .box_q_a{
+.box_q_a{
     padding: 1%;
     border: #000 solid 2px;
     margin-bottom: 2%;
-  }
+}
 
-  /*********************
-   *                   *
-   *   ERROR 404-500   *
-   *                   *
-   *********************/
+/*ERROR 404-500*/
 
-  #error_m h2{
+#error_m h2{
     font-size: 160%;
     margin-top: 0.3em;
     margin-bottom: 0.3em;
-   }
+}
 
-   #error_m p{
+#error_m p{
     font-size: 110%;
-   }
+}
 
